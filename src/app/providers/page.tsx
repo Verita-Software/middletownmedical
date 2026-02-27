@@ -7,9 +7,12 @@ import { Button } from "@/components/ui/button";
 import { ProviderCard } from "@/components/providers/provider-card";
 import { ProvidersShimmerItem } from "@/components/providers/providers-shimmer-item";
 import { ProvidersFilter } from "@/components/providers/provider-filter";
+import { Pagination } from "@/components/ui/pagination";
 import { MOCK_PROVIDERS as providers, specialties } from "@/lib/mock-data";
 import { Search, MapPin } from "lucide-react";
 import { Suspense } from "react";
+import { ITEMS_PER_PAGE } from "@/lib/appConstant";
+import { usePagination } from "@/hooks/use-pagination";
 
 function ProvidersPageContent() {
   const searchParams = useSearchParams();
@@ -104,6 +107,10 @@ function ProvidersPageContent() {
     sortBy,
   ]);
 
+  // Use the custom pagination hook
+  const { currentPage, setCurrentPage, totalPages, paginatedItems } =
+    usePagination(filteredProviders, ITEMS_PER_PAGE);
+
   const activeFilterCount =
     selectedSpecialties.length +
     selectedCounties.length +
@@ -123,6 +130,7 @@ function ProvidersPageContent() {
       setSelectedLanguage("");
       setAcceptingOnly(false);
       setTelehealthOnly(false);
+      setCurrentPage(1);
     });
   }, []);
 
@@ -131,6 +139,7 @@ function ProvidersPageContent() {
       setSelectedSpecialties((prev) =>
         prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s],
       );
+      setCurrentPage(1);
     });
   };
 
@@ -139,6 +148,7 @@ function ProvidersPageContent() {
       setSelectedCounties((prev) =>
         prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c],
       );
+      setCurrentPage(1);
     });
   };
 
@@ -147,12 +157,14 @@ function ProvidersPageContent() {
       setSelectedLocations((prev) =>
         prev.includes(l) ? prev.filter((x) => x !== l) : [...prev, l],
       );
+      setCurrentPage(1);
     });
   };
 
   const toggleGender = (g: string) => {
     startTransition(() => {
       setSelectedGender((prev) => (prev === g ? "" : g));
+      setCurrentPage(1);
     });
   };
 
@@ -170,7 +182,12 @@ function ProvidersPageContent() {
               <input
                 type="text"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  startTransition(() => {
+                    setCurrentPage(1);
+                  });
+                }}
                 placeholder="Name, Services, Conditions"
                 className="w-full h-[52px] rounded-sm border border-slate-300 bg-white py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
@@ -215,6 +232,7 @@ function ProvidersPageContent() {
             setSortBy={(val) => {
               startTransition(() => {
                 setSortBy(val);
+                setCurrentPage(1);
               });
             }}
             activeFilterCount={activeFilterCount}
@@ -262,18 +280,36 @@ function ProvidersPageContent() {
             </Button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
-            <AnimatePresence>
-              {filteredProviders.map((provider, i) => (
-                <ProviderCard
-                  key={provider.id}
-                  provider={provider}
-                  variant={viewMode}
-                  index={i}
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+              <AnimatePresence>
+                {paginatedItems.map((provider, i) => (
+                  <ProviderCard
+                    key={provider.id}
+                    provider={provider}
+                    variant={viewMode}
+                    index={i}
+                  />
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {totalPages > 1 && (
+              <div className="mt-12 mb-8 flex w-full justify-center">
+                <Pagination
+                  initialPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={(page) => {
+                    startTransition(() => {
+                      setCurrentPage(page);
+                      // Scroll to top of list smoothly
+                      window.scrollTo({ top: 300, behavior: "smooth" });
+                    });
+                  }}
                 />
-              ))}
-            </AnimatePresence>
-          </div>
+              </div>
+            )}
+          </>
         )}
       </section>
     </div>
