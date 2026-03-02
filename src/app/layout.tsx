@@ -107,7 +107,7 @@ export default function RootLayout({
           </div>
 
           {/* Notification Banner */}
-          {/* <div className="bg-[#0f2c59] text-white py-2.5 px-4 text-sm">
+          <div className="bg-[#0f2c59] text-white py-2.5 px-4 text-sm">
             <div className="container mx-auto flex items-center justify-center relative max-w-7xl">
               <div className="flex items-center gap-2 text-center text-[13px] font-medium tracking-wide">
                 <Bell className="w-4 h-4" />
@@ -124,7 +124,7 @@ export default function RootLayout({
                 <X className="w-4 h-4" />
               </button>
             </div>
-          </div> */}
+          </div>
         </header>
         <main className="min-h-screen bg-middletown-light w-full overflow-x-hidden flex flex-col">
           {children}

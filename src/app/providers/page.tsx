@@ -1,6 +1,13 @@
 "use client";
 
-import { useState, useMemo, useCallback, useTransition } from "react";
+import {
+  useState,
+  useMemo,
+  useCallback,
+  useTransition,
+  useEffect,
+  useRef,
+} from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -13,6 +20,7 @@ import { Search, MapPin } from "lucide-react";
 import { Suspense } from "react";
 import { ITEMS_PER_PAGE } from "@/lib/appConstant";
 import { usePagination } from "@/hooks/use-pagination";
+import { useDebounce } from "@/hooks/use-debounce";
 
 function ProvidersPageContent() {
   const searchParams = useSearchParams();
@@ -20,6 +28,7 @@ function ProvidersPageContent() {
 
   // Filters
   const [search, setSearch] = useState(searchParams.get("search") || "");
+  const [locationSearch, setLocationSearch] = useState("");
   const [selectedSpecialties, setSelectedSpecialties] = useState<string[]>(
     searchParams.get("specialty") ? [searchParams.get("specialty")!] : [],
   );
@@ -33,13 +42,16 @@ function ProvidersPageContent() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showAllSpecialties, setShowAllSpecialties] = useState(false);
 
+  const debouncedSearch = useDebounce(search, 600);
+  const debouncedLocationSearch = useDebounce(locationSearch, 600);
+
   // Filtered and sorted providers
   const filteredProviders = useMemo(() => {
     let result = [...providers];
 
     // Search
-    if (search) {
-      const q = search.toLowerCase().replace(/\s+/g, " ");
+    if (debouncedSearch) {
+      const q = debouncedSearch.toLowerCase().replace(/\s+/g, " ");
       result = result.filter((p) => {
         const nameMatch = p.Name?.toLowerCase()
           .replace(/\s+/g, " ")
@@ -50,6 +62,27 @@ function ProvidersPageContent() {
         const bioMatch = p.Bio?.toLowerCase().replace(/\s+/g, " ").includes(q);
 
         return nameMatch || specialtyMatch || bioMatch;
+      });
+    }
+
+    // Location Search (City, Address, Zip)
+    if (debouncedLocationSearch) {
+      const qLocation = debouncedLocationSearch
+        .toLowerCase()
+        .replace(/\s+/g, " ");
+      result = result.filter((p) => {
+        // Match against Locations array
+        const locationMatch = p.Locations?.some((loc) =>
+          loc.toLowerCase().replace(/\s+/g, " ").includes(qLocation),
+        );
+
+        // Match against Country (which seems to act like a region in this dataset)
+        const countryMatch = p.country
+          ?.toLowerCase()
+          .replace(/\s+/g, " ")
+          .includes(qLocation);
+
+        return locationMatch || countryMatch;
       });
     }
 
@@ -96,7 +129,6 @@ function ProvidersPageContent() {
 
     return result;
   }, [
-    search,
     selectedSpecialties,
     selectedCounties,
     selectedLocations,
@@ -105,11 +137,36 @@ function ProvidersPageContent() {
     acceptingOnly,
     telehealthOnly,
     sortBy,
+    debouncedSearch,
+    debouncedLocationSearch,
   ]);
 
   // Use the custom pagination hook
   const { currentPage, setCurrentPage, totalPages, paginatedItems } =
     usePagination(filteredProviders, ITEMS_PER_PAGE);
+
+  const isInitialMount = useRef(true);
+
+  // Reset page when search or location search filters change
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    setCurrentPage(1);
+  }, [
+    debouncedSearch,
+    debouncedLocationSearch,
+    selectedSpecialties,
+    selectedCounties,
+    selectedLocations,
+    selectedGender,
+    selectedLanguage,
+    acceptingOnly,
+    telehealthOnly,
+    sortBy,
+    // intentional: omitted setCurrentPage to avoid triggering on navigation
+  ]);
 
   const activeFilterCount =
     selectedSpecialties.length +
@@ -123,6 +180,7 @@ function ProvidersPageContent() {
   const clearAllFilters = useCallback(() => {
     startTransition(() => {
       setSearch("");
+      setLocationSearch("");
       setSelectedSpecialties([]);
       setSelectedCounties([]);
       setSelectedLocations([]);
@@ -184,9 +242,6 @@ function ProvidersPageContent() {
                 value={search}
                 onChange={(e) => {
                   setSearch(e.target.value);
-                  startTransition(() => {
-                    setCurrentPage(1);
-                  });
                 }}
                 placeholder="Name, Services, Conditions"
                 className="w-full h-[52px] rounded-sm border border-slate-300 bg-white py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
@@ -200,6 +255,10 @@ function ProvidersPageContent() {
             <div className="relative flex-1 w-full">
               <input
                 type="text"
+                value={locationSearch}
+                onChange={(e) => {
+                  setLocationSearch(e.target.value);
+                }}
                 placeholder="City, Address, Zip Code"
                 className="w-full h-[52px] rounded-sm border border-slate-300 bg-white py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
@@ -209,12 +268,12 @@ function ProvidersPageContent() {
               />
             </div>
 
-            <Button className="h-[52px] px-12 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap hidden md:flex">
+            <Button className="h-[52px] px-12 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap hidden md:flex cursor-pointer">
               Search
             </Button>
           </div>
 
-          <Button className="w-full h-[52px] mb-4 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap md:hidden">
+          <Button className="w-full h-[52px] mb-4 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap md:hidden cursor-pointer">
             Search
           </Button>
 

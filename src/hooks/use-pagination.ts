@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 export function usePagination<T>(items: T[], itemsPerPage: number) {
@@ -16,12 +16,16 @@ export function usePagination<T>(items: T[], itemsPerPage: number) {
     setCurrentPage(initialPage);
   }, [initialPage]);
 
-  const handleSetPage = (page: number) => {
-    setCurrentPage(page);
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("page", page.toString());
-    router.push(`${pathname}?${params.toString()}`, { scroll: false });
-  };
+  const handleSetPage = useCallback(
+    (page: number) => {
+      if (currentPage === page) return;
+      setCurrentPage(page);
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("page", page.toString());
+      router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [searchParams, pathname, router, currentPage],
+  );
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
