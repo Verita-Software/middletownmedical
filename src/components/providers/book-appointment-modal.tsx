@@ -11,8 +11,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import type { Provider } from "@/lib/mock-data";
-import type { ScheduleBundle, SlotBundle, FhirSchedule, FhirSlot } from "@/types/healow";
-import { Calendar, Clock, Loader2 } from "lucide-react";
+import type {
+  ScheduleBundle,
+  SlotBundle,
+  FhirSchedule,
+  FhirSlot,
+} from "@/types/healow";
+import { LOCATION_PHONES } from "@/lib/appConstant";
+import { Calendar, Clock, Loader2, Phone } from "lucide-react";
 
 const DEFAULT_LOCATION_ID = "2";
 
@@ -49,7 +55,9 @@ export function BookAppointmentModal({
   onOpenChange,
   provider,
 }: BookAppointmentModalProps) {
-  const [step, setStep] = useState<"date" | "slot" | "confirm" | "done">("date");
+  const [step, setStep] = useState<"date" | "slot" | "confirm" | "done">(
+    "date",
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -87,11 +95,17 @@ export function BookAppointmentModal({
       from.setDate(from.getDate());
       const dateStr = toDateOnly(from.toISOString());
       const res = await fetch(
-        `/api/appointments/schedule?actor=${encodeURIComponent(actor)}&locationId=${encodeURIComponent(locationId)}&date=${dateStr}`
+        `/api/appointments/schedule?actor=${encodeURIComponent(actor)}&locationId=${encodeURIComponent(locationId)}&date=${dateStr}`,
       );
       const data = (await res.json()) as ScheduleBundle | { error: string };
       if (!res.ok) {
-        throw new Error((data as { error: string }).error ?? res.statusText);
+        const msg = (data as { error: string }).error ?? res.statusText;
+        // if (res.status === 404) {
+        //   throw new Error(
+        //     "This provider or location is not set up for online scheduling. Please call the office to book."
+        //   );
+        // }
+        throw new Error(msg);
       }
       const bundle = data as ScheduleBundle;
       const entries: Array<{ id: string; start: string; end: string }> = [];
@@ -122,7 +136,7 @@ export function BookAppointmentModal({
       setLoading(true);
       try {
         const res = await fetch(
-          `/api/appointments/slots?scheduleId=${encodeURIComponent(scheduleId)}&start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`
+          `/api/appointments/slots?scheduleId=${encodeURIComponent(scheduleId)}&start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`,
         );
         const data = (await res.json()) as SlotBundle | { error: string };
         if (!res.ok) {
@@ -145,7 +159,8 @@ export function BookAppointmentModal({
             end: s.end,
             reference: ref,
           };
-          if (s.status === "free") {
+          const isFree = s.status === "free" || s.freeBusyType === "free";
+          if (isFree) {
             entries.push(entry);
           }
         }
@@ -159,7 +174,7 @@ export function BookAppointmentModal({
         setLoading(false);
       }
     },
-    []
+    [],
   );
 
   const handleOpenChange = (next: boolean) => {
@@ -239,8 +254,41 @@ export function BookAppointmentModal({
         </DialogHeader>
 
         {error && (
-          <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800">
-            {error}
+          <div
+            className={
+              error.includes("not set up for online scheduling")
+                ? "rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+                : "rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800"
+            }
+          >
+            <p>{error}</p>
+            {error.includes("not set up for online scheduling") && (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-primary text-white hover:bg-primary/90"
+                >
+                  <a
+                    href={`tel:${(
+                      (provider.Locations?.[0] &&
+                        LOCATION_PHONES[provider.Locations[0]]) ||
+                      "(845) 342-4774"
+                    ).replace(/\D/g, "")}`}
+                  >
+                    <Phone className="mr-2 h-4 w-4" />
+                    Call office to book
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleOpenChange(false)}
+                >
+                  Close
+                </Button>
+              </div>
+            )}
           </div>
         )}
 
@@ -257,15 +305,15 @@ export function BookAppointmentModal({
             ) : (
               <div className="grid gap-2">
                 {scheduleEntries.map((entry) => (
-                  <button
+                  <Button
                     key={entry.id}
                     type="button"
                     onClick={() => onSelectDate(entry)}
-                    className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3 text-left transition hover:border-primary/40 hover:bg-slate-50"
+                    className="flex justify-center text-black items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-2 text-left transition hover:border-primary/40 hover:bg-slate-50"
                   >
                     <Calendar className="h-5 w-5 text-primary" />
                     <span>{formatDate(entry.start)}</span>
-                  </button>
+                  </Button>
                 ))}
               </div>
             )}
@@ -300,15 +348,15 @@ export function BookAppointmentModal({
             ) : (
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {slotEntries.map((entry) => (
-                  <button
+                  <Button
                     key={entry.id}
                     type="button"
                     onClick={() => onSelectSlot(entry)}
-                    className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm transition hover:border-primary/40 hover:bg-slate-50"
+                    className="flex items-center text-black justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm transition hover:border-primary/40 hover:bg-slate-50"
                   >
                     <Clock className="h-4 w-4 text-primary" />
                     {formatTime(entry.start)}
-                  </button>
+                  </Button>
                 ))}
               </div>
             )}
@@ -325,7 +373,8 @@ export function BookAppointmentModal({
                 {selectedDate && formatDate(selectedDate.start)}
               </p>
               <p className="text-slate-600">
-                {formatTime(selectedSlot.start)} – {formatTime(selectedSlot.end)}
+                {formatTime(selectedSlot.start)} –{" "}
+                {formatTime(selectedSlot.end)}
               </p>
             </div>
             <DialogFooter>
@@ -339,7 +388,7 @@ export function BookAppointmentModal({
               <Button
                 onClick={onConfirmBook}
                 disabled={loading}
-                className="bg-primary text-white hover:bg-primary/90"
+                className="cursor-pointer bg-primary text-white hover:bg-primary/90"
               >
                 {loading ? (
                   <>

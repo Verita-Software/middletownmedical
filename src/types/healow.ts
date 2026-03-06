@@ -23,6 +23,8 @@ export interface FhirSlot {
   id?: string;
   schedule?: FhirReference;
   status?: string;
+  /** FHIR Slot availability; Healow uses this instead of status */
+  freeBusyType?: string;
   start?: string;
   end?: string;
 }

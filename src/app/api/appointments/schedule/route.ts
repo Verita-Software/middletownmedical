@@ -36,6 +36,12 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(bundle);
   } catch (e) {
     const message = e instanceof Error ? e.message : "Failed to fetch schedules";
-    return NextResponse.json({ error: message }, { status: 500 });
+    const statusCode = e && typeof e === "object" && "statusCode" in e
+      ? Number((e as { statusCode: number }).statusCode)
+      : 500;
+    return NextResponse.json(
+      { error: message },
+      { status: statusCode >= 400 && statusCode < 600 ? statusCode : 500 }
+    );
   }
 }
