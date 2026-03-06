@@ -1,0 +1,243 @@
+{
+  "patient-resources": {
+    "title": "Patient Resources",
+    "intro": "As a Middletown Medical patient, you have access to our physicians across multiple clinical specialties. Below you will find helpful forms, instructions, and updates to download and use before or after your visit.",
+    "sections": [
+      {
+        "heading": "Downloads & Forms",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Download the following patient resources and forms. Contact our office at (845) 342-4774 if you need assistance or have questions about any form.",
+            "Colorectal Cancer Screening — Download",
+            "Fecal FIT Testing — Download",
+            "Fecal FIT Instruction — Download",
+            "Middletown Medical Laboratory Update — Download",
+            "MRI Instructions — Download"
+          ]
+        }
+      }
+    ]
+  },
+  "covid-19-info": {
+    "title": "Coronavirus (Covid-19) Information Center",
+    "subtitle": "Middletown Medical has become a regional leader for COVID-19 response.",
+    "intro": "Learn more below about how our team has risen to meet the challenges of the past year, and how we are keeping patients safe and cared for. Click here for information about the COVID-19 vaccine.",
+    "sections": [
+      {
+        "heading": "COVID-19 FAQs",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "What is a novel coronavirus? A novel coronavirus is a new coronavirus that has not been previously identified. The virus causing coronavirus disease 2019 (COVID-19) is not the same as the coronaviruses that commonly circulate among humans and cause mild illness, like the common cold.",
+            "How does the virus spread? The virus that causes COVID-19 most commonly spreads between people who are in close contact (within about 6 feet). It spreads through respiratory droplets or small particles produced when an infected person coughs, sneezes, sings, talks, or breathes. These particles can be inhaled into the nose, mouth, airways, and lungs. Droplets can also land on surfaces and be transferred by touch. There is growing evidence that droplets and airborne particles can remain suspended in the air and travel distances beyond 6 feet. Indoor environments without good ventilation increase this risk.",
+            "What is community spread? Community spread means people have been infected with the virus in an area, including some who are not sure how or where they became infected. Each health department determines community spread differently based on local conditions. Visit your health department's website for information on community spread in your area.",
+            "How can I protect myself? Wash your hands often; avoid close contact with people who are sick; maintain 6 feet of distance between yourself and people who don't live in your household; cover your mouth and nose with a mask when around others; cover coughs and sneezes; clean and disinfect regularly; monitor your health daily.",
+            "Is it safe to get care for my other medical conditions? Yes. It is important to continue taking care of your health and wellness. Continue your medications and do not change your treatment plan without talking to your healthcare provider. Have at least a 2-week supply of medications. Do not delay getting emergency care — if you need emergency help, call 911.",
+            "What should I do if I have had close contact with someone who has COVID-19? The best way to protect yourself and others is to stay home for 14 days if you think you've been exposed. Check your local health department's website for options to possibly shorten this quarantine period. Be alert for symptoms: fever, cough, shortness of breath, or other symptoms of COVID-19.",
+            "Should I get tested for COVID-19? If you have symptoms of COVID-19 and want to get tested, contact Middletown Medical today. CDC has guidance for who should be tested; decisions about testing are made by state and local health departments and healthcare providers. Visit our Covid-19 Testing page to learn more."
+          ]
+        }
+      },
+      {
+        "heading": "Middletown Medical is Open & Safe",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "We are open and we are safe. We have implemented changes to protect our patients and staff:",
+            "Telemedicine — We are continuing our Telemedicine program and now offer TeleMedicine for Urgent Care. Call (845) 342-4774 to set up a visit.",
+            "Procedures — Our procedure suite is now open. If you have been putting off a needed medical procedure, please inquire with your doctor for scheduling.",
+            "Mask — We ask that each patient wear a mask or appropriate face covering (nose and mouth covered).",
+            "Remain in car — Unless it is a true hardship, we ask that guests remain in their cars when a patient comes in for a procedure or visit. You may be asked to wait in your car and be called on your cell phone to limit the number of people in our waiting area.",
+            "Social distancing — We have reduced and spaced chairs in waiting rooms to keep people safe.",
+            "3D Mammography — Moved to 60 Dunning Road at our Gynecology Office, Suite 3, for your convenience.",
+            "No outside gloves — We ask that no gloves from outside be worn in the buildings. Washing hands and using hand sanitizer is best.",
+            "Temperature check — All locations will check your temperature before you are admitted.",
+            "Drive-thru testing — We maintain COVID-19 testing locations with drive-thru service.",
+            "Disinfection — All imaging equipment and patient rooms are cleaned after each patient with appropriate sterilization supplies. We have increased disinfection at all facilities.",
+            "Sleep study reopened — Our advanced sleep lab is open. See one of our Pulmonologists for a prescription.",
+            "Staff safety — All staff temperatures are checked before each shift. All staff wear masks and clean work areas throughout the day. Medical representatives are not welcome at this time."
+          ]
+        }
+      },
+      {
+        "heading": "Take steps to protect yourself",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Clean your hands often. Wash your hands with soap and water for at least 20 seconds, especially after being in a public place or after blowing your nose, coughing, or sneezing. If soap and water are not available, use a hand sanitizer that contains at least 60% alcohol. Avoid touching your eyes, nose, and mouth with unwashed hands.",
+            "Learn more at cdc.gov."
+          ]
+        }
+      },
+      {
+        "heading": "Important Links",
+        "level": 2,
+        "content": {
+          "type": "contact",
+          "items": [
+            {
+              "label": "CDC — Coronavirus information",
+              "value": "Latest from Centers for Disease Control and Prevention",
+              "href": "https://www.cdc.gov/coronavirus/2019-ncov/"
+            },
+            {
+              "label": "health.ny.gov — New York Coronavirus",
+              "value": "Latest from New York (e.g. positive cases by area)",
+              "href": "https://www.health.ny.gov/diseases/communicable/coronavirus/"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "telemedicine": {
+    "title": "Telemedicine",
+    "intro": "All Middletown Medical providers now use Telemedicine. Urgent Care visits can be done through Telemedicine. Call (845) 342-4774 to set up a Telemedicine visit or chat with us. Connecting with your provider via your device has never been easier with our MM Telemedicine solution.",
+    "sections": [
+      {
+        "heading": "How to prepare for a Telemedicine visit",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "1) Call your MMPC provider to request a Telemedicine appointment.",
+            "2) At the time of your appointment, your provider will text you a link to join the Telemedicine visit. It's that easy.",
+            "Some providers may choose to do your visit via WhatsApp. You can download WhatsApp on your phone if needed."
+          ]
+        }
+      },
+      {
+        "heading": "Same-day telemedicine appointments",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Same-day telemedicine appointments are available for: Primary / Family Medicine, Pediatrics, Allergy & Immunology, Cardiology, Dermatology, Diabetes In Children & Teens, Endocrinology, Gastroenterology, Gynecology, Infectious Diseases, Interventional Gastroenterology, Nephrology, Neurology, Orthopedics, Otolaryngology, Pain Management & Rehabilitation, Podiatry, Pulmonary Medicine, Rheumatology, Urology, Pediatric Endocrinology, Hematology & Oncology, and Optometry."
+          ]
+        }
+      },
+      {
+        "heading": "Ways telemedicine can be used",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Wellness visits with your PCP; medication management and prescription renewal; minor urgent care (e.g. pink eye, fevers, rashes); birth control counseling; chronic condition management; pediatrics; post-hospital discharge; post-surgical follow-up."
+          ]
+        }
+      },
+      {
+        "heading": "Schedule a Telemedicine visit",
+        "level": 3,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Call (845) 342-4774 and press 2 to set up a Telemedicine visit."
+          ]
+        }
+      },
+      {
+        "heading": "HIPAA guidance",
+        "level": 3,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "New HIPAA Guidance authorizes the use of Telemedicine: waivers of originating and geographic site restrictions on Medicare telehealth services (delivery in all areas including patients' homes); expanded telehealth for new and established patients for COVID-19 and other conditions; permission for providers to use everyday communications technologies such as FaceTime or Skype during the COVID-19 public health emergency without HIPAA penalties."
+          ]
+        }
+      }
+    ]
+  },
+  "patient-centered-medical-home": {
+    "title": "Patient Centered Medical Home Certification",
+    "intro": "Middletown Medical is your Patient Centered Medical Home. We provide comprehensive, compassionate and continuous care for pediatric to adult medicine.",
+    "sections": [
+      {
+        "heading": "What type of services does my Medical Home provide for me and my family?",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Same day appointments, extended hours, and urgent care support.",
+            "Preventive care and physicals (health risk assessments, sports and school physicals).",
+            "Acute care for illness and injuries.",
+            "Management of multi-specialty care plans including mental health.",
+            "Well child visits, screening and vaccinations.",
+            "24×7 phone access to your care team.",
+            "Online electronic access to your medical records (healow™).",
+            "Referrals to top specialists and mental health providers."
+          ]
+        }
+      },
+      {
+        "heading": "Insurance requirements",
+        "level": 3,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "You don't need insurance to be seen at our clinic. If you do have insurance, please bring your information with you. If you do not have insurance, we still want to see you — we have staff that will assist you in signing up for insurance."
+          ]
+        }
+      },
+      {
+        "heading": "Partnering with you",
+        "level": 3,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Middletown Medical wants to partner with our patients to provide up-to-date health information and recommends that you participate in self-management and support activities offered in the community. We provide direct communication at your visit, via phone or the patient portal. You may be asked by your provider to complete a Goal & Self-Improvement form during your visit to help us understand where you would like to focus your care. We adhere to evidence-based medicine and encourage you to review the helpful websites below. Multiple languages are provided at national sites."
+          ]
+        }
+      },
+      {
+        "heading": "Helpful websites our healthcare team supports",
+        "level": 3,
+        "content": {
+          "type": "contact",
+          "items": [
+            {
+              "label": "Orange Regional Medical Center",
+              "value": "Support services and educational classes",
+              "href": "https://www.ormc.org/patients-visitors/patient-support/support-groups-classes"
+            },
+            {
+              "label": "National Institute of Health",
+              "value": "Health Information tab — evidence-based health information",
+              "href": "https://www.nih.gov/"
+            },
+            {
+              "label": "CDC — Healthy Living",
+              "value": "Healthy living resources",
+              "href": "https://www.cdc.gov/HealthyLiving/"
+            },
+            {
+              "label": "CDC — Chronic Disease Education",
+              "value": "Chronic disease information",
+              "href": "https://www.cdc.gov/chronicdisease/about/index.htm"
+            },
+            {
+              "label": "American Diabetes Association",
+              "value": "Diabetes information",
+              "href": "http://www.diabetes.org/"
+            },
+            {
+              "label": "American Heart Association",
+              "value": "Heart health",
+              "href": "https://www.heart.org/"
+            },
+            {
+              "label": "American Lung Association",
+              "value": "Lung health",
+              "href": "https://www.lung.org/"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

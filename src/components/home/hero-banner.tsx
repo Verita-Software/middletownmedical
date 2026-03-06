@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Search,
   MapPin,
@@ -11,14 +10,14 @@ import { Button } from "@/components/ui/button";
 
 export function HeroBanner() {
   return (
-    <div className="w-full bg-slate-50 relative isolate pt-12 pb-24 lg:pt-20 lg:pb-32">
+    <div className="w-full bg-slate-50 relative isolate pt-6 pb-14 lg:pt-24 lg:pb-16">
       {/* Decorative background circle (optional, based on Duly site) */}
       <div className="absolute top-0 right-0 -z-10 w-[50vw] h-[50vw] rounded-full bg-slate-100/50 translate-x-1/3 -translate-y-1/3 blur-3xl" />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4">
         <div className="flex flex-col lg:flex-row gap-6 items-stretch">
-          <div className="w-full lg:w-3/5 bg-white p-6 sm:p-10 lg:p-14 border-2 border-[#002147] rounded-sm  lg:rounded-tl-[3rem] lg:rounded-br-4xl relative z-10 shadow-md flex justify-center flex-col">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-8">
+          <div className="w-full lg:w-3/5 bg-white p-6 sm:p-8 lg:p-8 border-2 border-[#002147] rounded-sm  rounded-tl-[3rem] rounded-br-4xl relative z-10 shadow-md flex justify-center flex-col">
+            <h1 className="text-4xl sm:text-5xl lg:text-5xl font-black text-slate-900 leading-tight mb-6">
               Book an Appointment in <br className="hidden sm:block" />
               <span className="text-[#00AEEF]">Minutes</span>
             </h1>
@@ -74,11 +73,13 @@ export function HeroBanner() {
                   className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-800 font-bold"
                   strokeWidth={2.5}
                 />
-                <select className="w-full pl-12 pr-4 py-4 bg-slate-50 text-[15px] font-semibold text-slate-900 focus:outline-none cursor-pointer appearance-none">
+                <select
+                  defaultValue=""
+                  className="w-full pl-12 pr-4 py-4 bg-slate-50 text-[15px] font-semibold text-slate-900 focus:outline-none cursor-pointer appearance-none"
+                >
                   <option
                     value=""
                     disabled
-                    selected
                     className="font-normal text-slate-500"
                   >
                     Insurance *
@@ -115,8 +116,8 @@ export function HeroBanner() {
           </div>
 
           {/* Right Module: Care Without the Wait */}
-          <div className="w-full lg:w-2/5 bg-[#470A68] p-6 sm:p-10 lg:p-14 rounded-sm lg:rounded-tl-[3rem] lg:rounded-br-[3rem] flex flex-col justify-center shadow-md">
-            <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
+          <div className="w-full lg:w-2/5 bg-[#470A68] p-6 sm:p-8 lg:p-8 rounded-sm rounded-tl-[3rem] rounded-br-[3rem] flex flex-col justify-center shadow-md">
+            <h2 className="text-4xl sm:text-5xl lg:text-4xl font-black text-white leading-tight mb-6">
               Care Without the Wait
             </h2>
 

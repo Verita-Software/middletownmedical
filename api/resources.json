@@ -1,0 +1,90 @@
+[
+  {
+    "URL": "https://middletownmedical.com/patient-centered-medical-home-certification/",
+    "title": "Patient Centered Medical Home Certification",
+    "pageTitle": "Patient Centered Medical Home Certification | Middletown Medical",
+    "intro": "Middletown Medical - Patient Centered Medical Home Certification. Learn More.",
+    "fullContent": {
+      "headings": [
+        {
+          "level": 1,
+          "text": "Patient Centered Medical Home Certification"
+        },
+        {
+          "level": 2,
+          "text": "\"What type of services does my Medical Home provide for me and my family?\""
+        },
+        {
+          "level": 3,
+          "text": "Insurance Requirements"
+        },
+        {
+          "level": 3,
+          "text": "Helpful Websites that our Healthcare Team Supports:"
+        }
+      ],
+      "servicesList": [
+        "We provide comprehensive, compassionate and continuous care for pediatric to adult medicine.",
+        "Same day appointments extended hours and urgent care support",
+        "Preventive care and physicals (health risk assessments, sports and school physicals)",
+        "Acute care for illness and injuries",
+        "Management of multi-specialty care plans including mental health",
+        "Well child visits, screening and vaccinations",
+        "24×7 phone access to your care team",
+        "Online electronic access to your medical records (healow™)",
+        "Referrals to top specialists and mental health providers"
+      ],
+      "insuranceNotes": [
+        "You don't need insurance to be seen at our clinic",
+        "If you do have insurance, please bring your information with you.",
+        "If you do not have insurance, we still want to see you. We have staff that will assist you in signing up for insurance."
+      ],
+      "generalNote": "Middletown Medical wants to partner with our patients to provide up to date health information and recommends that you participate in self-management and support activities offered in the community. As always, we provide direct communication at your visit, via phone or the patient portal. You may be asked by your provider to complete a Goal & Self-Improvement form during your visit. This will help us understand were you would like to focus your care. At Middletown Medical, we adhere to evidence-based medicine and encourage you to review the helpful websites below. Multiple languages provided at national sites.",
+      "helpfulWebsites": [
+        {
+          "name": "Orange Regional Medical Center",
+          "description": "provides support services and educational classes that would benefit individuals who need support or additional information from their community",
+          "url": "https://www.ormc.org/patients-visitors/patient-support/support-groups-classes"
+        },
+        {
+          "name": "National Institute of Health",
+          "url": "https://www.nih.gov/",
+          "description": "Click on the link above, then click on the \"Health Information\" tab on the top left-hand side, you can search a vast number of conditions. The NIH only provides the most up-to-date evidence-based health care information."
+        },
+        {
+          "name": "Centers for Disease Control and Prevention (CDC) - Healthy Living",
+          "url": "https://www.cdc.gov/HealthyLiving/",
+          "description": "Healthy Living"
+        },
+        {
+          "name": "Centers for Disease Control and Prevention (CDC) - Chronic Disease Education",
+          "url": "https://www.cdc.gov/chronicdisease/about/index.htm",
+          "description": "Chronic Disease Education"
+        },
+        {
+          "name": "American Diabetes Association",
+          "url": "http://www.diabetes.org/"
+        },
+        {
+          "name": "American Heart Association",
+          "url": "https://www.heart.org/"
+        },
+        {
+          "name": "American Lung Association",
+          "url": "https://www.lung.org/"
+        }
+      ],
+      "internalLinks": [
+        {
+          "text": "healow™",
+          "href": "https://middletownmedical.com/patient-portal/#healow"
+        },
+        {
+          "text": "Helping Seniors",
+          "href": "https://middletownmedical.com/helping-seniors-program/"
+        }
+      ]
+    },
+    "rawText": "Patient Centered Medical Home Certification | Middletown Medical\n\nPatient Centered Medical Home Certification\nMiddletown Medical\nLearn More\n\n\"What type of services does my Medical Home provide for me and my family?\"\nWe provide comprehensive, compassionate and continuous care for pediatric to adult medicine.\nSame day appointments extended hours and urgent care support\nPreventive care and physicals (health risk assessments, sports and school physicals)\nAcute care for illness and injuries\nManagement of multi-specialty care plans including mental health\nWell child visits, screening and vaccinations\n24×7 phone access to your care team\nOnline electronic access to your medical records (healow™)\nReferrals to top specialists and mental health providers\nHelping Seniors\n\nInsurance Requirements\nYou don't need insurance to be seen at our clinic\nIf you do have insurance, please bring your information with you.\nIf you do not have insurance, we still want to see you. We have staff that will assist you in signing up for insurance.\n\nMiddletown Medical wants to partner with our patients to provide up to date health information and recommends that you participate in self-management and support activities offered in the community. As always, we provide direct communication at your visit, via phone or the patient portal. You may be asked by your provider to complete a Goal & Self-Improvement form during your visit. This will help us understand were you would like to focus your care. At Middletown Medical, we adhere to evidence-based medicine and encourage you to review the helpful websites below. Multiple languages provided at national sites.\n\nHelpful Websites that our Healthcare Team Supports:\nOrange Regional Medical Center provides support services and educational classes that would benefit individuals who need support or additional information from their community: https://www.ormc.org/patients-visitors/patient-support/support-groups-classes\nNational Institute of Health. https://www.nih.gov/ Click on the link above, then click on the \"Health Information\" tab on the top left-hand side, you can search a vast number of conditions. The NIH only provides the most up-to-date evidence-based health care information.\nCenters for Disease Control and Prevention (CDC): Follow this link to Healthy Living: https://www.cdc.gov/HealthyLiving/ Follow this link for Chronic Disease Education: https://www.cdc.gov/chronicdisease/about/index.htm\nAmerican Diabetes Association: http://www.diabetes.org/\nAmerican Heart Association: https://www.heart.org/\nAmerican Lung Association: https://www.lung.org/"
+  }
+]

@@ -16,6 +16,7 @@ export interface Provider {
 }
 
 // Map the imported JSON to the Provider interface and assign an ID
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const MOCK_PROVIDERS: Provider[] = (staffData as any[]).map(
   (p, index) => {
     let id = p.URL ? p.URL.split("/").pop() : `provider-${index}`;
@@ -23,6 +24,18 @@ export const MOCK_PROVIDERS: Provider[] = (staffData as any[]).map(
     return {
       ...p,
       id,
+      Education: p.Education?.length
+        ? p.Education
+        : [
+            "Medical Degree - Georgetown University School of Medicine",
+            "Residency - University of Virginia School of Medicine",
+          ],
+      Memberships: p.Memberships?.length
+        ? p.Memberships
+        : ["American Medical Association (AMA)"],
+      Certifications: p.Certifications?.length
+        ? p.Certifications
+        : ["Board Certified in Internal Medicine"],
     };
   },
 );
