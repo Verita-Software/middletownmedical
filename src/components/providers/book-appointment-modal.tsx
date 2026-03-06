@@ -152,7 +152,9 @@ export function BookAppointmentModal({
         for (const e of bundle.entry ?? []) {
           const s = e.resource as FhirSlot | undefined;
           if (!s?.start || !s?.end) continue;
-          const ref = e.fullUrl ?? `Slot/${s.id}`;
+          // Use Slot/{id} for booking; fullUrl from Healow can contain "null" and breaks the Appointment API
+          const slotId = s.id ?? (e.fullUrl?.split("/").pop() ?? "");
+          const ref = slotId ? `Slot/${slotId}` : e.fullUrl ?? "";
           const entry = {
             id: s.id ?? ref,
             start: s.start,

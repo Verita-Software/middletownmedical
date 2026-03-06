@@ -120,6 +120,24 @@ export async function getSlots(params: {
 }
 
 /**
+ * Normalize slot reference to the raw slot id (UUID). Healow Appointment API and voice-agent
+ * use the slot id only in slot.reference; fullUrl from Slot response can contain "null" and causes 500.
+ */
+function normalizeSlotReference(slotReference: string): string {
+  const s = slotReference.trim();
+  if (!s) return s;
+  if (/^[a-f0-9-]{36}$/i.test(s)) return s;
+  if (s.toLowerCase().startsWith("slot/")) {
+    const id = s.slice(5).trim();
+    if (/^[a-f0-9-]+$/i.test(id)) return id;
+  }
+  const parts = s.split("/").filter(Boolean);
+  const id = parts[parts.length - 1];
+  if (id && /^[a-f0-9-]+$/i.test(id)) return id;
+  return s;
+}
+
+/**
  * Book an appointment for a given slot.
  * Appointment API requires a contained Patient (used for matching); slot and practitioner are required.
  */
@@ -147,16 +165,20 @@ export async function createAppointment(params: {
     params.practitionerRef.startsWith("Practitioner/")
       ? params.practitionerRef
       : `Practitioner/${params.practitionerRef}`;
+  // Healow expects slot reference as "Slot/{id}"; fullUrl from API may contain "null" and cause 500
+  const slotReference = normalizeSlotReference(params.slotReference);
   const p = params.patient ?? {};
   const firstName = p.firstName ?? "Requested";
   const lastName = p.lastName ?? "Patient";
+  const birthDate = p.birthDate ?? "1970-01-01";
+  const gender = p.gender ?? "other";
   const body = {
     resourceType: "Appointment",
     status: "proposed",
     reason: { text: params.reason ?? "Appointment request" },
     description: `Appointment for ${firstName} ${lastName}`,
     comment: params.comment ?? "Booked via Middletown Medical website",
-    slot: [{ reference: params.slotReference }],
+    slot: [{ reference: slotReference }],
     start: params.start,
     end: params.end,
     contained: [
@@ -168,13 +190,26 @@ export async function createAppointment(params: {
           { system: "phone", value: p.phone ?? "0000000000", use: "mobile" },
           ...(p.email ? [{ system: "email", value: p.email, use: "home" }] : []),
         ],
-        ...(p.birthDate ? { birthDate: p.birthDate } : {}),
-        ...(p.gender ? { gender: p.gender } : {}),
+        gender: gender,
+        birthDate: birthDate,
+      },
+      {
+        resourceType: "Coverage",
+        type: {
+          coding: [
+            {
+              system: "eCW_insurance_coding_system(Cash/Insurance/Not-Applicable)",
+              code: "cash",
+              display: "Self-Pay",
+            },
+          ],
+          text: "Self-Pay",
+        },
       },
     ],
     participant: [
-      { actor: { reference: practitionerRef }, required: "required", status: "accepted" },
-      { actor: { reference: "#patA" }, required: "required" as const, status: "accepted" as const },
+      { actor: { reference: practitionerRef }, required: "required" },
+      { actor: { reference: "#patA" }, required: "required" },
     ],
   };
   const res = await fetch(`${base}/Appointment`, {
