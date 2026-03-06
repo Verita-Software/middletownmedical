@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import type { Provider } from "@/lib/mock-data";
 import { ClientImage } from "@/components/providers/client-image";
-import { Star, ArrowRight } from "lucide-react";
+import { BookAppointmentModal } from "@/components/providers/book-appointment-modal";
+import { Star, ArrowRight, Calendar } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 function getInitials(name: string) {
@@ -35,12 +37,12 @@ interface ProviderCardProps {
 export function ProviderCard({
   provider,
   variant = "grid",
-  index = 0,
 }: ProviderCardProps) {
   const rating = 4.9;
   const specialties = provider.Specialties || [];
   const locations = provider.Locations || [];
   const router = useRouter();
+  const [bookModalOpen, setBookModalOpen] = useState(false);
 
   if (variant === "list") {
     return <ProviderListCard provider={provider} />;
@@ -116,8 +118,16 @@ export function ProviderCard({
         </div>
       </div>
 
-      <div className="flex justify-end mt-6 pt-5 border-t border-slate-100 z-10">
+      <div className="flex flex-wrap justify-end gap-2 mt-6 pt-5 border-t border-slate-100 z-10">
         <Button
+          variant="outline"
+          onClick={() => setBookModalOpen(true)}
+          className="group/btn border-2 cursor-pointer border-primary text-primary hover:bg-primary hover:text-white font-bold text-[15px] h-[46px] px-6 rounded flex items-center justify-center transition-all duration-300"
+        >
+          <Calendar className="w-4 h-4 mr-2" />
+          Book Now
+        </Button>
+        {/* <Button
           variant="outline"
           onClick={() => router.push(`/providers/${provider.id}`)}
           className="group/btn border-2 cursor-pointer border-primary text-primary hover:bg-primary hover:text-white font-bold text-[15px] h-[46px] px-8 rounded flex items-center justify-center transition-all duration-300"
@@ -126,8 +136,14 @@ export function ProviderCard({
             View Details
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
           </span>
-        </Button>
+        </Button> */}
       </div>
+
+      <BookAppointmentModal
+        open={bookModalOpen}
+        onOpenChange={setBookModalOpen}
+        provider={provider}
+      />
 
       <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-slate-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-bl-full mix-blend-multiply" />
     </motion.div>
@@ -138,6 +154,8 @@ function ProviderListCard({ provider }: { provider: Provider }) {
   const rating = 4.9;
   const specialties = provider.Specialties || [];
   const locations = provider.Locations || [];
+  const [bookModalOpen, setBookModalOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <motion.div
@@ -201,9 +219,18 @@ function ProviderListCard({ provider }: { provider: Provider }) {
         </div>
       </div>
 
-      <div className="shrink-0 w-full sm:w-auto flex justify-center sm:justify-end mt-4 sm:mt-0 pt-5 sm:pt-0 border-t sm:border-0 border-slate-100 z-10 pl-0 sm:pl-4">
+      <div className="shrink-0 w-full sm:w-auto flex flex-wrap justify-center sm:justify-end gap-2 mt-4 sm:mt-0 pt-5 sm:pt-0 border-t sm:border-0 border-slate-100 z-10 pl-0 sm:pl-4">
         <Button
           variant="outline"
+          onClick={() => setBookModalOpen(true)}
+          className="group/btn w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold text-[14px] sm:text-[15px] h-[40px] sm:h-[46px] px-6 rounded flex items-center justify-center transition-all duration-300"
+        >
+          <Calendar className="w-4 h-4 mr-2" />
+          Book Appointment
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() => router.push(`/providers/${provider.id}`)}
           className="group/btn w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold text-[14px] sm:text-[15px] h-[40px] sm:h-[46px] px-6 sm:px-8 rounded flex items-center justify-center transition-all duration-300"
         >
           <span className="flex items-center gap-2">
@@ -212,6 +239,12 @@ function ProviderListCard({ provider }: { provider: Provider }) {
           </span>
         </Button>
       </div>
+
+      <BookAppointmentModal
+        open={bookModalOpen}
+        onOpenChange={setBookModalOpen}
+        provider={provider}
+      />
 
       <div className="absolute top-0 bottom-0 right-0 w-64 bg-linear-to-l from-slate-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-multiply" />
     </motion.div>

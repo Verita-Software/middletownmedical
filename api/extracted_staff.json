@@ -1,17 +1,20 @@
 [
   {
-    "URL": "https://middletownmedical.com/medical-staff/Rametta_C.",
+    "URL": "https://middletownmedical.com/medical-staff/Weiss_Jonathan.",
     "Name": "Test Resource",
-    "Bio": "Dr. C. S. Rametta has served thousands of patients in the Hudson Valley over his long standing career, and is one of the area’s most trusted physicians. \n\n\n\nIn addition to building a robust private practice over the last several decades, Dr. Rametta served as chairman of the Department of Medicine and chief of staff at Horton Memorial Hospital (now Orange Regional Medical Center) in Middletown, N.Y. He also served as chief of the Department of Clinics in the Department of Internal Medicine at Fort Meade, Md. while serving as a major with the United States Army.\n\n\n\nPrior to earning his commission from the U.S. Army, Dr. Rametta earned his undergraduate degree from Seton Hall University in South Orange, N.J. and his medical degree from Georgetown University School of Medicine in Washington D.C. He completed his residency in internal medicine at the University of Virginia School of Medicine in Charlottesville, Va., where he was awarded the James Ernest Kindred Award for excellence in teaching medical students.\n\n\n\nDr. Rametta’s career has also included specialized experience in the field of medical quality assurance and certifications in geriatric medicine.\n\n\n\nBoard-certified in internal medicine, Dr. Rametta’s clinical interests span all aspects of preventive medicine, including comprehensive wellness evaluations, heart health, and nutrition management. Serving adults of all ages, Dr. Rametta has built his practice around state-of-the-art patient communication, medical diagnoses, and office administration.\n\n\n\nDr. Rametta also practices as an affiliate staff member at Orange Regional Medical Center in Middletown, N.Y.\n\n\n\nAside from his work as a physician, Dr. Rametta enjoys photography, gardening, Scrabble, and computer science. He is fluent in both English and Italian.",
-    "Specialties": ["Primary Medicine"],
+    "Bio": "Jonathan R. Weiss, MD, FCCP is Board Certified in Internal Medicine and Pulmonary Medicine. After graduating Dartmouth College, he received his medical degree from Hahnemann University in Philadelphia. He next completed a three-year residency in Internal Medicine at North Shore University Hospital on Long Island, NY in conjunction with Memorial Sloane Kettering cancer center in Manhattan, with both programs under the auspices of Cornell University. His final training was a three-year fellowship in pulmonary and critical care medicine at Long Island Jewish Medical Center after which he settled in Sullivan Country, NY, where he has provided medical care for over 30 years. His current focus is outpatient general internal and pulmonary medicine at the Middletown Medical office in the Shoprite Plaza of Monticello NY and nursing home care at Achieve Rehab and Nursing in Liberty, NY.",
+    "Specialties": ["Pulmonary Medicine"],
     "Education": [],
     "Certifications": [],
     "Memberships": [],
-    "Locations": ["22 Grove Street - Middletown - CS Rametta MD"],
-    "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/dd0a1d37-43ea-4d79-b0de-beb4e2d70171.png",
+    "Locations": [
+      "Monticello Center - Sullivan Internal Medicine Group",
+      "Monticello Urgent Care"
+    ],
+    "profile_url": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "gender": "Male",
-    "country": "Orange",
-    "npiId": "12232323"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Rametta_C.",
@@ -24,7 +27,8 @@
     "Locations": ["22 Grove Street - Middletown - CS Rametta MD"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/dd0a1d37-43ea-4d79-b0de-beb4e2d70171.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Maas_Kayla",
@@ -37,7 +41,8 @@
     "Locations": [],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/03987d14-3a39-4a62-99ab-0943c9684f22.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Pine_Diane",
@@ -50,7 +55,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/cfb97f6e-73b7-4d09-a202-7f6e9366b25e.png",
     "gender": "Female",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Binkowski_Sandra",
@@ -63,7 +69,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus", "GHMC Hospital"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/19f94fd4-a3a5-4f89-aa56-d6e1495b1083.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Goldstein_Kyle",
@@ -79,7 +86,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/e1d2d195-0864-4068-96f1-174d1e99303c.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Bigelsen_Ryan",
@@ -92,7 +100,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/dd3fa1cc-daf4-41d2-ad52-e743f5a76899.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Jean-Louis_Florence",
@@ -105,7 +114,8 @@
     "Locations": ["60 Dunning Rd"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c0de1972-8d05-44fc-a40e-3f64ef111f7f.png",
     "gender": "Female",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Hansen_Amanda",
@@ -118,7 +128,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus", "Port Jervis"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/8366e0a2-5e2c-4914-bff6-b461c1293588.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Hubbert_Lee",
@@ -131,7 +142,8 @@
     "Locations": ["Ferndale Medical Branch"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c352449d-7a8c-43b1-a097-83c99fef66c6.png",
     "gender": "Female",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Overton_Andrew",
@@ -144,7 +156,8 @@
     "Locations": ["Physical Therapy"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/97075384-6658-46ea-af07-9e60f02b0afb.png",
     "gender": "Male",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Colon_Migdalia",
@@ -157,7 +170,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/88aad682-e180-4379-b9bb-567bafe55225.png",
     "gender": "Female",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Setton_Tedhar",
@@ -170,7 +184,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/da845523-0b44-425b-8f62-5caa6a0b69d7.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Mepparambath_Prajith",
@@ -183,7 +198,8 @@
     "Locations": ["35 Maltese Drive - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/3ecdb4d2-4574-43cd-801b-2ee79c4531b8.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Long_Danielle",
@@ -196,7 +212,8 @@
     "Locations": ["Ferndale Medical Branch", "Ellenville Urgent Care"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/169f0cba-954e-4618-8bb3-3bde86fa76bf.png",
     "gender": "Female",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Echevarria_Donyelle",
@@ -209,7 +226,8 @@
     "Locations": [":"],
     "profile_url": "",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Quinlan_Christine",
@@ -222,7 +240,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/88d49665-32fc-429f-8625-bdd482b438ec.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Weiss_Jonathan.",
@@ -238,7 +257,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/f940cdee-8083-451a-8174-22070dd14316.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Jhaveri_Mukesh",
@@ -251,7 +271,8 @@
     "Locations": ["22 Grove Street - Middletown - CS Rametta MD"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/09474667-d1ef-4b16-8629-c77a7d4eeefc.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Park_Maryann",
@@ -264,7 +285,8 @@
     "Locations": ["GHMC Hospital", "419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/73824b7d-82de-4acb-8c1d-2fa34ae4fe29.png",
     "gender": "Female",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Napchan_Uri",
@@ -280,7 +302,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/21cdc47c-d97c-457a-9470-f27384d218f6.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Weinstein_Steven",
@@ -293,7 +316,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c38e7fc6-4546-4ae2-9cf2-52dfee4c8a9b.png",
     "gender": "Male",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Brower_Gena",
@@ -306,7 +330,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/261a2c5e-3eb5-4c8c-a911-40beb7b8b502.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Murali_Sagari",
@@ -319,7 +344,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus", "Urgent Care Newburgh"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/b713fcf6-4155-42a2-b23f-9eb53de6a94f.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Hearle_Barbara",
@@ -336,7 +362,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/6f6e31ea-2dae-4b11-a642-97b2876792e0.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Doyle_Michele",
@@ -349,7 +376,8 @@
     "Locations": ["Port Jervis"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/8f74e465-c850-49e5-864d-88a51e53b617.png",
     "gender": "Female",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Lopez_Jasmine",
@@ -362,7 +390,8 @@
     "Locations": ["419 E Main St - Middletown", "Physical Therapy"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/e07f88c7-94ef-4fa7-ba96-0016cece059a.png",
     "gender": "Female",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Wixon_Melissa",
@@ -375,7 +404,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/63548be9-b2cd-45d4-9191-f2960bce0d8e.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Rivas_Jennifer",
@@ -388,7 +418,8 @@
     "Locations": ["2 Edgewater Drive - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/2d2a9917-bab6-4b82-90da-05cc6a2ec2a3.png",
     "gender": "Female",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Scancarello_Nicole",
@@ -401,7 +432,8 @@
     "Locations": ["Physical Therapy"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/783546dc-7a10-4ae3-a000-a9d8ed7f881e.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Hamilton_Robert",
@@ -414,7 +446,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/535b3726-eb28-451d-b33a-db961cdc26d2.png",
     "gender": "Male",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Seecharran_Bonnie",
@@ -431,7 +464,8 @@
     "Locations": ["2 Edgewater Drive - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/030d97d9-5553-44d4-b586-1ffd5fedbd53.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Saha_Tisa",
@@ -444,7 +478,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/d8867cb2-8621-48cb-88ea-9c548af21b29.png",
     "gender": "Female",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Abadir_Ramsey",
@@ -457,7 +492,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/27630b80-6e41-4286-8d15-a6be11fc2ed1.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Hyman",
@@ -474,7 +510,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/ef3e01cc-1706-474d-b986-08727e4b263c.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Garigliano_Samantha",
@@ -487,7 +524,8 @@
     "Locations": ["Liberty Medical Branch"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/b928e14b-1235-41df-8937-5d7dbb55a435.png",
     "gender": "Female",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Schwalb_David",
@@ -500,7 +538,8 @@
     "Locations": ["Liberty Medical Branch"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/552f727b-961e-4e54-aad2-13161a4f0b8b.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Guneratne_Franklin",
@@ -513,7 +552,8 @@
     "Locations": ["Walden Office"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/40f088c5-957f-4076-88f4-ad379c4c944b.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Abushahin_Imad",
@@ -530,7 +570,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/4ea1ff0b-898d-4e11-94e2-3e4024105e36.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Eze_Kanayo",
@@ -543,7 +584,8 @@
     "Locations": [],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/37542831-d768-4ee3-9ade-44fc7dbe344b.png",
     "gender": "Male",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Martini_Anthony",
@@ -559,7 +601,8 @@
     "Locations": ["Warwick Medical Branch"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/e4f9cf5b-5760-423f-8592-8abb81fd80fa.png",
     "gender": "Male",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Maxwell_Lynn",
@@ -572,7 +615,8 @@
     "Locations": ["419 E Main St - Middletown", "Physical Therapy"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/13f40a0a-bd84-45a7-9806-b6702ee085b5.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Damacharla_Ramesh",
@@ -585,7 +629,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/b5614057-50a6-4f16-a6c4-74e0a791c462.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Koennecke_Matthew",
@@ -598,7 +643,8 @@
     "Locations": ["Physical Therapy"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/a8fb45aa-f800-4381-8724-b72fcc613629.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Weinstein_Jeffrey",
@@ -613,7 +659,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/4ff62776-2728-4909-a676-0b5c99dc642a.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Malik_Sarah",
@@ -626,7 +673,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/43c228a9-190a-43bf-85b4-5f072d0b4cc1.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Shah_Dhirajlal",
@@ -639,7 +687,8 @@
     "Locations": ["Wurstboro Medical Branch"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/e19fd187-27d6-4f30-96fa-51c34ca76f66.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/O",
@@ -652,7 +701,8 @@
     "Locations": [],
     "profile_url": "",
     "gender": "Unknown",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Valencia_Sharon",
@@ -665,7 +715,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/ea1a03f1-4001-4af2-8a05-d76f59ff1018.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Berretta_Amy",
@@ -681,7 +732,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/219b6d97-c6e7-4511-90a6-5d4f7a65d1a8.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Belser_Danielle",
@@ -694,7 +746,8 @@
     "Locations": ["Chester Urgent Care"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/baf6a07d-4a8a-4770-b2de-4a1b6e106c5e.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Gulati_Rajan",
@@ -707,7 +760,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c8241a96-c2da-42a3-81b3-c5571dd21261.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Ramaswamy_Ravi",
@@ -720,7 +774,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/324ca038-d1c4-40f9-a457-6d9af152b688.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/McKeever_Bridget",
@@ -736,7 +791,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/e8b84daf-6a28-4591-8038-d26b2bbe6e2d.png",
     "gender": "Female",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Perry_Natalia",
@@ -749,7 +805,8 @@
     "Locations": ["Warwick Medical Branch", "419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/576a192d-a745-42c7-a9d1-7948f9b32715.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Rampam_Vijayalakshmi",
@@ -762,7 +819,8 @@
     "Locations": ["Chester Urgent Care", "Urgent Care Newburgh"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/a90a4c31-a3d0-4994-bef8-f5849cae6723.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Musorrafiti_Lori",
@@ -775,7 +833,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/826469e9-50ab-4e75-8939-646bb2b74996.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Staback_Matthew",
@@ -788,7 +847,8 @@
     "Locations": ["Physical Therapy"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/37a26868-488b-4e1e-b22c-48d038a0da94.png",
     "gender": "Male",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Osofsky_Douglas",
@@ -801,7 +861,8 @@
     "Locations": ["111 Maltese Drive - Medical Campus", "Urgent Care Newburgh"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/50d94579-843d-432d-b162-a24ac39b2380.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Gohel_Jagruti",
@@ -817,7 +878,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/f5180d70-a9c5-4a56-ab0c-f81a7e4d2941.png",
     "gender": "Female",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Podeszwa_John",
@@ -830,7 +892,8 @@
     "Locations": ["2 Edgewater Drive - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/ce496171-9d99-46cc-bf3c-c018fd3f0369.png",
     "gender": "Male",
-    "country": "Orange"
+    "country": "Orange",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Delavalle_Cynthia",
@@ -847,7 +910,8 @@
     ],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/eb5d4a72-019d-4aec-b5bc-1f9453958798.png",
     "gender": "Female",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Matthews_Christopher",
@@ -867,7 +931,8 @@
     "Locations": ["Monticello Center - Sullivan Internal Medicine Group"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/a9c0006e-d4c5-486b-b2f5-03135668d613.png",
     "gender": "Male",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Matta_Ayman",
@@ -880,7 +945,8 @@
     "Locations": ["419 E Main St - Middletown"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/70dfde88-110a-45db-a015-ca578378ba6a.png",
     "gender": "Male",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Collins_Donna",
@@ -893,7 +959,8 @@
     "Locations": ["Chester Urgent Care", "Middletown Urgent Care"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/3db087ae-8804-44ba-9286-b103a950ae16.png",
     "gender": "Female",
-    "country": "Ulster"
+    "country": "Ulster",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Demetros_Ruth",
@@ -906,7 +973,8 @@
     "Locations": ["Chester Urgent Care", "111 Maltese Drive - Medical Campus"],
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c61b1f6e-aea9-48ca-b62b-14e46824ae59.png",
     "gender": "Female",
-    "country": "Sullivan"
+    "country": "Sullivan",
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Baldesweiler_Tamara",
@@ -920,7 +988,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/9af3f2e9-2066-49ac-ba46-b62894b5d396.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Rockwell_Melanye",
@@ -934,7 +1002,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/84bbf3aa-7426-43ca-a21e-c881c93e49c6.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Natalizio_Alicia",
@@ -948,7 +1016,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/2db91123-114f-4b33-b9f0-63cbdb3f6d1b.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Schwalb_Murray",
@@ -962,7 +1030,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/2c5896a6-9a1d-4e6c-b726-419c063d27bd.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Wilantewicz_Heather",
@@ -976,7 +1044,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/3e56bd4b-7221-40c2-bde0-61712156d5c6.png",
     "gender": "Unknown",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Freet_Jonathan",
@@ -990,7 +1058,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/85670996-b286-4dba-a7c0-de01f7faf8dd.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Singh_Bikramjit",
@@ -1004,7 +1072,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/b8a4411f-4921-4f87-924a-cab94083f551.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Zinn_Michelle",
@@ -1018,7 +1086,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/7ef99595-7fc7-4e78-83bb-a347175e8178.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Chaudhry_Harvinder",
@@ -1034,7 +1102,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/d50a6071-a7c8-4da6-b1c7-40da1c79371c.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Simpson_Kaitlyn",
@@ -1052,7 +1120,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/cd0cae15-b4ac-4317-90d9-02de0e1448d6.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/McMillan_Sonya",
@@ -1066,7 +1134,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/36ef59da-862c-44c6-b6e0-7ec35d691bda.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Cieplinski_William",
@@ -1080,7 +1148,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/45d9b3a7-72d6-41d4-8160-891b8db04311.png",
     "gender": "Male",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Pal_Chelsea",
@@ -1094,7 +1162,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/8d9b09b8-84ce-4580-850c-473317b540ff.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Zoschak_Jasmine",
@@ -1108,7 +1176,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/14236184-04e9-4d6b-bbb3-8cc5e77fb6e8.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Galligan_Michelle",
@@ -1122,7 +1190,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/395e76a4-61b2-4626-afea-01ccb216ceeb.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Mauro_Brittany",
@@ -1136,7 +1204,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/7a999077-b465-431f-91e7-99c464a1e8bb.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Molina_Daniella",
@@ -1150,7 +1218,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/79877fed-b87a-4efd-941c-aef45b6458c6.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Lainjo_Goddard",
@@ -1164,7 +1232,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/fb3d7661-d140-498d-9187-d7107c930424.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Cotler_Juliana",
@@ -1178,7 +1246,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/da4e0796-bd87-4f98-802c-e80852d89c6f.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Tondini_Erin",
@@ -1194,7 +1262,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/0435626c-61fd-497c-bbb6-65797a5e4713.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Wiener_Bradley",
@@ -1212,7 +1280,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/2ae1a809-4d68-4561-9313-bd64be3d4f75.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Ahmed_Imran",
@@ -1226,7 +1294,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/01f26684-c2d0-48e9-ba19-117b4db8cb95.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Bernitt_McKinley",
@@ -1240,7 +1308,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c9083e81-37f5-4609-92f8-6d96293e147d.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Gupta_Isha",
@@ -1254,7 +1322,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c6397d0c-ab4d-4cf4-bbaa-23918a5a5341.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Ferguson_John",
@@ -1268,7 +1336,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/ffbda471-a891-4381-941c-6040d39398d3.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Constant_Jessica",
@@ -1282,7 +1350,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/e8deba47-b6f5-41ff-9f7d-3817b7306282.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Pillmore_Kaelyn",
@@ -1296,7 +1364,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/8b5493eb-055e-4b8e-8fd4-86612b6f7f4a.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Wood_Shanna",
@@ -1310,7 +1378,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/0dfe0078-1e11-43a3-b3f7-65576f51ae04.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Yuen_Thomas",
@@ -1324,7 +1392,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/bf0b4ed0-cc4b-477e-a18a-d9ec494e3dcc.png",
     "gender": "Male",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Yahorava_Halina",
@@ -1338,7 +1406,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/d621492f-f15a-4827-9796-d0131c204f83.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Louie_Beth",
@@ -1352,7 +1420,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/58bffee7-741d-4227-ac61-89d83dac0d1d.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Pennisi_Janet",
@@ -1366,7 +1434,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/bb103031-8d70-460d-af7b-b616cf81f186.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Tashman_Stuart",
@@ -1380,7 +1448,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/15d2526f-ad3e-400a-92a8-ff602fdc9d85.png",
     "gender": "Male",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Boccia_Cynthia",
@@ -1394,7 +1462,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/11116bd7-b5d8-4968-a377-b573151dafd0.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Doshi_Jay",
@@ -1408,7 +1476,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/ac5e8cbb-26a9-450c-b72a-d6c0a83c4f47.png",
     "gender": "Male",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Karimi_Maria",
@@ -1424,7 +1492,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/27dfd284-6c99-4212-bd61-b872c374c38a.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Leidich_Shannon",
@@ -1438,7 +1506,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/4abcc8ef-4a98-4d31-b1e6-a49dc16ee9cb.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Zierler_Bernice",
@@ -1452,7 +1520,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/2c50f069-0523-4f52-8ce5-3a8c70b083c8.png",
     "gender": "Unknown",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Lombardo_Melissa",
@@ -1469,7 +1537,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/0f5551d8-8ceb-459b-bc43-0f4ebe181944.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Vitale_Tara",
@@ -1483,7 +1551,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/97cdffee-29bd-45eb-b80e-8963f57bf2de.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Reyes_Maria",
@@ -1497,7 +1565,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/773f62bc-a64e-45c5-ac46-aef141e4696d.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Moroney_Scott",
@@ -1511,7 +1579,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/50602e3e-79e4-47fc-a8a3-ebaecfb5f3cf.png",
     "gender": "Male",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Cardona_Jacqueline",
@@ -1525,7 +1593,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/5301248b-9c6a-460e-b642-af587941e27f.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Sullivan_Emma",
@@ -1539,7 +1607,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/aad26687-0b54-4719-8acc-3de5072cf739.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Samples_Jennifer",
@@ -1555,7 +1623,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/5e2e3ecb-8337-4d0f-8166-9bda87fa8be6.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Schappell_Maja",
@@ -1569,7 +1637,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/d6f9893f-43ea-4cb6-98a2-20520e6611d2.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Desai_Pingal",
@@ -1583,7 +1651,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/854dca43-c881-426d-9b9c-f45dd971f8d5.png",
     "gender": "Male",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Pampana_Vijay",
@@ -1597,7 +1665,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/76c717d7-d760-454c-afde-479d6faa5b66.png",
     "gender": "Male",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Patel_Dhiren",
@@ -1616,7 +1684,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/12a20370-e950-4107-9e59-949f28018c6d.png",
     "gender": "Male",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Shah_Pratibha",
@@ -1630,7 +1698,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/1bf7e4d5-5d66-4606-8077-381407ed94d7.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Mammo_Rebecca",
@@ -1644,7 +1712,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/5aa380a2-d206-433e-809f-49861df4590a.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Gapay_Alexander",
@@ -1658,7 +1726,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/27b72afd-a9b2-4ca3-82a6-1e8c459db83f.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Lowenkron_David",
@@ -1672,7 +1740,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/dd7e2bc3-c5fd-4ee2-9246-7b97af19af2e.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Atkinson_Rosa",
@@ -1686,7 +1754,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/01919f09-4897-40ff-8319-3f0cd5b8cc6a.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Cobey_Dale",
@@ -1700,7 +1768,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/28514b99-bf7a-43d1-a6ed-325f1130ebef.png",
     "gender": "Unknown",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Struble_Sara",
@@ -1714,7 +1782,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/5973ca77-0d17-424f-8f17-aa99daf7a619.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Aquino_Brandi",
@@ -1734,7 +1802,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/dcb71814-b5b4-455f-9ea8-27aba5c0965e.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Serdah_Diana",
@@ -1748,7 +1816,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/f20d2e15-c938-41e1-8ecf-0d6477f5124e.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Alshalabi_Munther",
@@ -1762,7 +1830,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/10b4df04-6e92-4779-82a8-3140d77a45d9.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/DeHaan_Shelly",
@@ -1776,7 +1844,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c0c4db49-b680-4241-a110-371b2f9fc1ba.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Rolison_Kelly",
@@ -1790,7 +1858,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/c3cfc497-8d0c-4bfd-9547-e262419fc574.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Carey_John",
@@ -1806,7 +1874,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/3de98bf7-ba4d-4476-b16b-a0a33c96cc94.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Lerner_Melanie",
@@ -1820,7 +1888,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/a04a92f2-22ce-49c3-9417-24c483f75ad5.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Mikkilineni_Radha",
@@ -1834,7 +1902,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/86063054-1b52-418f-a073-e23cef59f20c.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Halligan_Kiera",
@@ -1848,7 +1916,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/791253bc-6e44-4693-8357-81b55eb10ceb.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Looney_Alice",
@@ -1862,7 +1930,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/58bedcb0-b394-4d92-946e-d5fb4ea9c465.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Roman_Christopher",
@@ -1876,7 +1944,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/90c6480f-ea7e-4ffe-bc94-a09b8f4ac931.png",
     "gender": "Male",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Fletcher_Douglas",
@@ -1890,7 +1958,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/b88d4b24-d84f-40c1-8dd6-d483b22d9df5.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Kaw_Anita",
@@ -1904,7 +1972,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/384b74fa-6fe5-40ba-bfd2-b858fccf14a8.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Hoffman_Michael",
@@ -1918,7 +1986,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/93837daf-bcb4-4fcf-9360-c1d5c36a2975.png",
     "gender": "Male",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Newland-Pagan_Yvonne",
@@ -1937,7 +2005,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/259e0e67-7130-4907-ad7a-0bc35c5585dd.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Sidoti_Elizabeth",
@@ -1953,7 +2021,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/0c8c813b-033d-4768-9f9d-18a97db35c90.png",
     "gender": "Female",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Traynor_Cassandra",
@@ -1967,7 +2035,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/5e22cbc2-0482-4b45-baab-6eabb4c17b6d.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Boles_Gianna",
@@ -1981,7 +2049,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/2e5e19f1-fc26-4f32-a5c1-95b8585c6881.png",
     "gender": "Unknown",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Hui_Raymond",
@@ -1995,7 +2063,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/b29cb4a6-0f12-4966-8fec-bc168de1fa18.png",
     "gender": "Unknown",
     "country": "Ulster",
-    "country": "Ulster"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Lewis_Maureen",
@@ -2009,7 +2077,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/504c262e-c30d-4dc1-9cec-51cc694ef555.png",
     "gender": "Female",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Conklin",
@@ -2023,7 +2091,7 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/0ed64900-44b7-4dec-8e70-8772ece6d612.png",
     "gender": "Female",
     "country": "Sullivan",
-    "country": "Sullivan"
+    "npiId": "2007948351"
   },
   {
     "URL": "https://middletownmedical.com/medical-staff/Palmer_Martin",
@@ -2037,6 +2105,6 @@
     "profile_url": "https://dashboard.middletownmedical.com/storage/profile_pictures/13f816db-0177-4991-9938-123cec6be387.png",
     "gender": "Male",
     "country": "Orange",
-    "country": "Orange"
+    "npiId": "2007948351"
   }
 ]

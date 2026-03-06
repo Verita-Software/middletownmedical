@@ -13,6 +13,8 @@ export interface Provider {
   profile_url: string;
   gender?: string;
   country?: string;
+  /** National Provider Identifier for Healow scheduling API */
+  npiId?: string;
 }
 
 // Map the imported JSON to the Provider interface and assign an ID
