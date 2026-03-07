@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import type { Provider } from "@/lib/mock-data";
 import { ClientImage } from "@/components/providers/client-image";
-import { BookAppointmentModal } from "@/components/providers/book-appointment-modal";
-import { Star, ArrowRight, Calendar } from "lucide-react";
+import { Star, Calendar, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 function getInitials(name: string) {
@@ -42,7 +40,6 @@ export function ProviderCard({
   const specialties = provider.Specialties || [];
   const locations = provider.Locations || [];
   const router = useRouter();
-  const [bookModalOpen, setBookModalOpen] = useState(false);
 
   if (variant === "list") {
     return <ProviderListCard provider={provider} />;
@@ -61,7 +58,7 @@ export function ProviderCard({
         duration: 0.2,
       }}
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
-      className="group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] hover:border-primary/20 transition-all duration-300 h-full relative overflow-hidden"
+      className="group flex flex-col cursor-pointer rounded-s rounded-tl-3xl rounded-br-3xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] hover:border-primary/20 transition-all duration-300 h-full relative overflow-hidden"
     >
       {/* Title */}
       <Link
@@ -73,7 +70,7 @@ export function ProviderCard({
 
       <div className="flex gap-4 sm:gap-6 flex-1 z-10 w-full">
         {/* Image */}
-        <div className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-xl overflow-hidden shrink-0 border border-slate-200/60 shadow-inner group-hover:shadow-md transition-shadow duration-300">
+        <div className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px]  rounded-s rounded-tl-3xl rounded-br-3xl overflow-hidden shrink-0 border border-slate-200/60 shadow-inner group-hover:shadow-md transition-shadow duration-300">
           <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-slate-100 to-slate-200">
             {provider.profile_url ? (
               <ClientImage
@@ -121,29 +118,13 @@ export function ProviderCard({
       <div className="flex flex-wrap justify-end gap-2 mt-6 pt-5 border-t border-slate-100 z-10">
         <Button
           variant="outline"
-          onClick={() => setBookModalOpen(true)}
+          onClick={() => router.push(`/providers/${provider.id}`)}
           className="group/btn border-2 cursor-pointer border-primary text-primary hover:bg-primary hover:text-white font-bold text-[15px] h-[46px] px-6 rounded flex items-center justify-center transition-all duration-300"
         >
           <Calendar className="w-4 h-4 mr-2" />
           Book Now
         </Button>
-        {/* <Button
-          variant="outline"
-          onClick={() => router.push(`/providers/${provider.id}`)}
-          className="group/btn border-2 cursor-pointer border-primary text-primary hover:bg-primary hover:text-white font-bold text-[15px] h-[46px] px-8 rounded flex items-center justify-center transition-all duration-300"
-        >
-          <span className="flex items-center gap-2">
-            View Details
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-          </span>
-        </Button> */}
       </div>
-
-      <BookAppointmentModal
-        open={bookModalOpen}
-        onOpenChange={setBookModalOpen}
-        provider={provider}
-      />
 
       <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-slate-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-bl-full mix-blend-multiply" />
     </motion.div>
@@ -154,7 +135,6 @@ function ProviderListCard({ provider }: { provider: Provider }) {
   const rating = 4.9;
   const specialties = provider.Specialties || [];
   const locations = provider.Locations || [];
-  const [bookModalOpen, setBookModalOpen] = useState(false);
   const router = useRouter();
 
   return (
@@ -222,7 +202,7 @@ function ProviderListCard({ provider }: { provider: Provider }) {
       <div className="shrink-0 w-full sm:w-auto flex flex-wrap justify-center sm:justify-end gap-2 mt-4 sm:mt-0 pt-5 sm:pt-0 border-t sm:border-0 border-slate-100 z-10 pl-0 sm:pl-4">
         <Button
           variant="outline"
-          onClick={() => setBookModalOpen(true)}
+          onClick={() => router.push(`/providers/${provider.id}`)}
           className="group/btn w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold text-[14px] sm:text-[15px] h-[40px] sm:h-[46px] px-6 rounded flex items-center justify-center transition-all duration-300"
         >
           <Calendar className="w-4 h-4 mr-2" />
@@ -239,12 +219,6 @@ function ProviderListCard({ provider }: { provider: Provider }) {
           </span>
         </Button>
       </div>
-
-      <BookAppointmentModal
-        open={bookModalOpen}
-        onOpenChange={setBookModalOpen}
-        provider={provider}
-      />
 
       <div className="absolute top-0 bottom-0 right-0 w-64 bg-linear-to-l from-slate-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-multiply" />
     </motion.div>

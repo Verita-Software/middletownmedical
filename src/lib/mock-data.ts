@@ -1,5 +1,14 @@
 import staffData from "../../api/extracted_staff.json";
 
+/** Age groups for "Ages Seen" filter (Duly-style). */
+export const AGES_SEEN_OPTIONS = [
+  "Infants (0-4)",
+  "Children (5-12)",
+  "Adolescents (13-17)",
+  "Adults (18-64)",
+  "Seniors (65+)",
+] as const;
+
 export interface Provider {
   id: string;
   URL: string;
@@ -15,6 +24,10 @@ export interface Provider {
   country?: string;
   /** National Provider Identifier for Healow scheduling API */
   npiId?: string;
+  /** Languages the provider speaks (for filter). */
+  LanguagesSpoken?: string[];
+  /** Age groups the provider sees (for filter). */
+  AgesSeen?: string[];
 }
 
 // Map the imported JSON to the Provider interface and assign an ID
@@ -44,10 +57,12 @@ export const MOCK_PROVIDERS: Provider[] = (staffData as any[]).map(
 
 const allSpecialties = new Set<string>();
 const allLocations = new Set<string>();
+const allLanguages = new Set<string>();
 
 MOCK_PROVIDERS.forEach((p) => {
   if (p.Specialties) p.Specialties.forEach((s) => allSpecialties.add(s));
   if (p.Locations) p.Locations.forEach((l) => allLocations.add(l));
+  if (p.LanguagesSpoken) p.LanguagesSpoken.forEach((l) => allLanguages.add(l));
 });
 
 export const specialties = Array.from(allSpecialties).sort();
@@ -57,6 +72,7 @@ export const locations = Array.from(allLocations)
     id: `loc-${i}`,
     name,
   }));
+/** All unique languages from providers (for Language Spoken filter). */
+export const languages = Array.from(allLanguages).sort();
 
 export const counties = ["Orange", "Sullivan", "Ulster", "Orange country"];
-export const languages = ["English", "Spanish", "Hindi", "Mandarin"];

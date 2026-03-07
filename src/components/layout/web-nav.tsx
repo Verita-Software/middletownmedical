@@ -18,7 +18,7 @@ const navLinks = [
   { name: "Resources", href: "#", icon: ClipboardList, hasDropdown: true },
   { name: "Services", href: "/services", icon: ShieldPlus },
   { name: "Locations", href: "#", icon: MapPin },
-  { name: "Immediate Care", href: "#", icon: Clock },
+  { name: "Urgent Care", href: "#", icon: Clock },
 ];
 
 const utilityLinks = [
@@ -44,9 +44,9 @@ export function WebNav() {
   };
 
   return (
-    <div className="container mx-auto flex h-[88px] items-center justify-between px-4 lg:px-8">
-      {/* Logo */}
-      <div className="flex items-center mr-8 lg:mr-40">
+    <div className="container mx-auto flex h-[100px] min-h-[100px] items-center justify-between gap-8 py-5 pr-6 lg:pr-10 xl:pr-12">
+      {/* Logo – left corner with padding 4 */}
+      <div className="flex shrink-0 items-center pl-0 pr-4">
         <Link
           href="/"
           className="flex items-center hover:opacity-90 transition-opacity"
@@ -56,14 +56,16 @@ export function WebNav() {
             alt="Middletown Health and Care"
             width={220}
             height={50}
-            className="h-10 w-auto"
+            className="h-11 w-auto"
             priority
           />
         </Link>
       </div>
 
-      {/* Central Navigation – desktop only */}
-      <nav className="hidden xl:flex items-center space-x-8 text-sm font-semibold text-slate-700">
+      <div className="ml-8"></div>
+
+      {/* Central Navigation – desktop only, Duly-style generous spacing */}
+      <nav className="hidden xl:flex items-center gap-x-8 text-[15px] font-medium text-slate-600">
         {navLinks.map(({ name, href, icon: Icon, hasDropdown }) =>
           hasDropdown ? (
             <div
@@ -74,14 +76,14 @@ export function WebNav() {
             >
               <button
                 type="button"
-                className="flex items-center gap-2 hover:text-primary transition-colors"
+                className="flex items-center gap-2.5 py-2 whitespace-nowrap hover:text-primary transition-colors"
                 aria-expanded={resourcesOpen}
                 aria-haspopup="true"
               >
-                <Icon className="w-4 h-4 text-primary" />
-                {name}
+                <Icon className="w-4 h-4 shrink-0 text-primary/80" />
+                <span>{name}</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-primary transition-transform ${resourcesOpen ? "rotate-180" : ""}`}
+                  className={`w-4 h-4 shrink-0 text-primary/80 transition-transform ${resourcesOpen ? "rotate-180" : ""}`}
                 />
               </button>
 
@@ -100,23 +102,23 @@ export function WebNav() {
             <Link
               key={name}
               href={href}
-              className="flex items-center gap-2 hover:text-primary transition-colors"
+              className="flex items-center gap-2.5 py-2 whitespace-nowrap hover:text-primary transition-colors"
             >
-              <Icon className="w-4 h-4 text-primary" />
-              {name}
+              <Icon className="w-4 h-4 shrink-0 text-primary/80" />
+              <span>{name}</span>
             </Link>
-          )
+          ),
         )}
       </nav>
 
-      {/* Utility links – desktop only (right side) */}
-      <div className="hidden xl:flex items-center space-x-6 text-sm font-semibold text-slate-600">
-        <div className="h-6 w-px bg-slate-300 mx-2" />
+      {/* Utility links – desktop only (right side), subtle divider */}
+      <div className="hidden xl:flex shrink-0 items-center gap-x-8 text-[14px] font-medium text-slate-600">
+        <div className="h-5 w-px bg-slate-200" aria-hidden />
         {utilityLinks.map(({ name, href }) => (
           <Link
             key={name}
             href={href}
-            className="hover:text-primary transition-colors"
+            className="whitespace-nowrap py-2 hover:text-primary transition-colors"
           >
             {name}
           </Link>

@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden max-w-[100vw]`}
       >
         <header className="sticky top-0 z-50 w-full border-b bg-middletown-navy text-white">
-          <div className="bg-white text-slate-900 border-b border-slate-200 relative">
+          <div className="bg-white text-slate-900 border-b border-slate-100 relative">
             {/* Desktop web navigation */}
             <WebNav />
 

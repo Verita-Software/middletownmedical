@@ -35,7 +35,8 @@ function ProvidersPageContent() {
   const [selectedCounties, setSelectedCounties] = useState<string[]>([]);
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
   const [selectedGender, setSelectedGender] = useState<string>("");
-  const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+  const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
+  const [selectedAgesSeen, setSelectedAgesSeen] = useState<string[]>([]);
   const [acceptingOnly, setAcceptingOnly] = useState(false);
   const [telehealthOnly, setTelehealthOnly] = useState(false);
   const [sortBy, setSortBy] = useState("relevance");
@@ -111,8 +112,18 @@ function ProvidersPageContent() {
       result = result.filter((p) => p.gender === selectedGender);
     }
 
-    // Language filter - not available in Mock Data
-    if (selectedLanguage && selectedLanguage !== "all") {
+    // Language Spoken filter (multi-select: provider must speak at least one selected)
+    if (selectedLanguages.length > 0) {
+      result = result.filter((p) =>
+        p.LanguagesSpoken?.some((lang) => selectedLanguages.includes(lang)),
+      );
+    }
+
+    // Ages Seen filter (multi-select: provider must see at least one selected age group)
+    if (selectedAgesSeen.length > 0) {
+      result = result.filter((p) =>
+        p.AgesSeen?.some((age) => selectedAgesSeen.includes(age)),
+      );
     }
 
     // Sort
@@ -133,7 +144,8 @@ function ProvidersPageContent() {
     selectedCounties,
     selectedLocations,
     selectedGender,
-    selectedLanguage,
+    selectedLanguages,
+    selectedAgesSeen,
     acceptingOnly,
     telehealthOnly,
     sortBy,
@@ -161,7 +173,8 @@ function ProvidersPageContent() {
     selectedCounties,
     selectedLocations,
     selectedGender,
-    selectedLanguage,
+    selectedLanguages,
+    selectedAgesSeen,
     acceptingOnly,
     telehealthOnly,
     sortBy,
@@ -173,7 +186,8 @@ function ProvidersPageContent() {
     selectedCounties.length +
     selectedLocations.length +
     (selectedGender ? 1 : 0) +
-    (selectedLanguage && selectedLanguage !== "all" ? 1 : 0) +
+    selectedLanguages.length +
+    selectedAgesSeen.length +
     (acceptingOnly ? 1 : 0) +
     (telehealthOnly ? 1 : 0);
 
@@ -185,12 +199,13 @@ function ProvidersPageContent() {
       setSelectedCounties([]);
       setSelectedLocations([]);
       setSelectedGender("");
-      setSelectedLanguage("");
+      setSelectedLanguages([]);
+      setSelectedAgesSeen([]);
       setAcceptingOnly(false);
       setTelehealthOnly(false);
       setCurrentPage(1);
     });
-  }, []);
+  }, [setCurrentPage]);
 
   const toggleSpecialty = (s: string) => {
     startTransition(() => {
@@ -222,6 +237,24 @@ function ProvidersPageContent() {
   const toggleGender = (g: string) => {
     startTransition(() => {
       setSelectedGender((prev) => (prev === g ? "" : g));
+      setCurrentPage(1);
+    });
+  };
+
+  const toggleLanguage = (lang: string) => {
+    startTransition(() => {
+      setSelectedLanguages((prev) =>
+        prev.includes(lang) ? prev.filter((x) => x !== lang) : [...prev, lang],
+      );
+      setCurrentPage(1);
+    });
+  };
+
+  const toggleAgesSeen = (age: string) => {
+    startTransition(() => {
+      setSelectedAgesSeen((prev) =>
+        prev.includes(age) ? prev.filter((x) => x !== age) : [...prev, age],
+      );
       setCurrentPage(1);
     });
   };
@@ -287,6 +320,10 @@ function ProvidersPageContent() {
             toggleLocation={toggleLocation}
             selectedGender={selectedGender}
             toggleGender={toggleGender}
+            selectedLanguages={selectedLanguages}
+            toggleLanguage={toggleLanguage}
+            selectedAgesSeen={selectedAgesSeen}
+            toggleAgesSeen={toggleAgesSeen}
             sortBy={sortBy}
             setSortBy={(val) => {
               startTransition(() => {
@@ -328,7 +365,7 @@ function ProvidersPageContent() {
               No Providers Found
             </h3>
             <p className="text-slate-500 max-w-md mx-auto mb-6">
-              We couldn't find any providers matching your current search
+              We couldn&apos;t find any providers matching your current search
               criteria. Try adjusting your filters.
             </p>
             <Button

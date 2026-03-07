@@ -10,7 +10,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { specialties, counties, locations } from "@/lib/mock-data";
+import {
+  specialties,
+  counties,
+  locations,
+  languages,
+  AGES_SEEN_OPTIONS,
+} from "@/lib/mock-data";
 
 const genders = ["Male", "Female"];
 
@@ -23,6 +29,10 @@ export interface ProvidersFilterProps {
   toggleLocation: (l: string) => void;
   selectedGender: string;
   toggleGender: (g: string) => void;
+  selectedLanguages: string[];
+  toggleLanguage: (lang: string) => void;
+  selectedAgesSeen: string[];
+  toggleAgesSeen: (age: string) => void;
   sortBy: string;
   setSortBy: (val: string) => void;
   activeFilterCount: number;
@@ -59,7 +69,7 @@ function HoverDropdown({
       </Button>
 
       {/* Popover container */}
-      <div className="absolute left-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
+      <div className="absolute left-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-100">
         <div className="bg-white border border-slate-200 rounded-md shadow-xl w-64 max-h-80 overflow-y-auto p-2">
           {options.map((opt) => {
             const val = typeof opt === "string" ? opt : opt.name;
@@ -94,18 +104,29 @@ export function ProvidersFilter({
   toggleLocation,
   selectedGender,
   toggleGender,
+  selectedLanguages,
+  toggleLanguage,
+  selectedAgesSeen,
+  toggleAgesSeen,
   sortBy,
   setSortBy,
   activeFilterCount,
   clearAllFilters,
 }: ProvidersFilterProps) {
   return (
-    <div className="flex flex-wrap items-center gap-2.5 relative z-[100]">
+    <div className="flex flex-wrap items-center gap-4 relative z-100">
       <HoverDropdown
         label="County"
         options={counties}
         selectedValues={selectedCounties}
         onToggle={toggleCounty}
+      />
+
+      <HoverDropdown
+        label="Ages Seen"
+        options={[...AGES_SEEN_OPTIONS]}
+        selectedValues={selectedAgesSeen}
+        onToggle={toggleAgesSeen}
       />
 
       <HoverDropdown
@@ -129,11 +150,18 @@ export function ProvidersFilter({
         onToggle={toggleLocation}
       />
 
+      <HoverDropdown
+        label="Language Spoken"
+        options={languages}
+        selectedValues={selectedLanguages}
+        onToggle={toggleLanguage}
+      />
+
       <Select value={sortBy} onValueChange={setSortBy}>
         <SelectTrigger className="cursor-pointer h-10 w-auto min-w-[120px] rounded-sm border-slate-300 text-slate-900 font-bold text-[13px] bg-white hover:bg-slate-100 px-4">
           <SelectValue placeholder="Sort By" />
         </SelectTrigger>
-        <SelectContent className="z-[100]">
+        <SelectContent className="z-100">
           <SelectItem value="relevance" className="font-medium text-slate-700">
             Sort By
           </SelectItem>

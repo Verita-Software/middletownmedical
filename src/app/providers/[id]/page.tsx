@@ -3,7 +3,6 @@ import { LOCATION_PHONES } from "@/lib/appConstant";
 import {
   MapPin,
   Phone,
-  GraduationCap,
   Stethoscope,
   ChevronLeft,
   Award,
@@ -14,6 +13,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ClientImage } from "@/components/providers/client-image";
 import { ProviderEducationCard } from "@/components/providers/provider-education-card";
+import { ScheduleAppointmentCard } from "@/components/providers/schedule-appointment-card";
 
 export default async function ProviderProfilePage(props: {
   params: Promise<{ id: string }>;
@@ -86,9 +86,10 @@ export default async function ProviderProfilePage(props: {
               </div>
             </div>
 
-            {/* Right: Contact Card (replaces "Schedule Appointment") */}
-            {provider.Locations?.filter((l) => l !== ":").length > 0 && (
-              <div className="lg:w-80 shrink-0">
+            {/* Right: Schedule an Appointment + Contact */}
+            <div className="lg:w-80 shrink-0 flex flex-col gap-4">
+              <ScheduleAppointmentCard provider={provider} />
+              {provider.Locations?.filter((l) => l !== ":").length > 0 && (
                 <div className="bg-[#002147] rounded-2xl p-6 text-white shadow-lg">
                   <h2 className="text-lg font-bold mb-1">
                     Contact {firstName}
@@ -122,8 +123,8 @@ export default async function ProviderProfilePage(props: {
                     })}
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
