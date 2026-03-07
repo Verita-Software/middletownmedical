@@ -19,7 +19,9 @@ interface ScheduleAppointmentCardProps {
   provider: Provider;
 }
 
-export function ScheduleAppointmentCard({ provider }: ScheduleAppointmentCardProps) {
+export function ScheduleAppointmentCard({
+  provider,
+}: ScheduleAppointmentCardProps) {
   const router = useRouter();
   const setProvider = useBookingStore((s) => s.setProvider);
   const setAgeAndInsurance = useBookingStore((s) => s.setAgeAndInsurance);
@@ -63,7 +65,10 @@ export function ScheduleAppointmentCard({ provider }: ScheduleAppointmentCardPro
         </p>
         <div className="space-y-4">
           <div>
-            <label htmlFor="patient-age" className="block text-sm font-semibold text-slate-700 mb-1">
+            <label
+              htmlFor="patient-age"
+              className="block text-sm font-semibold text-slate-700 mb-1"
+            >
               Patient Age <span className="text-red-500">*</span>
             </label>
             <input
@@ -74,18 +79,21 @@ export function ScheduleAppointmentCard({ provider }: ScheduleAppointmentCardPro
               placeholder="e.g. 25"
               value={patientAge}
               onChange={(e) => setPatientAge(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none transition"
+              className="w-full bg-slate-100 rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none transition"
             />
           </div>
           <div>
-            <label htmlFor="insurance" className="block text-sm font-semibold text-slate-700 mb-1">
+            <label
+              htmlFor="insurance"
+              className="block text-sm font-semibold text-slate-700 mb-1"
+            >
               Insurance <span className="text-red-500">*</span>
             </label>
             <select
               id="insurance"
               value={insurance}
               onChange={(e) => setInsurance(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none transition bg-white"
+              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none transition bg-slate-100"
             >
               <option value="">Select insurance</option>
               {INSURANCE_OPTIONS.map((opt) => (
@@ -95,9 +103,7 @@ export function ScheduleAppointmentCard({ provider }: ScheduleAppointmentCardPro
               ))}
             </select>
           </div>
-          {error && (
-            <p className="text-sm text-red-600">{error}</p>
-          )}
+          {error && <p className="text-sm text-red-600">{error}</p>}
           <Button
             onClick={handleViewAppointmentTimes}
             className="w-full bg-[#002147] hover:bg-[#002147]/90 text-white font-semibold h-11 rounded-lg flex items-center justify-center gap-2"

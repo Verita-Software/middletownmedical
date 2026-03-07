@@ -89,7 +89,9 @@ export default async function ProviderProfilePage(props: {
             {/* Right: Schedule an Appointment + Contact */}
             <div className="lg:w-80 shrink-0 flex flex-col gap-4">
               <ScheduleAppointmentCard provider={provider} />
-              {provider.Locations?.filter((l) => l !== ":").length > 0 && (
+
+              {/* Call a provider */}
+              {/* {provider.Locations?.filter((l) => l !== ":").length > 0 && (
                 <div className="bg-[#002147] rounded-2xl p-6 text-white shadow-lg">
                   <h2 className="text-lg font-bold mb-1">
                     Contact {firstName}
@@ -123,7 +125,7 @@ export default async function ProviderProfilePage(props: {
                     })}
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

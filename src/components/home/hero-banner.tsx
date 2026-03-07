@@ -37,7 +37,7 @@ export function HeroBanner() {
                 <input
                   type="text"
                   placeholder="Specialty, Provider, or Symptom"
-                  className="w-full pl-12 pr-4 py-4 bg-slate-50 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none"
+                  className="w-full pl-12 pr-4 py-4 bg-slate-100 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none"
                 />
               </div>
 
@@ -50,7 +50,7 @@ export function HeroBanner() {
                 <input
                   type="text"
                   placeholder="Zip Code"
-                  className="w-full pl-12 pr-4 py-4 bg-slate-50 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none"
+                  className="w-full pl-12 pr-4 py-4 bg-slate-100 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none"
                 />
               </div>
 
@@ -63,7 +63,7 @@ export function HeroBanner() {
                 <input
                   type="text"
                   placeholder="Patient Age"
-                  className="w-full pl-12 pr-4 py-4 bg-slate-50 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none"
+                  className="w-full pl-12 pr-4 py-4 bg-slate-100 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none"
                 />
               </div>
 
@@ -75,7 +75,7 @@ export function HeroBanner() {
                 />
                 <select
                   defaultValue=""
-                  className="w-full pl-12 pr-4 py-4 bg-slate-50 text-[15px] font-semibold text-slate-900 focus:outline-none cursor-pointer appearance-none"
+                  className="w-full pl-12 pr-4 py-4 bg-slate-100 text-[15px] font-semibold text-slate-900 focus:outline-none cursor-pointer appearance-none"
                 >
                   <option
                     value=""

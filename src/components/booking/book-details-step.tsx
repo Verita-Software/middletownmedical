@@ -197,7 +197,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.firstName}
                   onChange={(e) => update("firstName", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
               <div>
@@ -207,7 +207,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.lastName}
                   onChange={(e) => update("lastName", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
               <div>
@@ -216,7 +216,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.legalSex}
                   onChange={(e) => update("legalSex", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-white"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 >
                   <option value="">Select</option>
                   {SEX_OPTIONS.map((o) => (
@@ -231,7 +231,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.birthDate}
                   onChange={(e) => update("birthDate", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
             </div>
@@ -247,7 +247,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.phone}
                   onChange={(e) => update("phone", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
               <div>
@@ -257,7 +257,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.email}
                   onChange={(e) => update("email", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -268,7 +268,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   value={form.address}
                   onChange={(e) => update("address", e.target.value)}
                   placeholder="Street address"
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -277,7 +277,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   type="text"
                   value={form.aptSuite}
                   onChange={(e) => update("aptSuite", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
               <div>
@@ -287,7 +287,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.city}
                   onChange={(e) => update("city", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
               <div>
@@ -297,7 +297,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.state}
                   onChange={(e) => update("state", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
               <div>
@@ -307,7 +307,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   required
                   value={form.zip}
                   onChange={(e) => update("zip", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
                 />
               </div>
             </div>
@@ -324,7 +324,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                 required
                 value={form.insurance}
                 onChange={(e) => update("insurance", e.target.value)}
-                className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-white"
+                className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
               >
                 <option value="">Select</option>
                 {INSURANCE_OPTIONS.map((o) => (

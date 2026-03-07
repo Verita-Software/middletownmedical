@@ -277,7 +277,7 @@ function ProvidersPageContent() {
                   setSearch(e.target.value);
                 }}
                 placeholder="Name, Services, Conditions"
-                className="w-full h-[52px] rounded-sm border border-slate-300 bg-white py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                className="w-full h-[52px] rounded-sm border border-slate-300 bg-slate-100 py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
               <Search
                 className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary"
@@ -293,7 +293,7 @@ function ProvidersPageContent() {
                   setLocationSearch(e.target.value);
                 }}
                 placeholder="City, Address, Zip Code"
-                className="w-full h-[52px] rounded-sm border border-slate-300 bg-white py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                className="w-full h-[52px] rounded-sm border border-slate-300 bg-slate-100 py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
               <MapPin
                 className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary"

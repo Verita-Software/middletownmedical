@@ -158,7 +158,7 @@ export function ProvidersFilter({
       />
 
       <Select value={sortBy} onValueChange={setSortBy}>
-        <SelectTrigger className="cursor-pointer h-10 w-auto min-w-[120px] rounded-sm border-slate-300 text-slate-900 font-bold text-[13px] bg-white hover:bg-slate-100 px-4">
+        <SelectTrigger className="cursor-pointer h-10 w-auto min-w-[120px] rounded-sm border-slate-300 text-slate-900 font-bold text-[13px] bg-slate-100 hover:bg-slate-200 px-4">
           <SelectValue placeholder="Sort By" />
         </SelectTrigger>
         <SelectContent className="z-100">
