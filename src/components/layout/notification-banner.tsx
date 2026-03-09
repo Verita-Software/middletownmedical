@@ -9,7 +9,7 @@ export function NotificationBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-[#0f2c59] text-white py-6 px-4 text-sm">
+    <div className="bg-[#0f2c59] text-white py-3.5 px-4 text-sm">
       <div className="container mx-auto flex items-center justify-center relative max-w-7xl">
         <div className="flex items-center gap-2 text-center text-[16px] font-medium tracking-wide">
           <Bell className="w-4 h-4" />
@@ -21,6 +21,7 @@ export function NotificationBanner() {
             </a>
           </span>
         </div>
+
         <button
           onClick={() => setIsVisible(false)}
           className="absolute cursor-pointer right-0 p-1 hover:bg-white/10 rounded-sm"

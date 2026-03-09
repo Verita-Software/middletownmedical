@@ -16,7 +16,7 @@ export function HeroBanner() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4">
         <div className="flex flex-col lg:flex-row gap-6 items-stretch">
-          <div className="w-full lg:w-3/5 bg-white p-6 sm:p-8 lg:p-8 border-2 border-[#002147] rounded-sm  rounded-tl-[3rem] rounded-br-4xl relative z-10 shadow-md flex justify-center flex-col">
+          <div className="w-full lg:w-3/5 bg-white p-6 sm:p-8 lg:p-6 border-2 border-[#002147] rounded-sm  rounded-tl-[3rem] rounded-br-4xl relative z-10 shadow-md flex justify-center flex-col">
             <h1 className="text-4xl sm:text-5xl lg:text-5xl font-black text-slate-900 leading-tight mb-6">
               Book an Appointment in <br className="hidden sm:block" />
               <span className="text-[#00AEEF]">Minutes</span>
@@ -27,7 +27,7 @@ export function HeroBanner() {
               visits, video appointments or immediate care services.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mb-4">
               {/* Specialty Input */}
               <div className="relative border-b-2 border-slate-300 focus-within:border-[#002147] transition-colors pb-0">
                 <Search
