@@ -1,15 +1,26 @@
 "use client";
 
-import { useState, useMemo, useCallback, useTransition } from "react";
+import {
+  useState,
+  useMemo,
+  useCallback,
+  useTransition,
+  useEffect,
+  useRef,
+} from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ProviderCard } from "@/components/providers/provider-card";
 import { ProvidersShimmerItem } from "@/components/providers/providers-shimmer-item";
 import { ProvidersFilter } from "@/components/providers/provider-filter";
+import { Pagination } from "@/components/ui/pagination";
 import { MOCK_PROVIDERS as providers, specialties } from "@/lib/mock-data";
 import { Search, MapPin } from "lucide-react";
 import { Suspense } from "react";
+import { ITEMS_PER_PAGE } from "@/lib/appConstant";
+import { usePagination } from "@/hooks/use-pagination";
+import { useDebounce } from "@/hooks/use-debounce";
 
 function ProvidersPageContent() {
   const searchParams = useSearchParams();
@@ -17,26 +28,31 @@ function ProvidersPageContent() {
 
   // Filters
   const [search, setSearch] = useState(searchParams.get("search") || "");
+  const [locationSearch, setLocationSearch] = useState("");
   const [selectedSpecialties, setSelectedSpecialties] = useState<string[]>(
     searchParams.get("specialty") ? [searchParams.get("specialty")!] : [],
   );
   const [selectedCounties, setSelectedCounties] = useState<string[]>([]);
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
   const [selectedGender, setSelectedGender] = useState<string>("");
-  const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+  const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
+  const [selectedAgesSeen, setSelectedAgesSeen] = useState<string[]>([]);
   const [acceptingOnly, setAcceptingOnly] = useState(false);
   const [telehealthOnly, setTelehealthOnly] = useState(false);
   const [sortBy, setSortBy] = useState("relevance");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showAllSpecialties, setShowAllSpecialties] = useState(false);
 
+  const debouncedSearch = useDebounce(search, 600);
+  const debouncedLocationSearch = useDebounce(locationSearch, 600);
+
   // Filtered and sorted providers
   const filteredProviders = useMemo(() => {
     let result = [...providers];
 
     // Search
-    if (search) {
-      const q = search.toLowerCase().replace(/\s+/g, " ");
+    if (debouncedSearch) {
+      const q = debouncedSearch.toLowerCase().replace(/\s+/g, " ");
       result = result.filter((p) => {
         const nameMatch = p.Name?.toLowerCase()
           .replace(/\s+/g, " ")
@@ -47,6 +63,27 @@ function ProvidersPageContent() {
         const bioMatch = p.Bio?.toLowerCase().replace(/\s+/g, " ").includes(q);
 
         return nameMatch || specialtyMatch || bioMatch;
+      });
+    }
+
+    // Location Search (City, Address, Zip)
+    if (debouncedLocationSearch) {
+      const qLocation = debouncedLocationSearch
+        .toLowerCase()
+        .replace(/\s+/g, " ");
+      result = result.filter((p) => {
+        // Match against Locations array
+        const locationMatch = p.Locations?.some((loc) =>
+          loc.toLowerCase().replace(/\s+/g, " ").includes(qLocation),
+        );
+
+        // Match against Country (which seems to act like a region in this dataset)
+        const countryMatch = p.country
+          ?.toLowerCase()
+          .replace(/\s+/g, " ")
+          .includes(qLocation);
+
+        return locationMatch || countryMatch;
       });
     }
 
@@ -75,8 +112,18 @@ function ProvidersPageContent() {
       result = result.filter((p) => p.gender === selectedGender);
     }
 
-    // Language filter - not available in Mock Data
-    if (selectedLanguage && selectedLanguage !== "all") {
+    // Language Spoken filter (multi-select: provider must speak at least one selected)
+    if (selectedLanguages.length > 0) {
+      result = result.filter((p) =>
+        p.LanguagesSpoken?.some((lang) => selectedLanguages.includes(lang)),
+      );
+    }
+
+    // Ages Seen filter (multi-select: provider must see at least one selected age group)
+    if (selectedAgesSeen.length > 0) {
+      result = result.filter((p) =>
+        p.AgesSeen?.some((age) => selectedAgesSeen.includes(age)),
+      );
     }
 
     // Sort
@@ -93,15 +140,45 @@ function ProvidersPageContent() {
 
     return result;
   }, [
-    search,
     selectedSpecialties,
     selectedCounties,
     selectedLocations,
     selectedGender,
-    selectedLanguage,
+    selectedLanguages,
+    selectedAgesSeen,
     acceptingOnly,
     telehealthOnly,
     sortBy,
+    debouncedSearch,
+    debouncedLocationSearch,
+  ]);
+
+  // Use the custom pagination hook
+  const { currentPage, setCurrentPage, totalPages, paginatedItems } =
+    usePagination(filteredProviders, ITEMS_PER_PAGE);
+
+  const isInitialMount = useRef(true);
+
+  // Reset page when search or location search filters change
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    setCurrentPage(1);
+  }, [
+    debouncedSearch,
+    debouncedLocationSearch,
+    selectedSpecialties,
+    selectedCounties,
+    selectedLocations,
+    selectedGender,
+    selectedLanguages,
+    selectedAgesSeen,
+    acceptingOnly,
+    telehealthOnly,
+    sortBy,
+    // intentional: omitted setCurrentPage to avoid triggering on navigation
   ]);
 
   const activeFilterCount =
@@ -109,28 +186,33 @@ function ProvidersPageContent() {
     selectedCounties.length +
     selectedLocations.length +
     (selectedGender ? 1 : 0) +
-    (selectedLanguage && selectedLanguage !== "all" ? 1 : 0) +
+    selectedLanguages.length +
+    selectedAgesSeen.length +
     (acceptingOnly ? 1 : 0) +
     (telehealthOnly ? 1 : 0);
 
   const clearAllFilters = useCallback(() => {
     startTransition(() => {
       setSearch("");
+      setLocationSearch("");
       setSelectedSpecialties([]);
       setSelectedCounties([]);
       setSelectedLocations([]);
       setSelectedGender("");
-      setSelectedLanguage("");
+      setSelectedLanguages([]);
+      setSelectedAgesSeen([]);
       setAcceptingOnly(false);
       setTelehealthOnly(false);
+      setCurrentPage(1);
     });
-  }, []);
+  }, [setCurrentPage]);
 
   const toggleSpecialty = (s: string) => {
     startTransition(() => {
       setSelectedSpecialties((prev) =>
         prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s],
       );
+      setCurrentPage(1);
     });
   };
 
@@ -139,6 +221,7 @@ function ProvidersPageContent() {
       setSelectedCounties((prev) =>
         prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c],
       );
+      setCurrentPage(1);
     });
   };
 
@@ -147,12 +230,32 @@ function ProvidersPageContent() {
       setSelectedLocations((prev) =>
         prev.includes(l) ? prev.filter((x) => x !== l) : [...prev, l],
       );
+      setCurrentPage(1);
     });
   };
 
   const toggleGender = (g: string) => {
     startTransition(() => {
       setSelectedGender((prev) => (prev === g ? "" : g));
+      setCurrentPage(1);
+    });
+  };
+
+  const toggleLanguage = (lang: string) => {
+    startTransition(() => {
+      setSelectedLanguages((prev) =>
+        prev.includes(lang) ? prev.filter((x) => x !== lang) : [...prev, lang],
+      );
+      setCurrentPage(1);
+    });
+  };
+
+  const toggleAgesSeen = (age: string) => {
+    startTransition(() => {
+      setSelectedAgesSeen((prev) =>
+        prev.includes(age) ? prev.filter((x) => x !== age) : [...prev, age],
+      );
+      setCurrentPage(1);
     });
   };
 
@@ -170,9 +273,11 @@ function ProvidersPageContent() {
               <input
                 type="text"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
                 placeholder="Name, Services, Conditions"
-                className="w-full h-[52px] rounded-sm border border-slate-300 bg-white py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                className="w-full h-[52px] rounded-sm border border-slate-300 bg-slate-100 py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
               <Search
                 className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary"
@@ -183,8 +288,12 @@ function ProvidersPageContent() {
             <div className="relative flex-1 w-full">
               <input
                 type="text"
+                value={locationSearch}
+                onChange={(e) => {
+                  setLocationSearch(e.target.value);
+                }}
                 placeholder="City, Address, Zip Code"
-                className="w-full h-[52px] rounded-sm border border-slate-300 bg-white py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                className="w-full h-[52px] rounded-sm border border-slate-300 bg-slate-100 py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
               <MapPin
                 className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary"
@@ -192,12 +301,12 @@ function ProvidersPageContent() {
               />
             </div>
 
-            <Button className="h-[52px] px-12 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap hidden md:flex">
+            <Button className="h-[52px] px-12 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap hidden md:flex cursor-pointer">
               Search
             </Button>
           </div>
 
-          <Button className="w-full h-[52px] mb-4 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap md:hidden">
+          <Button className="w-full h-[52px] mb-4 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap md:hidden cursor-pointer">
             Search
           </Button>
 
@@ -211,10 +320,15 @@ function ProvidersPageContent() {
             toggleLocation={toggleLocation}
             selectedGender={selectedGender}
             toggleGender={toggleGender}
+            selectedLanguages={selectedLanguages}
+            toggleLanguage={toggleLanguage}
+            selectedAgesSeen={selectedAgesSeen}
+            toggleAgesSeen={toggleAgesSeen}
             sortBy={sortBy}
             setSortBy={(val) => {
               startTransition(() => {
                 setSortBy(val);
+                setCurrentPage(1);
               });
             }}
             activeFilterCount={activeFilterCount}
@@ -251,7 +365,7 @@ function ProvidersPageContent() {
               No Providers Found
             </h3>
             <p className="text-slate-500 max-w-md mx-auto mb-6">
-              We couldn't find any providers matching your current search
+              We couldn&apos;t find any providers matching your current search
               criteria. Try adjusting your filters.
             </p>
             <Button
@@ -262,18 +376,36 @@ function ProvidersPageContent() {
             </Button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
-            <AnimatePresence>
-              {filteredProviders.map((provider, i) => (
-                <ProviderCard
-                  key={provider.id}
-                  provider={provider}
-                  variant={viewMode}
-                  index={i}
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+              <AnimatePresence>
+                {paginatedItems.map((provider, i) => (
+                  <ProviderCard
+                    key={provider.id}
+                    provider={provider}
+                    variant={viewMode}
+                    index={i}
+                  />
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {totalPages > 1 && (
+              <div className="mt-12 mb-8 flex w-full justify-center">
+                <Pagination
+                  initialPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={(page) => {
+                    startTransition(() => {
+                      setCurrentPage(page);
+                      // Scroll to top of list smoothly
+                      window.scrollTo({ top: 300, behavior: "smooth" });
+                    });
+                  }}
                 />
-              ))}
-            </AnimatePresence>
-          </div>
+              </div>
+            )}
+          </>
         )}
       </section>
     </div>
