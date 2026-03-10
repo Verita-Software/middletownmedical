@@ -1,0 +1,145 @@
+{
+  "chester-urgent-care": {
+    "overview": "Our Chester location is a 4,000 square foot, state of the art facility, and the finest of its kind in the region. Conveniently located in the ShopRite Plaza (just off NYS Route 17). Featuring Urgent Care, Primary & Family Care, Specialty Medicine and Walk-in Xray. In addition, our Occupational Medicine program will also be headquartered here.",
+    "hours": "M-F: 8am – 8pm | Sat: 9am – 1pm | Sun: Closed",
+    "specialties": ["Urgent Care", "Endocrinology", "Orthopedics", "Occupational Medicine"],
+    "services": [
+      { "name": "Primary & Family Care", "description": "Our physicians provide medical services to patients of all ages. Our providers strive to give comprehensive, quality health care to individuals and families. Our focus is on prevention of disease as well as treatment of chronic conditions in order to achieve the highest quality of life possible." },
+      { "name": "Walk-in Xray", "description": "If you have a prescription to receive an Xray from another physician, bring it in and we can perform the Xray. We will send the results directly to your physician." },
+      { "name": "Urgent Care", "description": "Middletown Medical was the first in the area to offer immediate medical care. From minor illness or injury to complex medical issues, we ensure you and your family fast, personalized care every day. Evening and weekend hours, no appointment necessary. Services include casts, sutures, immunizations, nebulizer treatments, physical exams, and more." }
+    ]
+  },
+  "montgomery-office": {
+    "overview": "Harvinder K. Chaudhry, M.D. is board-certified in Internal Medicine and Geriatrics, and licensed to practice in New York. Dr. Chaudhry is a member of the American Medical Association, the American College of Physicians, and the American Geriatric Society. She is always accepting new patients.",
+    "hours": "Mon, Tues, Thurs: 9:00am – 5:00pm | Fri: 9:00am – 4:00pm",
+    "specialties": ["Internal Medicine", "Geriatrics"],
+    "services": [
+      { "name": "Internal Medicine and Geriatrics", "description": "Board-certified in Internal Medicine and Geriatrics. Comprehensive care for adults with a focus on prevention, chronic disease management, and quality of life." }
+    ]
+  },
+  "monticello-center": {
+    "overview": "Located in the heart of Monticello at Thompson Square Mall, our Monticello Center houses Catskill Adult & Pediatric Medicine, Sullivan Internal Medicine Group, Urgent Care, and Radiology. We provide quality healthcare to patients of all ages with board certified physicians and flexible hours.",
+    "hours": "Mon – Fri: 8:00am – 6:00pm | Saturday: 9:00am – 1:00pm",
+    "specialties": ["Pediatrics", "Cardiology", "Gastroenterology", "Orthopedics", "Allergy & Immunology", "Pulmonary Medicine", "Endocrinology", "Urgent Care", "Internal Medicine", "Headache Center"],
+    "services": [
+      { "name": "Catskill Adult & Pediatric Medicine", "description": "Acute care, chronic disease management, well child visits, and immunizations. Board Certified in Internal Medicine and Pediatrics (Med/Peds)." },
+      { "name": "Sullivan Internal Medicine Group", "description": "Internal and Pulmonary Medicine, Gastroenterology, Liver Disease, Asthma and Hypertension. Women's health services. Accepting new patients by appointment Monday through Saturday." },
+      { "name": "Urgent Care", "description": "Walk-in X-Ray, Worry-Free Pricing, and Urgent Care services." }
+    ]
+  },
+  "medical-campus": {
+    "overview": "Middletown Medical was the first in the area to offer immediate medical care. From illness or minor injury to complex medical issues, visit our newly expanded Urgent Care Center anytime. We ensure you and your family fast, personalized emergency care every day, including holidays. Most insurances accepted.",
+    "hours": "Urgent Care: Extended hours including holidays. Radiology: Xray all week 7am–9pm; MRI Mon–Fri 7am–9pm, Weekends 7am–3pm.",
+    "specialties": ["Urgent Care", "Dermatology", "Endocrinology", "Headache Clinic", "Occupational Medicine", "Pain Management", "Sleep Center", "Cardiology", "Gynecology", "Nephrology", "Ophthalmology", "Pulmonary Medicine", "Rheumatology", "Physical Therapy", "Allergy & Immunology", "Gastroenterology", "Neurology", "Orthopedics", "Pediatrics", "Urology"],
+    "services": [
+      { "name": "Urgent Care", "description": "From minor illness or injury to complex medical issues, we ensure you and your family fast, personalized care every day. MRI, CT scan, X-ray, Laboratory and Ultrasound services. No appointment necessary." },
+      { "name": "Headache Center", "description": "Board certified neurologist with sub-specialty in headache medicine. Personalized plans for chronic headaches and migraines." },
+      { "name": "Diabetes Center", "description": "Board certified endocrinologists and educators, education classes, and diabetes prevention services. Awarded recognition by the American Association of Diabetes Educators." },
+      { "name": "Primary and Family Care and Pediatrics", "description": "Outstanding group of physicians committed to building relationships and providing compassionate, thorough health care. Access to the latest advancements in specialty medicine." }
+    ]
+  },
+  "middletown-urgent-care": {
+    "overview": "Middletown Medical was the first in the area to offer immediate medical care. From illness or minor injury to complex medical issues, visit our newly expanded Urgent Care Center anytime. We ensure you and your family fast, personalized emergency care every day, including holidays.",
+    "hours": "Extended hours including holidays. Call for current hours.",
+    "specialties": ["Urgent Care"],
+    "services": [
+      { "name": "Urgent Care", "description": "Fast, personalized emergency care every day. MRI, CT scan, X-ray, Laboratory and Ultrasound services. No appointment necessary." }
+    ]
+  },
+  "2-edgewater-drive": {
+    "overview": "Middletown Medical location offering comprehensive care as part of our main campus network.",
+    "hours": "Call for hours.",
+    "specialties": [],
+    "services": []
+  },
+  "22-grove-street": {
+    "overview": "Office hours Mon, Tues & Thur: 7am – 4pm; Fri: 7am – 2:30pm. Patient hours Mon, Tues & Thur: 7am – 2pm; Fri: 7am – 12pm.",
+    "hours": "Office: Mon, Tues & Thur 7am–4pm, Fri 7am–2:30pm. Patient: Mon, Tues & Thur 7am–2pm, Fri 7am–12pm.",
+    "specialties": ["Primary Medicine"],
+    "services": []
+  },
+  "35-maltese-drive": {
+    "overview": "Middletown Medical location on the medical campus.",
+    "hours": "Call for hours.",
+    "specialties": [],
+    "services": []
+  },
+  "60-dunning-rd": {
+    "overview": "Middletown Medical location on the medical campus.",
+    "hours": "Call for hours.",
+    "specialties": [],
+    "services": []
+  },
+  "75-maltese-drive": {
+    "overview": "Middletown Medical location on the medical campus.",
+    "hours": "Call for hours.",
+    "specialties": [],
+    "services": []
+  },
+  "419-e-main-st": {
+    "overview": "Middletown Medical location. Mon – Fri: 8:00am – 6:00pm. Physical Therapy and specialty services available.",
+    "hours": "Mon – Fri: 8:00am – 6:00pm",
+    "specialties": ["Physical Therapy"],
+    "services": []
+  },
+  "newburgh-urgent-care": {
+    "overview": "Middletown Medical Urgent Care serving the Newburgh area. Fast, personalized care when you need it.",
+    "hours": "Call for current hours.",
+    "specialties": ["Urgent Care"],
+    "services": [{ "name": "Urgent Care", "description": "Immediate medical care for illness and injury. No appointment necessary." }]
+  },
+  "circleville-office": {
+    "overview": "Middletown Medical office serving Circleville and the surrounding community.",
+    "hours": "Call for hours.",
+    "specialties": [],
+    "services": []
+  },
+  "port-jervis-bon-secours": {
+    "overview": "Middletown Medical at Bon Secours Medical Office Building in Port Jervis.",
+    "hours": "Call for hours.",
+    "specialties": [],
+    "services": []
+  },
+  "warwick-medical-branch": {
+    "overview": "Middletown Medical branch serving Warwick and the surrounding community.",
+    "hours": "Call for hours.",
+    "specialties": [],
+    "services": []
+  },
+  "walden-office": {
+    "overview": "The Walden office of Middletown Medical offers comprehensive primary care services for patients of all ages. Our experienced providers focus on preventive care, managing chronic conditions, and treating acute illnesses. We accept most major insurances.",
+    "hours": "Mon – Fri: 8am – 4pm | Sat & Sun: Closed",
+    "specialties": ["Primary Care"],
+    "services": [{ "name": "Primary Care", "description": "Preventive care, chronic condition management, and treatment of acute illnesses for patients of all ages." }]
+  },
+  "ferndale-medical-branch": {
+    "overview": "Middletown Medical branch in Ferndale, Sullivan County. Primary care, ENT, and family medicine services.",
+    "hours": "Call for hours.",
+    "specialties": ["Otolaryngology (ENT)", "Gastroenterology", "Primary Care", "Family Practice"],
+    "services": []
+  },
+  "white-lake-office": {
+    "overview": "Middletown Medical White Lake office providing primary care to the community.",
+    "hours": "Mon – Fri: 9am – 5pm | Sat & Sun: Closed",
+    "specialties": ["Primary Care", "Family Medicine"],
+    "services": []
+  },
+  "liberty-medical-branch": {
+    "overview": "Middletown Medical Liberty Medical Group. Primary care and specialty services.",
+    "hours": "Mon – Fri: 8am – 6pm | Sat: 9am – 1pm | Sun: Closed",
+    "specialties": ["Primary Care"],
+    "services": []
+  },
+  "wurtsboro-medical-branch": {
+    "overview": "Middletown Medical Wurtsboro Primary Care. Internal Medicine and Pediatric care.",
+    "hours": "Call for hours.",
+    "specialties": ["Internal Medicine", "Pediatrics"],
+    "services": []
+  },
+  "ellenville-urgent-care": {
+    "overview": "Middletown Medical Urgent Care in Ellenville. Convenient care for the Ulster County community.",
+    "hours": "Call for current hours.",
+    "specialties": ["Urgent Care"],
+    "services": [{ "name": "Urgent Care", "description": "Immediate medical care. No appointment necessary." }]
+  }
+}

@@ -19,7 +19,7 @@ const navLinks = [
   { name: "Find a Provider", href: "/providers", icon: Stethoscope },
   { name: "Resources", href: "#", icon: ClipboardList, hasDropdown: true },
   { name: "Services", href: "/services", icon: ShieldPlus },
-  { name: "Locations", href: "#", icon: MapPin },
+  { name: "Locations", href: "/locations", icon: MapPin },
   { name: "Immediate Care", href: "#", icon: Clock },
 ];
 
