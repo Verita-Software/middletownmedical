@@ -1,7 +1,7 @@
 export const ITEMS_PER_PAGE = 9;
 
 /** Provider name shown in all booking screens (appointments are booked with this provider). */
-export const BOOKING_PROVIDER_DISPLAY_NAME = "test user";
+export const BOOKING_PROVIDER_DISPLAY_NAME = "test test";
 
 /** Phone numbers per clinic location. Used on provider detail pages. */
 export const LOCATION_PHONES: Record<string, string> = {
