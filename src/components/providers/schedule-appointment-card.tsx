@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import type { Provider } from "@/lib/mock-data";
 import { useBookingStore } from "@/store/booking-store";
+import { BOOKING_PROVIDER_DISPLAY_NAME } from "@/lib/appConstant";
 import { Calendar } from "lucide-react";
 
 const INSURANCE_OPTIONS = [
@@ -58,7 +59,7 @@ export function ScheduleAppointmentCard({
     <div className="lg:w-80 shrink-0">
       <div className="bg-white rounded-2xl border border-slate-200 shadow-lg p-6">
         <h2 className="text-lg font-bold text-[#002147] mb-1">
-          Schedule an Appointment with {provider.Name}
+          Schedule an Appointment with {BOOKING_PROVIDER_DISPLAY_NAME}
         </h2>
         <p className="text-slate-500 text-sm mb-5">
           Enter the patient&apos;s age and insurance to view available times.

@@ -17,7 +17,7 @@ import type {
   FhirSchedule,
   FhirSlot,
 } from "@/types/healow";
-import { LOCATION_PHONES } from "@/lib/appConstant";
+import { LOCATION_PHONES, BOOKING_PROVIDER_DISPLAY_NAME } from "@/lib/appConstant";
 import { Calendar, Clock, Loader2, Phone } from "lucide-react";
 
 const DEFAULT_LOCATION_ID = "2";
@@ -249,7 +249,7 @@ export function BookAppointmentModal({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Book appointment with {provider.Name}</DialogTitle>
+          <DialogTitle>Book appointment with {BOOKING_PROVIDER_DISPLAY_NAME}</DialogTitle>
           <DialogDescription>
             Check availability and choose a date and time.
           </DialogDescription>
@@ -296,6 +296,9 @@ export function BookAppointmentModal({
 
         {step === "date" && (
           <div className="space-y-3">
+            <p className="text-sm text-slate-500">
+              Booking with {BOOKING_PROVIDER_DISPLAY_NAME}
+            </p>
             <p className="text-sm font-medium text-slate-700">
               Select an available date
             </p>
@@ -324,6 +327,9 @@ export function BookAppointmentModal({
 
         {step === "slot" && (
           <div className="space-y-3">
+            <p className="text-sm text-slate-500">
+              Booking with {BOOKING_PROVIDER_DISPLAY_NAME}
+            </p>
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-slate-700">
                 Select a time
@@ -368,7 +374,7 @@ export function BookAppointmentModal({
         {step === "confirm" && selectedSlot && (
           <div className="space-y-4">
             <p className="text-sm text-slate-600">
-              Confirm your appointment with <strong>{provider.Name}</strong>:
+              Confirm your appointment with <strong>{BOOKING_PROVIDER_DISPLAY_NAME}</strong>:
             </p>
             <div className="rounded-lg border border-slate-200 bg-slate-50/50 p-4">
               <p className="font-medium text-slate-900">
@@ -409,8 +415,8 @@ export function BookAppointmentModal({
           <div className="py-4 text-center">
             <p className="font-semibold text-primary">Appointment requested.</p>
             <p className="mt-2 text-sm text-slate-600">
-              Your appointment has been submitted. The practice will confirm
-              shortly.
+              Your appointment with <strong>{BOOKING_PROVIDER_DISPLAY_NAME}</strong> has
+              been submitted. The practice will confirm shortly.
             </p>
             <DialogFooter className="mt-4">
               <Button onClick={() => handleOpenChange(false)}>Close</Button>

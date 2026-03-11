@@ -5,7 +5,7 @@ import { ChevronLeft, Loader2, MapPin, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Provider } from "@/lib/mock-data";
 import { useBookingStore } from "@/store/booking-store";
-import { LOCATION_PHONES } from "@/lib/appConstant";
+import { LOCATION_PHONES, BOOKING_PROVIDER_DISPLAY_NAME } from "@/lib/appConstant";
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -173,7 +173,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
       </button>
 
       <h1 className="text-2xl font-bold text-[#002147] mb-2">
-        Who&apos;s coming to see {provider.Name}?
+        Who&apos;s coming to see {BOOKING_PROVIDER_DISPLAY_NAME}?
       </h1>
       <p className="text-slate-600 mb-8">
         Please complete the below fields for the patient to be seen at this appointment. Ensure the information is correct prior to scheduling.
@@ -359,12 +359,12 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
                   <img src={provider.profile_url} alt="" className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-lg font-bold text-slate-500">
-                    {provider.Name.charAt(0)}
+                    {BOOKING_PROVIDER_DISPLAY_NAME.charAt(0)}
                   </div>
                 )}
               </div>
               <div>
-                <p className="font-bold text-[#002147]">{provider.Name}</p>
+                <p className="font-bold text-[#002147]">{BOOKING_PROVIDER_DISPLAY_NAME}</p>
                 <p className="text-sm text-slate-600">{provider.Specialties?.[0] ?? ""}</p>
               </div>
             </div>
