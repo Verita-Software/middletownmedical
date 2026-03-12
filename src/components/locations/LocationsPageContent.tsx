@@ -14,6 +14,15 @@ interface LocationsPageContentProps {
   locations: LocationItem[];
 }
 
+/**
+ * Render the locations search page with a filterable list and an interactive map.
+ *
+ * Filters the provided locations to entries that have numeric latitude and longitude
+ * and that match the active name/address, city/address/ZIP, and county filters.
+ *
+ * @param locations - Array of location items to display and filter
+ * @returns The rendered locations page element containing the search UI, results list, and map
+ */
 export function LocationsPageContent({
   locations: rawLocations,
 }: LocationsPageContentProps) {

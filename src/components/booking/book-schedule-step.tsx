@@ -46,6 +46,15 @@ interface BookScheduleStepProps {
   provider: Provider;
 }
 
+/**
+ * Render the booking schedule step UI for selecting a date and time for a provider.
+ *
+ * Fetches available schedules and slots for the given provider, updates the booking store
+ * with schedule/slot selections, and manages navigation, loading, and error states.
+ *
+ * @param provider - The provider whose availability is displayed
+ * @returns The JSX element for the schedule selection step
+ */
 export function BookScheduleStep({ provider }: BookScheduleStepProps) {
   const actor = provider.npiId ?? "";
   const {
