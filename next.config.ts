@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "middletownmedical.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.middletownmedical.com",
+      },
+      {
+        protocol: "https",
         hostname: "ui-avatars.com",
       },
       {

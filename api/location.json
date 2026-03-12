@@ -1,0 +1,212 @@
+[
+  {
+    "id": "loc-1",
+    "slug": "medical-campus",
+    "name": "Medical Campus",
+    "address": "111 Maltese Dr, Middletown, NY 10940",
+    "county": "Orange",
+    "phone": "(845) 342-4774",
+    "latitude": 41.4570196,
+    "longitude": -74.3863662
+  },
+  {
+    "id": "loc-2",
+    "slug": "2-edgewater-drive",
+    "name": "2 Edgewater Drive",
+    "address": "2 Edgewater Dr, Middletown, NY 10940",
+    "county": "Orange",
+    "phone": "(845) 342-4774",
+    "latitude": 41.4565931,
+    "longitude": -74.387645
+  },
+  {
+    "id": "loc-3",
+    "slug": "22-grove-street",
+    "name": "22 Grove Street",
+    "address": "22 Grove St, Middletown, NY 10940",
+    "county": "Orange",
+    "phone": "(845) 343-0659",
+    "latitude": 41.4493114,
+    "longitude": -74.4153886
+  },
+  {
+    "id": "loc-4",
+    "slug": "35-maltese-drive",
+    "name": "35 Maltese Drive",
+    "address": "35 Maltese Dr, Middletown, NY 10940",
+    "county": "Orange",
+    "phone": "(845) 381-5705",
+    "latitude": 41.4563761,
+    "longitude": -74.3907831
+  },
+  {
+    "id": "loc-5",
+    "slug": "60-dunning-rd",
+    "name": "60 Dunning Rd",
+    "address": "60 Dunning Rd, Middletown, NY 10940",
+    "county": "Orange",
+    "phone": "(845) 342-4774",
+    "latitude": 41.4484755,
+    "longitude": -74.3786814
+  },
+  {
+    "id": "loc-6",
+    "slug": "75-maltese-drive",
+    "name": "75 Maltese Drive",
+    "address": "75 Maltese Dr, Middletown, NY 10940",
+    "county": "Orange",
+    "phone": "(845) 342-4774",
+    "latitude": 41.4570535,
+    "longitude": -74.3884074
+  },
+  {
+    "id": "loc-7",
+    "slug": "419-e-main-st",
+    "name": "419 E Main St",
+    "address": "419 E Main St, Middletown, NY 10940",
+    "county": "Orange",
+    "phone": "(845) 342-4774",
+    "latitude": 41.4458441,
+    "longitude": -74.3921608
+  },
+  {
+    "id": "loc-8",
+    "slug": "middletown-urgent-care",
+    "name": "Middletown Urgent Care",
+    "address": "111 Maltese Dr, Middletown, NY 10940",
+    "county": "Orange",
+    "phone": "(845) 342-8710",
+    "latitude": 41.4570196,
+    "longitude": -74.3863662
+  },
+  {
+    "id": "loc-9",
+    "slug": "chester-urgent-care",
+    "name": "Chester Urgent Care",
+    "address": "78 Brookside Ave, Chester, NY 10918",
+    "county": "Orange",
+    "phone": "(845) 469-7900",
+    "latitude": 41.3579938,
+    "longitude": -74.2829286
+  },
+  {
+    "id": "loc-10",
+    "slug": "montgomery-office",
+    "name": "Montgomery Office",
+    "address": "20 Walnut St Suite A, Montgomery, NY 12549",
+    "county": "Orange",
+    "phone": "(845) 457-3760",
+    "latitude": 41.5259103,
+    "longitude": -74.2020012
+  },
+  {
+    "id": "loc-11",
+    "slug": "newburgh-urgent-care",
+    "name": "Newburgh Urgent Care",
+    "address": "47 North Plank Rd, Newburgh, NY 12550",
+    "county": "Orange",
+    "phone": "(845) 561-8100",
+    "latitude": 41.5225246,
+    "longitude": -74.030066
+  },
+  {
+    "id": "loc-12",
+    "slug": "circleville-office",
+    "name": "Circleville Office",
+    "address": "2142 NY-302, Circleville, NY 10919",
+    "county": "Orange",
+    "phone": "(845) 361-4600",
+    "latitude": 41.5129267,
+    "longitude": -74.3895373
+  },
+  {
+    "id": "loc-13",
+    "slug": "port-jervis-bon-secours",
+    "name": "Port Jervis (Bon Secours)",
+    "address": "161 East Main St, Port Jervis, NY 12771",
+    "county": "Orange",
+    "phone": "(845) 697-3271",
+    "latitude": 41.3680987,
+    "longitude": -74.6828256
+  },
+  {
+    "id": "loc-14",
+    "slug": "warwick-medical-branch",
+    "name": "Warwick Medical Branch",
+    "address": "200 Ronald Reagan Blvd, Warwick, NY 10990",
+    "county": "Orange",
+    "phone": "(845) 986-4440",
+    "latitude": 41.2732069,
+    "longitude": -74.3272775
+  },
+  {
+    "id": "loc-15",
+    "slug": "walden-office",
+    "name": "Walden Office",
+    "address": "142 South Montgomery St, Walden, NY 12586",
+    "county": "Orange",
+    "phone": "(845) 778-5771",
+    "latitude": 41.5583341,
+    "longitude": -74.1987425
+  },
+  {
+    "id": "loc-16",
+    "slug": "ferndale-medical-branch",
+    "name": "Ferndale Medical Branch",
+    "address": "653 Harris Rd, Ferndale, NY 12734",
+    "county": "Sullivan",
+    "phone": "(845) 292-4141",
+    "latitude": 41.7733217,
+    "longitude": -74.7358061
+  },
+  {
+    "id": "loc-17",
+    "slug": "monticello-center",
+    "name": "Monticello Center",
+    "address": "4058 State Route 42 Suite 5, Monticello, NY 12701",
+    "county": "Sullivan",
+    "phone": "(845) 791-5400",
+    "latitude": 41.66835,
+    "longitude": -74.67342
+  },
+  {
+    "id": "loc-18",
+    "slug": "white-lake-office",
+    "name": "White Lake Office",
+    "address": "1522 NY-17B, White Lake, NY 12786",
+    "county": "Sullivan",
+    "phone": "(845) 583-4526",
+    "latitude": 41.6735985,
+    "longitude": -74.8320386
+  },
+  {
+    "id": "loc-19",
+    "slug": "liberty-medical-branch",
+    "name": "Liberty Medical Branch",
+    "address": "111 Sullivan Ave, Liberty, NY 12754",
+    "county": "Sullivan",
+    "phone": "(845) 292-4141",
+    "latitude": 41.7798085,
+    "longitude": -74.7287393
+  },
+  {
+    "id": "loc-20",
+    "slug": "wurtsboro-medical-branch",
+    "name": "Wurtsboro Medical Branch",
+    "address": "2930 State Route 209, Wurtsboro, NY 12790",
+    "county": "Sullivan",
+    "phone": "(845) 888-2111",
+    "latitude": 41.5831892,
+    "longitude": -74.4994098
+  },
+  {
+    "id": "loc-21",
+    "slug": "ellenville-urgent-care",
+    "name": "Ellenville Urgent Care",
+    "address": "112 ShopRite Plaza, Shoprite Blvd, Ellenville, NY 12428",
+    "county": "Ulster",
+    "phone": "(845) 647-6400",
+    "latitude": 41.7170379,
+    "longitude": -74.39571
+  }
+]
