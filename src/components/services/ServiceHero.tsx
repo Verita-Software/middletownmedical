@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Calendar, Stethoscope } from "lucide-react";
+import { ChevronRight, Stethoscope } from "lucide-react";
 
 type Props = {
   title: string;
@@ -20,50 +20,58 @@ export function ServiceHero({
   breadcrumbLabel = "Services",
 }: Props) {
   return (
-    <div className="relative w-full bg-[#002147] pt-12 pb-16 lg:pt-16 lg:pb-20">
-      <Image
-        src={heroImageUrl}
-        alt={heroImageAlt || title}
-        fill
-        className="object-cover opacity-30 mix-blend-luminosity"
-        priority
-      />
-      <div className="relative z-10 container mx-auto flex max-w-7xl flex-col justify-center px-4">
-        <div className="mb-6 flex items-center space-x-2 text-sm font-semibold uppercase tracking-wider text-white/70">
-          <Link href="/services" className="transition-colors hover:text-white">
-            {breadcrumbLabel}
-          </Link>
-          <ChevronRight className="h-4 w-4" />
-          <span className="max-w-[220px] truncate sm:max-w-none">{title}</span>
+    <section className="border-b border-slate-200 bg-slate-50">
+      <div className="container mx-auto flex max-w-7xl flex-col items-center gap-10 px-4 py-10 lg:flex-row lg:items-stretch lg:py-14">
+        {/* Text side */}
+        <div className="flex-1">
+          <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+            <Link
+              href="/services"
+              className="transition-colors hover:text-[#002147]"
+            >
+              {breadcrumbLabel}
+            </Link>
+            <ChevronRight className="h-3 w-3" />
+            <span className="truncate text-slate-700">{title}</span>
+          </div>
+
+          <h1 className="mb-3 max-w-3xl text-3xl font-black leading-tight text-[#002147] md:text-4xl lg:text-5xl">
+            {title}
+          </h1>
+          {subtitle && (
+            <p className="mb-6 max-w-2xl text-base font-medium text-slate-700 md:text-lg">
+              {subtitle}
+            </p>
+          )}
+
+          <p className="mb-6 max-w-2xl text-sm text-slate-600">
+            Schedule with a Middletown Medical provider who offers this service,
+            or explore additional options that fit your needs and location.
+          </p>
+
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/providers"
+              className="inline-flex items-center gap-2 rounded-full bg-[#002147] px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0c335e]"
+            >
+              <Stethoscope className="h-4 w-4" />
+              <span>Find a Provider</span>
+            </Link>
+          </div>
         </div>
 
-        <h1 className="mb-4 max-w-4xl text-4xl font-black leading-tight text-white md:text-5xl lg:text-6xl">
-          {title}
-        </h1>
-        {subtitle && (
-          <p className="mb-6 max-w-2xl text-xl font-semibold text-white/90 md:text-2xl">
-            {subtitle}
-          </p>
-        )}
-
-        <div className="flex flex-wrap gap-4">
-          {/* TODO: Add book appointment link back in */}
-          {/* <Link
-            href="#book-appointment"
-            className="inline-flex items-center gap-2 rounded-full bg-[#b5097b] px-8 py-4 font-bold text-white transition-colors hover:bg-[#8f0761]"
-          >
-            <Calendar className="h-5 w-5" />
-            <span>Book Appointment</span>
-          </Link> */}
-          <Link
-            href="/providers"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
-          >
-            <Stethoscope className="h-5 w-5" />
-            <span>Find a Provider</span>
-          </Link>
+        {/* Image side */}
+        <div className="relative h-56 w-full flex-1 overflow-hidden rounded-3xl bg-slate-200 shadow-lg sm:h-64 md:h-72 lg:h-80">
+          <Image
+            src={heroImageUrl}
+            alt={heroImageAlt || title}
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+          />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -128,6 +128,14 @@ function ProviderHighlightSection(
               <p key={idx}>{p}</p>
             ))}
           </div>
+          {"profileUrl" in section && section.profileUrl && (
+            <a
+              href={section.profileUrl}
+              className="mt-4 inline-block text-[#49A3DA] font-medium hover:underline"
+            >
+              View Full Profile
+            </a>
+          )}
         </div>
       </div>
     </section>
@@ -190,7 +198,10 @@ function ServiceLocationsSection(
                           href={`tel:${loc.phone.replace(/\D/g, "")}`}
                           className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-[#002147] shadow-sm transition-colors hover:border-[#49A3DA] hover:bg-slate-50 hover:text-[#b5097b]"
                         >
-                          <Phone className="h-4 w-4 shrink-0 text-[#49A3DA]" aria-hidden />
+                          <Phone
+                            className="h-4 w-4 shrink-0 text-[#49A3DA]"
+                            aria-hidden
+                          />
                           {loc.phone}
                         </a>
                       )}
@@ -200,7 +211,10 @@ function ServiceLocationsSection(
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-[#49A3DA] hover:bg-slate-50 hover:text-[#002147]"
                       >
-                        <Car className="h-4 w-4 shrink-0 text-[#49A3DA]" aria-hidden />
+                        <Car
+                          className="h-4 w-4 shrink-0 text-[#49A3DA]"
+                          aria-hidden
+                        />
                         Directions
                       </a>
                     </div>
@@ -241,6 +255,94 @@ function ServiceLocationsSection(
   );
 }
 
+/** Location cards with image on top: name, address, phone, hours, Directions (e.g. Laboratory Services). */
+function LocationCardsSection(
+  section: Extract<ServiceSection, { type: "locationCards" }>,
+) {
+  const heading = section.heading ?? "Locations";
+
+  return (
+    <section className="mb-10">
+      <h2 className="mb-4 text-2xl font-bold text-[#002147] md:text-3xl">
+        {heading}
+      </h2>
+      <div className="mb-8 h-0.5 w-12 bg-[#49A3DA]" aria-hidden />
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {section.locations.map((loc) => {
+          const fullAddress = [loc.addressLine1, loc.addressLine2]
+            .filter(Boolean)
+            .join(", ");
+          const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+
+          return (
+            <div
+              key={loc.name}
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+            >
+              <div className="relative h-48 w-full">
+                <Image
+                  src={loc.imageUrl}
+                  alt={loc.imageAlt ?? loc.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-slate-900">{loc.name}</h3>
+                {loc.phone && (
+                  <a
+                    href={`tel:${loc.phone.replace(/\D/g, "")}`}
+                    className="mt-1 inline-block text-sm font-medium text-[#002147] hover:text-[#b5097b] hover:underline"
+                  >
+                    {loc.phone}
+                  </a>
+                )}
+                <p className="mt-1 text-sm text-slate-700">
+                  {loc.addressLine1}
+                  <br />
+                  {loc.addressLine2}
+                </p>
+                {loc.hours && (
+                  <p className="mt-2 text-sm text-slate-600">
+                    Hours: {loc.hours}
+                  </p>
+                )}
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  {loc.phone && (
+                    <a
+                      href={`tel:${loc.phone.replace(/\D/g, "")}`}
+                      className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-[#002147] shadow-sm transition-colors hover:border-[#49A3DA] hover:bg-slate-50 hover:text-[#b5097b]"
+                    >
+                      <Phone
+                        className="h-4 w-4 shrink-0 text-[#49A3DA]"
+                        aria-hidden
+                      />
+                      {loc.phone}
+                    </a>
+                  )}
+                  <a
+                    href={directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-[#49A3DA] hover:bg-slate-50 hover:text-[#002147]"
+                  >
+                    <Car
+                      className="h-4 w-4 shrink-0 text-[#49A3DA]"
+                      aria-hidden
+                    />
+                    Get Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 export function ServiceSections({ sections }: { sections: ServiceSection[] }) {
   return (
     <>
@@ -265,6 +367,9 @@ export function ServiceSections({ sections }: { sections: ServiceSection[] }) {
         }
         if (section.type === "serviceLocations") {
           return <ServiceLocationsSection key={idx} {...section} />;
+        }
+        if (section.type === "locationCards") {
+          return <LocationCardsSection key={idx} {...section} />;
         }
         return null;
       })}

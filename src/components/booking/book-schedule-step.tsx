@@ -16,7 +16,6 @@ import type {
   FhirSlot,
 } from "@/types/healow";
 import { useBookingStore } from "@/store/booking-store";
-import { BOOKING_PROVIDER_DISPLAY_NAME } from "@/lib/appConstant";
 import { Button } from "../ui/button";
 
 const DEFAULT_LOCATION_ID = "2";
@@ -245,17 +244,17 @@ export function BookScheduleStep({ provider }: BookScheduleStepProps) {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={provider.profile_url}
-              alt={BOOKING_PROVIDER_DISPLAY_NAME}
+              alt={provider.Name}
               className="w-full h-full object-cover"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-500">
-              {BOOKING_PROVIDER_DISPLAY_NAME.charAt(0)}
+              {provider.Name.trim().charAt(0)}
             </div>
           )}
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-[#002147]">{BOOKING_PROVIDER_DISPLAY_NAME}</h1>
+          <h1 className="text-2xl font-bold text-[#002147]">{provider.Name}</h1>
           <p className="text-slate-600 mt-1">Appointment Times</p>
           <p className="text-sm text-slate-500 mt-2">
             Please select a time to schedule your appointment

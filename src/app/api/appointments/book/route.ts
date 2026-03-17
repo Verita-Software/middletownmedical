@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAppointment } from "@/lib/healow/client";
+import { BOOKING_PATIENT_NAME_OVERRIDE } from "@/lib/appConstant";
 
 export const dynamic = "force-dynamic";
 
@@ -35,10 +36,22 @@ export async function POST(request: NextRequest) {
 
     if (!slotReference || !practitionerRef || !start || !end) {
       return NextResponse.json(
-        { error: "Missing required body: slotReference, practitionerRef, start, end" },
-        { status: 400 }
+        {
+          error:
+            "Missing required body: slotReference, practitionerRef, start, end",
+        },
+        { status: 400 },
       );
     }
+
+    // TODO: Remove patientForApi once we have real website
+    const patientForApi = patient
+      ? {
+          ...patient,
+          firstName: BOOKING_PATIENT_NAME_OVERRIDE.firstName,
+          lastName: BOOKING_PATIENT_NAME_OVERRIDE.lastName,
+        }
+      : undefined;
 
     const appointment = await createAppointment({
       slotReference,
@@ -46,20 +59,22 @@ export async function POST(request: NextRequest) {
       patientRef,
       start,
       end,
-      patient,
+      patient: patientForApi,
       reason,
       comment,
     });
 
     return NextResponse.json(appointment);
   } catch (e) {
-    const message = e instanceof Error ? e.message : "Failed to book appointment";
-    const statusCode = e && typeof e === "object" && "statusCode" in e
-      ? Number((e as { statusCode: number }).statusCode)
-      : 500;
+    const message =
+      e instanceof Error ? e.message : "Failed to book appointment";
+    const statusCode =
+      e && typeof e === "object" && "statusCode" in e
+        ? Number((e as { statusCode: number }).statusCode)
+        : 500;
     return NextResponse.json(
       { error: message },
-      { status: statusCode >= 400 && statusCode < 600 ? statusCode : 500 }
+      { status: statusCode >= 400 && statusCode < 600 ? statusCode : 500 },
     );
   }
 }

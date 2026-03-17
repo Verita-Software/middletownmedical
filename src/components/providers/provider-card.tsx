@@ -58,7 +58,7 @@ export function ProviderCard({
         duration: 0.2,
       }}
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
-      className="group flex flex-col cursor-pointer rounded-s rounded-tl-3xl rounded-br-3xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] hover:border-primary/20 transition-all duration-300 h-full relative overflow-hidden"
+      className="group flex flex-col cursor-pointer rounded-tl-[1rem] rounded-br-[1rem] rounded-tr-none rounded-bl-none  border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] hover:border-primary/20 transition-all duration-300 h-full relative overflow-hidden"
     >
       {/* Title */}
       <Link
@@ -70,7 +70,7 @@ export function ProviderCard({
 
       <div className="flex gap-4 sm:gap-6 flex-1 z-10 w-full">
         {/* Image */}
-        <div className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px]  rounded-s rounded-tl-3xl rounded-br-3xl overflow-hidden shrink-0 border border-slate-200/60 shadow-inner group-hover:shadow-md transition-shadow duration-300">
+        <div className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-tl-[1rem] rounded-br-[1rem] rounded-tr-none rounded-bl-none overflow-hidden shrink-0 border border-slate-200/60 shadow-inner group-hover:shadow-md transition-shadow duration-300">
           <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-slate-100 to-slate-200">
             {provider.profile_url ? (
               <ClientImage

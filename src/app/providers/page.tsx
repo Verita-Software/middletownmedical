@@ -1,413 +1,176 @@
 "use client";
 
-import {
-  useState,
-  useMemo,
-  useCallback,
-  useTransition,
-  useEffect,
-  useRef,
-} from "react";
-import { useSearchParams } from "next/navigation";
+import { useState, useMemo, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ProviderCard } from "@/components/providers/provider-card";
 import { ProvidersShimmerItem } from "@/components/providers/providers-shimmer-item";
-import { ProvidersFilter } from "@/components/providers/provider-filter";
+import { ProvidersFilterSection } from "@/components/providers/providers-filter-section";
 import { Pagination } from "@/components/ui/pagination";
-import { MOCK_PROVIDERS as providers, specialties } from "@/lib/mock-data";
-import { Search, MapPin } from "lucide-react";
+import { MOCK_PROVIDERS as providers } from "@/lib/mock-data";
+import { Search, MapPin, X, Phone } from "lucide-react";
 import { Suspense } from "react";
-import { ITEMS_PER_PAGE } from "@/lib/appConstant";
-import { usePagination } from "@/hooks/use-pagination";
-import { useDebounce } from "@/hooks/use-debounce";
+import { LocationsMap } from "@/components/locations/LocationsMap";
+import type { LocationItem } from "@/types/location";
+import type { Provider } from "@/lib/mock-data";
 
 function ProvidersPageContent() {
-  const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [viewMode] = useState<"grid" | "list">("grid");
+  const [showMap, setShowMap] = useState(false);
+  const [mapLocations, setMapLocations] = useState<LocationItem[] | null>(null);
+  const [mapLoading, setMapLoading] = useState(false);
+  const [selectedMapLocationId, setSelectedMapLocationId] = useState<
+    string | null
+  >(null);
 
-  // Filters
-  const [search, setSearch] = useState(searchParams.get("search") || "");
-  const [locationSearch, setLocationSearch] = useState("");
-  const [selectedSpecialties, setSelectedSpecialties] = useState<string[]>(
-    searchParams.get("specialty") ? [searchParams.get("specialty")!] : [],
-  );
-  const [selectedCounties, setSelectedCounties] = useState<string[]>([]);
-  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
-  const [selectedGender, setSelectedGender] = useState<string>("");
-  const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
-  const [selectedAgesSeen, setSelectedAgesSeen] = useState<string[]>([]);
-  const [acceptingOnly, setAcceptingOnly] = useState(false);
-  const [telehealthOnly, setTelehealthOnly] = useState(false);
-  const [sortBy, setSortBy] = useState("relevance");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [showAllSpecialties, setShowAllSpecialties] = useState(false);
-
-  const debouncedSearch = useDebounce(search, 600);
-  const debouncedLocationSearch = useDebounce(locationSearch, 600);
-
-  // Filtered and sorted providers
-  const filteredProviders = useMemo(() => {
-    let result = [...providers];
-
-    // Search
-    if (debouncedSearch) {
-      const q = debouncedSearch.toLowerCase().replace(/\s+/g, " ");
-      result = result.filter((p) => {
-        const nameMatch = p.Name?.toLowerCase()
-          .replace(/\s+/g, " ")
-          .includes(q);
-        const specialtyMatch = p.Specialties?.some((s) =>
-          s.toLowerCase().replace(/\s+/g, " ").includes(q),
-        );
-        const bioMatch = p.Bio?.toLowerCase().replace(/\s+/g, " ").includes(q);
-
-        return nameMatch || specialtyMatch || bioMatch;
-      });
-    }
-
-    // Location Search (City, Address, Zip)
-    if (debouncedLocationSearch) {
-      const qLocation = debouncedLocationSearch
-        .toLowerCase()
-        .replace(/\s+/g, " ");
-      result = result.filter((p) => {
-        // Match against Locations array
-        const locationMatch = p.Locations?.some((loc) =>
-          loc.toLowerCase().replace(/\s+/g, " ").includes(qLocation),
-        );
-
-        // Match against Country (which seems to act like a region in this dataset)
-        const countryMatch = p.country
-          ?.toLowerCase()
-          .replace(/\s+/g, " ")
-          .includes(qLocation);
-
-        return locationMatch || countryMatch;
-      });
-    }
-
-    // Specialty filter
-    if (selectedSpecialties.length > 0) {
-      result = result.filter((p) =>
-        p.Specialties?.some((s) => selectedSpecialties.includes(s)),
-      );
-    }
-
-    // County filter
-    if (selectedCounties.length > 0) {
-      result = result.filter(
-        (p) => p.country && selectedCounties.includes(p.country),
-      );
-    }
-
-    // Location filter
-    if (selectedLocations.length > 0) {
-      result = result.filter((p) =>
-        p.Locations?.some((l) => selectedLocations.includes(l)),
-      );
-    }
-
-    if (selectedGender) {
-      result = result.filter((p) => p.gender === selectedGender);
-    }
-
-    // Language Spoken filter (multi-select: provider must speak at least one selected)
-    if (selectedLanguages.length > 0) {
-      result = result.filter((p) =>
-        p.LanguagesSpoken?.some((lang) => selectedLanguages.includes(lang)),
-      );
-    }
-
-    // Ages Seen filter (multi-select: provider must see at least one selected age group)
-    if (selectedAgesSeen.length > 0) {
-      result = result.filter((p) =>
-        p.AgesSeen?.some((age) => selectedAgesSeen.includes(age)),
-      );
-    }
-
-    // Sort
-    switch (sortBy) {
-      case "name-asc":
-        result.sort((a, b) => (a.Name || "").localeCompare(b.Name || ""));
-        break;
-      case "name-desc":
-        result.sort((a, b) => (b.Name || "").localeCompare(a.Name || ""));
-        break;
-      default:
-        break;
-    }
-
-    return result;
-  }, [
-    selectedSpecialties,
-    selectedCounties,
-    selectedLocations,
-    selectedGender,
-    selectedLanguages,
-    selectedAgesSeen,
-    acceptingOnly,
-    telehealthOnly,
-    sortBy,
-    debouncedSearch,
-    debouncedLocationSearch,
-  ]);
-
-  // Use the custom pagination hook
-  const { currentPage, setCurrentPage, totalPages, paginatedItems } =
-    usePagination(filteredProviders, ITEMS_PER_PAGE);
-
-  const isInitialMount = useRef(true);
-
-  // Reset page when search or location search filters change
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
+  const handleViewMapToggle = useCallback(async () => {
+    if (showMap) {
+      setShowMap(false);
       return;
     }
-    setCurrentPage(1);
-  }, [
-    debouncedSearch,
-    debouncedLocationSearch,
-    selectedSpecialties,
-    selectedCounties,
-    selectedLocations,
-    selectedGender,
-    selectedLanguages,
-    selectedAgesSeen,
-    acceptingOnly,
-    telehealthOnly,
-    sortBy,
-    // intentional: omitted setCurrentPage to avoid triggering on navigation
-  ]);
+    setShowMap(true);
+    if (mapLocations !== null) return;
+    setMapLoading(true);
+    try {
+      const res = await fetch("/api/locations");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error ?? "Failed to load locations");
+      setMapLocations(Array.isArray(data) ? data : []);
+    } catch {
+      setMapLocations([]);
+    } finally {
+      setMapLoading(false);
+    }
+  }, [showMap, mapLocations]);
 
-  const activeFilterCount =
-    selectedSpecialties.length +
-    selectedCounties.length +
-    selectedLocations.length +
-    (selectedGender ? 1 : 0) +
-    selectedLanguages.length +
-    selectedAgesSeen.length +
-    (acceptingOnly ? 1 : 0) +
-    (telehealthOnly ? 1 : 0);
+  const selectedLocation = useMemo(() => {
+    if (!selectedMapLocationId || !mapLocations) return null;
+    return mapLocations.find((l) => l.id === selectedMapLocationId) ?? null;
+  }, [selectedMapLocationId, mapLocations]);
 
-  const clearAllFilters = useCallback(() => {
-    startTransition(() => {
-      setSearch("");
-      setLocationSearch("");
-      setSelectedSpecialties([]);
-      setSelectedCounties([]);
-      setSelectedLocations([]);
-      setSelectedGender("");
-      setSelectedLanguages([]);
-      setSelectedAgesSeen([]);
-      setAcceptingOnly(false);
-      setTelehealthOnly(false);
-      setCurrentPage(1);
-    });
-  }, [setCurrentPage]);
-
-  const toggleSpecialty = (s: string) => {
-    startTransition(() => {
-      setSelectedSpecialties((prev) =>
-        prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s],
-      );
-      setCurrentPage(1);
-    });
-  };
-
-  const toggleCounty = (c: string) => {
-    startTransition(() => {
-      setSelectedCounties((prev) =>
-        prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c],
-      );
-      setCurrentPage(1);
-    });
-  };
-
-  const toggleLocation = (l: string) => {
-    startTransition(() => {
-      setSelectedLocations((prev) =>
-        prev.includes(l) ? prev.filter((x) => x !== l) : [...prev, l],
-      );
-      setCurrentPage(1);
-    });
-  };
-
-  const toggleGender = (g: string) => {
-    startTransition(() => {
-      setSelectedGender((prev) => (prev === g ? "" : g));
-      setCurrentPage(1);
-    });
-  };
-
-  const toggleLanguage = (lang: string) => {
-    startTransition(() => {
-      setSelectedLanguages((prev) =>
-        prev.includes(lang) ? prev.filter((x) => x !== lang) : [...prev, lang],
-      );
-      setCurrentPage(1);
-    });
-  };
-
-  const toggleAgesSeen = (age: string) => {
-    startTransition(() => {
-      setSelectedAgesSeen((prev) =>
-        prev.includes(age) ? prev.filter((x) => x !== age) : [...prev, age],
-      );
-      setCurrentPage(1);
-    });
-  };
-
-  const displayedSpecialties = showAllSpecialties
-    ? specialties
-    : specialties.slice(0, 10);
+  const providersAtSelectedLocation = useMemo((): Provider[] => {
+    if (!selectedLocation) return [];
+    const locName = selectedLocation.name.trim();
+    return providers.filter((p) =>
+      (p.Locations ?? []).some(
+        (ploc) =>
+          ploc.trim() === locName ||
+          ploc.includes(locName) ||
+          locName.includes(ploc.split(" - ")[0]?.trim() ?? ""),
+      ),
+    );
+  }, [selectedLocation]);
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Search Bar Section */}
-      <section className="bg-slate-50/80 border-b border-slate-200 py-6 sm:py-8 w-full z-20 relative">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row gap-4 mb-6 w-full">
-            <div className="relative flex-1 w-full">
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                }}
-                placeholder="Name, Services, Conditions"
-                className="w-full h-[52px] rounded-sm border border-slate-300 bg-slate-100 py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-              />
-              <Search
-                className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary"
-                strokeWidth={2.5}
-              />
-            </div>
-
-            <div className="relative flex-1 w-full">
-              <input
-                type="text"
-                value={locationSearch}
-                onChange={(e) => {
-                  setLocationSearch(e.target.value);
-                }}
-                placeholder="City, Address, Zip Code"
-                className="w-full h-[52px] rounded-sm border border-slate-300 bg-slate-100 py-2 pl-4 pr-12 text-[15px] text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-              />
-              <MapPin
-                className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary"
-                strokeWidth={2.5}
-              />
-            </div>
-
-            <Button className="h-[52px] px-12 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap hidden md:flex cursor-pointer">
-              Search
-            </Button>
-          </div>
-
-          <Button className="w-full h-[52px] mb-4 bg-primary hover:bg-primary/90 text-primary-foreground text-base font-bold rounded-sm shrink-0 whitespace-nowrap md:hidden cursor-pointer">
-            Search
-          </Button>
-
-          {/* Pill Filters */}
-          <ProvidersFilter
-            selectedSpecialties={selectedSpecialties}
-            toggleSpecialty={toggleSpecialty}
-            selectedCounties={selectedCounties}
-            toggleCounty={toggleCounty}
-            selectedLocations={selectedLocations}
-            toggleLocation={toggleLocation}
-            selectedGender={selectedGender}
-            toggleGender={toggleGender}
-            selectedLanguages={selectedLanguages}
-            toggleLanguage={toggleLanguage}
-            selectedAgesSeen={selectedAgesSeen}
-            toggleAgesSeen={toggleAgesSeen}
-            sortBy={sortBy}
-            setSortBy={(val) => {
-              startTransition(() => {
-                setSortBy(val);
-                setCurrentPage(1);
-              });
-            }}
-            activeFilterCount={activeFilterCount}
-            clearAllFilters={clearAllFilters}
-          />
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="mx-auto max-w-7xl px-3 sm:px-4 py-6 sm:py-8 lg:px-8 overflow-hidden w-full">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4 sm:gap-0 w-full overflow-hidden">
-          <h2 className="text-[28px] sm:text-[34px] font-bold text-primary leading-none tracking-tight flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 truncate">
-            Providers
-            <span className="text-[16px] sm:text-[18px] text-slate-600 font-normal tracking-normal truncate">
-              {filteredProviders.length} Results
-            </span>
-          </h2>
-          <Button
-            variant="outline"
-            className="w-full sm:w-auto border-primary text-primary hover:bg-primary/5 hover:text-primary font-bold text-[15px] px-6 rounded-sm h-[44px] shrink-0"
-          >
-            View Map
-          </Button>
-        </div>
-
-        {isPending ? (
-          <ProvidersShimmerItem viewMode={viewMode} />
-        ) : filteredProviders.length === 0 ? (
-          <div className="py-24 text-center">
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 mb-4">
-              <Search className="h-8 w-8 text-slate-400" />
-            </div>
-            <h3 className="text-xl font-bold text-primary mb-2">
-              No Providers Found
-            </h3>
-            <p className="text-slate-500 max-w-md mx-auto mb-6">
-              We couldn&apos;t find any providers matching your current search
-              criteria. Try adjusting your filters.
-            </p>
-            <Button
-              onClick={clearAllFilters}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-sm px-8 h-12"
-            >
-              Clear All Filters
-            </Button>
-          </div>
-        ) : (
+      <ProvidersFilterSection providers={providers}>
+        {({
+          filteredProviders,
+          paginatedItems,
+          totalPages,
+          currentPage,
+          onPageChange,
+          clearAllFilters,
+          resultCount,
+          isPending,
+        }) => (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
-              <AnimatePresence>
-                {paginatedItems.map((provider, i) => (
-                  <ProviderCard
-                    key={provider.id}
-                    provider={provider}
-                    variant={viewMode}
-                    index={i}
-                  />
-                ))}
-              </AnimatePresence>
-            </div>
-
-            {totalPages > 1 && (
-              <div className="mt-12 mb-8 flex w-full justify-center">
-                <Pagination
-                  initialPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={(page) => {
-                    startTransition(() => {
-                      setCurrentPage(page);
-                      // Scroll to top of list smoothly
-                      window.scrollTo({ top: 300, behavior: "smooth" });
-                    });
-                  }}
-                />
+            <section className="mx-auto max-w-7xl px-3 sm:px-4 py-6 sm:py-8 lg:px-8 overflow-hidden w-full">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4 sm:gap-0 w-full overflow-hidden">
+                <h2 className="text-[28px] sm:text-[34px] font-bold text-primary leading-none tracking-tight flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 truncate">
+                  Providers
+                  <span className="text-[16px] sm:text-[18px] text-slate-600 font-normal tracking-normal truncate">
+                    {resultCount} Results
+                  </span>
+                </h2>
+                <Button
+                  variant="outline"
+                  onClick={handleViewMapToggle}
+                  disabled={mapLoading}
+                  className="w-full sm:w-auto border-primary text-primary hover:bg-primary/5 hover:text-primary font-bold text-[15px] px-6 rounded-sm h-[44px] shrink-0"
+                >
+                  {mapLoading
+                    ? "Loading map…"
+                    : showMap
+                      ? "Hide map"
+                      : "View Map"}
+                </Button>
               </div>
-            )}
+
+              {showMap && (
+                <div className="mb-8 flex w-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm lg:flex-row">
+                  <div className="h-[320px] w-full shrink-0 bg-slate-100 lg:h-[520px] lg:min-h-[420px]">
+                    {mapLocations && mapLocations.length > 0 ? (
+                      <LocationsMap
+                        locations={mapLocations}
+                        selectedId={selectedMapLocationId}
+                        onSelectLocation={setSelectedMapLocationId}
+                        className="h-full min-h-[320px]"
+                      />
+                    ) : !mapLoading ? (
+                      <div className="flex h-full items-center justify-center text-slate-500">
+                        No location data available.
+                      </div>
+                    ) : (
+                      <div className="flex h-full items-center justify-center">
+                        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {isPending ? (
+                <ProvidersShimmerItem viewMode={viewMode} />
+              ) : filteredProviders.length === 0 ? (
+                <div className="py-24 text-center">
+                  <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 mb-4">
+                    <Search className="h-8 w-8 text-slate-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-2">
+                    No Providers Found
+                  </h3>
+                  <p className="text-slate-500 max-w-md mx-auto mb-6">
+                    We couldn&apos;t find any providers matching your current
+                    search criteria. Try adjusting your filters.
+                  </p>
+                  <Button
+                    onClick={clearAllFilters}
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-sm px-8 h-12"
+                  >
+                    Clear All Filters
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+                    <AnimatePresence>
+                      {paginatedItems.map((provider, i) => (
+                        <ProviderCard
+                          key={provider.id}
+                          provider={provider}
+                          variant={viewMode}
+                          index={i}
+                        />
+                      ))}
+                    </AnimatePresence>
+                  </div>
+
+                  {totalPages > 1 && (
+                    <div className="mt-12 mb-8 flex w-full justify-center">
+                      <Pagination
+                        initialPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={onPageChange}
+                      />
+                    </div>
+                  )}
+                </>
+              )}
+            </section>
           </>
         )}
-      </section>
+      </ProvidersFilterSection>
     </div>
   );
 }

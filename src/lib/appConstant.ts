@@ -1,7 +1,10 @@
-export const ITEMS_PER_PAGE = 9;
+export const ITEMS_PER_PAGE = 12;
 
-/** Provider name shown in all booking screens (appointments are booked with this provider). */
-export const BOOKING_PROVIDER_DISPLAY_NAME = "test test";
+/** Patient name sent to the booking API (overrides user-entered name). */
+export const BOOKING_PATIENT_NAME_OVERRIDE = {
+  firstName: "test",
+  lastName: "test",
+};
 
 /** Phone numbers per clinic location. Used on provider detail pages. */
 export const LOCATION_PHONES: Record<string, string> = {

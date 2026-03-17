@@ -3,9 +3,15 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import type { Provider } from "@/lib/mock-data";
 import { useBookingStore } from "@/store/booking-store";
-import { BOOKING_PROVIDER_DISPLAY_NAME } from "@/lib/appConstant";
 import { Calendar } from "lucide-react";
 
 const INSURANCE_OPTIONS = [
@@ -59,7 +65,7 @@ export function ScheduleAppointmentCard({
     <div className="lg:w-80 shrink-0">
       <div className="bg-white rounded-2xl border border-slate-200 shadow-lg p-6">
         <h2 className="text-lg font-bold text-[#002147] mb-1">
-          Schedule an Appointment with {BOOKING_PROVIDER_DISPLAY_NAME}
+          Schedule an Appointment with {provider.Name}
         </h2>
         <p className="text-slate-500 text-sm mb-5">
           Enter the patient&apos;s age and insurance to view available times.
@@ -90,19 +96,25 @@ export function ScheduleAppointmentCard({
             >
               Insurance <span className="text-red-500">*</span>
             </label>
-            <select
-              id="insurance"
-              value={insurance}
-              onChange={(e) => setInsurance(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none transition bg-slate-100"
-            >
-              <option value="">Select insurance</option>
-              {INSURANCE_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
+            <Select value={insurance} onValueChange={setInsurance}>
+              <SelectTrigger
+                id="insurance"
+                className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none transition bg-slate-100 h-auto"
+              >
+                <SelectValue placeholder="Select insurance" />
+              </SelectTrigger>
+              <SelectContent align="start" position="popper" className="w-(--radix-select-trigger-width)">
+                {INSURANCE_OPTIONS.map((opt) => (
+                  <SelectItem
+                    key={opt.value}
+                    value={opt.value}
+                    className="focus:bg-primary focus:text-primary-foreground data-highlighted:bg-primary data-highlighted:text-primary-foreground"
+                  >
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           {error && <p className="text-sm text-red-600">{error}</p>}
           <Button
