@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import type { Provider } from "@/lib/mock-data";
 import { useBookingStore } from "@/store/booking-store";
-import { BOOKING_PROVIDER_DISPLAY_NAME } from "@/lib/appConstant";
 import { CheckCircle2 } from "lucide-react";
 
 interface BookDoneStepProps {
@@ -27,7 +26,7 @@ export function BookDoneStep({ provider }: BookDoneStepProps) {
         Appointment requested
       </h1>
       <p className="text-slate-600 mb-8">
-        Your appointment with {BOOKING_PROVIDER_DISPLAY_NAME} has been submitted. The practice will confirm shortly.
+        Your appointment with {provider.Name} has been submitted. The practice will confirm shortly.
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <Button
