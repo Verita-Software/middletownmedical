@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Image from "next/image";
+import Link from "next/link";
 import { MapPin, Car, Phone } from "lucide-react";
 
 function RichTextSection({
@@ -128,14 +129,34 @@ function ProviderHighlightSection(
               <p key={idx}>{p}</p>
             ))}
           </div>
-          {"profileUrl" in section && section.profileUrl && (
-            <a
-              href={section.profileUrl}
-              className="mt-4 inline-block text-[#49A3DA] font-medium hover:underline"
-            >
-              View Full Profile
-            </a>
-          )}
+          {"profileUrl" in section &&
+            section.profileUrl &&
+            (() => {
+              const url = section.profileUrl as string;
+              const slug = url.includes("/medical-staff/")
+                ? url.split("/").pop()
+                : null;
+              const href = slug
+                ? `/providers/${encodeURIComponent(slug)}`
+                : url;
+              return slug ? (
+                <Link
+                  href={href}
+                  className="mt-4 inline-block text-[#49A3DA] font-medium hover:underline"
+                >
+                  View Full Profile
+                </Link>
+              ) : (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-[#49A3DA] font-medium hover:underline"
+                >
+                  View Full Profile
+                </a>
+              );
+            })()}
         </div>
       </div>
     </section>
@@ -343,6 +364,59 @@ function LocationCardsSection(
   );
 }
 
+function PromoBannerSection(
+  section: Extract<ServiceSection, { type: "promoBanner" }>,
+) {
+  return (
+    <section className="mb-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div className="flex flex-col md:flex-row">
+        <div className="flex min-w-0 flex-1 flex-col md:flex-row">
+          <div
+            className="h-2 w-full shrink-0 self-stretch bg-[#c41e3a] md:h-auto md:w-2"
+            aria-hidden
+          />
+          <div className="flex min-w-0 flex-1 flex-col justify-center px-6 py-6 md:py-8">
+            <h2 className="text-2xl font-bold uppercase tracking-tight text-[#c41e3a] md:text-3xl">
+              {section.heading}
+            </h2>
+            {section.subheading && (
+              <p className="mt-2 text-base font-medium text-slate-700 md:text-lg">
+                {section.subheading}
+              </p>
+            )}
+            {(section.brandName || section.phone) && (
+              <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-600">
+                {section.brandName && (
+                  <span className="font-semibold text-[#002147]">
+                    {section.brandName}
+                  </span>
+                )}
+                {section.phone && (
+                  <a
+                    href={`tel:${section.phone.replace(/[^0-9]/g, "")}`}
+                    className="font-bold text-[#b5097b] hover:underline"
+                  >
+                    {section.phone}
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="relative h-48 w-full shrink-0 md:h-56 md:w-72">
+          <Image
+            src={section.imageUrl}
+            alt={section.imageAlt ?? section.heading}
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 288px"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function ServiceSections({ sections }: { sections: ServiceSection[] }) {
   return (
     <>
@@ -370,6 +444,9 @@ export function ServiceSections({ sections }: { sections: ServiceSection[] }) {
         }
         if (section.type === "locationCards") {
           return <LocationCardsSection key={idx} {...section} />;
+        }
+        if (section.type === "promoBanner") {
+          return <PromoBannerSection key={idx} {...section} />;
         }
         return null;
       })}

@@ -66,6 +66,17 @@ export type ServiceSection =
         phone?: string;
         hours?: string;
       }[];
+    }
+  | {
+      type: "promoBanner";
+      /** Main headline (e.g. "YOUR HEART SHOULD NEVER WAIT.") */
+      heading: string;
+      /** Subtext (e.g. "Same-day Cardiology appointments now available.") */
+      subheading?: string;
+      phone?: string;
+      brandName?: string;
+      imageUrl: string;
+      imageAlt?: string;
     };
 
 export type ServiceContent = {
@@ -820,6 +831,373 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
       {
         type: "richText",
         body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Addiction_Medicine: {
+    slug: "Addiction_Medicine",
+    title: "Addiction Medicine",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2022/11/addiction.jpg",
+    heroImageAlt: "Addiction medicine and recovery",
+    providerFilter: { specialties: ["Addiction Medicine"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Addiction has many faces",
+        body: [
+          "Middletown Medical, PC is here to help. In the United States, 21.7 million people need or receive treatment for substance use disorders. Substance-related disorders can involve alcohol, IV drugs, prescription medications, and more. They are chronic, complex diseases that require prolonged, intensive treatment.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "At Middletown Medical, PC, Lori Musorrafiti, FNP-BC is a skilled Addiction Management specialist. Her experience includes opioid use disorder, including dispensing the prescription Suboxone, and providing education and counseling related to opioid use disorder and pain medication management.",
+          "Explore your options for addiction and medication management: schedule an appointment with Lori Musorrafiti, FNP-BC today. Appointments available in Middletown.",
+        ],
+      },
+      {
+        type: "providerHighlight",
+        heading: "Meet our addiction medicine provider",
+        name: "Lori Musorrafiti, FNP-BC",
+        title: "Family Medicine · Addiction Medicine",
+        imageUrl:
+          "https://dashboard.middletownmedical.com/storage/profile_pictures/826469e9-50ab-4e75-8939-646bb2b74996.png",
+        profileUrl:
+          "https://middletownmedical.com/medical-staff/Musorrafiti_Lori",
+        bio: [
+          "Lori Musorrafiti, FNP-BC is a family nurse practitioner with over 10 years of experience in the medical field, board-certified by the American Nurses Credentialing Center (ANCC).",
+          "Her specialized experience has included Endocrinology, Emergency Medicine, Addiction Medicine, Primary Care, Gynecology, and more. She sees patients at 111 Maltese Drive - Medical Campus.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  "Allergy_&_Immunology": {
+    slug: "Allergy_&_Immunology",
+    title: "Allergy & Immunology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Allergy-BG-wr.jpg",
+    heroImageAlt: "Allergy and immunology care",
+    providerFilter: { specialties: ["Allergy"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Allergy & Immunology",
+        body: [
+          "Our board-certified physician has special insight in the assessment and treatment of common and rare allergies and allergic diseases including asthma, hay fever, sinusitis as well as bee sting and food and drug allergies. Under the care of our physician and his professional staff, you will receive the most up-to-the-minute treatment and therapy options to improve your quality of life.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Behavioral_Health: {
+    slug: "Behavioral_Health",
+    title: "Behavioral Health",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2024/01/AdobeStock_635108385.jpg",
+    heroImageAlt: "Behavioral health and wellness",
+    providerFilter: { specialties: ["Behavior Health"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Behavioral Health at Middletown Medical",
+        body: [
+          "Empowering Minds, Transforming Lives.",
+          "Middletown Medical's Behavioral Health Services have expanded to include Transcranial Magnetic Stimulation (TMS), an innovative treatment for a range of mental health conditions. Our dedicated team of professionals is here to support your journey to wellness.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Location",
+        locations: [
+          {
+            name: "Middletown Medical Behavioral Health",
+            addressLine1: "419 East Main Street, Suite 307",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Introducing Transcranial Magnetic Stimulation (TMS)",
+        body: [
+          "TMS is a non-invasive, FDA-approved therapy used to treat depression and other mental health disorders. It uses magnetic fields to stimulate nerve cells in the brain, offering hope for many who have not responded fully to medication or therapy alone.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Key benefits of TMS",
+        body: [
+          "Non-invasive with minimal side effects.",
+          "FDA approved for depression treatment.",
+          "No anesthesia or sedation required.",
+          "Outpatient procedure — patients can return to daily activities immediately.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Start your journey with us",
+        body: [
+          "We welcome patients for TMS therapy and comprehensive behavioral health care. Your mental health journey is unique, and at Middletown Medical we are committed to providing personalized care tailored to your individual needs. Schedule your appointment by phone or chat to get started.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Cardiology: {
+    slug: "Cardiology",
+    title: "Cardiology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Cardiology-BG-wr.jpg",
+    heroImageAlt: "Cardiology and heart care",
+    providerFilter: { specialties: ["Cardiology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our cardiology team",
+        body: [
+          "Our board-certified cardiologists bring expertise in interventional cardiology, cardiovascular disease, echocardiography, nuclear cardiology, and more. We create personalized treatment plans and use state-of-the-art diagnostic procedures and equipment. Our office offers nuclear stress testing, echocardiography, Holter monitoring, BP monitoring, and T-wave alternans testing.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+      {
+        type: "promoBanner",
+        heading: "YOUR HEART SHOULD NEVER WAIT.",
+        subheading: "Same-day Cardiology appointments now available.",
+        phone: "(845) 342-4774",
+        brandName: "MIDDLETOWN MEDICAL",
+        imageUrl:
+          "https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=800&auto=format&fit=crop",
+        imageAlt: "Cardiology care at Middletown Medical",
+      },
+      {
+        type: "richText",
+        heading:
+          "Peripheral arterial disease (PAD) — a serious medical condition",
+        body: [
+          "Often asymptomatic, underdiagnosed, and untreated.",
+          "PAD affects 8–12 million Americans. About 18% of the Medicare population has PAD, and 66% of all PAD patients have no symptoms. PAD increases the risk of cardiovascular disease and events. Monitoring for risk factors and symptoms is essential.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Risk factors",
+        body: [
+          "Smokers · Age 50+ · Diabetes · High blood pressure · High cholesterol · Obesity · Chronic kidney disease · Family history of heart disease, heart attack, or stroke · History of COVID-19.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Symptoms",
+        body: [
+          "Muscle pain and cramping in legs (especially with activity), non-healing wounds, diabetic foot ulcers, discomfort in feet and legs, change in leg appearance or temperature.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "No risk of losing your patients",
+        body: [
+          "Referred patients are treated by our vascular specialists and returned to your care.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Easy scheduling",
+        body: [
+          "Quick and easy scheduling process to help avoid risk of admission or increased risk for amputation.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Safe, comforting outpatient center",
+        body: [
+          "Board-certified experts perform minimally invasive procedures in our fully equipped facility. You can rely on our team to provide high-quality, compassionate care before, during, and after each procedure without a hospital stay.",
+          "If diagnosed early, PAD is treatable; if not, PAD can lead to amputation or worse. Patients with ulcers and wounds should be referred immediately as they may already have critical limb ischemia (CLI). Minimally invasive, image-guided procedures improve patients' comfort, safety, and outcomes. We prevent more than 80% of amputations in patients who were told it was the only option.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Dermatology: {
+    slug: "Dermatology",
+    title: "Dermatology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/12/Dermatology-BG-WR.jpg",
+    heroImageAlt: "Dermatology and skin care",
+    providerFilter: { specialties: ["Dermatology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Dermatology at Middletown Medical",
+        body: [
+          "Comprehensive Skin Care for All Ages.",
+          "The Dermatology team at Middletown Medical provides expert care for conditions affecting the skin, hair, and nails. Our experienced providers offer personalized, evidence-based treatment plans for patients of all ages, focusing on both prevention and long-term skin health.",
+          "Whether you are managing a chronic skin condition, noticing changes in your skin, or seeking routine screenings, our team is here to support you with compassionate, high-quality care.",
+          "Explore our full range of advanced skin care solutions by visiting our dedicated dermatology website — MMPC Skincare.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What to expect at your dermatology visit",
+        body: [
+          "Your visit begins with a thorough evaluation of your skin concerns. Our providers will review your medical history, perform a detailed skin examination, and discuss treatment options tailored to your needs.",
+          "Follow-up care and ongoing management are an important part of maintaining healthy skin, and our team is committed to supporting you beyond your initial visit.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Dermatology services are offered at three convenient Middletown Medical locations.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "419 East Main Street, Suite 302",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 2A",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+          {
+            name: "Warwick",
+            addressLine1: "200 Ronald Reagan Boulevard",
+            addressLine2: "Warwick, NY 10990",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Schedule your dermatology appointment",
+        body: [
+          "Schedule by phone at (845) 421-7040 or visit mm.care/chat for online scheduling options.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Conditions treated",
+        body: [
+          "Middletown Medical's Dermatology Department specializes in treating a wide range of unusual and complex conditions and diseases, including: autoimmune diseases, basal cell carcinoma, blistering (bullous) diseases, canker sore, chronic hives, hyperhidrosis, itchy skin (pruritus), keloids, lichen planus, lip cancer, melanoma, moles, panniculitis, pigmentation disorders, polymorphous light eruption, porphyria cutanea tarda, psoriasis, skin cancer, and vitiligo.",
+        ],
+      },
+    ],
+  },
+  "Diabetes_In_Children_&_Teens": {
+    slug: "Diabetes_In_Children_&_Teens",
+    title: "Diabetes In Children & Teens",
+    subtitle: "At Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/06/endocrinology-cover-image.jpg",
+    heroImageAlt: "Children and teens health",
+    providerFilter: {
+      specialties: ["Endocrinology", "Pediatrics", "Pediatric Endocrinology"],
+    },
+    sections: [
+      {
+        type: "richText",
+        heading: "Parents",
+        body: [
+          "Millions of people live with diabetes. While Type 1 and Type 2 are incurable, with the right treatment and an experienced healthcare team, your child can lead a long, healthy, and happy life.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What is Type 1 diabetes?",
+        body: [
+          "Type 1 diabetes is an autoimmune disease in which the pancreas stops producing insulin. Without insulin, the body cannot use sugar for energy, and blood sugar levels rise.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What are the warning signs of Type 1 diabetes?",
+        body: [
+          "Signs often develop quickly, over a matter of weeks. They can include: drowsiness or lethargy, extreme thirst, frequent urination, fruity odor on the breath, increased appetite, heavy or labored breathing, sudden weight loss, sudden vision changes, sugar in the urine, and stupor or unconsciousness.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Living with Type 1 diabetes",
+        body: [
+          "With proper care and disease management, people with Type 1 diabetes can live long, happy lives. Treatment and lifestyle choices are tailored to each patient with support from our team.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What is Type 2 diabetes?",
+        body: [
+          "Type 2 diabetes occurs when the pancreas makes insulin but the body cannot use it normally. Risk factors can include diet and a sedentary lifestyle; it is increasingly seen in children and teens.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What are the warning signs of Type 2 diabetes?",
+        body: [
+          "Symptoms often develop gradually and may be hard to notice; sometimes Type 2 is diagnosed during a routine physical. Signs can include: drowsiness or lethargy, extreme thirst, frequent urination, sudden vision changes, and non-healing sores or frequent infections.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Living with Type 2 diabetes",
+        body: [
+          "Treatment for Type 2 diabetes includes blood sugar monitoring, healthy eating, and regular exercise, and may be supplemented with insulin or other medications. As a child's body grows and changes, treatment is adjusted over time.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What should I do if I believe my child may have diabetes?",
+        body: [
+          "If you notice any of the signs or symptoms listed above, talk to your doctor. Middletown Medical's pediatric endocrinology team specializes in the diagnosis, treatment, and management of both Type 1 and Type 2 diabetes in children and teens.",
+        ],
+      },
+      {
+        type: "providerHighlight",
+        heading: "Your dedicated pediatric endocrinologist",
+        name: "Prajith Mepparambath, MD",
+        title: "Pediatric Endocrinology",
+        imageUrl:
+          "https://dashboard.middletownmedical.com/storage/profile_pictures/3ecdb4d2-4574-43cd-801b-2ee79c4531b8.png",
+        profileUrl:
+          "https://middletownmedical.com/medical-staff/Mepparambath_Prajith",
+        bio: [
+          "Dr. Prajith Mepparambath is a pediatric endocrinologist specializing in the acute and advanced care of pediatric endocrine patients, including diabetes, growth disorders, thyroid and adrenal disorders, and other endocrine conditions.",
+          "He sees patients at 35 Maltese Drive, Middletown. Schedule an appointment by phone or chat: (845) 342-4774 or mm.care/chat.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Learn more about our pediatric endocrinology services today: (845) 342-4774 or mm.care/chat.",
+        ],
       },
     ],
   },
