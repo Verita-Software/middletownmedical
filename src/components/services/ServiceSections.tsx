@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Car, Phone } from "lucide-react";
+import { MapPin, Car, Phone, Check } from "lucide-react";
 
 function RichTextSection({
   heading,
@@ -30,6 +30,29 @@ function RichTextSection({
           <p key={idx}>{p}</p>
         ))}
       </div>
+    </section>
+  );
+}
+
+function CheckListSection(
+  section: Extract<ServiceSection, { type: "checkList" }>,
+) {
+  return (
+    <section className="mb-10">
+      <h2 className="mb-4 text-2xl font-bold text-[#002147] md:text-3xl">
+        {section.heading}
+      </h2>
+      <ul className="space-y-2 text-slate-700 leading-relaxed">
+        {section.items.map((item, idx) => (
+          <li key={idx} className="flex items-start gap-2">
+            <Check
+              className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600"
+              aria-hidden
+            />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -447,6 +470,9 @@ export function ServiceSections({ sections }: { sections: ServiceSection[] }) {
         }
         if (section.type === "promoBanner") {
           return <PromoBannerSection key={idx} {...section} />;
+        }
+        if (section.type === "checkList") {
+          return <CheckListSection key={idx} {...section} />;
         }
         return null;
       })}
