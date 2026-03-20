@@ -66,6 +66,22 @@ export type ServiceSection =
         phone?: string;
         hours?: string;
       }[];
+    }
+  | {
+      type: "promoBanner";
+      /** Main headline (e.g. "YOUR HEART SHOULD NEVER WAIT.") */
+      heading: string;
+      /** Subtext (e.g. "Same-day Cardiology appointments now available.") */
+      subheading?: string;
+      phone?: string;
+      brandName?: string;
+      imageUrl: string;
+      imageAlt?: string;
+    }
+  | {
+      type: "checkList";
+      heading: string;
+      items: string[];
     };
 
 export type ServiceContent = {
@@ -820,6 +836,1230 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
       {
         type: "richText",
         body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Addiction_Medicine: {
+    slug: "Addiction_Medicine",
+    title: "Addiction Medicine",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2022/11/addiction.jpg",
+    heroImageAlt: "Addiction medicine and recovery",
+    providerFilter: { specialties: ["Addiction Medicine"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Addiction has many faces",
+        body: [
+          "Middletown Medical, PC is here to help. In the United States, 21.7 million people need or receive treatment for substance use disorders. Substance-related disorders can involve alcohol, IV drugs, prescription medications, and more. They are chronic, complex diseases that require prolonged, intensive treatment.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "At Middletown Medical, PC, Lori Musorrafiti, FNP-BC is a skilled Addiction Management specialist. Her experience includes opioid use disorder, including dispensing the prescription Suboxone, and providing education and counseling related to opioid use disorder and pain medication management.",
+          "Explore your options for addiction and medication management: schedule an appointment with Lori Musorrafiti, FNP-BC today. Appointments available in Middletown.",
+        ],
+      },
+      {
+        type: "providerHighlight",
+        heading: "Meet our addiction medicine provider",
+        name: "Lori Musorrafiti, FNP-BC",
+        title: "Family Medicine · Addiction Medicine",
+        imageUrl:
+          "https://dashboard.middletownmedical.com/storage/profile_pictures/826469e9-50ab-4e75-8939-646bb2b74996.png",
+        profileUrl:
+          "https://middletownmedical.com/medical-staff/Musorrafiti_Lori",
+        bio: [
+          "Lori Musorrafiti, FNP-BC is a family nurse practitioner with over 10 years of experience in the medical field, board-certified by the American Nurses Credentialing Center (ANCC).",
+          "Her specialized experience has included Endocrinology, Emergency Medicine, Addiction Medicine, Primary Care, Gynecology, and more. She sees patients at 111 Maltese Drive - Medical Campus.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  "Allergy_&_Immunology": {
+    slug: "Allergy_&_Immunology",
+    title: "Allergy & Immunology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Allergy-BG-wr.jpg",
+    heroImageAlt: "Allergy and immunology care",
+    providerFilter: { specialties: ["Allergy"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Allergy & Immunology",
+        body: [
+          "Our board-certified physician has special insight in the assessment and treatment of common and rare allergies and allergic diseases including asthma, hay fever, sinusitis as well as bee sting and food and drug allergies. Under the care of our physician and his professional staff, you will receive the most up-to-the-minute treatment and therapy options to improve your quality of life.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Behavioral_Health: {
+    slug: "Behavioral_Health",
+    title: "Behavioral Health",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2024/01/AdobeStock_635108385.jpg",
+    heroImageAlt: "Behavioral health and wellness",
+    providerFilter: { specialties: ["Behavior Health"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Behavioral Health at Middletown Medical",
+        body: [
+          "Empowering Minds, Transforming Lives.",
+          "Middletown Medical's Behavioral Health Services have expanded to include Transcranial Magnetic Stimulation (TMS), an innovative treatment for a range of mental health conditions. Our dedicated team of professionals is here to support your journey to wellness.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Location",
+        locations: [
+          {
+            name: "Middletown Medical Behavioral Health",
+            addressLine1: "419 East Main Street, Suite 307",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Introducing Transcranial Magnetic Stimulation (TMS)",
+        body: [
+          "TMS is a non-invasive, FDA-approved therapy used to treat depression and other mental health disorders. It uses magnetic fields to stimulate nerve cells in the brain, offering hope for many who have not responded fully to medication or therapy alone.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Key benefits of TMS",
+        body: [
+          "Non-invasive with minimal side effects.",
+          "FDA approved for depression treatment.",
+          "No anesthesia or sedation required.",
+          "Outpatient procedure — patients can return to daily activities immediately.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Start your journey with us",
+        body: [
+          "We welcome patients for TMS therapy and comprehensive behavioral health care. Your mental health journey is unique, and at Middletown Medical we are committed to providing personalized care tailored to your individual needs. Schedule your appointment by phone or chat to get started.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Cardiology: {
+    slug: "Cardiology",
+    title: "Cardiology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Cardiology-BG-wr.jpg",
+    heroImageAlt: "Cardiology and heart care",
+    providerFilter: { specialties: ["Cardiology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our cardiology team",
+        body: [
+          "Our board-certified cardiologists bring expertise in interventional cardiology, cardiovascular disease, echocardiography, nuclear cardiology, and more. We create personalized treatment plans and use state-of-the-art diagnostic procedures and equipment. Our office offers nuclear stress testing, echocardiography, Holter monitoring, BP monitoring, and T-wave alternans testing.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+      {
+        type: "promoBanner",
+        heading: "YOUR HEART SHOULD NEVER WAIT.",
+        subheading: "Same-day Cardiology appointments now available.",
+        phone: "(845) 342-4774",
+        brandName: "MIDDLETOWN MEDICAL",
+        imageUrl:
+          "https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=800&auto=format&fit=crop",
+        imageAlt: "Cardiology care at Middletown Medical",
+      },
+      {
+        type: "richText",
+        heading:
+          "Peripheral arterial disease (PAD) — a serious medical condition",
+        body: [
+          "Often asymptomatic, underdiagnosed, and untreated.",
+          "PAD affects 8–12 million Americans. About 18% of the Medicare population has PAD, and 66% of all PAD patients have no symptoms. PAD increases the risk of cardiovascular disease and events. Monitoring for risk factors and symptoms is essential.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Risk factors",
+        body: [
+          "Smokers · Age 50+ · Diabetes · High blood pressure · High cholesterol · Obesity · Chronic kidney disease · Family history of heart disease, heart attack, or stroke · History of COVID-19.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Symptoms",
+        body: [
+          "Muscle pain and cramping in legs (especially with activity), non-healing wounds, diabetic foot ulcers, discomfort in feet and legs, change in leg appearance or temperature.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "No risk of losing your patients",
+        body: [
+          "Referred patients are treated by our vascular specialists and returned to your care.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Easy scheduling",
+        body: [
+          "Quick and easy scheduling process to help avoid risk of admission or increased risk for amputation.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Safe, comforting outpatient center",
+        body: [
+          "Board-certified experts perform minimally invasive procedures in our fully equipped facility. You can rely on our team to provide high-quality, compassionate care before, during, and after each procedure without a hospital stay.",
+          "If diagnosed early, PAD is treatable; if not, PAD can lead to amputation or worse. Patients with ulcers and wounds should be referred immediately as they may already have critical limb ischemia (CLI). Minimally invasive, image-guided procedures improve patients' comfort, safety, and outcomes. We prevent more than 80% of amputations in patients who were told it was the only option.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Dermatology: {
+    slug: "Dermatology",
+    title: "Dermatology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/12/Dermatology-BG-WR.jpg",
+    heroImageAlt: "Dermatology and skin care",
+    providerFilter: { specialties: ["Dermatology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Dermatology at Middletown Medical",
+        body: [
+          "Comprehensive Skin Care for All Ages.",
+          "The Dermatology team at Middletown Medical provides expert care for conditions affecting the skin, hair, and nails. Our experienced providers offer personalized, evidence-based treatment plans for patients of all ages, focusing on both prevention and long-term skin health.",
+          "Whether you are managing a chronic skin condition, noticing changes in your skin, or seeking routine screenings, our team is here to support you with compassionate, high-quality care.",
+          "Explore our full range of advanced skin care solutions by visiting our dedicated dermatology website — MMPC Skincare.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What to expect at your dermatology visit",
+        body: [
+          "Your visit begins with a thorough evaluation of your skin concerns. Our providers will review your medical history, perform a detailed skin examination, and discuss treatment options tailored to your needs.",
+          "Follow-up care and ongoing management are an important part of maintaining healthy skin, and our team is committed to supporting you beyond your initial visit.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Dermatology services are offered at three convenient Middletown Medical locations.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "419 East Main Street, Suite 302",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 2A",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+          {
+            name: "Warwick",
+            addressLine1: "200 Ronald Reagan Boulevard",
+            addressLine2: "Warwick, NY 10990",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Schedule your dermatology appointment",
+        body: [
+          "Schedule by phone at (845) 421-7040 or visit mm.care/chat for online scheduling options.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Conditions treated",
+        body: [
+          "Middletown Medical's Dermatology Department specializes in treating a wide range of unusual and complex conditions and diseases, including: autoimmune diseases, basal cell carcinoma, blistering (bullous) diseases, canker sore, chronic hives, hyperhidrosis, itchy skin (pruritus), keloids, lichen planus, lip cancer, melanoma, moles, panniculitis, pigmentation disorders, polymorphous light eruption, porphyria cutanea tarda, psoriasis, skin cancer, and vitiligo.",
+        ],
+      },
+    ],
+  },
+  "Diabetes_In_Children_&_Teens": {
+    slug: "Diabetes_In_Children_&_Teens",
+    title: "Diabetes In Children & Teens",
+    subtitle: "At Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/06/endocrinology-cover-image.jpg",
+    heroImageAlt: "Children and teens health",
+    providerFilter: {
+      specialties: ["Endocrinology", "Pediatrics", "Pediatric Endocrinology"],
+    },
+    sections: [
+      {
+        type: "richText",
+        heading: "Parents",
+        body: [
+          "Millions of people live with diabetes. While Type 1 and Type 2 are incurable, with the right treatment and an experienced healthcare team, your child can lead a long, healthy, and happy life.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What is Type 1 diabetes?",
+        body: [
+          "Type 1 diabetes is an autoimmune disease in which the pancreas stops producing insulin. Without insulin, the body cannot use sugar for energy, and blood sugar levels rise.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What are the warning signs of Type 1 diabetes?",
+        body: [
+          "Signs often develop quickly, over a matter of weeks. They can include: drowsiness or lethargy, extreme thirst, frequent urination, fruity odor on the breath, increased appetite, heavy or labored breathing, sudden weight loss, sudden vision changes, sugar in the urine, and stupor or unconsciousness.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Living with Type 1 diabetes",
+        body: [
+          "With proper care and disease management, people with Type 1 diabetes can live long, happy lives. Treatment and lifestyle choices are tailored to each patient with support from our team.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What is Type 2 diabetes?",
+        body: [
+          "Type 2 diabetes occurs when the pancreas makes insulin but the body cannot use it normally. Risk factors can include diet and a sedentary lifestyle; it is increasingly seen in children and teens.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What are the warning signs of Type 2 diabetes?",
+        body: [
+          "Symptoms often develop gradually and may be hard to notice; sometimes Type 2 is diagnosed during a routine physical. Signs can include: drowsiness or lethargy, extreme thirst, frequent urination, sudden vision changes, and non-healing sores or frequent infections.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Living with Type 2 diabetes",
+        body: [
+          "Treatment for Type 2 diabetes includes blood sugar monitoring, healthy eating, and regular exercise, and may be supplemented with insulin or other medications. As a child's body grows and changes, treatment is adjusted over time.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What should I do if I believe my child may have diabetes?",
+        body: [
+          "If you notice any of the signs or symptoms listed above, talk to your doctor. Middletown Medical's pediatric endocrinology team specializes in the diagnosis, treatment, and management of both Type 1 and Type 2 diabetes in children and teens.",
+        ],
+      },
+      {
+        type: "providerHighlight",
+        heading: "Your dedicated pediatric endocrinologist",
+        name: "Prajith Mepparambath, MD",
+        title: "Pediatric Endocrinology",
+        imageUrl:
+          "https://dashboard.middletownmedical.com/storage/profile_pictures/3ecdb4d2-4574-43cd-801b-2ee79c4531b8.png",
+        profileUrl:
+          "https://middletownmedical.com/medical-staff/Mepparambath_Prajith",
+        bio: [
+          "Dr. Prajith Mepparambath is a pediatric endocrinologist specializing in the acute and advanced care of pediatric endocrine patients, including diabetes, growth disorders, thyroid and adrenal disorders, and other endocrine conditions.",
+          "He sees patients at 35 Maltese Drive, Middletown. Schedule an appointment by phone or chat: (845) 342-4774 or mm.care/chat.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Learn more about our pediatric endocrinology services today: (845) 342-4774 or mm.care/chat.",
+        ],
+      },
+    ],
+  },
+  Dietitian_Nutritionist: {
+    slug: "Dietitian_Nutritionist",
+    title: "Nutrition & Diabetes Care",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2400&auto=format&fit=crop",
+    heroImageAlt: "Nutrition and diabetes care",
+    providerFilter: { specialties: ["Dietitian Nutritionist"] },
+    sections: [
+      {
+        type: "richText",
+        body: [
+          "At Middletown Medical, our dedicated team of dietitians and diabetes care specialists is here to help you take control of your health through personalized guidance, education, and support. Whether you're managing diabetes, working toward healthier eating habits, or looking for nutrition solutions tailored to your lifestyle, we're here for you every step of the way.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Meet our nutrition & diabetes care team",
+        body: [
+          "With over 30 years of experience, our team has helped thousands of patients take control of their health. We specialize in diabetes management, nutrition education, and empowering patients with practical tools to live healthier lives. Our registered dietitian nutritionists and certified specialists provide evidence-based strategies for weight management, cardiovascular health, and lifestyle changes that fit each patient's unique needs.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Our expanding diabetes nutrition program",
+        body: [
+          "Our comprehensive diabetes care program is designed to give you the tools and knowledge you need to live well with diabetes. Services include: diabetes self-management education; one-on-one nutrition counseling; personalized meal planning and goal setting; support for type 1, type 2, and gestational diabetes; weight management and lifestyle strategies; and ongoing follow-up and support.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Why choose Middletown Medical for nutrition & diabetes care?",
+        body: [
+          "Experienced team with specialized training in diabetes and medical nutrition therapy. Personalized, patient-centered care tailored to your goals. Support for managing chronic conditions and preventive health. Coordinated care with your primary care provider and specialists.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Endocrinology: {
+    slug: "Endocrinology",
+    title: "Endocrinology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2400&auto=format&fit=crop",
+    heroImageAlt: "Endocrinology and diabetes care",
+    providerFilter: { specialties: ["Endocrinology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "What is an endocrinologist?",
+        body: [
+          "Endocrinologists are doctors who specialize in treating disorders of the endocrine system, such as diabetes, hyperthyroidism, and many others. They are specialists of internal medicine or pediatrics.",
+          "Schedule an appointment by phone or chat: (845) 342-4774.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "The body's endocrine system includes the pancreas, the thyroid, parathyroid, pineal, hypothalamus, adrenal and pituitary glands, and the ovaries and testes. It also involves many other organs that respond to, modify, or metabolize hormones.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Middletown Medical's Division of Endocrinology, Diabetes, Metabolism & Nutrition is one of the best in the region, with locations in Chester, 60 Dunning Rd in Middletown, and 75 Maltese Dr. in Middletown. Our endocrinologists are trained to evaluate and treat people for endocrine and metabolic disorders. We also offer Pediatric endocrinology with a convenient schedule to help your children without hurting your schedule or theirs.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Chester",
+            addressLine1: "78 Brookside Avenue, Suite 143",
+            addressLine2: "Chester, NY 10918",
+            phone: "(845) 469-7900",
+          },
+          {
+            name: "Middletown — 60 Dunning Road",
+            addressLine1: "60 Dunning Road",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Middletown — 75 Maltese Drive",
+            addressLine1: "75 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Middletown Medical receives top ranks from patients just like you. Our team of dedicated endocrinologists evaluates the relationship between nutrition and human disease to improve and maintain a person's health and are trained to treat a wide range of endocrine disorders and dysfunctions. We offer a multidisciplinary approach to a person's medical problems, including:",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Conditions we treat",
+        body: [
+          "Diabetes.",
+          "Nutrition.",
+          "Osteoporosis and calcium disorders.",
+          "Pituitary, gonad, and adrenal disorders.",
+          "Thyroid disorders.",
+        ],
+      },
+      {
+        type: "richText",
+        heading:
+          "Peripheral Arterial Disease (PAD) – A Serious Medical Condition",
+        body: [
+          "Often Asymptomatic, Underdiagnosed, and Untreated.",
+          "PAD affects 8–12 million Americans | 18% of the Medicare population has PAD | 66% of all PAD patients have NO symptoms.",
+          "Patients who may have PAD should be tested—it's more than a pain in the leg.",
+          "PAD is associated with a 6 times higher risk for cardiovascular disease/event (heart attack/stroke). Watch for risk factors and symptoms in your patients.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Risk factors",
+        body: [
+          "Smokers · Age 50+ · Diabetics · High blood pressure · High cholesterol · Obesity · Chronic kidney disease · Family medical history (heart disease, heart attack or stroke) · History of COVID-19.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Symptoms",
+        body: [
+          "Muscle pain and cramping (often in the calf, buttocks or thigh; leg pain while walking or exercising).",
+          "Non-healing wounds (often on the legs and feet).",
+          "Diabetic foot ulcers (approx. 1/2 of diabetics have PAD).",
+          "Discomfort in feet and legs (coldness, numbness, feeling of heaviness).",
+          "Change in leg appearance (hair loss, slow hair growth, change in leg color, excessively shiny skin).",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "No risk of losing your patients",
+        body: [
+          "Referred patients are treated by our vascular specialists and returned to your care.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Easy scheduling",
+        body: [
+          "Quick and easy scheduling process to help avoid risk of an admission or increased risk for amputation.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Safe, comforting outpatient center",
+        body: [
+          "Board-certified experts perform minimally invasive procedures in our fully equipped facility.",
+          "You can rely on our team to provide high quality, compassionate care before, during and after each procedure without a hospital stay.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "If diagnosed early, PAD is treatable; if not, PAD can lead to amputation, even death.",
+          "Patients with ulcers and wounds should be referred immediately as they may already have critical limb ischemia (CLI), which can lead to amputation. Minimally invasive, image-guided procedures improve patients' comfort, safety and outcomes.",
+          "We prevent more than 80% of amputations in patients who were told it was the only option.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: (845) 342-4774."],
+      },
+    ],
+  },
+  Gastroenterology: {
+    slug: "Gastroenterology",
+    title: "Gastroenterology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Gastro-BG-wr2.jpg",
+    heroImageAlt: "Gastroenterology at Middletown Medical",
+    providerFilter: { specialties: ["Gastroenterology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Gastroenterology Team",
+        body: [
+          "The board-certified gastroenterologists and advanced practice providers at Middletown Medical provide comprehensive care for conditions affecting the digestive system. From colon cancer screening and Crohn's disease to Barrett's esophagus, ulcers, and GERD, our team offers advanced diagnostics and treatment in a caring environment.",
+          "Our state-of-the-art endoscopy suite supports colonoscopy, upper endoscopy, and other procedures so you can get the care you need close to home.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Port Jervis",
+            addressLine1: "100 Pike Street",
+            addressLine2: "Port Jervis, NY 12771",
+            phone: "(845) 858-8000",
+          },
+        ],
+      },
+    ],
+  },
+  Gynecology: {
+    slug: "Gynecology",
+    title: "Gynecology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/ob-BG.jpg",
+    heroImageAlt: "Gynecology at Middletown Medical",
+    providerFilter: { specialties: ["Gynecology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Gynecology Team",
+        body: [
+          "Our board-certified gynecologists provide care for women throughout their lives in a caring, comforting environment. From annual exams and preventive care to early detection and treatment of conditions, we are committed to supporting your health at every stage.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "richText",
+        heading: "Community and care",
+        body: [
+          "The staff at our Gynecology office in Middletown dyed their hair pink in support of Breast Cancer Awareness month.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "60 Dunning Road – Gynecology, Suite 3",
+            addressLine1: "60 Dunning Road, Suite 3",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+    ],
+  },
+  "Hematology_&_Oncology": {
+    slug: "Hematology_&_Oncology",
+    title: "Hematology & Oncology",
+    subtitle: "Treating Patients. Beating Cancer.",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/oncology-BG-wr.jpg",
+    heroImageAlt: "Hematology and oncology care",
+    providerFilter: {
+      specialties: ["Hematology", "Oncology"],
+    },
+    sections: [
+      {
+        type: "richText",
+        heading: "Comprehensive Care and Support",
+        body: [
+          "Welcome to the Hematology & Oncology Department at Middletown Medical. Our dedicated team of compassionate physicians, nurses, and support staff provides comprehensive, personalized, and evidence-based care for patients of all ages.",
+          "From blood disorders to various types of cancer, we offer advanced diagnostics, treatment options, and a multidisciplinary approach to care. Our collaborative team works closely with other medical disciplines to develop tailored treatment plans. We also provide emotional support and resources for you and your loved ones.",
+          "Choose Middletown Medical for exceptional Hematology & Oncology care. We're honored to be part of your journey.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Request An Appointment",
+        body: [
+          "Make the first step towards relieving your pain. Call (845) 342-4774 or submit an online request to schedule your visit.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+  Intensive_Cardiac_Rehabilitation: {
+    slug: "Intensive_Cardiac_Rehabilitation",
+    title: "Intensive Cardiac Rehabilitation",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2026/01/cardiovascular-health-how-exercise-strengthens-your-heartnxxf.jpg",
+    heroImageAlt: "Intensive cardiac rehabilitation",
+    providerFilter: { specialties: ["Cardiology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Supporting Recovery, One Beat at a Time",
+        body: [
+          "Our program includes closely monitored exercise therapy, heart-healthy nutrition education, risk factor reduction and lifestyle coaching, and stress management with emotional support. At Middletown Medical, PC, we understand that heart recovery is personal. Every patient is unique, and our team is here to support your journey back to strength and health.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What Is Intensive Cardiac Rehabilitation?",
+        body: [
+          "Intensive Cardiac Rehabilitation is a comprehensive, medically supervised program designed for patients recovering from heart-related conditions or procedures. We focus on heart health, physical strength, nutrition, stress management, and lifestyle habits.",
+          "You'll work with our team on a customized exercise therapy plan, risk factor reduction, lifestyle coaching, and emotional support—all with an evidence-based approach tailored to your needs.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "How Our Team at Middletown Medical Can Help",
+        body: [
+          "Our dedicated, multidisciplinary team provides personalized care and works closely with your cardiologist and primary care provider. We offer individualized treatment plans, ongoing monitoring, and education to help every step of the way, creating a supportive and encouraging environment.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Schedule Your Appointment",
+        body: [
+          "Take the first step toward recovery today. Call 845-317-8139 to schedule your Intensive Cardiac Rehabilitation appointment at our Middletown location.",
+          "Appointments are available at our Middletown Office. Schedule an appointment by phone or chat: 845-317-8139.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Why Choose Middletown Medical, PC?",
+        body: [
+          "Comprehensive, personalized care.",
+          "Experienced cardiac rehabilitation specialists.",
+          "Collaborative, team-based approach.",
+          "Focus on long-term success.",
+          "Convenient access within a trusted multispecialty practice.",
+          "We're here to help you return to a stronger, healthier life. Stronger Hearts Start Here.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 317-8139",
+          },
+        ],
+      },
+    ],
+  },
+  Interventional_Gastroenterology: {
+    slug: "Interventional_Gastroenterology",
+    title: "Interventional Gastroenterology",
+    subtitle: "Appointments available at the Monticello Center",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Intter-gaso-BG-wr.jpg",
+    heroImageAlt: "Interventional gastroenterology at Middletown Medical",
+    providerFilter: { specialties: ["Gastroenterology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "What Is Gastroenterology?",
+        body: [
+          "Gastroenterology is the study of the normal function and diseases of the esophagus, stomach, small intestine, colon and rectum, pancreas, gallbladder, bile ducts, and liver.",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "What Conditions Are Treated?",
+        items: [
+          "Colon & rectal bleeding",
+          "Polyps",
+          "Cancer",
+          "Complications from bariatric surgery",
+          "Diseases of the esophagus",
+          "Gallbladder disease",
+          "Gastric stomach diseases",
+          "Gastroesophageal reflux disease (GERD)",
+          "Pancreatic diseases",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "What Procedures Are Available?",
+        items: [
+          "Endoscopic Ultrasonography (EUS)",
+          "Endoscopic Retrograde Cholangiopancreatography (ERCP)",
+          "Radiofrequency Ablation (RFA)",
+          "Gastrointestinal Endoscopic Mucosal Resection (EMR)",
+          "Enteroscopy",
+          "Endoscopic suturing",
+          "Endoscopic stenting",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Monticello",
+            facilityName: "Monticello Center",
+            addressLine1:
+              "32 Thompson Square (Thompson Square Mall / ShopRite Plaza)",
+            addressLine2: "Monticello, NY 12701",
+            phone: "(845) 791-5400",
+          },
+        ],
+      },
+    ],
+  },
+  Nephrology: {
+    slug: "Nephrology",
+    title: "Nephrology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2016/02/Drone-shot-Middletown-Location-during-Day.jpg",
+    heroImageAlt: "Nephrology at Middletown Medical",
+    providerFilter: { specialties: ["Nephrology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Nephrology Team",
+        body: [
+          "Our board-certified nephrologists are highly trained in all aspects of nephrology, including kidney disease and its causes. The focus of the practice is on the prevention, treatment, and management of hypertension and all types of kidney diseases. Our team of specialists is dedicated to improving the quality of life of those afflicted with kidney disease. We provide medical care to dialysis and kidney transplant patients as well.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+  Neurology: {
+    slug: "Neurology",
+    title: "Neurology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2016/02/Drone-shot-Middletown-Location-during-Day.jpg",
+    heroImageAlt: "Neurology at Middletown Medical",
+    providerFilter: { specialties: ["Neurology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Neurology Team",
+        body: [
+          "Our board-certified Neurologists have outstanding expertise in all areas of neurology, with special interests in stroke, multiple sclerosis, dementia, epilepsy, migraine & headaches, neurophysiology, neuroimaging, and sleep disorders. The members of our specially trained team have the ability to communicate effectively with you, helping to guide you through any medical issues with compassion and understanding.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "richText",
+        heading: "Headache Center",
+        body: [
+          "At our Headache Center, patients learn how to modify their lifestyle and living environment to suppress migraine development by learning to:",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "Headache Center approach",
+        items: [
+          "Identify triggers that may initiate the onset of a headache",
+          "Initiate activities and behaviors that reduce their risk of experiencing a headache",
+          "Anticipate an episode in time for prevention",
+          "Adopt coping methods for pain reduction when a headache does occur",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+  "Ophthalmology_/_Optometry": {
+    slug: "Ophthalmology_/_Optometry",
+    title: "Ophthalmology / Optometry",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2023/11/ophthalmology-MM.jpg",
+    heroImageAlt: "Ophthalmology and optometry at Middletown Medical",
+    providerFilter: {
+      specialties: ["Ophthalmology", "Optometry"],
+    },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Ophthalmology / Optometry Team",
+        body: [
+          "Welcome to Middletown Medical's Ophthalmology / Optometry Services, dedicated to excellent eye care. Our department offers comprehensive services including routine eye exams, advanced diagnostics, and treatment for various eye conditions. Our experienced team uses the latest technology to ensure personalized care, whether you need glasses or treatment for conditions like glaucoma or cataracts.",
+          "At Middletown Medical, we focus on individualized treatment plans and state-of-the-art equipment for accurate diagnosis and effective treatment. We believe in educating our patients about their eye health, helping you make informed decisions. Trust us for a clearer vision and a brighter vision for the future.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "60 Dunning Road",
+            addressLine1: "60 Dunning Road",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+    ],
+  },
+  Orthopedics: {
+    slug: "Orthopedics",
+    title: "Orthopedics",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/orthopedic-BG-wr.jpg",
+    heroImageAlt: "Orthopedics at Middletown Medical",
+    providerFilter: { specialties: ["Orthopedics"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Orthopedics Team",
+        body: [
+          "Our board-certified Orthopedic Surgeons have over 45 years of combined experience and specialize in treatment of fractures, total joint, knee, and shoulder arthritis, as well as arthroscopic sports medicine. They look forward to helping you become pain-free!",
+          "All aspects of orthopedic care are treated with the latest information and technology available, improving your quality of life is our top priority.",
+          "Take the first step towards and to improve quality of life by requesting an appointment with one of our Certified Orthopedists today!",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "richText",
+        heading: "We are proud to welcome Dr. Barry S. Hyman",
+        body: [
+          "Dr. Hyman attended Columbia University where he earned a B.A. in Music/Pre Med, Masters' Degrees in Physical Education and Education and his Doctorate in Science Education. He went on to graduate from Columbia's College of Physicians and Surgeons where he received the New York Orthopedic Hospital Award.",
+          "Dr. Hyman completed his Orthopedic Residency at the Robert Wood Johnson Medical School, and his fellowship in Sports Medicine Orthopedic Surgery at the Johns Hopkins University.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+  Otolaryngology: {
+    slug: "Otolaryngology",
+    title: "Otolaryngology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Otolaryngology-BG-wr.jpg",
+    heroImageAlt: "Otolaryngology (ENT) at Middletown Medical",
+    providerFilter: { specialties: ["Otolaryngology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Otolaryngology Team",
+        body: [
+          "Otolaryngology is the oldest medical specialty in the United States. Otolaryngologists are physicians trained in the medical and surgical management and treatment of patients with diseases and disorders of the ear, nose, throat (ENT), and related structures of the head and neck.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "60 Dunning Road",
+            addressLine1: "60 Dunning Road",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+    ],
+  },
+  Pediatrics: {
+    slug: "Pediatrics",
+    title: "Pediatrics",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Pediatrics-BG-wr.jpg",
+    heroImageAlt: "Pediatrics at Middletown Medical",
+    providerFilter: { specialties: ["Pediatrics"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Pediatric Team",
+        body: [
+          "Pediatrics is a branch of medicine that deals with promoting the physical and psychological growth, development, safety and care of infants and children from birth through adolescence and the prevention of their diseases, injuries and complications. Our pediatric staff is dedicated to the health and well-being of your children.",
+          "Our pediatricians see patients in Middletown and Wurtsboro. Please call for a convenient appointment time.",
+        ],
+      },
+      {
+        type: "phoneCards",
+        heading: "Schedule an appointment by phone or chat:",
+        cards: [
+          { label: "Circleville Pediatrics Patients", phone: "(845) 888-2200" },
+          { label: "Dr. Reyes & Specialists", phone: "(845) 342-4774" },
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Circleville Pediatrics",
+            addressLine1: "2142 Route 302",
+            addressLine2: "Circleville, NY 10919",
+            phone: "(845) 888-2200",
+            services: [
+              {
+                title: "Office hours",
+                hours: [
+                  "Monday: 8:00 AM – 8:00 PM",
+                  "Tuesday: 8:00 AM – 6:00 PM",
+                  "Wednesday: 8:00 AM – 8:00 PM",
+                  "Thursday: 8:00 AM – 6:00 PM",
+                  "Friday: 8:00 AM – 8:00 PM",
+                ],
+              },
+            ],
+          },
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Circleville Pediatrics is a division of Middletown Medical, providing comprehensive, compassionate care for infants, children, and adolescents. Our experienced pediatric team is committed to partnering with families to support every stage of a child's growth and development. We offer well child exams, same-day sick visits, immunizations, developmental screenings, behavioral health support, and adolescent care in a welcoming, family centered environment.",
+        ],
+      },
+    ],
+  },
+  "Pain_Management_&_Rehabilitation": {
+    slug: "Pain_Management_&_Rehabilitation",
+    title: "Pain Management & Rehabilitation",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Podiatry-BG-wr.jpg",
+    heroImageAlt: "Pain management and rehabilitation at Middletown Medical",
+    providerFilter: { specialties: ["Pain Management"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Pain Management & Rehabilitation Team",
+        body: [
+          "It is estimated that 21% of Adult Americans, or 34 million people, experience mild to moderate chronic pain to the degree that they seek relief from a physician.",
+          "The American Medical Association estimates that 10% of Americans are dealing with chronic pain. The National Institute of Health claims that 40 million Americans are unable to find relief for their pain which is chronic.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "richText",
+        heading: "What is Pain Management?",
+        body: [
+          "Pain management is the field that specializes in the evaluation, diagnosis, and treatment of pain. Our providers have advanced training that qualifies them as the best source of treatment for patients who are experiencing any type of pain due to illness or injury.",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "What symptoms would I see a Rheumatologist for?",
+        items: [
+          "Inflammation",
+          "Joint pain, stiffness or swelling",
+          "Rash",
+          "Sleep disturbance from pain",
+          "Toughness, tightening or hardening of the skin",
+          "Weakness or loss of mobility",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "How are rheumatic conditions diagnosed?",
+        body: [
+          "A physical exam and laboratory tests are common for diagnosing and treating rheumatic diseases. Your doctor may also order blood work, urine samples, or additional lab tests to confirm your diagnosis and ensure proper treatment:",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "Common tests and imaging",
+        items: [
+          "Biopsy",
+          "Magnetic resonance imaging (MRI)",
+          "Musculoskeletal (MSK) ultrasound",
+          "X-ray",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Treatments/Services Offered",
+        body: [
+          "Middletown Medical, PC offers comprehensive, individualized treatment plans. Your provider will evaluate you to determine the appropriate course of action for your condition, which will also include taking the following into consideration:",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "Considerations in your treatment plan",
+        items: [
+          "Diet changes",
+          "Exercise",
+          "Heat and cold therapy",
+          "Medication",
+          "Relaxation techniques",
+          "Muscle or joint treatments including braces, splints, canes, or walkers",
+          "Pain Management referrals",
+          "Physical Therapy referrals",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "Conditions/Injuries Treated",
+        items: [
+          "Ankylosing spondylitis and other spondyloarthropathies",
+          "Antiphospholipid syndrome",
+          "Arthritis",
+          "Autoinflammatory diseases",
+          "Behcet's disease",
+          "Bursitis",
+          "Carpal tunnel syndrome",
+          "Giant cell arteritis",
+          "Gout and pseudogout (also called calcium pyrophosphate deposition/cppd)",
+          "Granulomatosis with polyangiitis (Wegener's)",
+          "Inflammatory myopathies",
+          "Lupus (systemic lupus erythematosus)",
+          "Lyme disease",
+          "Osteoarthritis",
+          "Osteoporosis",
+          "Palindromic rheumatism",
+          "Polyarteritis nodosum",
+          "Polymyalgia rheumatica (PMR)",
+          "Polymyositis or dermatomyositis",
+          "Psoriatic arthritis",
+          "Raynaud's disease",
+          "Relapsing polychondritis",
+          "Retroperitoneal fibrosis",
+          "Rheumatoid arthritis",
+          "Sarcoidosis",
+          "Scleroderma",
+          "Sjogren's syndrome",
+          "Tendinitis",
+          "Vasculitis",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
       },
     ],
   },
