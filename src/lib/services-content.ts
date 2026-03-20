@@ -1637,6 +1637,432 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
       },
     ],
   },
+  Nephrology: {
+    slug: "Nephrology",
+    title: "Nephrology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2016/02/Drone-shot-Middletown-Location-during-Day.jpg",
+    heroImageAlt: "Nephrology at Middletown Medical",
+    providerFilter: { specialties: ["Nephrology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Nephrology Team",
+        body: [
+          "Our board-certified nephrologists are highly trained in all aspects of nephrology, including kidney disease and its causes. The focus of the practice is on the prevention, treatment, and management of hypertension and all types of kidney diseases. Our team of specialists is dedicated to improving the quality of life of those afflicted with kidney disease. We provide medical care to dialysis and kidney transplant patients as well.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+  Neurology: {
+    slug: "Neurology",
+    title: "Neurology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2016/02/Drone-shot-Middletown-Location-during-Day.jpg",
+    heroImageAlt: "Neurology at Middletown Medical",
+    providerFilter: { specialties: ["Neurology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Neurology Team",
+        body: [
+          "Our board-certified Neurologists have outstanding expertise in all areas of neurology, with special interests in stroke, multiple sclerosis, dementia, epilepsy, migraine & headaches, neurophysiology, neuroimaging, and sleep disorders. The members of our specially trained team have the ability to communicate effectively with you, helping to guide you through any medical issues with compassion and understanding.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "richText",
+        heading: "Headache Center",
+        body: [
+          "At our Headache Center, patients learn how to modify their lifestyle and living environment to suppress migraine development by learning to:",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "Headache Center approach",
+        items: [
+          "Identify triggers that may initiate the onset of a headache",
+          "Initiate activities and behaviors that reduce their risk of experiencing a headache",
+          "Anticipate an episode in time for prevention",
+          "Adopt coping methods for pain reduction when a headache does occur",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+  "Ophthalmology_/_Optometry": {
+    slug: "Ophthalmology_/_Optometry",
+    title: "Ophthalmology / Optometry",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2023/11/ophthalmology-MM.jpg",
+    heroImageAlt: "Ophthalmology and optometry at Middletown Medical",
+    providerFilter: {
+      specialties: ["Ophthalmology", "Optometry"],
+    },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Ophthalmology / Optometry Team",
+        body: [
+          "Welcome to Middletown Medical's Ophthalmology / Optometry Services, dedicated to excellent eye care. Our department offers comprehensive services including routine eye exams, advanced diagnostics, and treatment for various eye conditions. Our experienced team uses the latest technology to ensure personalized care, whether you need glasses or treatment for conditions like glaucoma or cataracts.",
+          "At Middletown Medical, we focus on individualized treatment plans and state-of-the-art equipment for accurate diagnosis and effective treatment. We believe in educating our patients about their eye health, helping you make informed decisions. Trust us for a clearer vision and a brighter vision for the future.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "60 Dunning Road",
+            addressLine1: "60 Dunning Road",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+    ],
+  },
+  Orthopedics: {
+    slug: "Orthopedics",
+    title: "Orthopedics",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/orthopedic-BG-wr.jpg",
+    heroImageAlt: "Orthopedics at Middletown Medical",
+    providerFilter: { specialties: ["Orthopedics"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Orthopedics Team",
+        body: [
+          "Our board-certified Orthopedic Surgeons have over 45 years of combined experience and specialize in treatment of fractures, total joint, knee, and shoulder arthritis, as well as arthroscopic sports medicine. They look forward to helping you become pain-free!",
+          "All aspects of orthopedic care are treated with the latest information and technology available, improving your quality of life is our top priority.",
+          "Take the first step towards and to improve quality of life by requesting an appointment with one of our Certified Orthopedists today!",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "richText",
+        heading: "We are proud to welcome Dr. Barry S. Hyman",
+        body: [
+          "Dr. Hyman attended Columbia University where he earned a B.A. in Music/Pre Med, Masters' Degrees in Physical Education and Education and his Doctorate in Science Education. He went on to graduate from Columbia's College of Physicians and Surgeons where he received the New York Orthopedic Hospital Award.",
+          "Dr. Hyman completed his Orthopedic Residency at the Robert Wood Johnson Medical School, and his fellowship in Sports Medicine Orthopedic Surgery at the Johns Hopkins University.",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+  Otolaryngology: {
+    slug: "Otolaryngology",
+    title: "Otolaryngology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Otolaryngology-BG-wr.jpg",
+    heroImageAlt: "Otolaryngology (ENT) at Middletown Medical",
+    providerFilter: { specialties: ["Otolaryngology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Otolaryngology Team",
+        body: [
+          "Otolaryngology is the oldest medical specialty in the United States. Otolaryngologists are physicians trained in the medical and surgical management and treatment of patients with diseases and disorders of the ear, nose, throat (ENT), and related structures of the head and neck.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "60 Dunning Road",
+            addressLine1: "60 Dunning Road",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+    ],
+  },
+  Pediatrics: {
+    slug: "Pediatrics",
+    title: "Pediatrics",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Pediatrics-BG-wr.jpg",
+    heroImageAlt: "Pediatrics at Middletown Medical",
+    providerFilter: { specialties: ["Pediatrics"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Pediatric Team",
+        body: [
+          "Pediatrics is a branch of medicine that deals with promoting the physical and psychological growth, development, safety and care of infants and children from birth through adolescence and the prevention of their diseases, injuries and complications. Our pediatric staff is dedicated to the health and well-being of your children.",
+          "Our pediatricians see patients in Middletown and Wurtsboro. Please call for a convenient appointment time.",
+        ],
+      },
+      {
+        type: "phoneCards",
+        heading: "Schedule an appointment by phone or chat:",
+        cards: [
+          { label: "Circleville Pediatrics Patients", phone: "(845) 888-2200" },
+          { label: "Dr. Reyes & Specialists", phone: "(845) 342-4774" },
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Circleville Pediatrics",
+            addressLine1: "2142 Route 302",
+            addressLine2: "Circleville, NY 10919",
+            phone: "(845) 888-2200",
+            services: [
+              {
+                title: "Office hours",
+                hours: [
+                  "Monday: 8:00 AM – 8:00 PM",
+                  "Tuesday: 8:00 AM – 6:00 PM",
+                  "Wednesday: 8:00 AM – 8:00 PM",
+                  "Thursday: 8:00 AM – 6:00 PM",
+                  "Friday: 8:00 AM – 8:00 PM",
+                ],
+              },
+            ],
+          },
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Circleville Pediatrics is a division of Middletown Medical, providing comprehensive, compassionate care for infants, children, and adolescents. Our experienced pediatric team is committed to partnering with families to support every stage of a child's growth and development. We offer well child exams, same-day sick visits, immunizations, developmental screenings, behavioral health support, and adolescent care in a welcoming, family centered environment.",
+        ],
+      },
+    ],
+  },
+  "Pain_Management_&_Rehabilitation": {
+    slug: "Pain_Management_&_Rehabilitation",
+    title: "Pain Management & Rehabilitation",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Podiatry-BG-wr.jpg",
+    heroImageAlt: "Pain management and rehabilitation at Middletown Medical",
+    providerFilter: { specialties: ["Pain Management"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Pain Management & Rehabilitation Team",
+        body: [
+          "It is estimated that 21% of Adult Americans, or 34 million people, experience mild to moderate chronic pain to the degree that they seek relief from a physician.",
+          "The American Medical Association estimates that 10% of Americans are dealing with chronic pain. The National Institute of Health claims that 40 million Americans are unable to find relief for their pain which is chronic.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "richText",
+        heading: "What is Pain Management?",
+        body: [
+          "Pain management is the field that specializes in the evaluation, diagnosis, and treatment of pain. Our providers have advanced training that qualifies them as the best source of treatment for patients who are experiencing any type of pain due to illness or injury.",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "What symptoms would I see a Rheumatologist for?",
+        items: [
+          "Inflammation",
+          "Joint pain, stiffness or swelling",
+          "Rash",
+          "Sleep disturbance from pain",
+          "Toughness, tightening or hardening of the skin",
+          "Weakness or loss of mobility",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "How are rheumatic conditions diagnosed?",
+        body: [
+          "A physical exam and laboratory tests are common for diagnosing and treating rheumatic diseases. Your doctor may also order blood work, urine samples, or additional lab tests to confirm your diagnosis and ensure proper treatment:",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "Common tests and imaging",
+        items: [
+          "Biopsy",
+          "Magnetic resonance imaging (MRI)",
+          "Musculoskeletal (MSK) ultrasound",
+          "X-ray",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Treatments/Services Offered",
+        body: [
+          "Middletown Medical, PC offers comprehensive, individualized treatment plans. Your provider will evaluate you to determine the appropriate course of action for your condition, which will also include taking the following into consideration:",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "Considerations in your treatment plan",
+        items: [
+          "Diet changes",
+          "Exercise",
+          "Heat and cold therapy",
+          "Medication",
+          "Relaxation techniques",
+          "Muscle or joint treatments including braces, splints, canes, or walkers",
+          "Pain Management referrals",
+          "Physical Therapy referrals",
+        ],
+      },
+      {
+        type: "checkList",
+        heading: "Conditions/Injuries Treated",
+        items: [
+          "Ankylosing spondylitis and other spondyloarthropathies",
+          "Antiphospholipid syndrome",
+          "Arthritis",
+          "Autoinflammatory diseases",
+          "Behcet's disease",
+          "Bursitis",
+          "Carpal tunnel syndrome",
+          "Giant cell arteritis",
+          "Gout and pseudogout (also called calcium pyrophosphate deposition/cppd)",
+          "Granulomatosis with polyangiitis (Wegener's)",
+          "Inflammatory myopathies",
+          "Lupus (systemic lupus erythematosus)",
+          "Lyme disease",
+          "Osteoarthritis",
+          "Osteoporosis",
+          "Palindromic rheumatism",
+          "Polyarteritis nodosum",
+          "Polymyalgia rheumatica (PMR)",
+          "Polymyositis or dermatomyositis",
+          "Psoriatic arthritis",
+          "Raynaud's disease",
+          "Relapsing polychondritis",
+          "Retroperitoneal fibrosis",
+          "Rheumatoid arthritis",
+          "Sarcoidosis",
+          "Scleroderma",
+          "Sjogren's syndrome",
+          "Tendinitis",
+          "Vasculitis",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export function getServiceContent(slug: string): ServiceContent | null {
