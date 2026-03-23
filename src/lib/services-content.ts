@@ -68,6 +68,20 @@ export type ServiceSection =
       }[];
     }
   | {
+      type: "urgentLocationCards";
+      heading?: string;
+      /** Card grid: image, name, address, phone, hours, Directions */
+      locations: {
+        name: string;
+        imageUrl: string;
+        imageAlt?: string;
+        addressLine1: string;
+        addressLine2: string;
+        phone?: string;
+        hours?: string;
+      }[];
+    }
+  | {
       type: "promoBanner";
       /** Main headline (e.g. "YOUR HEART SHOULD NEVER WAIT.") */
       heading: string;
@@ -82,6 +96,15 @@ export type ServiceSection =
       type: "checkList";
       heading: string;
       items: string[];
+    }
+  | {
+      type: "groupedList";
+      heading: string;
+      intro?: string;
+      groups: {
+        name: string;
+        items: string[];
+      }[];
     };
 
 export type ServiceContent = {
@@ -1206,6 +1229,7 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
       },
     ],
   },
+
   Dietitian_Nutritionist: {
     slug: "Dietitian_Nutritionist",
     title: "Nutrition & Diabetes Care",
@@ -1867,69 +1891,6 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
       },
     ],
   },
-  Pediatrics: {
-    slug: "Pediatrics",
-    title: "Pediatrics",
-    subtitle: "at Middletown Medical",
-    heroImageUrl:
-      "https://middletownmedical.com/wp-content/uploads/2019/10/Pediatrics-BG-wr.jpg",
-    heroImageAlt: "Pediatrics at Middletown Medical",
-    providerFilter: { specialties: ["Pediatrics"] },
-    sections: [
-      {
-        type: "richText",
-        heading: "Our Pediatric Team",
-        body: [
-          "Pediatrics is a branch of medicine that deals with promoting the physical and psychological growth, development, safety and care of infants and children from birth through adolescence and the prevention of their diseases, injuries and complications. Our pediatric staff is dedicated to the health and well-being of your children.",
-          "Our pediatricians see patients in Middletown and Wurtsboro. Please call for a convenient appointment time.",
-        ],
-      },
-      {
-        type: "phoneCards",
-        heading: "Schedule an appointment by phone or chat:",
-        cards: [
-          { label: "Circleville Pediatrics Patients", phone: "(845) 888-2200" },
-          { label: "Dr. Reyes & Specialists", phone: "(845) 342-4774" },
-        ],
-      },
-      {
-        type: "serviceLocations",
-        heading: "Our locations",
-        locations: [
-          {
-            name: "Circleville Pediatrics",
-            addressLine1: "2142 Route 302",
-            addressLine2: "Circleville, NY 10919",
-            phone: "(845) 888-2200",
-            services: [
-              {
-                title: "Office hours",
-                hours: [
-                  "Monday: 8:00 AM – 8:00 PM",
-                  "Tuesday: 8:00 AM – 6:00 PM",
-                  "Wednesday: 8:00 AM – 8:00 PM",
-                  "Thursday: 8:00 AM – 6:00 PM",
-                  "Friday: 8:00 AM – 8:00 PM",
-                ],
-              },
-            ],
-          },
-          {
-            name: "Middletown",
-            addressLine1: "111 Maltese Drive",
-            addressLine2: "Middletown, NY 10940",
-            phone: "(845) 342-4774",
-          },
-        ],
-      },
-      {
-        type: "richText",
-        body: [
-          "Circleville Pediatrics is a division of Middletown Medical, providing comprehensive, compassionate care for infants, children, and adolescents. Our experienced pediatric team is committed to partnering with families to support every stage of a child's growth and development. We offer well child exams, same-day sick visits, immunizations, developmental screenings, behavioral health support, and adolescent care in a welcoming, family centered environment.",
-        ],
-      },
-    ],
-  },
   "Pain_Management_&_Rehabilitation": {
     slug: "Pain_Management_&_Rehabilitation",
     title: "Pain Management & Rehabilitation",
@@ -2058,6 +2019,618 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
             addressLine1: "47 North Plank Road, Suite 19",
             addressLine2: "Newburgh, NY 12550",
             phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+  Pediatrics: {
+    slug: "Pediatrics",
+    title: "Pediatrics",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Pediatrics-BG-wr.jpg",
+    heroImageAlt: "Pediatrics at Middletown Medical",
+    providerFilter: { specialties: ["Pediatrics"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Pediatric Team",
+        body: [
+          "Pediatrics is a branch of medicine that deals with promoting the physical and psychological growth, development, safety and care of infants and children from birth through adolescence and the prevention of their diseases, injuries and complications. Our pediatric staff is dedicated to the health and well-being of your children.",
+          "Our pediatricians see patients in Middletown and Wurtsboro. Please call for a convenient appointment time.",
+        ],
+      },
+      {
+        type: "phoneCards",
+        heading: "Schedule an appointment by phone or chat:",
+        cards: [
+          { label: "Circleville Pediatrics Patients", phone: "(845) 888-2200" },
+          { label: "Dr. Reyes & Specialists", phone: "(845) 342-4774" },
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Circleville Pediatrics",
+            addressLine1: "2142 Route 302",
+            addressLine2: "Circleville, NY 10919",
+            phone: "(845) 888-2200",
+            services: [
+              {
+                title: "Office hours",
+                hours: [
+                  "Monday: 8:00 AM – 8:00 PM",
+                  "Tuesday: 8:00 AM – 6:00 PM",
+                  "Wednesday: 8:00 AM – 8:00 PM",
+                  "Thursday: 8:00 AM – 6:00 PM",
+                  "Friday: 8:00 AM – 8:00 PM",
+                ],
+              },
+            ],
+          },
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Circleville Pediatrics is a division of Middletown Medical, providing comprehensive, compassionate care for infants, children, and adolescents. Our experienced pediatric team is committed to partnering with families to support every stage of a child's growth and development. We offer well child exams, same-day sick visits, immunizations, developmental screenings, behavioral health support, and adolescent care in a welcoming, family centered environment.",
+        ],
+      },
+    ],
+  },
+  Pediatric_Endocrinology: {
+    slug: "Pediatric_Endocrinology",
+    title: "Pediatric Endocrinology",
+    subtitle:
+      "75 Maltese Dr, Middletown, NY • Call for Appointment 845-342-4774 ex 4342",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/06/endocrinology-cover-image.jpg",
+    heroImageAlt: "Children and teens health",
+    providerFilter: {
+      includeProviderUrls: [
+        "https://middletownmedical.com/medical-staff/Mepparambath_Prajith",
+      ],
+    },
+    sections: [
+      {
+        type: "richText",
+        body: [
+          "75 Maltese Dr, Middletown, NY",
+          "Call for Appointment 845-342-4774 ex 4342",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "PARENTS",
+        body: [
+          "Children are not simply little adults. Their emotional and medical needs are completely different from the needs of an adult.",
+          "This is especially true when it comes to dealing with a child's sexual development or growth disorders. If your child is facing any of these problems, then seeing a pediatric endocrinologist is the best since they are specially trained to diagnose and treat the unique needs of endocrine and hormonal disorders in children and teens.",
+          "Early Intervention is best when treating childhood obesity.",
+          "✅ Now accepting new patients",
+          "✅ Convenient hours on the weekend",
+          "Schedule an appointment by phone or chat: 845.342.4774 ex 4342",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What is Pediatric Endocrinology??",
+        body: [
+          "Pediatric endocrinology is a medical subspecialty dealing with disorders of the endocrine glands, such as variations of physical growth and sexual development in childhood, diabetes and many more.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What symptoms would my child see an Endocrinologist for?",
+        body: [
+          "Growth problems, such as short stature",
+          "Early or delayed puberty",
+          "Enlarged thyroid gland (goiter)",
+          "Underactive or overactive thyroid gland",
+          "Pituitary gland hypo/hyper function",
+          "Adrenal gland hypo/hyper function",
+          "Ambiguous genitals/intersex",
+          "Ovarian and testicular dysfunction",
+          "Diabetes",
+          "Low blood sugar (hypoglycemia)",
+          "Obesity",
+          "Problems with Vitamin D (rickets, hypocalcemia)",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "How are endocrine disorders diagnosed?",
+        body: [
+          "A number of tests and exams may help in diagnosing a child with endocrine disorders. Blood and urine tests verify hormone levels can help your doctors determine if an endocrine disorder exists. Imaging tests may be done to help locate or evaluate nodules, organs, and glands.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Treatments/Services Offered",
+        body: [
+          "Middletown Medical, PC offers comprehensive, individualized treatment plans. Your provider will evaluate your child to determine the appropriate course of action for your child's condition, which may include one or more of the following:",
+          "Diabetes treatment and medical management.",
+          "Patient education for self-managing conditions",
+          "Hormone therapy",
+          "Obesity education and supervised weight loss programs",
+          "Pituitary, adrenal, reproductive, and other hormonal disorder treatments",
+          "Thyroid disorder treatments",
+          "And more!",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Conditions/Injuries Treated",
+        body: [
+          "Middletown Medical, PC offers comprehensive, individualized treatment plans. Your provider will evaluate your child to determine the appropriate course of action for your child's condition, which may include one or more of the following:",
+          "Acromegaly",
+          "Addison's disease",
+          "Adult-onset growth hormone deficiency",
+          "Amenorrhoea",
+          "Carcinoid tumour",
+          "Childhood-onset growth hormone deficiency",
+          "Chronic fatigue syndrome",
+          "Circadian rhythm sleep disorders",
+          "Congenital adrenal hyperplasia",
+          "Craniopharyngioma",
+          "Cushing's disease",
+          "Cushing's syndrome",
+          "Delayed puberty",
+          "Diabetes insipidus",
+          "Diabetes mellitus",
+          "Eating disorders",
+          "Empty sella syndrome",
+          "Endometrial cancer",
+          "Endometriosis",
+          "Familial medullary thyroid cancer",
+          "Female infertility",
+          "Gastrinoma",
+          "Gender identity disorder",
+          "Gestational diabetes",
+          "Gigantism",
+          "Glucagonoma",
+          "Goitre",
+          "Graves' disease",
+          "Hashimoto's disease",
+          "Hirsutism",
+          "Hypercalcaemia",
+          "Hyperthyroidism",
+          "Hypocalcaemia",
+          "Hyponatraemia",
+          "Hypoparathyroidism",
+          "Hypophosphataemia",
+          "Hypopituitarism",
+          "Hypothyroidism",
+          "Insulinoma",
+          "Jet lag",
+          "Klinefelter's syndrome",
+          "Male hypogonadism",
+          "Menopause",
+          "Multinodular goitre",
+          "Multiple endocrine neoplasia type 1",
+          "Multiple endocrine neoplasia type 2A",
+          "Multiple endocrine neoplasia type 2B",
+          "Nelson's syndrome",
+          "Non-functioning pancreatic NETs",
+          "Non-functioning pituitary tumours",
+          "Obesity",
+          "Osteoporosis",
+          "Paget's disease",
+          "Paraganglioma",
+          "Phaeochromocytoma",
+          "Pituitary apoplexy",
+          "Polycystic ovary syndrome",
+          "Prader-Willi syndrome",
+          "Pre-eclampsia",
+          "Precocious puberty",
+          "Premature ovarian failure",
+          "Premenstrual syndrome",
+          "Primary hyperaldosteronism",
+          "Primary hyperparathyroidism",
+          "Prolactinoma",
+          "Resistance to thyroid hormone",
+          "Rickets",
+          "Secondary hyperparathyroidism",
+          "Sheehan's syndrome",
+        ],
+      },
+      {
+        type: "providerHighlight",
+        heading: "YOUR DEDICATED PEDIATRIC ENDOCRINOLOGIST",
+        name: "Prajith Mepparambath, M.D.",
+        title: "Pediatric Endocrinology",
+        imageUrl:
+          "https://dashboard.middletownmedical.com/storage/profile_pictures/3ecdb4d2-4574-43cd-801b-2ee79c4531b8.png",
+        profileUrl:
+          "https://middletownmedical.com/medical-staff/Mepparambath_Prajith",
+        bio: [],
+      },
+    ],
+  },
+  "Physical_Therapy/Occupational_Therapy": {
+    slug: "Physical_Therapy/Occupational_Therapy",
+    title: "Physical Therapy / Occupational Therapy",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2022/09/PT-MMPC-location-photos-04.jpg",
+    heroImageAlt: "Rehabilitation and physical therapy at Middletown Medical",
+    providerFilter: {
+      specialties: [
+        "Physical Therapy",
+        "Occupational Therapy",
+        "Rehabilitation",
+      ],
+    },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Physical Therapy & Occupational Therapy Team",
+        body: [
+          "Our physical and occupational therapy team helps patients restore mobility, strength, and function. Whether you are recovering from an injury, managing chronic pain, or regaining everyday skills after illness, we provide individualized plans designed around your goals.",
+        ],
+      },
+      {
+        type: "phoneCards",
+        heading: "Schedule an appointment by phone or chat:",
+        cards: [{ label: "Physical Therapy", phone: "845.344.1899" }],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Hours",
+        locations: [
+          {
+            name: "Middletown Medical Physical Therapy",
+            addressLine1: "419 E Main St, Suite 110",
+            addressLine2: "Middletown, NY 10940",
+            phone: "845.344.1899",
+            services: [
+              {
+                title: "Hours",
+                hours: [
+                  "Monday: 8:00 AM - 5:00 PM",
+                  "Tuesday: 8:00 AM - 5:00 PM",
+                  "Wednesday: 8:00 AM - 5:00 PM",
+                  "Thursday: 8:00 AM - 5:00 PM",
+                  "Friday: 8:00 AM - 5:00 PM",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  Podiatry: {
+    slug: "Podiatry",
+    title: "Podiatry",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Podiatry-BG-wr.jpg",
+    heroImageAlt: "Podiatry at Middletown Medical",
+    providerFilter: { specialties: ["Podiatry"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Podiatry Team",
+        body: [
+          "Podiatrists diagnose and treat conditions of the foot, ankle, and related structures of the leg, such as tumors, ulcers, fractures, skin or nail diseases, and congenital or acquired deformity such as weak feet and foot imbalance. They also treat conditions such as corns, calluses, bunions, heel spurs, ingrown toenails, arch problems, shortened tendons, cysts, bone disorders, and abscesses. They design corrective orthotics, plaster casts, and strappings to correct deformities as well as flexible casting for immobilization of foot and ankle fractures, sprains, or other injuries. They can correct walking patterns and balance, and promote the overall ability to move about more efficiently and comfortably.",
+        ],
+      },
+      {
+        type: "phoneCards",
+        heading: "Schedule an appointment by phone or chat:",
+        cards: [{ label: "Podiatry Patients", phone: "845.342.4774" }],
+      },
+      {
+        type: "richText",
+        heading:
+          "Peripheral Arterial Disease (PAD) – A Serious Medical Condition",
+        body: [
+          "Often Asymptomatic, Underdiagnosed, and Untreated",
+          "PAD affects 8-12 million Americans | 18% of the Medicare population has PAD | 66% of all PAD patients have NO symptoms.*",
+          "Patients who may have PAD should be tested—it’s more than a pain in the leg.",
+          "PAD is associated with a 6 times higher risk for cardiovascular disease/event (heart attack/stroke). Watch for risk factors and symptoms in your patients.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "RISK FACTORS",
+        body: [
+          "Smokers",
+          "Age 50+",
+          "Diabetics",
+          "High Blood Pressure",
+          "High Cholesterol",
+          "Obesity",
+          "Chronic Kidney Disease",
+          "Family Medical History (heart disease, heart attack or stroke)",
+          "History of COVID-19",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "SYMPTOMS",
+        body: [
+          "Muscle Pain and Cramping (often in the calf, buttocks or thigh; leg pain while walking or exercising)",
+          "Non-healing Wounds (often on the legs and feet)",
+          "Diabetic Foot Ulcers (approx. 1/2 of diabetics have PAD)",
+          "Discomfort in Feet and Legs (coldness, numbness, feeling of heaviness)",
+          "Change in Leg Appearance (hair loss, slow hair growth, change in leg color, excessively shiny skin)",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "NO RISK OF LOSING YOUR PATIENTS",
+        body: [
+          "Referred patients are treated by our vascular specialists and returned to your care.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "EASY SCHEDULING",
+        body: [
+          "Quick and easy scheduling process to help avoid risk of an admission or increased risk for amputation.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "SAFE, COMFORTING OUTPATIENT CENTER",
+        body: [
+          "Board-certified experts perform minimally invasive procedures in our fully equipped facility.",
+          "You can rely on our team to provide high quality, compassionate care before, during and after each procedure without a hospital stay.",
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "If diagnosed early, PAD is treatable; if not, PAD can lead to amputation, even death.",
+          "Patients with ulcers and wounds should be referred immediately as they may already have critical limb ischemia (CLI), which can lead to amputation. Minimally invasive, image guided procedures improve patients' comfort, safety and outcomes.",
+          "WE PREVENT MORE THAN 80% OF AMPUTATIONS IN PATIENTS WHO WERE TOLD IT WAS THE ONLY OPTION.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+    ],
+  },
+  "Primary_/_Family_Medicine": {
+    slug: "Primary_/_Family_Medicine",
+    title: "Primary / Family Medicine",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/family-med-BG-wr.jpg",
+    heroImageAlt: "Primary / Family Medicine at Middletown Medical",
+    providerFilter: { specialties: ["Primary Medicine"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "OUR PRIMARY / FAMILY MEDICINE TEAM",
+        body: [
+          "Our primary care team provides personalized, compassionate care for patients of all ages. We focus on prevention, wellness, and evidence-based treatment for everyday health concerns.",
+          "From routine checkups and screenings to diagnosis and management of chronic conditions, you can count on us to guide you through your care plan.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            facilityName: "Medical Campus",
+            addressLine1: "111 Maltese Dr",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+    ],
+  },
+  Pulmonary_Medicine: {
+    slug: "Pulmonary_Medicine",
+    title: "Pulmonary Medicine",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/11/Pulmonary-BG.jpg",
+    heroImageAlt: "Pulmonary Medicine at Middletown Medical",
+    providerFilter: { specialties: ["Pulmonary Medicine"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "OUR PULMONARY MEDICINE TEAM",
+        body: [
+          "Our pulmonary medicine providers specialize in evaluating and treating conditions that affect the lungs and breathing.",
+          "We provide patient-centered care for respiratory symptoms and chronic lung conditions, with a focus on comfort, education, and long-term management.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            facilityName: "Medical Campus",
+            addressLine1: "111 Maltese Dr",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+    ],
+  },
+  "Radiology_&_Ultrasound": {
+    slug: "Radiology_&_Ultrasound",
+    title: "Radiology & Ultrasound",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/radiology-ultra-sound.png",
+    heroImageAlt: "Radiology and ultrasound at Middletown Medical",
+    providerFilter: { specialties: ["Radiology"], includeProviderUrls: [] },
+    sections: [
+      {
+        type: "richText",
+        heading: "OVERVIEW",
+        body: [
+          "Our state of the art Radiology Department offers a wide array of services, all proudly accredited by the American College of Radiology. In addition, all Radiology Technologists are licensed and certified by the American Registry of Radiologic Technologists. Your exam will be interpreted by our Board-certified radiologists and reported to your physician in a timely manner.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "CT / CTA",
+        body: [
+          "Middletown Medical’s Philips Brilliance 16-Slice CT scanner is the industry standard for CT scanning. This incredible machine opens new doors for assessing some of today’s most pressing health care conditions such as stroke, heart disease and lung cancer. The Brilliance 16-Slice gives sixteen crystal clear images per rotation, while older machines took only one image. This means that you receive a much more accurate diagnosis than ever before possible. The Philips Brilliance 16-Slice scanner is the region’s most advanced scanner. It is fast, accurate and able to perform more studies with incredible clarity. Additionally, our department is ACR certified and our technologists are highly trained, caring and ready to help you.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Dexa Scan (bone density)",
+        body: [
+          "At Middletown Medical, our professional and caring staff will guide you through this painless, non-invasive, simple screening test in about 20 minutes. This test will provide invaluable information for your physician about your chance for getting osteoporosis, a preventable disease when detected early.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Mammography",
+        body: [
+          "Our recenty purchased Hologic Selenia Full Field Digital Mammography (FFDM) system is a state-of-the-art digital mammography machine that is highly accurate and provides greater patient comfort. Digital mammography is the industry standard for providing the most accurate images with a reduced number of retakes needed in order to obtain an accurate image.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "MRI / MRA",
+        body: [
+          "The new Philips 1.5 Tesla short bore MRI gives you the feeling of an open MRI. And with Philips’ new technology, scan times are cut in half without ever compromising quality or comfort. This state-of-the-art scanner combines the strongest magnetic field strength and shortest scanning tube available to minimize study times and maximize quality while providing you with a comfortable and roomy feeling. In addition, Middletown Medical uses CinemaVision, a convenient, versatile and user-friendly 3D virtual reality system. Providing multiple entertainment options – from standard television, DVD, CD and AM/FM input – this system allows you to enjoy a stunning sight and sound experience during your MRI scan.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Ultrasound",
+        body: [
+          "The The Affiniti 50 ultrasound system, powered by Philips digital imaging ultrasound system delivers high definition imaging in a compact and ergonomic package designed for a variety of tests including breast, pediatric, vascular and musculoskeletal ultrasounds. It is a state-of-the-art system that provides the best images in the least amount of time to assist your physician in providing you the best care possible. The testing performed is painless and non-invasive while not exposing you to any radiation. Our Ultrasound and Echocardiography Departments are ACR and ICAEL accredited and utilize the latest equipment in a warm, welcoming environment. Our licensed ultrasound technologists perform most on-site specialized testing within 30 minutes. Your results are reported to your physician as quickly as possible.",
+        ],
+      },
+      {
+        type: "faq",
+        heading: "FAQs",
+        items: [
+          {
+            question: "Do I have to remain still the whole time?",
+            answer:
+              "It is important for image clarity and optimum scan results to hold still during the exam. Keep in mind a routine exam will take at least 20 minutes. MRI isn’t for everyone. Be sure to inform your physician if you have a pacemaker, aneurysm clips in the brain, a shunt with telesensor, inner ear implants, medication patches, metal fragments in one or both eyes, implanted spinal cord stimulators or if you are pregnant, breasfeeding, or have anemia or any disease affecting red blood cells.",
+          },
+          {
+            question: "MRI isn't for everyone",
+            answer:
+              "MRI isn’t for everyone. Be sure to inform your physician if you have a pacemaker, aneurysm clips in the brain, a shunt with telesensor, inner ear implants, medication patches, metal fragments in one or both eyes, implanted spinal cord stimulators or if you are pregnant, breasfeeding, or have anemia or any disease affecting red blood cells.",
+          },
+          {
+            question: "Does the machine make a lot of noise?",
+            answer:
+              "Yes, there is significant noise made by the magnet. Our exclusive CinemaVision program blocks out the noise with either music, TV programs or movies.",
+          },
+          {
+            question: "Is an MRI scan like an X-ray?",
+            answer:
+              "No.  An MRI scan uses a powerful magnet in conjunction with radio frequency waves to generate images of your internal organs and structures without radiation.",
+          },
+          {
+            question: "How long will the exam take?",
+            answer:
+              "That will depend on what is being studied but a typical exam lasts 20 - 45 minutes. You should allow extra time in case the exam lasts longer than expected.",
+          },
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "LOCATIONS & HOURS—radiology",
+        locations: [
+          {
+            name: "Middletown",
+            facilityName: "Medical Campus",
+            addressLine1: "111 Maltese Dr",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+            services: [
+              {
+                title: "Xray",
+                hours: ["Mon-Fri: 8:00am-9:00pm", "Sat-Sun: 9:00am-9:00pm"],
+              },
+              {
+                title: "CAT Scan",
+                hours: ["Mon-Fri: 8:00am-9:00pm", "Sat-Sun: 9:00am-9:00pm"],
+              },
+              {
+                title: "MRI",
+                hours: ["Mon-Fri: 7:00am-9:00pm", "Sat-Sun: 7:00am-3:00pm"],
+              },
+              {
+                title: "Ultrasound",
+                hours: ["Mon-Fri: 7:00am-7:00pm", "Sat: 8:00am-2:00pm"],
+              },
+              { title: "Mammography", hours: ["Mon-Fri: 8:00am-5:00pm"] },
+              { title: "Dexa Scan", hours: ["Mon-Fri: 8:00am-5:00pm"] },
+            ],
+          },
+          {
+            name: "Chester",
+            facilityName: "Chester Center",
+            addressLine1: "78 Brookside Avenue, Suite 143",
+            addressLine2: "Chester, NY 10918",
+            phone: "(845) 469-7900",
+            services: [
+              {
+                title: "Xray",
+                hours: ["Mon-Fri: 8:00am-6:00pm", "Sat: 9:00am-1:00pm"],
+              },
+              { title: "Ultrasound", hours: ["Mon-Fri: 8:00am-5:00pm"] },
+            ],
+          },
+          {
+            name: "Ellenville",
+            facilityName: "ShopRite Plaza",
+            addressLine1: "112 ShopRite Plaza, Shoprite Blvd",
+            addressLine2: "Ellenville, NY 12428",
+            phone: "(845) 647-6400",
+            services: [
+              { title: "Ultrasound", hours: ["Mon-Fri: 8:00am-5:00pm"] },
+            ],
+          },
+          {
+            name: "Monticello",
+            facilityName: "Monticello Center",
+            addressLine1: "4058 State Route 42 Suite 5",
+            addressLine2: "Monticello, NY 12701",
+            phone: "(845) 791-5400",
+            services: [
+              { title: "Xray", hours: ["Mon-Fri: 8:00am-5:00pm"] },
+              { title: "Ultrasound", hours: ["Mon-Fri: 8:00am-5:00pm"] },
+            ],
+          },
+          {
+            name: "Liberty",
+            facilityName: "Liberty Medical Branch",
+            addressLine1: "111 Sullivan Ave",
+            addressLine2: "Liberty, NY 12754",
+            phone: "(845) 292-4141",
+            services: [
+              { title: "Ultrasound", hours: ["Mon-Fri: 8:00am-5:00pm"] },
+            ],
           },
         ],
       },
