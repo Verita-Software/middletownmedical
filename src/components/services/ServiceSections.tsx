@@ -57,6 +57,38 @@ function CheckListSection(
   );
 }
 
+function GroupedListSection(
+  section: Extract<ServiceSection, { type: "groupedList" }>,
+) {
+  return (
+    <section className="mb-10">
+      <h2 className="mb-4 text-2xl font-bold text-[#002147] md:text-3xl">
+        {section.heading}
+      </h2>
+      {section.intro && (
+        <p className="mb-6 text-slate-700 leading-relaxed">{section.intro}</p>
+      )}
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        {section.groups.map((group) => (
+          <div key={group.name}>
+            <h3 className="mb-3 text-lg font-semibold text-slate-900">
+              {group.name}
+            </h3>
+            <ul className="space-y-1.5 text-slate-700">
+              {group.items.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#49A3DA]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function FaqSection(section: Extract<ServiceSection, { type: "faq" }>) {
   return (
     <section className="mb-10">
@@ -387,6 +419,94 @@ function LocationCardsSection(
   );
 }
 
+/** Location cards with image on top: name, address, phone, hours, Directions (e.g. Laboratory Services). */
+function UrgentLocationCardsSection(
+  section: Extract<ServiceSection, { type: "urgentLocationCards" }>,
+) {
+  const heading = section.heading ?? "Locations";
+
+  return (
+    <section className="mb-10">
+      <h2 className="mb-4 text-2xl font-bold text-[#002147] md:text-3xl">
+        {heading}
+      </h2>
+      <div className="mb-8 h-0.5 w-12 bg-[#49A3DA]" aria-hidden />
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {section.locations.map((loc) => {
+          const fullAddress = [loc.addressLine1, loc.addressLine2]
+            .filter(Boolean)
+            .join(", ");
+          const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+
+          return (
+            <div
+              key={loc.name}
+              className=" rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm"
+            >
+              <div className="relative h-48 w-full mt-4">
+                <Image
+                  src={loc.imageUrl}
+                  alt={loc.imageAlt ?? loc.name}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-slate-900">{loc.name}</h3>
+                {loc.phone && (
+                  <a
+                    href={`tel:${loc.phone.replace(/\D/g, "")}`}
+                    className="mt-1 inline-block text-sm font-medium text-[#002147] hover:text-[#b5097b] hover:underline"
+                  >
+                    {loc.phone}
+                  </a>
+                )}
+                <p className="mt-1 text-sm text-slate-700">
+                  {loc.addressLine1}
+                  <br />
+                  {loc.addressLine2}
+                </p>
+                {loc.hours && (
+                  <p className="mt-2 text-sm text-slate-600">
+                    Hours: {loc.hours}
+                  </p>
+                )}
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  {loc.phone && (
+                    <a
+                      href={`tel:${loc.phone.replace(/\D/g, "")}`}
+                      className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-[#002147] shadow-sm transition-colors hover:border-[#49A3DA] hover:bg-slate-50 hover:text-[#b5097b]"
+                    >
+                      <Phone
+                        className="h-4 w-4 shrink-0 text-[#49A3DA]"
+                        aria-hidden
+                      />
+                      {loc.phone}
+                    </a>
+                  )}
+                  <a
+                    href={directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-[#49A3DA] hover:bg-slate-50 hover:text-[#002147]"
+                  >
+                    <Car
+                      className="h-4 w-4 shrink-0 text-[#49A3DA]"
+                      aria-hidden
+                    />
+                    Get Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function PromoBannerSection(
   section: Extract<ServiceSection, { type: "promoBanner" }>,
 ) {
@@ -468,11 +588,17 @@ export function ServiceSections({ sections }: { sections: ServiceSection[] }) {
         if (section.type === "locationCards") {
           return <LocationCardsSection key={idx} {...section} />;
         }
+        if (section.type === "urgentLocationCards") {
+          return <UrgentLocationCardsSection key={idx} {...section} />;
+        }
         if (section.type === "promoBanner") {
           return <PromoBannerSection key={idx} {...section} />;
         }
         if (section.type === "checkList") {
           return <CheckListSection key={idx} {...section} />;
+        }
+        if (section.type === "groupedList") {
+          return <GroupedListSection key={idx} {...section} />;
         }
         return null;
       })}
