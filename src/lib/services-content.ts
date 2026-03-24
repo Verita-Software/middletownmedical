@@ -2636,6 +2636,202 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
       },
     ],
   },
+  Rheumatology: {
+    slug: "Rheumatology",
+    title: "Rheumatology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/Rheumatology-wr.jpg",
+    heroImageAlt: "Rheumatology care at Middletown Medical",
+    providerFilter: { specialties: ["Rheumatology"] },
+    sections: [
+      {
+        type: "richText",
+        heading: "OUR RHEUMATOLOGY TEAM",
+        body: [
+          "Our highly skilled and compassionate board certified rheumatologist specializes in treatment of rheumatologic and autoimmune diseases. This includes the inflammatory problems that involve the joints and connective tissues as well as special expertise in fibromyalgia, Lyme disease, rheumatoid arthritis, osteoarthritis and joint pain.",
+          "We also provide the latest infusion treatments for rheumatoid arthritis, as well as Synvisc injections for osteoarthritis to bring relief from inflammation and pain. Your quality of life is extremely important to our rheumatologist and their professional team.",
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+      {
+        type: "richText",
+        heading: "Introduction",
+        body: [
+          "Rheumatologists deal mainly with immune-mediated disorders of the musculoskeletal system, soft tissues, autoimmune diseases, vasculitides, and inherited connective tissue disorders. Rheumatology focuses on the diagnosis and treatment of conditions that affect the joints, muscles, and connective tissues. Many rheumatic diseases are complex, so an accurate evaluation is the first step toward better outcomes.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What is Rheumatology?",
+        body: [
+          "Rheumatology is the medical specialty dedicated to caring for patients with inflammatory diseases and disorders that can involve the joints and other parts of the body.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What symptoms would I see a Rheumatologist for?",
+        body: [
+          "Inflammation",
+          "Joint pain, stiffness or swelling",
+          "Rash",
+          "Sleep disturbance from pain",
+          "Toughness, tightening or hardening of the skin",
+          "Weakness or loss of mobility",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "How are rheumatic conditions diagnosed?",
+        body: [
+          "A physical exam and laboratory tests are common for diagnosing and treating rheumatic diseases. Your doctor may order blood work and other lab tests to confirm your diagnosis and guide treatment.",
+          "Common approaches may include: MRI, Musculoskeletal (MSK) ultrasound, X-ray, and biopsy when appropriate.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Treatments/Services Offered",
+        body: [
+          "Middletown Medical, PC offers comprehensive, individualized treatment plans. Your provider will evaluate your condition and recommend an approach that can include:",
+          "Diet changes",
+          "Exercise",
+          "Heat and cold therapy",
+          "Medication",
+          "Relaxation techniques",
+          "Muscle or joint treatments including braces, splints, canes, or walkers",
+          "Pain Management referrals",
+          "Physical Therapy referrals",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Conditions/Injuries Treated",
+        body: [
+          "Ankylosing spondylitis and other spondyloarthropathies",
+          "Antiphospholipid syndrome",
+          "Arthritis",
+          "Autoinflammatory diseases",
+          "Behcet's disease",
+          "Bursitis",
+          "Carpal tunnel syndrome",
+          "Giant cell arteritis",
+          "Gout and pseudogout (also called calcium pyrophosphate deposition/cppd)",
+          "Granulomatosis with polyangiitis (Wegener's)",
+          "Inflammatory myopathies",
+          "Lupus (systemic lupus erythematosus)",
+          "Lyme disease",
+          "Osteoarthritis",
+          "Osteoporosis",
+          "Palindromic rheumatism",
+          "Polyarteritis nodosum",
+          "Polymyalgia rheumatica (PMR)",
+          "Polymyositis or dermatomyositis",
+          "Psoriatic arthritis",
+          "Raynaud's disease",
+          "Relapsing polychondritis",
+          "Retroperitoneal fibrosis",
+          "Rheumatoid arthritis",
+          "Sarcoidosis",
+          "Scleroderma",
+          "Sjogren's syndrome",
+          "Tendinitis",
+          "Vasculitis",
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our locations",
+        locations: [
+          {
+            name: "Middletown",
+            addressLine1: "111 Maltese Drive",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+          {
+            name: "Newburgh",
+            addressLine1: "47 North Plank Road, Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+        ],
+      },
+    ],
+  },
+
+  Urgent_Care: {
+    slug: "Urgent_Care",
+    title: "Urgent Care",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2020/03/IMG_3339.jpg",
+    heroImageAlt: "Middletown Medical Urgent Care center exterior",
+    sections: [
+      {
+        type: "urgentLocationCards",
+        heading: "Urgent Care Locations",
+        locations: [
+          {
+            name: "Middletown",
+            imageUrl:
+              "https://middletownmedical.com/wp-content/uploads/2022/04/Middletown-Medical-111-Maltese-Dr.png",
+            imageAlt: "Middletown Urgent Care",
+            addressLine1: "111 Maltese Dr",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-8710",
+          },
+          {
+            name: "Port Jervis",
+            imageUrl:
+              "https://middletownmedical.com/wp-content/uploads/2023/11/Port-Jervis-Urgent-Care-02.png",
+            imageAlt: "Port Jervis Urgent Care",
+            addressLine1: "100 Pike St",
+            addressLine2: "Port Jervis, NY 12771",
+            phone: "(845) 697-3271",
+          },
+          {
+            name: "Newburgh",
+            imageUrl:
+              "https://middletownmedical.com/wp-content/uploads/2022/04/Newburgh-UC-icon.png",
+            imageAlt: "Newburgh Urgent Care",
+            addressLine1: "Mid Valley Mall, 47 N Plank Rd Suite 19",
+            addressLine2: "Newburgh, NY 12550",
+            phone: "(845) 561-8100",
+          },
+          {
+            name: "Monticello",
+            imageUrl:
+              "https://middletownmedical.com/wp-content/uploads/2022/04/Monticello-UC-icon.png",
+            imageAlt: "Monticello Urgent Care",
+            addressLine1: "Thompson Square Mall, 4058 NY-42 #5",
+            addressLine2: "Monticello, NY 12701",
+            phone: "(845) 791-5400",
+          },
+          {
+            name: "Ellenville",
+            imageUrl:
+              "https://middletownmedical.com/wp-content/uploads/2022/04/Ellenville-UC-ico.png",
+            imageAlt: "Ellenville Urgent Care",
+            addressLine1: "112 Shoprite Blvd",
+            addressLine2: "Ellenville, NY 12428",
+            phone: "(845) 647-6400",
+          },
+          {
+            name: "Chester",
+            imageUrl:
+              "https://middletownmedical.com/wp-content/uploads/2022/04/Chester-Urgent-Care.png",
+            imageAlt: "Chester Urgent Care",
+            addressLine1: "78 Brookside Ave #143",
+            addressLine2: "Chester, NY 10918",
+            phone: "(845) 469-7900",
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export function getServiceContent(slug: string): ServiceContent | null {
