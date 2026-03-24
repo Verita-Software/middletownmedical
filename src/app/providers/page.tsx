@@ -1,20 +1,45 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ProviderCard } from "@/components/providers/provider-card";
 import { ProvidersShimmerItem } from "@/components/providers/providers-shimmer-item";
 import { ProvidersFilterSection } from "@/components/providers/providers-filter-section";
 import { Pagination } from "@/components/ui/pagination";
 import { MOCK_PROVIDERS as providers } from "@/lib/mock-data";
-import { Search, MapPin, X, Phone } from "lucide-react";
+import { Search } from "lucide-react";
 import { Suspense } from "react";
 import { LocationsMap } from "@/components/locations/LocationsMap";
 import type { LocationItem } from "@/types/location";
 import type { Provider } from "@/lib/mock-data";
+import { useSearchFiltersStore } from "@/store/search-filters-store";
 
 function ProvidersPageContent() {
+  const searchParams = useSearchParams();
+  const setSearchFilters = useSearchFiltersStore((s) => s.setSearchFilters);
+  const storeSpecialty = useSearchFiltersStore((s) => s.specialtyOrProvider);
+
+  // Sync URL params → Zustand on mount so direct-link / refresh preserves context
+  useEffect(() => {
+    const specialty = searchParams.get("specialty") ?? "";
+    const zip = searchParams.get("zip") ?? "";
+    const age = searchParams.get("age") ?? "";
+    const insurance = searchParams.get("insurance") ?? "";
+
+    if ((specialty || zip || age || insurance) && !storeSpecialty) {
+      setSearchFilters({
+        specialtyOrProvider: specialty,
+        zipCode: zip,
+        patientAge: age,
+        insurance,
+      });
+    }
+    // Run only on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const [viewMode] = useState<"grid" | "list">("grid");
   const [showMap, setShowMap] = useState(false);
   const [mapLocations, setMapLocations] = useState<LocationItem[] | null>(null);
@@ -56,10 +81,13 @@ function ProvidersPageContent() {
         (ploc) =>
           ploc.trim() === locName ||
           ploc.includes(locName) ||
-          locName.includes(ploc.split(" - ")[0]?.trim() ?? ""),
-      ),
+          locName.includes(ploc.split(" - ")[0]?.trim() ?? "")
+      )
     );
   }, [selectedLocation]);
+
+  // suppress unused variable warning — providersAtSelectedLocation used later for map panel
+  void providersAtSelectedLocation;
 
   return (
     <div className="bg-white min-h-screen">
@@ -131,8 +159,8 @@ function ProvidersPageContent() {
                     No Providers Found
                   </h3>
                   <p className="text-slate-500 max-w-md mx-auto mb-6">
-                    We couldn&apos;t find any providers matching your current
-                    search criteria. Try adjusting your filters.
+                    We couldn&apos;t find any providers matching your search.
+                    Try adjusting your filters.
                   </p>
                   <Button
                     onClick={clearAllFilters}

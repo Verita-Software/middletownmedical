@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select";
 import type { Provider } from "@/lib/mock-data";
 import { useBookingStore } from "@/store/booking-store";
+import { useSearchFiltersStore } from "@/store/search-filters-store";
 import { Calendar } from "lucide-react";
 
 const INSURANCE_OPTIONS = [
@@ -34,8 +35,11 @@ export function ScheduleAppointmentCard({
   const setAgeAndInsurance = useBookingStore((s) => s.setAgeAndInsurance);
   const setStep = useBookingStore((s) => s.setStep);
 
-  const [patientAge, setPatientAge] = useState("");
-  const [insurance, setInsurance] = useState("");
+  const savedAge = useSearchFiltersStore((s) => s.patientAge);
+  const savedInsurance = useSearchFiltersStore((s) => s.insurance);
+
+  const [patientAge, setPatientAge] = useState(savedAge ?? "");
+  const [insurance, setInsurance] = useState(savedInsurance ?? "");
   const [error, setError] = useState<string | null>(null);
 
   const handleViewAppointmentTimes = () => {
