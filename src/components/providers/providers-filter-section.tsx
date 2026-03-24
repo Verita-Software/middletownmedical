@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProvidersFilter } from "@/components/providers/provider-filter";
 import { useProvidersFilter } from "@/hooks/use-providers-filter";
@@ -43,6 +44,7 @@ export function ProvidersFilterSection({
     <>
       <section className="bg-slate-50/80 border-b border-slate-200 py-6 sm:py-8 w-full z-20 relative">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 w-full">
+          {/* Search bar row */}
           <div className="flex flex-col md:flex-row gap-4 mb-6 w-full">
             <div className="relative flex-1 w-full">
               <input

@@ -7,6 +7,7 @@ import type { Provider } from "@/lib/mock-data";
 import { ClientImage } from "@/components/providers/client-image";
 import { Star, Calendar, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useSearchFiltersStore } from "@/store/search-filters-store";
 
 function getInitials(name: string) {
   if (!name) return "";
@@ -40,6 +41,7 @@ export function ProviderCard({
   const specialties = provider.Specialties || [];
   const locations = provider.Locations || [];
   const router = useRouter();
+  const setSelectedProvider = useSearchFiltersStore((s) => s.setSelectedProvider);
 
   if (variant === "list") {
     return <ProviderListCard provider={provider} />;
@@ -118,7 +120,10 @@ export function ProviderCard({
       <div className="flex flex-wrap justify-end gap-2 mt-6 pt-5 border-t border-slate-100 z-10">
         <Button
           variant="outline"
-          onClick={() => router.push(`/providers/${provider.id}`)}
+          onClick={() => {
+            setSelectedProvider(provider);
+            router.push(`/providers/${provider.id}`);
+          }}
           className="group/btn border-2 cursor-pointer border-primary text-primary hover:bg-primary hover:text-white font-bold text-[15px] h-[46px] px-6 rounded flex items-center justify-center transition-all duration-300"
         >
           <Calendar className="w-4 h-4 mr-2" />
@@ -136,6 +141,7 @@ function ProviderListCard({ provider }: { provider: Provider }) {
   const specialties = provider.Specialties || [];
   const locations = provider.Locations || [];
   const router = useRouter();
+  const setSelectedProvider = useSearchFiltersStore((s) => s.setSelectedProvider);
 
   return (
     <motion.div
@@ -202,7 +208,10 @@ function ProviderListCard({ provider }: { provider: Provider }) {
       <div className="shrink-0 w-full sm:w-auto flex flex-wrap justify-center sm:justify-end gap-2 mt-4 sm:mt-0 pt-5 sm:pt-0 border-t sm:border-0 border-slate-100 z-10 pl-0 sm:pl-4">
         <Button
           variant="outline"
-          onClick={() => router.push(`/providers/${provider.id}`)}
+          onClick={() => {
+            setSelectedProvider(provider);
+            router.push(`/providers/${provider.id}`);
+          }}
           className="group/btn w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold text-[14px] sm:text-[15px] h-[40px] sm:h-[46px] px-6 rounded flex items-center justify-center transition-all duration-300"
         >
           <Calendar className="w-4 h-4 mr-2" />
