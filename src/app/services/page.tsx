@@ -18,7 +18,8 @@ const featuredServices = [
 ];
 
 const specialtyServices = [
-  "IND / Occ Med",
+  // TODO: Check for IND / Occ Med service page
+  // "IND / Occ Med",
   "Headache Center",
   "Hereditary Cancer Screening",
   "Telemedicine",
@@ -116,6 +117,18 @@ export default function ServicesPage() {
                 <li key={idx}>
                   <a
                     href={`/services/${encodeURIComponent(service.replace(/ /g, "_"))}`}
+                    // TODO: Check for IND / Occ Med service page
+                    // href={
+                    //   service === "IND / Occ Med"
+                    //     ? "https://mmomp.com/"
+                    //     : `/services/${encodeURIComponent(service.replace(/ /g, "_"))}`
+                    // }
+                    // target={service === "IND / Occ Med" ? "_blank" : undefined}
+                    // rel={
+                    //   service === "IND / Occ Med"
+                    //     ? "noopener noreferrer"
+                    //     : undefined
+                    // }
                     className="text-2xl font-semibold text-slate-700 hover:text-[#b5097b] transition-colors"
                   >
                     {service}

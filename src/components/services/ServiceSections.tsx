@@ -9,14 +9,24 @@ import {
 } from "@/components/ui/accordion";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Car, Phone, Check } from "lucide-react";
+import {
+  MapPin,
+  Car,
+  Phone,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { useState } from "react";
 
 function RichTextSection({
   heading,
   body,
+  links,
 }: {
   heading?: string;
   body: string[];
+  links?: { label: string; href: string }[];
 }) {
   return (
     <section className="mb-10">
@@ -30,6 +40,55 @@ function RichTextSection({
           <p key={idx}>{p}</p>
         ))}
       </div>
+      {links && links.length > 0 && (
+        <div className="mt-6 flex flex-wrap gap-3">
+          {links.map((lnk, idx) => (
+            <a
+              key={idx}
+              href={lnk.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#002147] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#49A3DA]"
+            >
+              {lnk.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
+function VideoSection(section: Extract<ServiceSection, { type: "video" }>) {
+  const getEmbedUrl = (url: string) => {
+    const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+    if (vimeoMatch)
+      return `https://player.vimeo.com/video/${vimeoMatch[1]}?badge=0&autopause=0&player_id=0&app_id=58479`;
+    const ytMatch = url.match(
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/,
+    );
+    if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`;
+    return url;
+  };
+
+  return (
+    <section className="mb-10">
+      <div className="overflow-hidden rounded-2xl shadow-lg border border-slate-200">
+        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+          <iframe
+            src={getEmbedUrl(section.url)}
+            className="absolute inset-0 h-full w-full"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            allowFullScreen
+            title={section.caption ?? "Video"}
+          />
+        </div>
+      </div>
+      {section.caption && (
+        <p className="mt-2 text-center text-sm text-slate-500">
+          {section.caption}
+        </p>
+      )}
     </section>
   );
 }
@@ -69,11 +128,13 @@ function GroupedListSection(
         <p className="mb-6 text-slate-700 leading-relaxed">{section.intro}</p>
       )}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-        {section.groups.map((group) => (
-          <div key={group.name}>
-            <h3 className="mb-3 text-lg font-semibold text-slate-900">
-              {group.name}
-            </h3>
+        {section.groups.map((group, gi) => (
+          <div key={gi}>
+            {group.name && (
+              <h3 className="mb-3 text-lg font-semibold text-slate-900">
+                {group.name}
+              </h3>
+            )}
             <ul className="space-y-1.5 text-slate-700">
               {group.items.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2">
@@ -85,6 +146,106 @@ function GroupedListSection(
           </div>
         ))}
       </div>
+    </section>
+  );
+}
+
+function ImageCarouselSection(
+  section: Extract<ServiceSection, { type: "imageCarousel" }>,
+) {
+  const [current, setCurrent] = useState(0);
+  const total = section.images.length;
+  const prev = () => setCurrent((c) => (c - 1 + total) % total);
+  const next = () => setCurrent((c) => (c + 1) % total);
+
+  return (
+    <section className="mb-10">
+      {section.heading && (
+        <h2 className="mb-6 text-2xl font-bold text-[#002147] md:text-3xl">
+          {section.heading}
+        </h2>
+      )}
+      <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
+        {/* Carousel */}
+        <div className="relative w-full max-w-[360px] shrink-0">
+          <div className="relative h-[360px] w-full overflow-hidden rounded-xl shadow-md">
+            {section.images.map((img, idx) => (
+              <div
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  idx === current
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
+                }`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt ?? `Facility image ${idx + 1}`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+          {/* Controls */}
+          <button
+            onClick={prev}
+            aria-label="Previous image"
+            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow hover:bg-white transition"
+          >
+            <ChevronLeft className="h-5 w-5 text-[#002147]" />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next image"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow hover:bg-white transition"
+          >
+            <ChevronRight className="h-5 w-5 text-[#002147]" />
+          </button>
+          {/* Dots */}
+          <div className="mt-3 flex justify-center gap-2">
+            {section.images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrent(idx)}
+                aria-label={`Go to image ${idx + 1}`}
+                className={`h-2 w-2 rounded-full transition-colors ${
+                  idx === current ? "bg-[#49A3DA]" : "bg-slate-300"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+        {/* Caption */}
+        {section.caption && (
+          <p className="max-w-md text-slate-700 leading-relaxed">
+            {section.caption}
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function BulletListSection(
+  section: Extract<ServiceSection, { type: "bulletList" }>,
+) {
+  return (
+    <section className="mb-10">
+      <h2 className="mb-4 text-2xl font-bold text-[#002147] md:text-3xl">
+        {section.heading}
+      </h2>
+      <ul className="space-y-4">
+        {section.items.map((item, idx) => (
+          <li
+            key={idx}
+            className="flex items-start gap-3 text-slate-700 leading-relaxed"
+          >
+            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#49A3DA]" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -103,7 +264,62 @@ function FaqSection(section: Extract<ServiceSection, { type: "faq" }>) {
         {section.items.map((item, idx) => (
           <AccordionItem key={idx} value={`item-${idx}`}>
             <AccordionTrigger>{item.question}</AccordionTrigger>
-            <AccordionContent>{item.answer}</AccordionContent>
+            <AccordionContent>
+              {/* Plain answer text */}
+              {item.answer && (
+                <p className="mb-3 text-slate-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              )}
+              {/* Simple numbered list */}
+              {item.items && item.items.length > 0 && (
+                <ol className="list-decimal space-y-1.5 pl-5 text-slate-700">
+                  {item.items.map((li, i) => (
+                    <li key={i}>{li}</li>
+                  ))}
+                </ol>
+              )}
+              {/* Rich sub-sections: org heading + optional intro + groups/items */}
+              {item.subSections && item.subSections.length > 0 && (
+                <div className="space-y-6">
+                  {item.subSections.map((sub, si) => (
+                    <div key={si}>
+                      <h3 className="mb-1 text-base font-bold text-[#002147]">
+                        {sub.subheading}
+                      </h3>
+                      <div className="mb-2 h-px w-full bg-slate-200" />
+                      {sub.intro && (
+                        <p className="mb-3 text-sm text-slate-700 leading-relaxed">
+                          {sub.intro}
+                        </p>
+                      )}
+                      {/* Sub-groups (e.g. "Tests that find polyps and cancer") */}
+                      {sub.groups &&
+                        sub.groups.map((grp, gi) => (
+                          <div key={gi} className="mb-3">
+                            <p className="mb-1 text-sm font-semibold text-slate-800">
+                              {grp.label}
+                            </p>
+                            <ul className="list-disc space-y-1 pl-5 text-sm text-slate-700">
+                              {grp.items.map((it, ii) => (
+                                <li key={ii}>{it}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      {/* Simple bullet items */}
+                      {sub.items && sub.items.length > 0 && (
+                        <ul className="list-disc space-y-1.5 pl-5 text-sm text-slate-700">
+                          {sub.items.map((it, ii) => (
+                            <li key={ii}>{it}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
@@ -570,8 +786,12 @@ export function ServiceSections({ sections }: { sections: ServiceSection[] }) {
               key={idx}
               heading={section.heading}
               body={section.body}
+              links={section.links}
             />
           );
+        }
+        if (section.type === "video") {
+          return <VideoSection key={idx} {...section} />;
         }
         if (section.type === "faq") {
           return <FaqSection key={idx} {...section} />;
@@ -599,6 +819,12 @@ export function ServiceSections({ sections }: { sections: ServiceSection[] }) {
         }
         if (section.type === "groupedList") {
           return <GroupedListSection key={idx} {...section} />;
+        }
+        if (section.type === "bulletList") {
+          return <BulletListSection key={idx} {...section} />;
+        }
+        if (section.type === "imageCarousel") {
+          return <ImageCarouselSection key={idx} {...section} />;
         }
         return null;
       })}

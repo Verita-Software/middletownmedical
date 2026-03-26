@@ -1,6 +1,22 @@
+export type FaqSubSection = {
+  /** Organisation or sub-category heading (e.g. "American Cancer Society") */
+  subheading: string;
+  /** Optional introductory sentence under the subheading */
+  intro?: string;
+  /** Optional sub-grouped lists (e.g. "Tests that find polyps and cancer (preferred):") */
+  groups?: { label: string; items: string[] }[];
+  /** Simple bullet items */
+  items?: string[];
+};
+
 export type ServiceFaqItem = {
   question: string;
-  answer: string;
+  /** Plain-text answer paragraph (optional when subSections are used) */
+  answer?: string;
+  /** Optional ordered list items rendered below the answer text */
+  items?: string[];
+  /** Rich structured sub-sections (org name + bullets) for detailed guidelines */
+  subSections?: FaqSubSection[];
 };
 
 export type ServiceSection =
@@ -8,6 +24,14 @@ export type ServiceSection =
       type: "richText";
       heading?: string;
       body: string[];
+      /** Optional CTA links rendered as buttons below the body */
+      links?: { label: string; href: string }[];
+    }
+  | {
+      type: "video";
+      /** Vimeo or YouTube page URL – converted to embed automatically */
+      url: string;
+      caption?: string;
     }
   | {
       type: "faq";
@@ -105,6 +129,19 @@ export type ServiceSection =
         name: string;
         items: string[];
       }[];
+    }
+  | {
+      /** Single-column bullet list — one item per line, no checkmarks */
+      type: "bulletList";
+      heading: string;
+      items: string[];
+    }
+  | {
+      /** Responsive image carousel — displays images at 360×360 with prev/next controls */
+      type: "imageCarousel";
+      heading?: string;
+      images: { src: string; alt?: string }[];
+      caption?: string;
     };
 
 export type ServiceContent = {
@@ -2828,6 +2865,613 @@ export const SERVICES_CONTENT: Record<string, ServiceContent> = {
             addressLine2: "Chester, NY 10918",
             phone: "(845) 469-7900",
           },
+        ],
+      },
+    ],
+  },
+
+  Urology: {
+    slug: "Urology",
+    title: "Urology",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/urology-BG-wr.jpg",
+    heroImageAlt: "Urology at Middletown Medical",
+    providerFilter: {
+      specialties: ["Urology"],
+    },
+    sections: [
+      {
+        type: "richText",
+        heading: "Our Urology Team",
+        body: [
+          "Urologists diagnose and treat problems associated with the urinary tract, kidneys, and bladder in men and women. They also address problems with the prostate, sexual function, and infertility in men. They can perform minimally invasive surgery when necessary.",
+          "Middletown Medical's urological services are performed in a private and confidential setting. Combining advanced technology and medical expertise with caring and compassionate personal care, our urologists are committed to a personalized approach to your care and well being.",
+          "Schedule an appointment by phone or chat: 845.342.4774",
+        ],
+      },
+      {
+        type: "groupedList",
+        heading: "Urological Conditions",
+        intro:
+          "Some common urological conditions include (but are not limited to):",
+        groups: [
+          {
+            name: "Women",
+            items: [
+              "Cystitis",
+              "Fibroids",
+              "Incontinence",
+              "Infertility",
+              "Ovarian cysts",
+              "Pelvic floor prolapse",
+              "Vaginal abnormalities",
+              "Yeast infections",
+              "Kidney stones",
+            ],
+          },
+          {
+            name: "Men",
+            items: [
+              "Enlarged prostate condition",
+              "Erectile dysfunction, impotence",
+              "Incontinence",
+              "Infertility",
+              "Premature ejaculation",
+              "Prostate Cancer",
+              "Prostatitis",
+              "Testicular Cancer",
+              "Vasectomy and reversal",
+              "Kidney stones",
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "In particular, we're pleased to offer two of the region's most outstanding urologists for the convenience of both male and female patients, and each with differing specialties.",
+        ],
+      },
+    ],
+  },
+
+  Headache_Center: {
+    slug: "Headache_Center",
+    title: "Headache Center",
+    subtitle: "Are you overwhelmed with migraines or chronic headaches?",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2016/02/Headache-Center-e1465162126362.jpg",
+    heroImageAlt: "Headache Center at Middletown Medical",
+    providerFilter: {
+      includeProviderUrls: [
+        "https://middletownmedical.com/wp-content/uploads/2016/09/URI-NAPCHAN-v2.png",
+      ],
+    },
+    sections: [
+      {
+        type: "checkList",
+        heading: "Are You Suffering From These Symptoms?",
+        items: [
+          "Throbbing headache",
+          "Light sensitivity",
+          "Nausea",
+          "Blurred vision",
+          "Watering eyes",
+          "Eye pain",
+          "Neck pain",
+          "Double vision",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Middletown Medical's Headache Center Can Help!",
+        body: [
+          "The FDA approves the use of Botox to treat chronic migraine in adults who are age 18 or over. Botox is injected around pain fibers that are involved in headaches. Botox enters the nerve endings around where it is injected and blocks the release of chemicals involved in pain transmission. This prevents activation of pain networks in the brain. Call Middletown Medical today to discuss your treatment plan options.",
+        ],
+      },
+      {
+        type: "providerHighlight",
+        heading: "Meet Dr. Napchan",
+        name: "Uri Napchan, MD",
+        title: "Director, The Headache Center, Middletown Medical",
+        imageUrl:
+          "https://middletownmedical.com/wp-content/uploads/2016/09/URI-NAPCHAN-v2.png",
+        profileUrl: "https://middletownmedical.com/medical-staff/Napchan_Uri",
+        bio: [
+          "Uri Napchan, M.D. is a board-certified neurologist who is also board-certified in pain medicine with a sub-specialty in headache medicine. An expert in migraine care, Dr. Napchan conducts evaluations to determine the most appropriate diagnosis and treatment plan for each of his patients.",
+        ],
+      },
+      {
+        type: "faq",
+        heading: "Frequently Asked Questions",
+        items: [
+          {
+            question: "Why should you use a headache clinic?",
+            answer: "There are a number of reasons:",
+            items: [
+              "To get a specific diagnosis or to confirm the diagnosis.",
+              "Some will also want to know if there are potential causes or triggers to their headaches.",
+              "For optimal headache management.",
+              "To reduce the burden and the effects of headaches.",
+              "To receive options for headache reduction.",
+              "To optimize treatment options.",
+              "To improve quality of life.",
+              "To improve work productivity and reduce absenteeism.",
+              "For headaches that are not being treated effectively.",
+              "For headaches that are frequent or not responding to treatment.",
+              "For headaches that are interfering with one's life or activities.",
+              "If you feel that are you taking too many prescribed or over-the-counter medication.",
+            ],
+          },
+          {
+            question: "Who is the headache center for?",
+            answer:
+              "A headache clinic is not for everyone. If you have a new type or a change in your headache, then this may be an emergency situation and a visit to the emergency department is warranted. Other signs that you may be having a life-threatening emergency or a serious medical condition may be headache associated with:",
+            items: [
+              "Fever",
+              "Stiff neck",
+              "Changes in mental status",
+              "Weakness or numbness",
+              "Malaise",
+              "Difficulty speaking, difficulty for others to understand",
+              "Changes in blood pressure or pulse",
+              "New headaches over the age of 50 years old",
+            ],
+          },
+          {
+            question: "What are the benefits and what will I learn?",
+            answer:
+              "At our Headache Clinic, patients learn how to modify their lifestyle and living environment to suppress migraine development. Dr. Napchan, director of the clinic, aims to empower patients by coaching them to:",
+            items: [
+              "Identify 'triggers' that may initiate the onset of a migraine headache.",
+              "Learn activities and behaviors that reduce their risk of experiencing a migraine.",
+              "Anticipate an episode in time for prevention.",
+              "Adopt coping methods for pain reduction when a migraine does occur.",
+            ],
+          },
+        ],
+      },
+      {
+        type: "serviceLocations",
+        heading: "Our Locations",
+        locations: [
+          {
+            name: "Monticello",
+            addressLine1: "4058 State Route 42, Suite 5",
+            addressLine2: "Monticello, NY 12701",
+            phone: "(845) 794-1600",
+          },
+          {
+            name: "Middletown Medical",
+            addressLine1: "111 Maltese Dr",
+            addressLine2: "Middletown, NY 10940",
+            phone: "(845) 342-4774",
+          },
+        ],
+      },
+    ],
+  },
+
+  Hereditary_Cancer_Screening: {
+    slug: "Hereditary_Cancer_Screening",
+    title: "Hereditary Cancer Screening",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2016/02/Drone-shot-Middletown-Location-during-Day.jpg",
+    heroImageAlt: "Hereditary Cancer Screening at Middletown Medical",
+    sections: [
+      {
+        type: "richText",
+        heading: "Overview",
+        body: [
+          "Middletown Medical is proud to now be the only provider in the region offering Comprehensive hereditary risk assessment and genetic testing \u2013 either Hereditary Breast and Ovarian Cancer syndrome or Lynch syndrome. This offers people with a family or personal history of breast, ovarian, colon and uterine cancers peace of mind, as mutations or variations in genes passed from parent to child can drastically raise the risk of cancer (in some cases 100%) \u2014 and knowing if you\u2019re at risk allows you to take action to reduce this risk in advance.",
+        ],
+      },
+      {
+        type: "video",
+        url: "https://vimeo.com/341632102",
+        caption: "Hereditary Cancer Screenings \u2013 Dr. Jennifer Reich",
+      },
+      {
+        type: "richText",
+        body: [
+          "Schedule an appointment by phone or chat: 845.342.4774 | mm.care/chat",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Take The Quiz",
+        body: [
+          "This brief questionnaire will help you determine whether you should be further evaluated for either Hereditary Breast and Ovarian Cancer syndrome or Lynch syndrome. On average, the quiz takes less than 1 minute to complete.",
+          "Did you know: Coverage is excellent! Most insurance companies cover genetic testing at 100%. Genetic testing can help you determine if you are at increased risk for developing certain types of cancer.",
+        ],
+        links: [
+          {
+            label: "Take Quiz",
+            href: "https://www.hereditarycancerquiz.com/middletownmedical",
+          },
+        ],
+      },
+      {
+        type: "richText",
+        heading: "About Hereditary Cancer",
+        body: [
+          "Up to 10% of cancers are due to factors that are passed from one generation to the next. These syndromes are known as hereditary cancers, and there are certain genetic tests that can determine an individual\u2019s risk for these cancers. If you do not have these mutations we also will provide the highest level of risk assessment and personalized care in the area.",
+          "If you have reason to suspect that you or someone you know may be at risk for cancer, such as a family history of cancer, membership in an at-risk ethnic population, or other factor, we encourage genetic testing among individuals so that they can take action \u2013 preventing cancer to live longer healthier lives.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "The Benefits",
+        body: [
+          "There are many benefits to getting this test, regardless of the eventual result. If a family member had cancer, however distant, there is a chance that a gene mutation was inherited that not only increases the present or future risk, but also could be passed along to the next generation.",
+          "If you or someone you know is a carrier of a hereditary cancer gene mutation, it could signal a risk for getting cancer earlier in life than someone in the general population. The sooner testing takes place, the easier it is to manage the risk appropriately.",
+        ],
+      },
+      {
+        type: "faq",
+        heading: "Guidelines For Cancer Screenings",
+        items: [
+          {
+            question: "US guidelines for Breast Cancer Screening",
+            subSections: [
+              {
+                subheading: "American Cancer Society",
+                items: [
+                  "Women ages 40 to 44 should have the choice to start annual breast cancer screening with mammography. The risks of screening and the potential benefits should be considered.",
+                  "Women ages 45 to 54 should undergo mammography every year.",
+                  "Women age 55 and older should switch to mammography every 2 years, or have the choice to continue yearly screening.",
+                ],
+              },
+              {
+                subheading: "US Preventive Services Task Force",
+                items: [
+                  "The decision to start regular biennial screening mammography (every 2 years) before age 50 should be an individual one and should take patient context into account, including the patient\u2019s values regarding specific benefits and harms.",
+                  "Biennial screening mammography for women ages 50 to 74.",
+                ],
+              },
+              {
+                subheading: "National Comprehensive Cancer Network",
+                items: [
+                  "Women age 40 and older should have an annual breast examination, annual screening mammography, and education about breast cancer awareness.",
+                  "Women should be counseled on the potential benefits, risks, and limitations of breast cancer screening.",
+                ],
+              },
+            ],
+          },
+          {
+            question: "US guidelines for Colorectal Cancer Screening",
+            subSections: [
+              {
+                subheading: "American Cancer Society",
+                intro:
+                  "Beginning at age 50, men and women should use one of the screening tests below.",
+                groups: [
+                  {
+                    label: "Tests that find polyps and cancer (preferred):",
+                    items: [
+                      "Flexible sigmoidoscopy every 5 years",
+                      "Colonoscopy every 10 years",
+                      "Double-contrast barium enema every 5 years",
+                      "Computed tomographic colonoscopy every 5 years",
+                    ],
+                  },
+                  {
+                    label: "Tests that find cancer only:",
+                    items: [
+                      "Guaiac-based stool occult blood test every year",
+                      "Fecal immunochemical test every year",
+                      "Stool DNA test every 3 years",
+                    ],
+                  },
+                ],
+              },
+              {
+                subheading: "US Preventive Services Task Force",
+                items: [
+                  "Screen for colorectal cancer using fecal occult blood testing, sigmoidoscopy, or colonoscopy in adults beginning at age 50 and continuing until age 75. The risks and benefits of these screening methods vary.",
+                  "The evidence is insufficient to assess the benefits and harms of computed tomographic colonography and fecal DNA testing as screening modalities for colorectal cancer.",
+                ],
+              },
+              {
+                subheading: "National Comprehensive Cancer Network",
+                items: [
+                  "Patients age 50 and older should be screened for colorectal cancer with colonoscopy, high-sensitivity guaiac-based or immunochemical testing, or flexible sigmoidoscopy, plus or minus interval stool-based testing at year 3.",
+                ],
+              },
+            ],
+          },
+          {
+            question: "US guidelines for Prostate Cancer Screening",
+            subSections: [
+              {
+                subheading: "American Cancer Society",
+                intro:
+                  "Men should make an informed decision with the physician about whether to be screened based on an understanding of the uncertainties, risks, and benefits of screening. The discussion about screening should take place at:",
+                items: [
+                  "Age 50 for men at average risk of prostate cancer with a life expectancy of at least 10 years.",
+                  "Age 45 for men at high risk of prostate cancer (Black men, men with a first-degree relative diagnosed with prostate cancer before age 65).",
+                  "Age 40 for men at even higher risk (more than one first-degree relative diagnosed with prostate cancer at an early age).",
+                ],
+              },
+              {
+                subheading: "US Preventive Services Task Force",
+                items: [
+                  "Recommends against screening with prostate-specific antigen testing.",
+                ],
+              },
+              {
+                subheading: "National Comprehensive Cancer Network",
+                items: [
+                  "Based on family history, race, and a history of prostate disease and screening, men ages 45 to 75 should have a discussion with their physician about the risks and benefits of prostate cancer screening including prostate-specific antigen testing and digital rectal examination.",
+                ],
+              },
+            ],
+          },
+          {
+            question: "US guidelines for Lung Cancer Screening",
+            subSections: [
+              {
+                subheading: "American Cancer Society",
+                intro:
+                  "Patients who meet all of the following criteria may be candidates for lung cancer screening:",
+                items: [
+                  "Age 55 to 74",
+                  "In fairly good health",
+                  "Smoking history > 30 pack-years",
+                  "Currently smoking or having quit smoking within the last 15 years",
+                ],
+              },
+              {
+                subheading: "US Preventive Services Task Force",
+                intro:
+                  "Annual screening for lung cancer with low-dose computed tomography in adults ages 55 to 80 who have a 30-pack-year smoking history and who currently smoke or have quit within the past 15 years. Screening should be discontinued once a person has not smoked for 15 years or develops a health problem that substantially limits life expectancy or the ability or willingness to have curative lung surgery.",
+              },
+              {
+                subheading: "National Comprehensive Cancer Network",
+                items: [
+                  "For patients at high risk: ages 55 to 74 with a 30 pack-year or greater smoking history, smoking cessation less than 15 years ago.",
+                  "OR: Age 55, with a 20-pack-year smoking history, and one additional risk factor other than second-hand smoke.",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        body: ["Schedule an appointment by phone or chat: 845.342.4774"],
+      },
+    ],
+  },
+
+  Telemedicine: {
+    slug: "Telemedicine",
+    title: "Telemedicine",
+    heroImageUrl:
+      "https://images.pexels.com/photos/7195310/pexels-photo-7195310.jpeg",
+    heroImageAlt: "Telemedicine at Middletown Medical",
+    sections: [
+      {
+        type: "richText",
+        body: [
+          "All Middletown Medical providers now use Telemedicine. Urgent Care visits can be done through Telemedicine. Just call 845-342-4774.",
+          "Connecting with your provider via your device has never been easier with our own MM Telemedicine solution.",
+        ],
+      },
+      {
+        type: "video",
+        url: "https://youtu.be/WtKR5xFgYIs",
+        caption: "Telemedicine at Middletown Medical",
+      },
+      {
+        type: "richText",
+        heading: "How to Prepare for a Telemedicine Visit",
+        body: [
+          "1) Call your MMPC provider to request a Telemedicine appointment.",
+          "2) At the time of your appointment, your provider will text you a link to join the Telemedicine visit. It's that easy.",
+          "Some providers may choose to do your Telemedicine visit via WhatsApp. Below is a link for you to easily download WhatsApp to your phone.",
+        ],
+        links: [
+          {
+            label: "Download WhatsApp",
+            href: "http://whatsapp.com/dl",
+          },
+        ],
+      },
+      {
+        type: "groupedList",
+        heading:
+          "Same-Day Telemedicine Appointments Available for the Following Specialities",
+        groups: [
+          {
+            name: "",
+            items: [
+              "Primary / Family Medicine",
+              "Pediatrics",
+              "Allergy & Immunology",
+              "Cardiology",
+              "Dermatology",
+              "Diabetes In Children & Teens",
+              "Endocrinology",
+              "Gastroenterology",
+              "Gynecology",
+              "Infectious Diseases",
+              "Interventional Gastroenterology",
+              "Nephrology",
+            ],
+          },
+          {
+            name: "",
+            items: [
+              "Neurology",
+              "Orthopedics",
+              "Otolaryngology",
+              "Pain Management & Rehabilitation",
+              "Podiatry",
+              "Pulmonary Medicine",
+              "Rheumatology",
+              "Urology",
+              "Pediatric Endocrinology",
+              "Hematology & Oncology",
+              "Optometry",
+            ],
+          },
+        ],
+      },
+      {
+        type: "groupedList",
+        heading: "Ways Telemedicine Can Be Used",
+        groups: [
+          {
+            name: "",
+            items: [
+              "Wellness visits with your PCP",
+              "Medication management / prescription renewal",
+              "Minor urgent care (i.e. pink eye, fevers, rashes)",
+              "Birth control counseling",
+            ],
+          },
+          {
+            name: "",
+            items: [
+              "Chronic condition management",
+              "Paediatrics",
+              "Post-hospital discharge",
+              "Post-surgical follow-up",
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        body: [
+          "Call (845) 342-4774 and press 2 to set up a Telemedicine visit.",
+        ],
+      },
+      {
+        type: "bulletList",
+        heading: "New HIPAA Guidance",
+        items: [
+          "Waivers of originating and geographic site restrictions on Medicare telehealth services, permitting the delivery of these services in all areas of the country and all locations, including patients\u2019 homes.",
+          "The ability of providers to use expanded telehealth authority for new and established patients for diagnosis and treatment of COVID-19, as well as for conditions unrelated to the pandemic.",
+          "Permission for providers to use everyday communications technologies, such as FaceTime or Skype, during the COVID-19 public health emergency, without running afoul of HIPAA penalties.",
+        ],
+      },
+    ],
+  },
+
+  The_Sleep_Center: {
+    slug: "The_Sleep_Center",
+    title: "The Sleep Center",
+    subtitle: "at Middletown Medical",
+    heroImageUrl:
+      "https://middletownmedical.com/wp-content/uploads/2019/10/sleep-center-BG-wr.jpg",
+    heroImageAlt: "Woman sleeping peacefully",
+    sections: [
+      {
+        type: "richText",
+        heading: "Overview",
+        body: [
+          "Your physician may refer you to our Sleep Center where you will participate in a sleep study. A sleep study (also called a polysomnogram) is a test that records your physical state during various stages of sleep and wakefulness. It provides data that is essential in evaluating sleep and sleep-related complaints, such as identifying sleep stages, body position, blood oxygen levels, respiratory events, muscle tone, heart rate, amount of snoring and general sleep behavior.",
+          "The Sleep Center at Middletown Medical accepts adult and adolescent patients.",
+          "Schedule an appointment by phone or chat: 845.342.4774",
+        ],
+      },
+      {
+        type: "imageCarousel",
+        heading: "Our Facilitates",
+        images: [
+          {
+            src: "https://middletownmedical.com/wp-content/uploads/2017/08/IMG_5284-768x512.jpg",
+            alt: "Sleep center room with comfortable bed",
+          },
+          {
+            src: "https://middletownmedical.com/wp-content/uploads/2017/08/IMG_5275-768x512.jpg",
+            alt: "Sleep center comfortable room",
+          },
+          {
+            src: "https://middletownmedical.com/wp-content/uploads/2017/08/IMG_5278-1-768x512.jpg",
+            alt: "Sleep center room with television",
+          },
+          {
+            src: "https://middletownmedical.com/wp-content/uploads/2017/08/IMG_5281-768x512.jpg",
+            alt: "Sleep center patient room",
+          },
+        ],
+        caption:
+          "The Sleeping Center is located at 75 Maltese Dr. Middletown NY. The sleeping rooms are comfortable with full size (not hospital) beds. A room with a queen-size bed is available upon request. Each room has a television.",
+      },
+      {
+        type: "checkList",
+        heading: "How Can I Benefit?",
+        items: [
+          "Snoring loudly",
+          "Stop breathing or gasp for breath during sleep",
+          "Feel sleepy or doze off while watching TV, reading, or driving",
+          "Have trouble sleeping more than three nights a week",
+          "Experience interruptions during your sleep (example: heartburn, bad dreams, discomfort)",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "",
+        body: [
+          "Sleep is an essential part of life. Without it, your body suffers emotional and physical damage, including various increased physical risks for your heart and brain, as well as a decline in your overall well-being. If you are properly treated for a sleep disorder, you can experience:",
+        ],
+      },
+      {
+        type: "bulletList",
+        heading: "",
+        items: [
+          "Decreased risk of heart disease, diabetes, stroke, high blood pressure, and many other chronic illnesses",
+          "Improved memory, concentration, and learning capabilities",
+          "Boost in your immune system",
+          "Improved mental and emotional health",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "Why Choose Us",
+        body: [
+          "Our Sleep Center is accredited by the American Academy of Sleep Medicine (AASM), the gold standard by which the services provided by a sleep center are evaluated. Our physicians and staff follow stringent standards established by the AASM to provide the best care for those with sleep-related problems or disorders.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "What To Expect",
+        body: [
+          "After changing into comfortable sleep wear, a staff member, called a polysomnographic technician, will connect you to the electrodes that will record your brain waves and muscle movements throughout the night. The electrodes are placed in specific areas and applied with water-soluble glue and tape. The electrodes record brain waves, muscle movement, rapid eye movement (REM), air intake and more. A microphone attached to your neck records snoring and two belt-like straps around the chest and lower abdomen monitor muscle movement during breathing.",
+          "Patients are videotaped throughout the night as part of the monitoring process. Despite all of the equipment, most people say it doesn\u2019t disrupt their sleep. After settling into bed, your technician may go to a monitoring room and ask you over an intercom to perform certain tasks that will show the electrodes are recording properly. You will be observed on a television monitor during the night to allow the technician to note your body movements during sleep.",
+          "When everything is working properly, the lights will be turned off and you can go to sleep. Many patients are so chronically tired that they have no problem falling asleep. While you are sleeping, your brain waves will be recorded to determine when you are awake or in Stage 1, 2, 3, 4 or REM sleep. For some patients who have sleep apnea, the effects of continuous positive airway pressure (CPAP) are evaluated. Usually these are patients who have had a previous sleep study to diagnose the condition. During the CPAP study, everything is done as for a diagnostic study. In addition, a mask is fit around either the nose or the nose and mouth together. During sleep, we attempt to find a pressure level that holds the airway open and lets the patient get a good night\u2019s sleep.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "How To Prepare",
+        body: [
+          "Sleep studies are generally easy to tolerate, comfortable for the patients and give the referring physician the information he or she needs to accurately diagnose and treat the sleep disorder.",
+          "List of things to do the day of your test:",
+        ],
+      },
+      {
+        type: "bulletList",
+        heading: "",
+        items: [
+          "Wash and dry your hair on the day of your sleep test. Try not to use any hair products such as gels, hairspray or heavy conditioners because it may prevent the electrodes from sticking to your scalp.",
+          "Remove nail polish and/or artificial nails from at least two fingers. The oximeter that is placed on your finger to monitor blood oxygen levels reads this information through the nail, so any polish or acrylic will not provide an accurate reading.",
+          "Do not wear makeup. Some electrodes are on the face so this area must be clean in order to get a good connection.",
+          "Generally, you are encouraged to get a normal night\u2019s sleep before the test unless instructed otherwise by your physician. Continue to take your regular medications and limit caffeine intake the day of your test.",
+        ],
+      },
+      {
+        type: "richText",
+        heading: "In The Morning",
+        body: [
+          "You will be released between 5am and 6am. Our study requires that you get at least six hours of sleep. When you are awake, the electrodes will be removed.",
+          "Once the sleep study is completed, it is scored by a scoring technologist and sent to a sleep specialist for interpretation. This entire process can take seven to ten days. The interpretation is sent to the physician who ordered the sleep study and appropriate follow-up is arranged.",
+          "Schedule an appointment by phone or chat: 845.342.4774",
         ],
       },
     ],
