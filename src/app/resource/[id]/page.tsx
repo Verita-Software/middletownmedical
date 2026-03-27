@@ -1,12 +1,41 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Calendar, Stethoscope } from "lucide-react";
 import { notFound, redirect } from "next/navigation";
 import { getResourceBySlug, getResourceSlugs } from "@/lib/api/resources";
 import { ResourceSectionContent } from "@/components/resources/ResourceSectionContent";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL, SITE_NAME, MAIN_PHONE } from "@/lib/seo-constants";
 
 export async function generateStaticParams() {
   return getResourceSlugs().map((id) => ({ id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const slug = id.toLowerCase().replace(/\s+/g, "-");
+  const data = getResourceBySlug(slug);
+  if (!data) return { title: "Resource Not Found" };
+
+  const description =
+    data.intro?.slice(0, 160) ??
+    `${data.title} — patient resources at Middletown Medical.`;
+
+  return {
+    title: data.title,
+    description,
+    alternates: { canonical: `${SITE_URL}/resource/${slug}` },
+    openGraph: {
+      url: `${SITE_URL}/resource/${slug}`,
+      title: `${data.title} | Middletown Medical`,
+      description,
+    },
+  };
 }
 
 export default async function ResourcePage({
@@ -26,8 +55,23 @@ export default async function ResourcePage({
     redirect(data.redirectUrl);
   }
 
+  const resourceSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: data.title,
+    description: data.intro?.slice(0, 200) ?? `${data.title} at Middletown Medical.`,
+    url: `${SITE_URL}/resource/${slug}`,
+    provider: {
+      "@type": "MedicalOrganization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      telephone: MAIN_PHONE,
+    },
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd data={resourceSchema} />
       <div className="relative w-full min-h-[280px] bg-[#002147] pt-12 pb-16 lg:pt-16 lg:pb-20 flex flex-col justify-end">
         <Image
           src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2666&auto=format&fit=crop"

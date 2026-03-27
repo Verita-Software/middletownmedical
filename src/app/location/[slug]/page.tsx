@@ -1,8 +1,38 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getLocationBySlug, getLocationDetails, getLocationSlugs } from "@/lib/locations";
 import { MOCK_PROVIDERS } from "@/lib/mock-data";
 import type { LocationItem } from "@/types/location";
 import { LocationOverviewDetailPage } from "@/components/locations/LocationOverviewDetailPage";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL, SITE_NAME } from "@/lib/seo-constants";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const location = getLocationBySlug(slug);
+  if (!location) return { title: "Location Not Found" };
+
+  const details = getLocationDetails(slug);
+  const description =
+    details?.overview?.slice(0, 160) ??
+    `${location.name} — Middletown Medical location in ${location.county} County. Call ${location.phone}.`;
+
+  return {
+    title: location.name,
+    description,
+    alternates: { canonical: `${SITE_URL}/location/${slug}` },
+    openGraph: {
+      url: `${SITE_URL}/location/${slug}`,
+      title: `${location.name} | Middletown Medical`,
+      description,
+      images: details?.imageUrl ? [{ url: details.imageUrl }] : undefined,
+    },
+  };
+}
 
 /** Match providers to a location by name/address overlap with provider.Locations. */
 function getProvidersForLocation(location: LocationItem) {
@@ -39,11 +69,40 @@ export default async function LocationDetailPage(props: {
   const details = getLocationDetails(slug);
   const providers = getProvidersForLocation(location);
 
+  const [streetAddress, ...cityParts] = location.address.split(",");
+  const clinicSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    name: location.name,
+    url: `${SITE_URL}/location/${slug}`,
+    telephone: location.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: streetAddress?.trim(),
+      addressLocality: cityParts[0]?.trim() ?? "Middletown",
+      addressRegion: "NY",
+      addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: location.latitude,
+      longitude: location.longitude,
+    },
+    parentOrganization: {
+      "@type": "MedicalOrganization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  };
+
   return (
-    <LocationOverviewDetailPage
-      location={location}
-      details={details}
-      providers={providers}
-    />
+    <>
+      <JsonLd data={clinicSchema} />
+      <LocationOverviewDetailPage
+        location={location}
+        details={details}
+        providers={providers}
+      />
+    </>
   );
 }
