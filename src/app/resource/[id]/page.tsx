@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Calendar, Stethoscope } from "lucide-react";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getResourceBySlug, getResourceSlugs } from "@/lib/api/resources";
-import { ResourceSectionContent } from "@/components/resource/ResourceSectionContent";
+import { ResourceSectionContent } from "@/components/resources/ResourceSectionContent";
 
 export async function generateStaticParams() {
   return getResourceSlugs().map((id) => ({ id }));
@@ -20,6 +20,10 @@ export default async function ResourcePage({
 
   if (!data) {
     notFound();
+  }
+
+  if (data.redirectUrl) {
+    redirect(data.redirectUrl);
   }
 
   return (
@@ -53,22 +57,26 @@ export default async function ResourcePage({
               {data.subtitle}
             </p>
           )}
-          <div className="flex flex-wrap gap-4 mt-8">
-            <Link
-              href="#"
-              className="inline-flex items-center gap-2 bg-[#b5097b] hover:bg-[#8f0761] text-white px-8 py-4 rounded-full font-bold transition-colors"
-            >
-              <Calendar className="w-5 h-5" />
-              Book Appointment
-            </Link>
-            <Link
-              href="/providers"
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-bold transition-colors backdrop-blur-sm border border-white/20"
-            >
-              <Stethoscope className="w-5 h-5" />
-              Find a Provider
-            </Link>
-          </div>
+          {!data.hideHeaderCtas && (
+            <div className="flex flex-wrap gap-4 mt-8">
+              <a
+                href="https://middletown.bridgelive.net/covidvaccineregistration/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#b5097b] hover:bg-[#8f0761] text-white px-8 py-4 rounded-full font-bold transition-colors"
+              >
+                <Calendar className="w-5 h-5" />
+                Book Appointment
+              </a>
+              <Link
+                href="/providers"
+                className="inline-flex items-center gap-2 bg-white hover:bg-slate-300 text-[#002147] px-8 py-4 rounded-full font-bold transition-colors backdrop-blur-sm border border-white/20"
+              >
+                <Stethoscope className="w-5 h-5" />
+                Find a Provider
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
