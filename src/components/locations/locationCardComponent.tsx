@@ -2,6 +2,19 @@ import Link from "next/link";
 import { LocationItem } from "@/types/location";
 import { Phone, ChevronUp, ChevronDown } from "lucide-react";
 
+/**
+ * Render a location card showing name, address, optional phone, and an expandable details section.
+ *
+ * Renders a link to the location page, a tel: link when `location.phone` is present, an expand/collapse control, and — when expanded — county info plus actions to select the location, open directions in Google Maps, or view the full location page.
+ *
+ * @param location - LocationItem containing name, address, slug, county, phone, and other location data
+ * @param isSelected - Whether the card is currently selected (affects visual styling)
+ * @param isExpanded - Whether the details section is expanded
+ * @param onSelect - Callback invoked when the "View on map" action is triggered
+ * @param onToggleExpand - Callback invoked to toggle the expanded/collapsed state
+ * @param scrollRef - Optional ref attached to the card's inner container for scrolling behavior
+ * @returns The rendered location card element
+ */
 export function LocationCard({
   location,
   isSelected,

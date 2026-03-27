@@ -50,6 +50,17 @@ export interface BookAppointmentModalProps {
   provider: Provider;
 }
 
+/**
+ * Modal dialog that provides a multi-step UI to book an appointment with a provider.
+ *
+ * Manages selecting a date, choosing an available time slot, confirming details, and showing completion state;
+ * communicates with the appointments API to load availability and submit bookings.
+ *
+ * @param open - Whether the modal is open
+ * @param onOpenChange - Callback invoked with the next open state when the dialog is opened or closed
+ * @param provider - Provider object used for display and to identify the practitioner for scheduling
+ * @returns The dialog JSX element for booking an appointment
+ */
 export function BookAppointmentModal({
   open,
   onOpenChange,

@@ -7,6 +7,12 @@ import type { Provider } from "@/lib/mock-data";
 import { useBookingStore } from "@/store/booking-store";
 import { LOCATION_PHONES, BOOKING_PATIENT_NAME_OVERRIDE } from "@/lib/appConstant";
 
+/**
+ * Format an ISO 8601 date/time string as a short weekday, short month, and day in en-US locale.
+ *
+ * @param iso - The ISO 8601 date or datetime string to format
+ * @returns A string containing the short weekday, short month, and numeric day for en-US (e.g., "Mon, Jan 1")
+ */
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
     weekday: "short",
@@ -41,6 +47,14 @@ interface BookDetailsStepProps {
   provider: Provider;
 }
 
+/**
+ * Render the patient details step of the booking flow for a provider.
+ *
+ * Renders a form for collecting patient information, displays the selected appointment and provider/location summary, and submits patient data to create an appointment. On successful booking the component advances the booking flow to the completion step and updates shared booking state; on failure it surfaces an error message.
+ *
+ * @param provider - The provider whose appointment, locations, and specialties populate the summary and booking payload
+ * @returns The JSX for the patient details booking step
+ */
 export function BookDetailsStep({ provider }: BookDetailsStepProps) {
   const {
     selectedSlot,

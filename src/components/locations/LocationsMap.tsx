@@ -10,6 +10,20 @@ interface LocationsMapProps {
   className?: string;
 }
 
+/**
+ * Render an interactive Leaflet map displaying the provided locations as markers.
+ *
+ * The component initializes a client-side Leaflet map inside the returned container,
+ * places markers for locations that have numeric latitude and longitude, and invokes
+ * `onSelectLocation` when a marker is clicked. When `selectedId` is provided, the map
+ * recenters on the corresponding location.
+ *
+ * @param locations - Array of location objects; only entries with numeric `latitude` and `longitude` are used for markers and bounds
+ * @param selectedId - If set, the map will recenter to the location with this id
+ * @param onSelectLocation - Callback invoked with a location's `id` when its marker is clicked
+ * @param className - Optional additional CSS class names to apply to the map container
+ * @returns The component's rendered map container element
+ */
 export function LocationsMap({
   locations,
   selectedId,

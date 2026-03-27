@@ -27,6 +27,13 @@ interface ScheduleAppointmentCardProps {
   provider: Provider;
 }
 
+/**
+ * Renders a scheduling card that collects patient age and insurance, validates those inputs,
+ * and navigates to the provider's booking page when the user requests available appointment times.
+ *
+ * @param provider - The provider used to initialize the booking and construct the booking route
+ * @returns The schedule appointment card element
+ */
 export function ScheduleAppointmentCard({
   provider,
 }: ScheduleAppointmentCardProps) {

@@ -10,6 +10,14 @@ interface BookDoneStepProps {
   provider: Provider;
 }
 
+/**
+ * Render the final booking confirmation step shown after a user requests an appointment.
+ *
+ * Displays a success message and two action buttons: one to return to the providers list and one to view the requested provider's profile. Activating either action clears the current booking state.
+ *
+ * @param provider - The provider for whom the appointment was requested; used to construct the profile link.
+ * @returns The confirmation step UI as a React element.
+ */
 export function BookDoneStep({ provider }: BookDoneStepProps) {
   const reset = useBookingStore((s) => s.reset);
 

@@ -4,7 +4,12 @@ import { MOCK_PROVIDERS } from "@/lib/mock-data";
 import type { LocationItem } from "@/types/location";
 import { LocationOverviewDetailPage } from "@/components/locations/LocationOverviewDetailPage";
 
-/** Match providers to a location by name/address overlap with provider.Locations. */
+/**
+ * Finds providers whose listed locations match the given location's name or primary address.
+ *
+ * @param location - The location item to match against provider location entries.
+ * @returns An array of providers from MOCK_PROVIDERS whose `Locations` overlap the location's name or first address segment.
+ */
 function getProvidersForLocation(location: LocationItem) {
   const nameParts = location.name
     .toLowerCase()
@@ -24,11 +29,27 @@ function getProvidersForLocation(location: LocationItem) {
   });
 }
 
+/**
+ * Produce route parameters for static generation from available location slugs.
+ *
+ * @returns An array of objects, each with a `slug` property corresponding to a location slug
+ */
 export async function generateStaticParams() {
   const slugs = getLocationSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
+/**
+ * Render the location detail page for a given route slug.
+ *
+ * Fetches the location and its details, finds matching providers, and returns
+ * the LocationOverviewDetailPage UI for that location. If no location matches
+ * the provided slug, calls `notFound()` to render a 404.
+ *
+ * @param props - Component props containing route parameters
+ * @param props.params - Promise resolving to an object with the route `slug`
+ * @returns The LocationOverviewDetailPage React element for the resolved location
+ */
 export default async function LocationDetailPage(props: {
   params: Promise<{ slug: string }>;
 }) {

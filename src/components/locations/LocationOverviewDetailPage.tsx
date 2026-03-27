@@ -11,6 +11,14 @@ interface LocationOverviewDetailPageProps {
   providers: Provider[];
 }
 
+/**
+ * Render a detailed location page with contact information, action CTAs, and anchored sections for Overview, Services, Specialties, and Meet Our Providers.
+ *
+ * @param location - Location data used for the header (name, address, phone) and to build the directions link
+ * @param details - Optional location details (imageUrl, overview, hours, services, specialties) used to populate the Overview, Services, and Specialties sections
+ * @param providers - Array of providers associated with the location; rendered in a responsive grid under Meet Our Providers
+ * @returns The fully rendered location detail page as a React element
+ */
 export function LocationOverviewDetailPage({
   location,
   details,
