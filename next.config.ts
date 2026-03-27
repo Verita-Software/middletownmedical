@@ -3,6 +3,16 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
+  async redirects() {
+    return [
+      {
+        source: "/resource/patient-bill-of-rights",
+        destination:
+          "https://middletownmedical.com/wp-content/uploads/2017/12/Patient-bill-of-rights.pdf",
+        permanent: false,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

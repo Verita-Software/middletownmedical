@@ -7,11 +7,19 @@
 
 export type ResourceSection =
   | { type: "paragraphs"; paragraphs: string[] }
+  | { type: "contact"; items: { label: string; value: string; href?: string }[] }
+  | { type: "paragraphs"; paragraphs: string[]; link?: { text: string; href: string } }
   | {
-      type: "contact";
-      items: { label: string; value: string; href?: string }[];
-    }
-  | { type: "paragraphs"; paragraphs: string[]; link?: { text: string; href: string } };
+      type: "pdfCards";
+      cards: {
+        title: string;
+        category: string;
+        tag: string;
+        description: string;
+        href: string;
+        accent: string;
+      }[];
+    };
 
 export interface ResourcePageData {
   title: string;
@@ -42,91 +50,58 @@ const RESOURCE_PAGES: Record<string, ResourcePageData> = {
   "patient-resources": {
     title: "Patient Resources",
     intro:
-      "We are excited to be your partner for medical care. As a Middletown Medical patient, you have access to our physicians across multiple clinical specialties. From primary care for the whole family to expert specialty care, we are equipped to diagnose and treat your medical needs. We have practice sites across the Hudson Valley and beyond, making access to care easy and convenient for you.",
+      "Helpful guides, forms, and clinical documents to support your care journey at Middletown Medical. All resources are published by our clinical staff and reflect current evidence-based standards of care.",
     sections: [
-      section(
-        "What to Expect",
-        2,
-        p(
-          "It can be hard to keep up with the changes in healthcare today, but at Middletown Medical our focus remains constant — providing the highest quality medical care available. This is why every aspect of your care is thoughtfully designed by physicians who know and care for you.",
-          "Our physicians know that trust is earned, compassion is non-negotiable and that the only bottom line worth caring about is whether we've helped you and your family live healthier, happier lives. We are leading the way by listening to you."
-        )
-      ),
-      section(
-        "Primary Care",
-        3,
-        p(
-          "With expertise in internal medicine and family medicine, you are sure to find a doctor you trust to be your partner in health. Our physicians take a comprehensive approach to the prevention, diagnosis and treatment of diseases in adults.",
-          "Our pediatricians care for the physical, mental and emotional well-being of your child through every stage of their development. We offer preventive care for healthy children, as well as early detection and management of a variety of pediatric issues."
-        )
-      ),
-      section(
-        "Specialty Care",
-        3,
-        p(
-          "Our board-certified specialists are leaders in innovative care. With advanced clinical training and sub-specialty expertise, our specialty care team offers advanced treatment options tailored to your individual needs and health-related goals. Our physicians collaborate across specialties to develop a care plan centered around what is best for you."
-        )
-      ),
-      section(
-        "Immediate Care",
-        3,
-        p(
-          "We know illness and injury don't consult your schedule, so we've made room in ours to make sure you can be seen on short notice, close to home or on the go. With same-day appointments, urgent care centers and virtual visits, access to care has never been more convenient."
-        )
-      ),
-      section(
-        "Contact Us",
-        2,
-        contact([
+      section("Downloadable Documents", 2, {
+        type: "pdfCards",
+        cards: [
           {
-            label: "Scheduling",
-            value: "Schedule online or call (845) 342-4774",
-            href: "#",
+            title: "Colorectal Cancer Screening",
+            category: "Screening Guidelines",
+            tag: "Policy Guide",
+            description:
+              "Evidence-based guidelines for colorectal cancer (CRC) screening and surveillance intervals for patients at average risk, starting at age 45. Includes the recommended Fecal FIT screening protocol, colonoscopy surveillance schedules, and criteria for identifying high-risk patients who require earlier or more frequent screening.",
+            href: "https://middletownmedical.com/wp-content/uploads/2023/06/COLORECTAL-CANCER-SCREENING.pdf",
+            accent: "#b5097b",
           },
-          { label: "MyChart Questions", value: "(845) 342-4774" },
-          { label: "Billing Customer Service", value: "(845) 342-4774" },
           {
-            label: "Patient Experience & Feedback",
-            value: "Call (845) 342-4774",
+            title: "Fecal FIT Testing",
+            category: "Lab Services",
+            tag: "Patient Info",
+            description:
+              "Learn about our in-house Fecal Immunochemical Test (FIT) — covered by all insurance providers. Annual FIT testing is recommended for all patients aged 45 and older, regardless of when their last colonoscopy was performed. Recent studies show yearly FIT is superior to Cologuard for colorectal cancer detection.",
+            href: "https://middletownmedical.com/wp-content/uploads/2023/06/Fecal-FIT-Testing.pdf",
+            accent: "#49A3DA",
           },
-          { label: "Medical Records Request", value: "(845) 342-4774" },
-        ])
-      ),
-      section(
-        "Requesting Medical Records",
-        3,
-        p(
-          "Some of the information you are requesting may be available online in our patient portal, MyChart. To have a copy of your medical records sent to Middletown Medical from another provider or facility, please contact that provider directly."
-        )
-      ),
-      section(
-        "Medication Prescriptions and Refills",
-        3,
-        p(
-          "We strive to address your medication needs during your appointments. We will verify the medications that you are currently taking at each visit. If you need a refill, please allow 3 business days for the refill to be completed. In some cases, it may take longer if our office is waiting for an approval or a response from your insurance company. Regular and periodic visits as recommended by your provider will help make this process more seamless and are necessary for ongoing medication refills."
-        )
-      ),
-      section(
-        "Notification Regarding Lab Results",
-        3,
-        p(
-          "Middletown Medical is committed to ensuring all our patients have the best access to their medical information. Results from tests performed or collected at our locations will be released to the MyChart app as soon as they are received. The care team will review all results and communicate any follow-up instructions. Should there be any questions or concerns about the results, please log in to MyChart, navigate to Messages, and route your message to the provider who ordered the test."
-        )
-      ),
-      section(
-        "MyChart Messages",
-        3,
-        p(
-          "Exchanging messages with your care team through the app is a convenient way to communicate for non-urgent medical needs. This tool can be used for simple questions about test results, medication refills and questions about your recent visit. This tool should not be used for urgent issues or in replacement of a visit."
-        )
-      ),
-      section(
-        "Form Completion",
-        3,
-        p(
-          "Please allow 5 business days for completion of forms (FMLA, patient assistance, etc.)."
-        )
-      ),
+          {
+            title: "Fecal FIT Instruction",
+            category: "How-To Guide",
+            tag: "Instructions",
+            description:
+              "Step-by-step instructions for completing your Fecal Immunochemical Test (FIT) kit at home. Covers who should be screened, how to safely collect your stool sample using the provided collection paper, how to seal and return your kit within 48 hours, and what to expect from your results.",
+            href: "https://middletownmedical.com/wp-content/uploads/2023/06/Fecal-Fit-Instruction.pdf",
+            accent: "#2e7d32",
+          },
+          {
+            title: "Middletown Medical Laboratory Update",
+            category: "Laboratory",
+            tag: "Update",
+            description:
+              "Important updates from the Middletown Medical laboratory department. This document covers new lab services, updated protocols, specimen collection procedures, and standards that ensure accurate and timely results reported directly to your physician for the best possible patient care.",
+            href: "https://middletownmedical.com/wp-content/uploads/2023/06/Middletown-Medical-Laboratory-Update.pdf",
+            accent: "#e65100",
+          },
+          {
+            title: "MRI Instructions",
+            category: "Imaging Preparation",
+            tag: "Prep Guide",
+            description:
+              "Prepare for your MRI exam with this comprehensive guide from our Radiology department. Includes a pre-exam metal implant safety checklist, clothing and jewelry recommendations, food and drink guidelines, contrast dye information, and tips for patients with claustrophobia. Contact Radiology at (845) 342-4774 ext. 4190 with any questions.",
+            href: "https://middletownmedical.com/wp-content/uploads/2025/03/MRI-Instructions.pdf",
+            accent: "#002147",
+          },
+        ],
+      }),
     ],
   },
   "patient-experience": {

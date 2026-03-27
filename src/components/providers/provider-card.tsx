@@ -27,6 +27,13 @@ function getInitials(name: string) {
     .replace(/[^A-Z]/g, "");
 }
 
+/** Uniform vertical gap between title, body, and footer — every card uses the same rhythm. */
+const PROVIDER_CARD_GAP_Y = "gap-y-3 sm:gap-y-4";
+
+/** Fixed title block height (2 lines at 18px + leading) so long names never stretch the card. */
+const PROVIDER_CARD_TITLE_BOX =
+  "h-[3rem] sm:h-[3.125rem] shrink-0 overflow-hidden";
+
 interface ProviderCardProps {
   provider: Provider;
   variant?: "grid" | "list" | "compact";
@@ -41,7 +48,9 @@ export function ProviderCard({
   const specialties = provider.Specialties || [];
   const locations = provider.Locations || [];
   const router = useRouter();
-  const setSelectedProvider = useSearchFiltersStore((s) => s.setSelectedProvider);
+  const setSelectedProvider = useSearchFiltersStore(
+    (s) => s.setSelectedProvider,
+  );
 
   if (variant === "list") {
     return <ProviderListCard provider={provider} />;
@@ -60,17 +69,19 @@ export function ProviderCard({
         duration: 0.2,
       }}
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
-      className="group flex flex-col cursor-pointer rounded-tl-[1rem] rounded-br-[1rem] rounded-tr-none rounded-bl-none  border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] hover:border-primary/20 transition-all duration-300 h-full relative overflow-hidden"
+      className={`group flex h-full min-h-0 cursor-pointer flex-col ${PROVIDER_CARD_GAP_Y} rounded-tl-[1rem] rounded-br-[1rem] rounded-tr-none rounded-bl-none border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] hover:border-primary/20 transition-all duration-300 relative overflow-hidden`}
     >
-      {/* Title */}
-      <Link
-        href={`/providers/${provider.id}`}
-        className="text-[22px] font-bold text-primary hover:text-primary/90 transition-colors leading-snug mb-5 underline-offset-4 hover:underline z-10 block"
-      >
-        {provider.Name}
-      </Link>
+      {/* Title — fixed height + line-clamp so ultra-long names never add extra rows */}
+      <div className={`${PROVIDER_CARD_TITLE_BOX} z-10`}>
+        <Link
+          href={`/providers/${provider.id}`}
+          className="line-clamp-2 block overflow-hidden text-[18px] font-bold leading-snug text-primary underline-offset-4 transition-colors hover:text-primary/90 hover:underline wrap-break-word"
+        >
+          {provider.Name}
+        </Link>
+      </div>
 
-      <div className="flex gap-4 sm:gap-6 flex-1 z-10 w-full">
+      <div className="flex min-h-0 min-w-0 flex-1 gap-4 sm:gap-6 z-10 w-full">
         {/* Image */}
         <div className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-tl-[1rem] rounded-br-[1rem] rounded-tr-none rounded-bl-none overflow-hidden shrink-0 border border-slate-200/60 shadow-inner group-hover:shadow-md transition-shadow duration-300">
           <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-slate-100 to-slate-200">
@@ -88,36 +99,36 @@ export function ProviderCard({
           </div>
         </div>
 
-        {/* Details */}
-        <div className="flex flex-col flex-1 min-w-0">
+        {/* Details — same vertical spacing inside the column */}
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-y-2">
           {specialties.length > 0 && (
-            <div className="text-[14px] sm:text-[16px] font-bold text-slate-900 mb-1.5 leading-snug wrap-break-word">
+            <div className="text-[14px] sm:text-[16px] font-bold leading-snug text-slate-900 wrap-break-word">
               {specialties.length > 2
                 ? `${specialties[0]}, ${specialties[1]} (+${specialties.length - 2})`
                 : specialties.join(", ")}
             </div>
           )}
 
-          <div className="flex items-center gap-2 mb-2 font-serif">
+          <div className="flex items-center gap-2 font-serif">
             <span className="text-[15px] font-bold text-slate-900">
               {rating}
             </span>
-            <div className="flex text-amber-400 gap-0.5 mt-[-2px]">
+            <div className="mt-[-2px] flex gap-0.5 text-amber-400">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-[15px] h-[15px] fill-current" />
+                <Star key={i} className="h-[15px] w-[15px] fill-current" />
               ))}
             </div>
           </div>
 
           {locations.length > 0 && (
-            <div className="text-[13px] sm:text-[14px] text-slate-500 line-clamp-3 lg:line-clamp-2 leading-relaxed mt-1 pr-2">
+            <div className="line-clamp-3 pr-2 text-[13px] leading-relaxed text-slate-500 sm:text-[14px] lg:line-clamp-2">
               {locations[0]}
             </div>
           )}
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-end gap-2 mt-6 pt-5 border-t border-slate-100 z-10">
+      <div className="flex shrink-0 flex-wrap justify-end gap-2 border-t border-slate-100 pt-4 z-10">
         <Button
           variant="outline"
           onClick={() => {
@@ -141,7 +152,9 @@ function ProviderListCard({ provider }: { provider: Provider }) {
   const specialties = provider.Specialties || [];
   const locations = provider.Locations || [];
   const router = useRouter();
-  const setSelectedProvider = useSearchFiltersStore((s) => s.setSelectedProvider);
+  const setSelectedProvider = useSearchFiltersStore(
+    (s) => s.setSelectedProvider,
+  );
 
   return (
     <motion.div
@@ -171,12 +184,14 @@ function ProviderListCard({ provider }: { provider: Provider }) {
 
         {/* Details */}
         <div className="flex flex-col flex-1 min-w-0 py-1 w-full text-center sm:text-left items-center sm:items-start">
-          <Link
-            href={`/providers/${provider.id}`}
-            className="text-[20px] sm:text-[22px] font-bold text-primary hover:text-primary/90 transition-colors leading-snug mb-2 underline-offset-4 hover:underline truncate w-full"
-          >
-            {provider.Name}
-          </Link>
+          <div className="mb-2 min-h-[3rem] sm:min-h-[3.25rem] w-full">
+            <Link
+              href={`/providers/${provider.id}`}
+              className="text-[16px] sm:text-[16px] font-bold text-primary hover:text-primary/90 transition-colors leading-snug underline-offset-4 hover:underline line-clamp-2 w-full"
+            >
+              {provider.Name}
+            </Link>
+          </div>
 
           {specialties.length > 0 && (
             <div className="text-[14px] sm:text-[16px] font-bold text-slate-900 mb-1.5 leading-snug truncate w-full">

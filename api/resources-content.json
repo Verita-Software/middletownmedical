@@ -1,21 +1,268 @@
 {
   "patient-resources": {
     "title": "Patient Resources",
-    "intro": "As a Middletown Medical patient, you have access to our physicians across multiple clinical specialties. Below you will find helpful forms, instructions, and updates to download and use before or after your visit.",
+    "intro": "Helpful guides, forms, and clinical documents to support your care journey at Middletown Medical. All resources are published by our clinical staff and reflect current evidence-based standards of care.",
     "sections": [
       {
-        "heading": "Downloads & Forms",
+        "heading": "Downloadable Documents",
+        "level": 2,
+        "content": {
+          "type": "pdfCards",
+          "cards": [
+            {
+              "title": "Colorectal Cancer Screening",
+              "category": "Screening Guidelines",
+              "tag": "Policy Guide",
+              "description": "Evidence-based guidelines for colorectal cancer (CRC) screening and surveillance intervals for patients at average risk, starting at age 45. Includes the recommended Fecal FIT screening protocol, colonoscopy surveillance schedules, and criteria for identifying high-risk patients who require earlier or more frequent screening.",
+              "href": "https://middletownmedical.com/wp-content/uploads/2023/06/COLORECTAL-CANCER-SCREENING.pdf",
+              "accent": "#b5097b"
+            },
+            {
+              "title": "Fecal FIT Testing",
+              "category": "Lab Services",
+              "tag": "Patient Info",
+              "description": "Learn about our in-house Fecal Immunochemical Test (FIT) — covered by all insurance providers. Annual FIT testing is recommended for all patients aged 45 and older, regardless of when their last colonoscopy was performed. Recent studies show yearly FIT is superior to Cologuard for colorectal cancer detection.",
+              "href": "https://middletownmedical.com/wp-content/uploads/2023/06/Fecal-FIT-Testing.pdf",
+              "accent": "#49A3DA"
+            },
+            {
+              "title": "Fecal FIT Instruction",
+              "category": "How-To Guide",
+              "tag": "Instructions",
+              "description": "Step-by-step instructions for completing your Fecal Immunochemical Test (FIT) kit at home. Covers who should be screened, how to safely collect your stool sample using the provided collection paper, how to seal and return your kit within 48 hours, and what to expect from your results.",
+              "href": "https://middletownmedical.com/wp-content/uploads/2023/06/Fecal-Fit-Instruction.pdf",
+              "accent": "#2e7d32"
+            },
+            {
+              "title": "Middletown Medical Laboratory Update",
+              "category": "Laboratory",
+              "tag": "Update",
+              "description": "Important updates from the Middletown Medical laboratory department. This document covers new lab services, updated protocols, specimen collection procedures, and standards that ensure accurate and timely results reported directly to your physician for the best possible patient care.",
+              "href": "https://middletownmedical.com/wp-content/uploads/2023/06/Middletown-Medical-Laboratory-Update.pdf",
+              "accent": "#e65100"
+            },
+            {
+              "title": "MRI Instructions",
+              "category": "Imaging Preparation",
+              "tag": "Prep Guide",
+              "description": "Prepare for your MRI exam with this comprehensive guide from our Radiology department. Includes a pre-exam metal implant safety checklist, clothing and jewelry recommendations, food and drink guidelines, contrast dye information, and tips for patients with claustrophobia. Contact Radiology at (845) 342-4774 ext. 4190 with any questions.",
+              "href": "https://middletownmedical.com/wp-content/uploads/2025/03/MRI-Instructions.pdf",
+              "accent": "#002147"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "covid-19-monoclonal-antibodies": {
+    "title": "COVID-19 Monoclonal Antibodies",
+    "intro": "Middletown Medical is proud to now offer monoclonal antibody treatments for COVID-19 patients.",
+    "sections": [
+      {
+        "heading": "Now Offering COVID-19 Monoclonal Antibodies",
         "level": 2,
         "content": {
           "type": "paragraphs",
           "paragraphs": [
-            "Download the following patient resources and forms. Contact our office at (845) 342-4774 if you need assistance or have questions about any form.",
-            "Colorectal Cancer Screening — Download",
-            "Fecal FIT Testing — Download",
-            "Fecal FIT Instruction — Download",
-            "Middletown Medical Laboratory Update — Download",
-            "MRI Instructions — Download"
+            "Middletown Medical is proud to now offer monoclonal antibody treatments for COVID-19 patients. Early monoclonal antibody treatment has been proven to prevent hospitalization and reduce the risk of death. Recommended treatment is within 72 hours of COVID-19 diagnosis, and patients should inquire about treatment as soon as they receive a positive result. However, treatment can be given up to 10 days post-diagnosis.",
+            "Monoclonal antibodies are currently the only recognized treatment for COVID-19 to prevent hospitalization.",
+            "Middletown Medical's standard charge for this cutting-edge therapy is $2,250."
           ]
+        }
+      },
+      {
+        "heading": "",
+        "level": 2,
+        "content": {
+          "type": "ctaButton",
+          "label": "Schedule Appointment",
+          "href": "https://middletown.bridgelive.net/covidvaccineregistration/",
+          "note": "Click here to request a Telemedicine appointment to verify your eligibility"
+        }
+      },
+      {
+        "heading": "Frequently Asked Questions",
+        "level": 2,
+        "content": {
+          "type": "faq",
+          "items": [
+            {
+              "question": "What are monoclonal antibodies?",
+              "answer": "Monoclonal antibodies are laboratory-produced molecules that act as substitute antibodies that can restore, enhance or mimic the immune system's attack on cells."
+            },
+            {
+              "question": "How do monoclonal antibodies treat COVID-19?",
+              "answer": "Monoclonal antibodies for COVID-19 may block the virus that causes COVID-19 from attaching to human cells, making it more difficult for the virus to reproduce and cause harm. Monoclonal antibodies may also neutralize a virus."
+            },
+            {
+              "question": "How do I receive the treatment?",
+              "answer": "Monoclonal antibody treatments for COVID-19 are only administered in settings in which healthcare providers have immediate access to medications to treat a severe infusion reaction, such as anaphylaxis, and have the ability to activate the emergency medical system (EMS). Middletown Medical's Infusion Center features the latest infusion treatment technology and has a specialized team to monitor your care during the antibody treatment."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "covid-19-vaccine": {
+    "title": "Covid-19 Vaccine",
+    "intro": "COVID-19 vaccines are now available at Middletown Medical. Protect yourself and your community by getting vaccinated at our convenient location.",
+    "sections": [
+      {
+        "heading": "COVID-19 Vaccine Now Available",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "*** We are not yet giving the Covid vaccine for under 12 years old. ***",
+            "LOCATION REMINDER: The vaccines will be given at 111 Maltese Drive, 1st Floor. Please do not go by the location in the actual appointment.",
+            "Vaccine Clinic Schedule — Covid Dose #1, Covid Dose #2, Covid Booster, Flu/Pneumo Clinic:"
+          ]
+        }
+      },
+      {
+        "heading": "Vaccine Clinic Schedule",
+        "level": 3,
+        "content": {
+          "type": "locationSchedule",
+          "location": "111 Maltese Drive, 1st Floor",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=111+Maltese+Drive+Middletown+NY",
+          "schedules": [
+            {
+              "day": "Monday",
+              "time": "3pm to 5pm",
+              "services": "Covid Boosters: Moderna and Pfizer"
+            },
+            {
+              "day": "Wednesday",
+              "time": "12pm to 12:45pm",
+              "services": "Covid Booster: Dose #1 & #2, Moderna only"
+            },
+            {
+              "day": "Thursday",
+              "time": "10am to 12:45pm",
+              "services": "Covid Booster: Dose #1 & #2, Pfizer only"
+            }
+          ]
+        }
+      },
+      {
+        "heading": "Eligibility Notes",
+        "level": 3,
+        "content": {
+          "type": "bulletList",
+          "items": [
+            "We only give 12 years and older at 111 Maltese. 50 years and older are eligible for 3rd booster; it needs to be 4 months apart from the first booster.",
+            "Booster Eligibility for Pfizer/Moderna: May be given at least 5 months after the 2nd dose. Eligibility includes: 65 years of age and older; 18 through 64 years of age at high risk of severe COVID-19; 18 through 64 years of age with frequent institutional or occupational exposure to SARS-CoV-2.",
+            "Booster Eligibility for Janssen (Johnson and Johnson): May be given at least 2 months after the initial dose to recipients 18 years of age and older. Recipients may receive a single booster dose of Janssen COVID-19 Vaccine, Moderna or COVID-19 Vaccine or Pfizer-BioNTech COVID-19 Vaccine."
+          ]
+        }
+      },
+      {
+        "heading": "Moderna and Pfizer Booster",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "We are now offering the Moderna and Pfizer Booster for certain immunocompromised patients.",
+            "Call our main line at (845) 342-4774 or use the CHAT feature to get more info.",
+            "You can also get more info from the FDA website regarding these booster shots: https://www.fda.gov/news-events/press-announcements/coronavirus-covid-19-update-fda-authorizes-additional-vaccine-dose-certain-immunocompromised"
+          ]
+        }
+      },
+      {
+        "heading": "How to Get Vaccinated — 3 Steps",
+        "level": 2,
+        "content": {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Step 1 — Check Your Eligibility",
+              "answer": "The COVID-19 vaccine supply is currently limited and therefore subject to strict prioritization in accordance with Centers for Disease Control and Department of Health directives. As of April 6, 2021, all New Yorkers age 16 or older are eligible to be vaccinated. Please note that while New Yorkers age 16 and older are eligible to be vaccinated, at this time only the Pfizer vaccine is authorized for emergency use in people who are at least 16. Middletown Medical does not currently have access to the Pfizer vaccine and therefore is only offering vaccine appointments for those age 18 and older. Verify your eligibility by reviewing the entire NYS qualifications."
+            },
+            {
+              "question": "Step 2 — Complete the NYS Vaccination Form",
+              "answer": "Complete the required NYS Vaccination form before your appointment. This ensures the vaccination process is efficient and that your records are properly filed with state health authorities."
+            },
+            {
+              "question": "Step 3 — Schedule Your Appointment",
+              "answer": "Schedule your appointment with Middletown Medical in 2 convenient ways: Call our office directly at 845.342.4774, or schedule online through our patient portal."
+            }
+          ]
+        }
+      },
+      {
+        "heading": "How To Prepare For Your First Vaccine",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "1. Complete your NYS Vaccine Form and be sure to bring it with you to your appointment.",
+            "2. Bring and wear a mask! You will be required to wear a mask during your vaccination.",
+            "3. Bring your ID, insurance, proof of residency, and proof of eligibility.",
+            "4. To help you feel your best — get a good night's rest, drink plenty of fluids, and make sure you have something to eat prior to your appointment time.",
+            "5. Bring your smartphone if you have one.",
+            "6. If possible, bring a friend or loved one with you.",
+            "7. Prepare your schedule for the 15-minute observation period following the vaccine.",
+            "8. Wear comfortable clothing that makes your arm easily accessible, such as a tee shirt."
+          ]
+        }
+      }
+    ]
+  },
+  "post-covid-19-recovery": {
+    "title": "Post COVID-19 Recovery",
+    "subtitle": "Let Middletown Medical Help You Get on the Road to Recovery",
+    "intro": "For most patients who suffer from COVID-19, symptoms get better within a few weeks. However, some patients exhibit ongoing symptoms which may be mild or serious. These persistent symptoms can sometimes linger for months, and this stage of illness is referred to as 'long COVID', 'chronic COVID-19', or 'post-COVID syndrome'. Middletown Medical is here for you.",
+    "sections": [
+      {
+        "heading": "Our Post-COVID Care",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Our practice offers state-of-the-art testing to determine and develop treatment plans for any post-COVID symptoms you may be suffering from."
+          ]
+        }
+      },
+      {
+        "heading": "",
+        "level": 2,
+        "content": {
+          "type": "ctaButton",
+          "label": "Schedule Appointment",
+          "href": "https://middletown.bridgelive.net/covidvaccineregistration/",
+          "note": "Click on the button below to request a Telemedicine visit to discuss your post-COVID syndrome treatment options"
+        }
+      },
+      {
+        "heading": "Frequently Asked Questions",
+        "level": 2,
+        "content": {
+          "type": "faq",
+          "items": [
+            {
+              "question": "What is post-COVID syndrome?",
+              "answer": "Although most people with COVID-19 get better within weeks of illness, some people experience post-COVID conditions. Post-COVID conditions are a wide range of new, returning, or ongoing health problems people can experience more than four weeks after first being infected with the virus that causes COVID-19. Even people who did not have symptoms when they were infected can have post-COVID conditions. These conditions can have different types and combinations of health problems for different lengths of time."
+            },
+            {
+              "question": "What are the symptoms of post-COVID syndrome?",
+              "answer": "These symptoms are not the same for everyone, but may include one or many of the following: Fevers; Fatigue; Shortness of breath; Exercise intolerance; Trouble thinking clearly, focusing, or remembering."
+            },
+            {
+              "question": "What should I do if I have symptoms of post-COVID syndrome?",
+              "answer": "If you have any of the above lingering symptoms since your COVID-19 infection, it is important for you to schedule an appointment with Middletown Medical so we can develop your ongoing treatment plan. Our dedicated specialists are prepared to develop a customized plan for your post-COVID symptoms, including cardiac rehabilitation, pulmonary rehabilitation, physical therapy, and more."
+            }
+          ]
+        }
+      },
+      {
+        "heading": "",
+        "level": 2,
+        "content": {
+          "type": "ctaButton",
+          "label": "Schedule Appointment",
+          "href": "https://middletown.bridgelive.net/covidvaccineregistration/",
+          "note": "Click on the button below to request a Telemedicine visit to discuss your post-COVID syndrome treatment options"
         }
       }
     ]
@@ -239,5 +486,633 @@
         }
       }
     ]
+  },
+  "careers": {
+    "title": "Careers",
+    "subtitle": "Join the Middletown Medical team",
+    "intro": "Explore open opportunities across our network and help deliver outstanding care to patients and families throughout the Hudson Valley.",
+    "hideHeaderCtas": true,
+    "sections": [
+      {
+        "heading": "Open Positions",
+        "level": 2,
+        "content": {
+          "type": "jobListings",
+          "introCard": {
+            "title": "Medical Positions",
+            "subtitle": "Middletown Medical",
+            "description": "If you are a PA, NP, RN, or licensed technologist looking for your next opportunity, contact Middletown Medical at (845) 342-4774 ext 1819.",
+            "imageUrl": "https://middletownmedical.com/wp-content/uploads/2016/02/Drone-shot-Middletown-Location-during-Day.jpg"
+          },
+          "listings": [
+            {
+              "title": "CAT Scan/ X-Ray Tech",
+              "updated": "New Update",
+              "date": "January 2026",
+              "location": "Openings in Middletown, Monticello, Newburgh and Port Jervis",
+              "details": [
+                {
+                  "label": "Responsibilities",
+                  "items": [
+                    "Perform diagnostic imaging procedures, including X-rays and CT scans",
+                    "Operate and maintain imaging equipment",
+                    "Prepare patients for procedures and ensure their comfort and safety",
+                    "Position patients correctly to obtain accurate images",
+                    "Follow protocols and guidelines to ensure high-quality images",
+                    "Collaborate with radiologists and other healthcare professionals to interpret images",
+                    "Maintain patient records and documentation of procedures"
+                  ]
+                },
+                {
+                  "label": "Skills",
+                  "items": [
+                    "In-depth knowledge of human anatomy and physiology",
+                    "Proficiency in using imaging equipment, including X-ray machines and CT scanners",
+                    "Excellent attention to detail and ability to follow protocols and guidelines accurately",
+                    "Strong communication skills to interact with patients and healthcare professionals effectively",
+                    "Ability to work in a fast-paced environment, such as an urgent care setting"
+                  ]
+                },
+                {
+                  "label": "Note",
+                  "items": [
+                    "AART Certification as an X-ray Technician is required. Experience in performing CT scans."
+                  ]
+                },
+                {
+                  "label": "Job Types",
+                  "items": ["Full-time", "Part-time", "Per diem"]
+                },
+                {
+                  "label": "Pay",
+                  "items": ["From $40.00 per hour"]
+                },
+                {
+                  "label": "Healthcare setting",
+                  "items": ["Outpatient"]
+                },
+                {
+                  "label": "Medical specialties",
+                  "items": ["Radiology"]
+                },
+                {
+                  "label": "Schedule",
+                  "items": [
+                    "10 hour shift",
+                    "12 hour shift",
+                    "Rotating weekends"
+                  ]
+                },
+                {
+                  "label": "Ability to commute/relocate",
+                  "items": [
+                    "Middletown, NY 10940: Reliably commute or planning to relocate before starting work (Required)"
+                  ]
+                },
+                {
+                  "label": "License/Certification",
+                  "items": ["ARRT Certification (Required)"]
+                },
+                {
+                  "label": "Work Location",
+                  "items": ["In person"]
+                },
+                {
+                  "label": "About Middletown Medical",
+                  "items": [
+                    "We are a medical facility in primary care and urgent care run under the name P.C located in Middletown, New York.",
+                    "It is a multi-specialty physicians' group dedicated to providing patients with top quality, comprehensive care in a warm and caring environment.",
+                    "The medical facility is nurtured by a well qualified team.",
+                    "We are present at multiple locations in- Orange county, Sullivan County, Ulster County.",
+                    "We are proud of our outstanding group of physicians who have trained and worked at some of the best hospitals and universities.",
+                    "We have been right here serving generations of families since 1984."
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "CAT SCAN TECHNOLOGIST",
+              "updated": "New Update",
+              "date": "January 2026",
+              "summary": "Job description: Multi-specialty practice operating since 1984 with renowned providers seeking candidates to work in our Middletown location as CAT SCAN TECHNOLOGIST.",
+              "details": [
+                {
+                  "label": "Why choose Middletown Medical as work place?",
+                  "items": [
+                    "Excellent patient reviews",
+                    "Great work culture welcomes the diverse population",
+                    "Work life balance and friendly environment makes most of the staff working with us over 10 years",
+                    "Easy to commute location",
+                    "Strong salary base and Competitive",
+                    "Life Insurance",
+                    "Option of shift preference",
+                    "Great learning curve as technicians get skills to handle patients across the specialty",
+                    "Our goal is to provide you and your family with cost-efficient and comprehensive benefits",
+                    "Dental plans allow you the freedom to see the dentist of your choice. You can utilize a large network of participating dentists",
+                    "Middletown Medical is committed to providing a work environment free of any form of unlawful harassment or discrimination",
+                    "All qualified individuals will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, ancestry, age, disability, protected veteran status, marital status, or another protected status under federal, state, or local laws.",
+                    "This position can be your opportunity to work with an exciting, rapidly growing professional diagnostic imaging Department.",
+                    "If you are interested in this new and exciting opportunity, please apply now or contact us by sharing your resume."
+                  ]
+                },
+                {
+                  "label": "Position",
+                  "items": ["Full Time"]
+                },
+                {
+                  "label": "Salary range",
+                  "items": ["$40-45 per hour"]
+                },
+                {
+                  "label": "Schedule",
+                  "items": [
+                    "Flexible scheduling, 12 hour shifts 9AM-9PM",
+                    "With flexi scheduling; weekend and holidays rotations"
+                  ]
+                },
+                {
+                  "label": "Work Location",
+                  "items": ["Middletown and Newburgh"]
+                },
+                {
+                  "label": "Benefits",
+                  "items": [
+                    "PTO",
+                    "Health insurance with employer participation",
+                    "Life Insurance",
+                    "Dental Insurance",
+                    "Vision Insurance"
+                  ]
+                },
+                {
+                  "label": "Responsibilities",
+                  "items": [
+                    "Knowledge of proper use and maintenance of CT equipment",
+                    "CT examinations and procedures that require the use of contrast agents",
+                    "Ability to manage patients during complex CT procedure exams",
+                    "Able to follow oral and written instructions and communicate effectively with patients, visitors, and employees within the organization",
+                    "Follows all radiation protection and dose reporting policies and processes",
+                    "Assist other technologists when necessary to maintain productivity"
+                  ]
+                },
+                {
+                  "label": "Requirements",
+                  "items": [
+                    "Must have the ability to function as a CT Technologist in performing examinations of patients of all ages",
+                    "Effective communication skills and excellent patient care skills required",
+                    "Functions proficiently with all technical equipment in diagnostic modality",
+                    "Properly uses radiation protection and shielding material to ensure compliance with federal and state guidelines",
+                    "RT (R), (CT), (ARRT), and BLS"
+                  ]
+                },
+                {
+                  "label": "Ability to commute/relocate",
+                  "items": [
+                    "New York State: Reliably commute or planning to relocate before starting work (Preferred)"
+                  ]
+                },
+                {
+                  "label": "License/Certification",
+                  "items": [
+                    "ARRT Certification (Required)",
+                    "BLS Certification (Required)"
+                  ]
+                },
+                {
+                  "label": "Work Location",
+                  "items": ["In person"]
+                },
+                {
+                  "label": "About Middletown Medical",
+                  "items": [
+                    "We are a medical facility in primary care and urgent care run under the name P.C located in Middletown, New York.",
+                    "It is a multi-specialty physicians' group dedicated to providing patients with top quality, comprehensive care in a warm and caring environment.",
+                    "The medical facility is nurtured by a well qualified team.",
+                    "We are present at multiple locations in- Orange county, Sullivan County, Ulster County.",
+                    "We are proud of our outstanding group of physicians who have trained and worked at some of the best hospitals and universities.",
+                    "We have been right here serving generations of families since 1984."
+                  ]
+                }
+              ],
+              "ctaLabel": "Apply Online",
+              "ctaHref": null
+            },
+            {
+              "title": "Sleep Technologist",
+              "updated": "New Update",
+              "date": "January 2026",
+              "ctaLinks": [
+                {
+                  "label": "Apply on DocCafe",
+                  "href": "https://www.doccafe.com/job/physician/rheumatology/17464818/full-time-rheumatologist-for-a-busy-practice"
+                },
+                {
+                  "label": "Apply on Indeed",
+                  "href": "https://smartapply.indeed.com/beta/indeedapply/form/contact-info"
+                }
+              ],
+              "details": [
+                {
+                  "label": "We are",
+                  "items": [
+                    "We are a multispecialty physicians group.",
+                    "We provide both walk-in urgent care services and scheduled appointments to patients from all lifestyles.",
+                    "We pride ourselves on delivering the highest quality professional services in a personalized manner that respects the dignity, privacy and needs of each patient served.",
+                    "We expect all employees to be courteous, respectful and helpful to patients, patients' family members and colleagues at all times.",
+                    "It is our experience that the positive interactions of patients, their families and our staff provide us with the best marketing."
+                  ]
+                },
+                {
+                  "label": "You will",
+                  "items": [
+                    "Collect, analyze and integrate patient information in order to identify and meet the patient-specific needs in conjunction with the ordering physician or clinical director and laboratory protocols",
+                    "Complete and verify patient documentation",
+                    "Explain pre-testing, testing, and post-testing procedures to the patient",
+                    "Prepare and calibrate equipment as required for testing",
+                    "Verify patient video recording(s) is operating properly per laboratory standard protocol",
+                    "Apply electrodes and sensors according to accepted published standards",
+                    "Perform appropriate physiologic calibrations to ensure proper signals and make adjustments if necessary",
+                    "Perform positive airway pressure (PAP) mask fitting",
+                    "Follow \"lights out\" procedures to establish and document baseline values (such as body position, oxyhemoglobin saturation, respiratory and heart rates, etc.)"
+                  ]
+                },
+                {
+                  "label": "Required",
+                  "items": [
+                    "Certified Sleep Tech (RPSGT or have a NY State License) is a must"
+                  ]
+                },
+                {
+                  "label": "Benefits",
+                  "items": [
+                    "In addition to offering a lively community that encourages learning and celebrates diversity, Middletown Medical provides its staff with a benefits package that is comprehensive and flexible.",
+                    "Components for benefits-eligible employees include:",
+                    "Group Health Insurance",
+                    "Dental Insurance",
+                    "Vision Insurance",
+                    "401(k) Plan",
+                    "Paid Time Off (PTO)",
+                    "Paid Holidays"
+                  ]
+                },
+                {
+                  "label": "License/Certification",
+                  "items": ["CPR Certification (Preferred)"]
+                },
+                {
+                  "label": "Job Type",
+                  "items": ["Full-time"]
+                },
+                {
+                  "label": "Pay",
+                  "items": ["$33.00 - $40.00 per hour"]
+                },
+                {
+                  "label": "Benefits",
+                  "items": [
+                    "401(k)",
+                    "Dental insurance",
+                    "Health insurance",
+                    "Paid time off",
+                    "Vision insurance"
+                  ]
+                },
+                {
+                  "label": "Healthcare setting",
+                  "items": ["Sleep center"]
+                },
+                {
+                  "label": "Medical specialties",
+                  "items": ["Sleep Medicine"]
+                },
+                {
+                  "label": "Schedule",
+                  "items": ["Monday to Friday", "Weekends as needed"]
+                },
+                {
+                  "label": "Work Location",
+                  "items": ["In person"]
+                }
+              ],
+              "ctaLabel": "Apply Online",
+              "ctaHref": "https://middletownmedical.com/careers/"
+            },
+            {
+              "title": "Physician Assistant/Nurse Practitioner - full time- Primary Care / Urgent Care",
+              "summary": "Immediate openings for full-time Physician Assistants or Nurse Practitioners to work in our Primary Care division with our established physicians. The chosen candidate will provide outpatient primary care to the patients of the physician they are partnered with on weekdays with possibly some weekend or evening appointment hours. Will take a new graduate from a strong program.",
+              "ctaLabel": "Contact Physician Recruiter",
+              "ctaHref": "mailto:jeanne.labarge@middletownmedical.com"
+            },
+            {
+              "title": "PA or Nurse Practitioner",
+              "summary": "Middletown Medical has an opening for the position of Nurse Practitioner and Physician Assistant-Endocrinology, Gynecology and Primary Care for Orange and Sullivan County. The opportunity to work on a flexible schedule with other benefits and salary linked with productivity bonus. Interested candidates may contact this number for further details 845-342-4774 Ext 1819."
+            },
+            {
+              "title": "RNs - Full time",
+              "summary": "Registered Nurse in urgent care, primary care and various specialties for full-time.",
+              "ctaLabel": "Apply Online",
+              "ctaHref": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=610c2cac-68a3-43af-a482-6aa283566b8c&ccId=19000101_000001&jobId=282120&lang=en_US&source=CC4"
+            },
+            {
+              "title": "LPNs - Full time",
+              "summary": "Middletown Medical now offering accelerated job offering process for LPNs.",
+              "ctaLabel": "Apply Online",
+              "ctaHref": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=610c2cac-68a3-43af-a482-6aa283566b8c&ccId=19000101_000001&jobId=282120&lang=en_US&source=CC4"
+            },
+            {
+              "title": "Medical Assistant - Full time",
+              "summary": "Middletown Medical now offering accelerated job offering process for for Medical Assistants.",
+              "ctaLabel": "Apply Online",
+              "ctaHref": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=610c2cac-68a3-43af-a482-6aa283566b8c&ccId=19000101_000001&jobId=281819&lang=en_US&source=CC4"
+            }
+          ],
+          "legalNote": {
+            "posted": "11/08/2019",
+            "paragraphs": [
+              "This notice is provided in compliance with 20 CFR 656.10(d). Any person may provide documentary evidence bearing on the application to the Certifying Officer of the U.S. Department of Labor holding jurisdiction over the location of the proposed employment.",
+              "U.S. Department of Labor",
+              "Employment and Training Administration",
+              "Atlanta National Processing Center",
+              "Harris Tower",
+              "233 Peachtree Street, N.E., Suite 410",
+              "Atlanta, Georgia 30303",
+              "Phone: (404) 893-0101",
+              "Fax: (404) 893-4642",
+              "E-mail: plc.atlanta@dol.gov",
+              "This notice is being provided to workers in the place of intended employment by the following means:",
+              "Posting a clearly visible and unobstructed notice, for at least ten (10) consecutive business days, in conspicuous location(s) in the workplace, where the employer's U.S. workers can readily read the posted notice, including but not limited to locations in the immediate vicinity of the wage and hour notices.",
+              "AND",
+              "Publishing the notice in any and all in-house media, whether electronic or printed, in accordance with the normal procedures used for the recruitment of similar positions in the employer's organization."
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "billing-insurance": {
+    "title": "Billing Department",
+    "subtitle": "Understanding Your Insurance & Billing",
+    "intro": "Continuous changes with health insurance plans makes it extremely important to understand your coverage, including the costs you must pay when visiting your physician or when having tests and procedures. Middletown Medical recommends that you learn the specifics of your plan before your next appointment.",
+    "hideHeaderCtas": true,
+    "sections": [
+      {
+        "heading": "",
+        "level": 2,
+        "content": {
+          "type": "billingDeptInfo",
+          "hours": "Mon-Fri, 8:30am – 4:30pm",
+          "phone": "(845) 342-5139",
+          "fax": ["(845) 342-5295", "(845) 342-6241"],
+          "addressLine1": "2142 Route 302",
+          "addressLine2": "Circleville, NY 10919",
+          "payBillHref": "https://quickclick.com/r/ijz0s",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=2142+Route+302+Circleville+NY+10919"
+        }
+      },
+      {
+        "heading": "Overview",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Continuous changes with health insurance plans makes it extremely important to understand your coverage, including the costs you must pay when visiting your physician or when having tests and procedures. For this reason, Middletown Medical recommends that you learn the specifics of your plan before your appointment. For example, your health insurance plan may require multiple copays, higher deductibles, and coinsurance. Coverage will depend on the type of plan you have chosen.",
+            "We accept most in tier insurance plans. Call our offices for the most current information or if you don't see your insurance plan listed below. Participating providers subject to change without notice."
+          ]
+        }
+      },
+      {
+        "heading": "Insurances We Accept",
+        "level": 2,
+        "content": {
+          "type": "insuranceColumns",
+          "notices": [
+            "Effective April 5, 2016, we will no longer accept Crystal Run Health Plan for services but we will still accept Magnacare.",
+            "Effective January 1, 2024, we are Non-Par with United Medicare HMO or POS plans. For ers who are part of retiree groups, with the word RETIREE printed on the back of their cards, we remain in the network with. Patients that are covered under a PPO plan can continue to come to MMPC on an out of network basis.",
+            "Effective April 15, 2024, we are Non-Par with Cigna. CIGNA patients covered under PPO or Open Access plans can continue to come to MMPC on an out of network basis."
+          ],
+          "columns": [
+            {
+              "heading": "A–F",
+              "items": [
+                "AARP MedicareComplete (Only if the card says RETIRED)",
+                "American Progressive",
+                "Aetna (PPO)",
+                "Aetna (HMO)",
+                "Aetna Medicare",
+                "Anthem",
+                "Beach Street",
+                "BCBS EPO",
+                "BCBS HMO",
+                "BCBS Mediblue Par 6/1/2024",
+                "BCBS Medicaid- prefix JU We will accept this insurance effective 6/1/24",
+                "BCBS - prefix VRS, VJD We will accept this insurance effective 6/1/24",
+                "BS of Northeastern Healthnow",
+                "Cigna",
+                "CDPHP",
+                "ConnectiCare",
+                "EmblemHealth: HIP Medicare (We Only accept NYC Retirees: Empire BCBS-PPO/EPO)",
+                "Fidelis Essential Plan – Requires PCP assignment: Fidelis Medicare",
+                "Fidelis Medicaid",
+                "Fidelis HMO",
+                "First Health (by Aetna)"
+              ]
+            },
+            {
+              "heading": "G–M",
+              "items": [
+                "GHI",
+                "GHI HMO",
+                "GHI HMO Medicare Plan",
+                "HealthFirst",
+                "HealthPlus MA (SNP) – YNF: We will accept this insurance effective 6/1/24",
+                "HealthPlus MA (HMO) – YTN: We will accept this insurance effective 6/1/24",
+                "HIP HMO",
+                "Local 338 Health Plan",
+                "Local 812/Valor/Crossroad",
+                "Local 825",
+                "Local 1199 SEIU Benefit Fund",
+                "Magnacare (except Crystal Run Health plan products)",
+                "NY Medicaid on a case by case basis",
+                "Medicare",
+                "Medivoice",
+                "Medblue HMO Senior Plan",
+                "Molina",
+                "Multiplan",
+                "MVP"
+              ]
+            },
+            {
+              "heading": "O–Z",
+              "items": [
+                "Oxford",
+                "Oxford POS/Healthnet",
+                "Pomco",
+                "Railroad Medicare",
+                "Secure Horizon: Cohort",
+                "Seba",
+                "Tricare HMO – Requires a referral to see specialties and for testing",
+                "Tricare – Active Military",
+                "United Healthcare Empire",
+                "United Healthcare (HMO)",
+                "United Healthcare (PPO)",
+                "US Family Health Plan – Tricare Prime Program PPO"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "heading": "CareCredit",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "We now accept payments from CareCredit®. What is CareCredit®?",
+            "CareCredit® is a health, wellness, and personal care credit card that helps patients and clients get the care they need and want, without delaying appointments or treatment.",
+            "Cardholders can use CareCredit promotional financing to pay over time for deductibles, copays, and procedures not covered by insurance,* while you pay in two business days.",
+            "Visit www.carecredit.com for more information."
+          ]
+        }
+      },
+      {
+        "heading": "",
+        "level": 2,
+        "content": {
+          "type": "ctaButton",
+          "label": "Pay CareCredit",
+          "href": "https://www.carecredit.com/pay/745RDV/"
+        }
+      },
+      {
+        "heading": "More Info",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "To learn the details of your individual health care policy, you can visit your insurance company's website, review your member booklet or contact your company's customer services department. The back of your insurance card should include the phone numbers and website information.",
+            "Some key information you need before your visit:"
+          ]
+        }
+      },
+      {
+        "heading": "",
+        "level": 3,
+        "content": {
+          "type": "bulletList",
+          "items": [
+            "Is my doctors also covered completely? If not, do I have a copay or deductible amount to meet?",
+            "If I need any tests, will they be covered completely? If no, how much will I be expected to pay?",
+            "If I need a procedure, including surgery, how much will my insurance cover? How much will I be expected to pay?",
+            "All I need authorization before my health care visit?"
+          ]
+        }
+      },
+      {
+        "heading": "Billing FAQs",
+        "level": 2,
+        "content": {
+          "type": "faq",
+          "items": [
+            {
+              "question": "What is a deductible?",
+              "answer": "A deductible is the amount of \"out-of-pocket\" costs that you pay before your insurance plan begins reimbursement. A deductible is usually a set dollar amount, such as $250 or $500, but can be higher based on the policy you have chosen.\n\nIf your insurance plan has a deductible, you will be required to pay an estimate of your portion of the bill at the time of service."
+            },
+            {
+              "question": "What is co-insurance",
+              "answer": "Co-insurance is your share of the costs of a healthcare service. It is usually figured as a percentage of the total charges for the services. You start paying coinsurance after you've paid your plan's deductible.\n\nFor example, if you've paid your $1,500 deductible for the year, and your plan covers 70% of a particular cost, then you're responsible to pay the other 30% — that's the co-insurance.\n\nIt is in your best interest to understand what your insurance does and does not cover, examples co-pays, deductible and co-insurance, what you are responsible for, and what we require from you at the time services are provided to you at Middletown Medical."
+            },
+            {
+              "question": "What types of insurances does Middletown Medical accept?",
+              "answer": "We accept many types of health insurance plans: Medicare, Medicare Advantage Plans, HMO, PPO, and Managed Care plans. For a list of all of them CLICK HERE."
+            },
+            {
+              "question": "What is a co-payment?",
+              "answer": "A co-pay (co-payment) is the portion of your healthcare expenses not covered by insurance. It is the amount your insurance company states is your responsibility for each service you have rendered and is required to be paid at the time of treatment.\n\nYour co-pay information may be listed on your insurance card as the following: PCP, Specialist, Urgent Care, ER. There also may be separate co-pays for each type of service.\n\nExamples: Office visit, Lab/blood work, Diagnostic testing (x-ray)."
+            },
+            {
+              "question": "Who is responsible for paying my bill?",
+              "answer": "You are responsible for your co-pay, co-insurance and/or deductible at the time of service.\n\nMiddletown Medical will bill your insurance company directly on your behalf unless you specify otherwise; however, you are ultimately responsible for making sure that your bill is paid.\n\nIf a balance remains after your insurance has issued a payment, you will receive a bill asking for payment; this bill is due immediately upon receipt of your statement. We accept cash, checks, money orders and credit cards.\n\nIn circumstances when you will be unable to make monthly payments to Middletown Medical until your bill is paid in full. You should discuss this with our Billing Department by calling 845-342-5199 (from weekdays from 8:30 a.m. to 4 p.m.)"
+            }
+          ]
+        }
+      },
+      {
+        "heading": "Helpful Definitions",
+        "level": 2,
+        "content": {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Beneficiary",
+              "answer": "A person who receives benefits of any insurance plan or policy."
+            },
+            {
+              "question": "Explanation of Benefits (EOB)",
+              "answer": "A statement sent by the insurance company showing the processing of a claim."
+            },
+            {
+              "question": "Claim",
+              "answer": "A request for payment for services submitted by the provider."
+            },
+            {
+              "question": "Medically Necessary",
+              "answer": "Treatments or services that insurance policies will pay for as defined in the contract."
+            },
+            {
+              "question": "Co-insurance",
+              "answer": "A specified percentage of covered expenses which the insurance carrier requires the beneficiary to pay toward eligible medical bills."
+            },
+            {
+              "question": "Co-pay or Co-payment",
+              "answer": "A specific set dollar amount contracted between the insurance company and the beneficiary to be paid prior to any services rendered."
+            },
+            {
+              "question": "Covered Services",
+              "answer": "Services for which an insurance policy will pay."
+            },
+            {
+              "question": "Deductible",
+              "answer": "A specified dollar amount of medical expenses that the beneficiary must pay before an insurance policy will pay."
+            },
+            {
+              "question": "Non-Covered Services",
+              "answer": "Services for which an insurance policy will not provide payment. These services are to be paid by the patient at the time of service."
+            },
+            {
+              "question": "Pre-Certification/Authorization",
+              "answer": "A service-specific requirement that your insurance company's approval be obtained before a medical service is provided."
+            },
+            {
+              "question": "Provider",
+              "answer": "A person or organization that provides medical services."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "patient-bill-of-rights": {
+    "title": "Patient Bill of Rights",
+    "intro": "",
+    "redirectUrl": "https://middletownmedical.com/wp-content/uploads/2017/12/Patient-bill-of-rights.pdf",
+    "sections": []
+  },
+  "findhelp": {
+    "title": "FindHelp.org",
+    "intro": "",
+    "redirectUrl": "https://www.findhelp.org/search_results/10940",
+    "sections": []
+  },
+  "pediatric-forms": {
+    "title": "Pediatric Forms",
+    "intro": "",
+    "redirectUrl": "/resource/patient-forms/pediatric-forms",
+    "sections": []
+  },
+  "feedback": {
+    "title": "Feedback",
+    "intro": "",
+    "redirectUrl": "/resource/patient-forms/feedback",
+    "sections": []
   }
 }
