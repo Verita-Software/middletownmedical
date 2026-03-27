@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import React from "react";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Explore Middletown Medical's full range of primary care, specialty services, imaging, lab, and wellness programs across the Hudson Valley.",
+  alternates: { canonical: "https://middletownmedical.com/services" },
+  openGraph: {
+    url: "https://middletownmedical.com/services",
+    title: "Services | Middletown Medical",
+    description:
+      "Browse comprehensive primary care, specialty, imaging, and wellness services across the Hudson Valley.",
+  },
+};
 
 // Hardcoded data matching the provided Middletown Medical services image
 const featuredServices = [

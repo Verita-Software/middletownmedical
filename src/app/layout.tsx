@@ -16,8 +16,57 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Middletown Medical",
-  description: "Provider Directory for Middletown Medical",
+  metadataBase: new URL("https://middletownmedical.com"),
+  title: {
+    default: "Middletown Medical | Compassionate Care in the Hudson Valley",
+    template: "%s | Middletown Medical",
+  },
+  description:
+    "Middletown Medical provides comprehensive primary and specialty care across the Hudson Valley. Book appointments, find providers, explore services, and access telehealth.",
+  keywords: [
+    "Middletown Medical",
+    "Hudson Valley healthcare",
+    "primary care",
+    "specialty care",
+    "telehealth",
+    "Middletown NY doctors",
+    "find a provider",
+  ],
+  authors: [{ name: "Middletown Medical", url: "https://middletownmedical.com" }],
+  creator: "Middletown Medical",
+  publisher: "Middletown Medical",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://middletownmedical.com",
+    siteName: "Middletown Medical",
+    title: "Middletown Medical | Compassionate Care in the Hudson Valley",
+    description:
+      "Comprehensive primary and specialty care across the Hudson Valley. Find providers, book appointments, and access telehealth.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Middletown Medical",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Middletown Medical | Compassionate Care in the Hudson Valley",
+    description:
+      "Comprehensive primary and specialty care across the Hudson Valley.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://middletownmedical.com",
+  },
 };
 
 export default function RootLayout({

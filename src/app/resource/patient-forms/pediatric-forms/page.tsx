@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Pediatric Patient Forms",
+  description:
+    "Download and print pediatric patient forms for Middletown Medical. Prepare for your child's visit with our intake and medical history forms.",
+  alternates: { canonical: "https://middletownmedical.com/resource/patient-forms/pediatric-forms" },
+};
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 

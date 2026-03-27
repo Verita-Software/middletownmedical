@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Patient Feedback",
+  description:
+    "Share your experience at Middletown Medical. Provide feedback and rate your visit at any of our Hudson Valley locations.",
+  alternates: { canonical: "https://middletownmedical.com/resource/patient-forms/feedback" },
+};
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { MOCK_PROVIDERS } from "@/lib/mock-data";
 import { LOCATION_PHONES } from "@/lib/appConstant";
 import {
@@ -14,6 +15,39 @@ import { notFound } from "next/navigation";
 import { ClientImage } from "@/components/providers/client-image";
 import { ProviderEducationCard } from "@/components/providers/provider-education-card";
 import { ScheduleAppointmentCard } from "@/components/providers/schedule-appointment-card";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL, SITE_NAME } from "@/lib/seo-constants";
+
+export async function generateStaticParams() {
+  return MOCK_PROVIDERS.map((p) => ({ id: p.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const provider = MOCK_PROVIDERS.find((p) => p.id === id);
+  if (!provider) return { title: "Provider Not Found" };
+
+  const specialties = provider.Specialties?.join(", ") ?? "Primary Care";
+  const description =
+    provider.Bio?.slice(0, 160) ??
+    `${provider.Name} is a ${specialties} provider at Middletown Medical serving the Hudson Valley.`;
+
+  return {
+    title: provider.Name,
+    description,
+    alternates: { canonical: `${SITE_URL}/providers/${id}` },
+    openGraph: {
+      url: `${SITE_URL}/providers/${id}`,
+      title: `${provider.Name} | Middletown Medical`,
+      description,
+      images: provider.profile_url ? [{ url: provider.profile_url }] : undefined,
+    },
+  };
+}
 
 export default async function ProviderProfilePage(props: {
   params: Promise<{ id: string }>;
@@ -25,11 +59,28 @@ export default async function ProviderProfilePage(props: {
     notFound();
   }
 
-  // Split the provider name into display parts
   const firstName = provider.Name.split(" ")[0];
+
+  const physicianSchema = {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    name: provider.Name,
+    url: `${SITE_URL}/providers/${params.id}`,
+    image: provider.profile_url || undefined,
+    description:
+      provider.Bio?.slice(0, 200) ??
+      `${provider.Name} — ${provider.Specialties?.join(", ") ?? "Provider"} at Middletown Medical.`,
+    medicalSpecialty: provider.Specialties ?? [],
+    worksFor: {
+      "@type": "MedicalOrganization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  };
 
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd data={physicianSchema} />
       {/* ── Hero Section ────────────────────────────────────── */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 lg:px-8 py-6">
