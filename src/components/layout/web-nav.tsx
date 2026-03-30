@@ -22,8 +22,8 @@ const navLinks = [
 ];
 
 const utilityLinks = [
-  { name: "MyChart", href: "#" },
-  { name: "Pay My Bill", href: "#" },
+  { name: "MyChart", href: "https://health.healow.com/middletownmedical" },
+  { name: "Pay My Bill", href: "https://quickclick.com/r/ijz0s" },
 ];
 
 /** Duly-style nav item: dark grey text, light grey icon, rectangle hover (white bg, shadow, rounded) */
