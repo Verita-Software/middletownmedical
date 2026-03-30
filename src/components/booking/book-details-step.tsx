@@ -6,6 +6,32 @@ import { Button } from "@/components/ui/button";
 import type { Provider } from "@/lib/mock-data";
 import { useBookingStore } from "@/store/booking-store";
 import { LOCATION_PHONES, BOOKING_PATIENT_NAME_OVERRIDE } from "@/lib/appConstant";
+import {
+  type ContactFieldErrors,
+  type ContactFieldKey,
+  validateContactFields,
+  validateContactField,
+  hasContactErrors,
+} from "@/lib/validation/contact-fields";
+
+const CONTACT_FIELD_KEYS = new Set<ContactFieldKey>([
+  "phone",
+  "email",
+  "address",
+  "aptSuite",
+  "city",
+  "state",
+  "zip",
+]);
+
+function inputClassName(hasError: boolean) {
+  return [
+    "w-full rounded-lg border px-4 py-2.5 outline-none bg-slate-100 transition-colors",
+    hasError
+      ? "border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200"
+      : "border-slate-300 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20",
+  ].join(" ");
+}
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -101,9 +127,44 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
     patientDetails.insurance,
   ]);
 
+  const [fieldErrors, setFieldErrors] = useState<ContactFieldErrors>({});
+
   const update = (key: string, value: string) => {
     setForm((f) => ({ ...f, [key]: value }));
     setPatientDetails({ [key]: value });
+    if (CONTACT_FIELD_KEYS.has(key as ContactFieldKey)) {
+      setFieldErrors((e) => {
+        const next = { ...e };
+        delete next[key as ContactFieldKey];
+        return next;
+      });
+    }
+  };
+
+  const onContactBlur = (key: ContactFieldKey) => {
+    if (key === "state") {
+      const t = form.state.trim();
+      const normalized = t.length === 2 ? t.toUpperCase() : t;
+      if (normalized !== form.state) update("state", normalized);
+      setFieldErrors((e) => ({
+        ...e,
+        state: validateContactField("state", normalized),
+      }));
+      return;
+    }
+    if (key === "zip") {
+      const z = form.zip.trim();
+      if (z !== form.zip) update("zip", z);
+      setFieldErrors((e) => ({
+        ...e,
+        zip: validateContactField("zip", z),
+      }));
+      return;
+    }
+    setFieldErrors((e) => ({
+      ...e,
+      [key]: validateContactField(key, form[key]),
+    }));
   };
 
   if (!selectedSlot || !selectedDate) {
@@ -124,6 +185,42 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+
+    const stateNorm =
+      form.state.trim().length === 2
+        ? form.state.trim().toUpperCase()
+        : form.state.trim();
+    const zipNorm = form.zip.trim();
+
+    const contactSlice = {
+      phone: form.phone,
+      email: form.email,
+      address: form.address,
+      aptSuite: form.aptSuite,
+      city: form.city,
+      state: stateNorm,
+      zip: zipNorm,
+    };
+
+    const contactErrors = validateContactFields(contactSlice);
+    if (hasContactErrors(contactErrors)) {
+      if (stateNorm !== form.state) {
+        setForm((f) => ({ ...f, state: stateNorm }));
+        setPatientDetails({ state: stateNorm });
+      }
+      if (zipNorm !== form.zip) {
+        setForm((f) => ({ ...f, zip: zipNorm }));
+        setPatientDetails({ zip: zipNorm });
+      }
+      setFieldErrors(contactErrors);
+      setError("Please correct the errors in Patient Contact Information.");
+      return;
+    }
+
+    setFieldErrors({});
+    if (stateNorm !== form.state) update("state", stateNorm);
+    if (zipNorm !== form.zip) update("zip", zipNorm);
+
     setLoading(true);
     try {
       const res = await fetch("/api/appointments/book", {
@@ -186,7 +283,7 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
       )}
 
       <div className="grid lg:grid-cols-3 gap-8">
-        <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-6">
+        <form onSubmit={handleSubmit} noValidate className="lg:col-span-2 space-y-6">
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
             <h2 className="font-bold text-[#002147] mb-4">Patient Information</h2>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -241,74 +338,162 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
             <h2 className="font-bold text-[#002147] mb-4">Patient Contact Information</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number *</label>
+                <label htmlFor="contact-phone" className="block text-sm font-medium text-slate-700 mb-1">
+                  Phone Number <span className="text-red-600">*</span>
+                </label>
                 <input
+                  id="contact-phone"
                   type="tel"
-                  required
+                  inputMode="tel"
+                  autoComplete="tel"
                   value={form.phone}
                   onChange={(e) => update("phone", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
+                  onBlur={() => onContactBlur("phone")}
+                  aria-invalid={!!fieldErrors.phone}
+                  aria-describedby={fieldErrors.phone ? "contact-phone-error" : undefined}
+                  className={inputClassName(!!fieldErrors.phone)}
                 />
+                {fieldErrors.phone && (
+                  <p id="contact-phone-error" className="mt-1 text-sm text-red-600" role="alert">
+                    {fieldErrors.phone}
+                  </p>
+                )}
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Email Address *</label>
+                <label htmlFor="contact-email" className="block text-sm font-medium text-slate-700 mb-1">
+                  Email Address <span className="text-red-600">*</span>
+                </label>
                 <input
+                  id="contact-email"
                   type="email"
-                  required
+                  inputMode="email"
+                  autoComplete="email"
+                  maxLength={254}
                   value={form.email}
                   onChange={(e) => update("email", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
+                  onBlur={() => onContactBlur("email")}
+                  aria-invalid={!!fieldErrors.email}
+                  aria-describedby={fieldErrors.email ? "contact-email-error" : undefined}
+                  className={inputClassName(!!fieldErrors.email)}
                 />
+                {fieldErrors.email && (
+                  <p id="contact-email-error" className="mt-1 text-sm text-red-600" role="alert">
+                    {fieldErrors.email}
+                  </p>
+                )}
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-sm font-medium text-slate-700 mb-1">Address *</label>
+                <label htmlFor="contact-address" className="block text-sm font-medium text-slate-700 mb-1">
+                  Address <span className="text-red-600">*</span>
+                </label>
                 <input
+                  id="contact-address"
                   type="text"
-                  required
+                  autoComplete="street-address"
+                  maxLength={200}
                   value={form.address}
                   onChange={(e) => update("address", e.target.value)}
+                  onBlur={() => onContactBlur("address")}
                   placeholder="Street address"
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
+                  aria-invalid={!!fieldErrors.address}
+                  aria-describedby={fieldErrors.address ? "contact-address-error" : undefined}
+                  className={inputClassName(!!fieldErrors.address)}
                 />
+                {fieldErrors.address && (
+                  <p id="contact-address-error" className="mt-1 text-sm text-red-600" role="alert">
+                    {fieldErrors.address}
+                  </p>
+                )}
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-sm font-medium text-slate-700 mb-1">Apt, Suite, etc.</label>
+                <label htmlFor="contact-apt" className="block text-sm font-medium text-slate-700 mb-1">
+                  Apt, Suite, etc.
+                </label>
                 <input
+                  id="contact-apt"
                   type="text"
+                  autoComplete="address-line2"
+                  maxLength={50}
                   value={form.aptSuite}
                   onChange={(e) => update("aptSuite", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
+                  onBlur={() => onContactBlur("aptSuite")}
+                  aria-invalid={!!fieldErrors.aptSuite}
+                  aria-describedby={fieldErrors.aptSuite ? "contact-apt-error" : undefined}
+                  className={inputClassName(!!fieldErrors.aptSuite)}
                 />
+                {fieldErrors.aptSuite && (
+                  <p id="contact-apt-error" className="mt-1 text-sm text-red-600" role="alert">
+                    {fieldErrors.aptSuite}
+                  </p>
+                )}
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">City *</label>
+                <label htmlFor="contact-city" className="block text-sm font-medium text-slate-700 mb-1">
+                  City <span className="text-red-600">*</span>
+                </label>
                 <input
+                  id="contact-city"
                   type="text"
-                  required
+                  autoComplete="address-level2"
+                  maxLength={100}
                   value={form.city}
                   onChange={(e) => update("city", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
+                  onBlur={() => onContactBlur("city")}
+                  aria-invalid={!!fieldErrors.city}
+                  aria-describedby={fieldErrors.city ? "contact-city-error" : undefined}
+                  className={inputClassName(!!fieldErrors.city)}
                 />
+                {fieldErrors.city && (
+                  <p id="contact-city-error" className="mt-1 text-sm text-red-600" role="alert">
+                    {fieldErrors.city}
+                  </p>
+                )}
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">State *</label>
+                <label htmlFor="contact-state" className="block text-sm font-medium text-slate-700 mb-1">
+                  State <span className="text-red-600">*</span>
+                </label>
                 <input
+                  id="contact-state"
                   type="text"
-                  required
+                  autoComplete="address-level1"
+                  maxLength={50}
                   value={form.state}
                   onChange={(e) => update("state", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
+                  onBlur={() => onContactBlur("state")}
+                  aria-invalid={!!fieldErrors.state}
+                  aria-describedby={fieldErrors.state ? "contact-state-error" : undefined}
+                  className={inputClassName(!!fieldErrors.state)}
                 />
+                {fieldErrors.state && (
+                  <p id="contact-state-error" className="mt-1 text-sm text-red-600" role="alert">
+                    {fieldErrors.state}
+                  </p>
+                )}
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Zip *</label>
+                <label htmlFor="contact-zip" className="block text-sm font-medium text-slate-700 mb-1">
+                  Zip <span className="text-red-600">*</span>
+                </label>
                 <input
+                  id="contact-zip"
                   type="text"
-                  required
+                  inputMode="numeric"
+                  autoComplete="postal-code"
+                  maxLength={10}
                   value={form.zip}
                   onChange={(e) => update("zip", e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
+                  onBlur={() => onContactBlur("zip")}
+                  placeholder="12345 or 12345-6789"
+                  aria-invalid={!!fieldErrors.zip}
+                  aria-describedby={fieldErrors.zip ? "contact-zip-error" : undefined}
+                  className={inputClassName(!!fieldErrors.zip)}
                 />
+                {fieldErrors.zip && (
+                  <p id="contact-zip-error" className="mt-1 text-sm text-red-600" role="alert">
+                    {fieldErrors.zip}
+                  </p>
+                )}
               </div>
             </div>
           </div>
