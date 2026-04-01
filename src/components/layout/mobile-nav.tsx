@@ -20,7 +20,7 @@ const navLinks = [
   { name: "Resources", href: "#", icon: ClipboardList, hasDropdown: true },
   { name: "Services", href: "/services", icon: ShieldPlus },
   { name: "Locations", href: "/locations", icon: MapPin },
-  { name: "Immediate Care", href: "#", icon: Clock },
+  { name: "Urgent Care", href: "/urgent-care", icon: Clock },
 ];
 
 const utilityLinks = [
