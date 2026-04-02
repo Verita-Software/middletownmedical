@@ -13,6 +13,7 @@ import {
   validateContactField,
   hasContactErrors,
 } from "@/lib/validation/contact-fields";
+import { InsuranceSelect } from "@/components/home/insurance-select-component";
 
 const CONTACT_FIELD_KEYS = new Set<ContactFieldKey>([
   "phone",
@@ -55,19 +56,20 @@ const SEX_OPTIONS = [
   { value: "other", label: "Other" },
 ];
 
-const INSURANCE_OPTIONS = [
+/** Registration insurance choices (values stored on patient details). */
+const REGISTRATION_INSURANCE_OPTIONS = [
   { value: "self", label: "I'll be paying for myself" },
   { value: "medicaid", label: "Medicaid" },
   { value: "aetna", label: "Aetna" },
   { value: "bcbs", label: "Blue Cross Blue Shield" },
   { value: "cigna", label: "Cigna" },
-];
+] as const;
 
 interface BookDetailsStepProps {
   provider: Provider;
 }
 
-export function BookDetailsStep({ provider }: BookDetailsStepProps) {
+export function BookDetailsStep({ provider }: Readonly<BookDetailsStepProps>) {
   const {
     selectedSlot,
     selectedDate,
@@ -220,6 +222,11 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
     setFieldErrors({});
     if (stateNorm !== form.state) update("state", stateNorm);
     if (zipNorm !== form.zip) update("zip", zipNorm);
+
+    if (!form.insurance.trim()) {
+      setError("Please select insurance.");
+      return;
+    }
 
     setLoading(true);
     try {
@@ -504,18 +511,20 @@ export function BookDetailsStep({ provider }: BookDetailsStepProps) {
               Please provide your insurance below to reduce the registration time required at your appointment.
             </p>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Insurance *</label>
-              <select
-                required
-                value={form.insurance}
-                onChange={(e) => update("insurance", e.target.value)}
-                className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-[#002147] focus:ring-2 focus:ring-[#002147]/20 outline-none bg-slate-100"
+              <label
+                htmlFor="registration-insurance"
+                className="mb-1 block text-sm font-medium text-slate-700"
               >
-                <option value="">Select</option>
-                {INSURANCE_OPTIONS.map((o) => (
-                  <option key={o.value} value={o.value}>{o.label}</option>
-                ))}
-              </select>
+                Insurance <span className="text-red-600">*</span>
+              </label>
+              <InsuranceSelect
+                id="registration-insurance"
+                variant="form"
+                placeholder="Select"
+                options={REGISTRATION_INSURANCE_OPTIONS}
+                value={form.insurance}
+                onValueChange={(val) => update("insurance", val)}
+              />
             </div>
           </div>
 

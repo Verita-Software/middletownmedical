@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { NotificationBanner } from "@/components/layout/notification-banner";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { WebNav } from "@/components/layout/web-nav";
+import { HomeFooter } from "@/components/home/home-footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -77,9 +78,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="overflow-x-hidden scroll-pt-28">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden max-w-[100vw]`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased overflow-x-hidden max-w-[100vw]`}
       >
-        <header className="sticky top-0 z-50 w-full border-b bg-middletown-navy text-white">
+        <header className="sticky top-0 z-50 w-full shrink-0 border-b bg-middletown-navy text-white">
           <div className="bg-white text-slate-900 border-b border-slate-100 relative">
             {/* Desktop web navigation */}
             <WebNav />
@@ -93,9 +94,13 @@ export default function RootLayout({
           {/* Notification Banner */}
           <NotificationBanner />
         </header>
-        <main className="min-h-screen bg-middletown-light w-full overflow-x-hidden flex flex-col">
+        <main className="flex min-h-0 w-full flex-1 flex-col overflow-x-hidden bg-middletown-light">
           {children}
         </main>
+        {/* Site-wide footer — rendered on every page via root layout */}
+        <div className="shrink-0">
+          <HomeFooter />
+        </div>
       </body>
     </html>
   );

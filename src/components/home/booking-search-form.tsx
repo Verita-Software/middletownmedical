@@ -93,7 +93,7 @@ export function BookingSearchForm() {
 
       <Button
         onClick={handleSearch}
-        className="bg-[#002147] hover:bg-[#002147]/90 text-white font-bold text-lg px-8 py-6 h-auto w-fit rounded-sm shadow-md transition-all"
+        className="bg-[#002147] hover:bg-[#002147]/90 text-white font-bold text-lg px-8  h-auto w-fit rounded-sm shadow-md transition-all"
       >
         Search
       </Button>
