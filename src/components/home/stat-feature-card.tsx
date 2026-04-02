@@ -19,26 +19,28 @@ export function StatFeatureCard({
   buttonHref,
 }: StatFeatureCardProps) {
   return (
-    <article className="flex flex-col  rounded-s rounded-tl-3xl rounded-br-3xl  border border-slate-200/80 bg-gray-200/70 p-6 shadow-sm transition-shadow hover:shadow-md">
-      <div className="relative aspect-16/10 w-full overflow-hidden rounded-xl mb-6">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-        />
-      </div>
-      <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
-      <p className="text-slate-600 text-[15px] leading-relaxed flex-1 mb-6">
-        {description}
-      </p>
-      <Link
-        href={buttonHref}
-        className="inline-flex w-fit items-center rounded-lg border-2 border-primary bg-white px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
-      >
-        {buttonLabel}
-      </Link>
-    </article>
+    <Link
+      href={buttonHref}
+      className="group flex flex-col rounded-s rounded-tl-3xl rounded-br-3xl border border-slate-200/80 bg-gray-200/70 p-6 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+    >
+      <article className="flex flex-col flex-1">
+        <div className="relative aspect-16/10 w-full overflow-hidden rounded-xl mb-6">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          />
+        </div>
+        <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
+        <p className="text-slate-600 text-[15px] leading-relaxed flex-1 mb-6">
+          {description}
+        </p>
+        <span className="inline-flex w-fit items-center rounded-lg border-2 border-primary bg-white px-5 py-2.5 text-sm font-semibold text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+          {buttonLabel}
+        </span>
+      </article>
+    </Link>
   );
 }
