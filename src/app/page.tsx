@@ -5,7 +5,6 @@ import { FeatureSectionTwoColumn } from "@/components/home/feature-section-two-c
 import { StatFeatureGrid } from "@/components/home/stat-feature-grid";
 import { StatFeatureCard } from "@/components/home/stat-feature-card";
 import { MyChartSection } from "@/components/home/mychart-section";
-import { HomeFooter } from "@/components/home/home-footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL, SITE_NAME, MAIN_PHONE } from "@/lib/seo-constants";
 
@@ -106,8 +105,6 @@ export default function Home() {
         buttonLabel="Access MyChart"
         buttonHref="#"
       />
-
-      <HomeFooter />
     </main>
   );
 }

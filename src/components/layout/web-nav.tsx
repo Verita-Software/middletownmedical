@@ -18,12 +18,12 @@ const navLinks = [
   { name: "Resources", href: "#", icon: ClipboardList, hasDropdown: true },
   { name: "Services", href: "/services", icon: ShieldPlus, hasDropdown: false },
   { name: "Locations", href: "/locations", icon: MapPin },
-  { name: "Urgent Care", href: "#", icon: Clock },
+  { name: "Urgent Care", href: "/urgent-care", icon: Clock },
 ];
 
 const utilityLinks = [
-  { name: "MyChart", href: "#" },
-  { name: "Pay My Bill", href: "#" },
+  { name: "MyChart", href: "https://health.healow.com/middletownmedical" },
+  { name: "Pay My Bill", href: "https://quickclick.com/r/ijz0s" },
 ];
 
 /** Duly-style nav item: dark grey text, light grey icon, rectangle hover (white bg, shadow, rounded) */

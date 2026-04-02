@@ -20,12 +20,12 @@ const navLinks = [
   { name: "Resources", href: "#", icon: ClipboardList, hasDropdown: true },
   { name: "Services", href: "/services", icon: ShieldPlus },
   { name: "Locations", href: "/locations", icon: MapPin },
-  { name: "Immediate Care", href: "#", icon: Clock },
+  { name: "Urgent Care", href: "/urgent-care", icon: Clock },
 ];
 
 const utilityLinks = [
-  { name: "MyChart", href: "#" },
-  { name: "Pay My Bill", href: "#" },
+  { name: "MyChart", href: "https://health.healow.com/middletownmedical" },
+  { name: "Pay My Bill", href: "https://quickclick.com/r/ijz0s" },
 ];
 
 function MobileDrawer({
@@ -113,7 +113,7 @@ function MobileDrawer({
                   <Icon className="w-6 h-6 text-[#00AEEF] shrink-0" />
                   {name}
                 </Link>
-              )
+              ),
             )}
           </nav>
 

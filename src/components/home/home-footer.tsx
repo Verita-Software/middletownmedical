@@ -2,11 +2,13 @@ import Link from "next/link";
 
 const NAV_LINKS = [
   { label: "About Us", href: "/#about" },
-  { label: "Locations", href: "#" },
+  { label: "Locations", href: "/locations" },
   { label: "Careers", href: "/resource/careers" },
-  { label: "Media Center", href: "#" },
   { label: "Medical Records", href: "/resource/patient-resources" },
-  { label: "Contact Us", href: "#" },
+  {
+    label: "Contact Help",
+    href: "https://www.findhelp.org/search_results/10940",
+  },
 ];
 
 export function HomeFooter() {

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo-constants";
 import { getResourceSlugs } from "@/lib/api/resources";
 import { getLocationSlugs } from "@/lib/locations";
+import { getUrgentCareSlugs } from "@/lib/urgent-care-locations";
 import { MOCK_PROVIDERS } from "@/lib/mock-data";
 import { SERVICES_CONTENT } from "@/lib/services-content";
 
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/services`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/providers`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${SITE_URL}/locations`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/urgent-care`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE_URL}/feedback`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
     { url: `${SITE_URL}/resource/patient-forms/pediatric-forms`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/resource/patient-forms/feedback`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
@@ -41,6 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const urgentCareRoutes: MetadataRoute.Sitemap = getUrgentCareSlugs().map((slug) => ({
+    url: `${SITE_URL}/urgent-care/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
   const providerRoutes: MetadataRoute.Sitemap = MOCK_PROVIDERS.map((provider) => ({
     url: `${SITE_URL}/providers/${provider.id}`,
     lastModified: now,
@@ -53,6 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...serviceRoutes,
     ...resourceRoutes,
     ...locationRoutes,
+    ...urgentCareRoutes,
     ...providerRoutes,
   ];
 }
