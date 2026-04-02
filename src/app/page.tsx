@@ -85,7 +85,7 @@ export default function Home() {
           title="Immediate Care"
           description="We welcome walk-ins with extended hours. With same-day and next-day options, you can get back to feeling better sooner."
           buttonLabel="Find Care Now"
-          buttonHref="#"
+          buttonHref="/urgent-care"
         />
         <StatFeatureCard
           imageSrc="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=800&auto=format&fit=crop"
@@ -93,7 +93,7 @@ export default function Home() {
           title="Lab & Imaging"
           description="Our lab and imaging locations are open for walk-ins, including routine blood work and COVID testing."
           buttonLabel="Find Location"
-          buttonHref="#"
+          buttonHref="/locations"
         />
       </StatFeatureGrid>
 
