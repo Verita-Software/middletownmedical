@@ -4,6 +4,8 @@ Public marketing and patient-facing web experience for **Middletown Medical**, a
 
 This repository is the **Next.js** front end and **Route Handlers** that proxy or call backend scheduling APIs.
 
+**Live site:** [https://middletownmedical.vercel.app/](https://middletownmedical.vercel.app/)
+
 ---
 
 ## For new developers: how to read this codebase
