@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ChevronDown, Car } from "lucide-react";
 import type { UrgentCareLocation } from "@/lib/urgent-care-locations";
+import { UrgentCareEstimatedWaitLive } from "@/components/urgent-care/urgent-care-estimated-wait-live";
 
 /** Uniform vertical rhythm inside each location block (Duly-style list). */
 const CARD_SPACE_Y = "space-y-2";
@@ -76,9 +77,11 @@ export function UrgentCareLocationCard({
         >
           {location.phone}
         </a>
-        <p className="text-sm font-semibold text-[#b5097b]">
-          {location.estimatedWaitMinutes} min estimated wait time
-        </p>
+        <UrgentCareEstimatedWaitLive
+          slug={location.slug}
+          initialMinutes={location.estimatedWaitMinutes}
+          variant="card"
+        />
         <p className="text-sm text-slate-600">{location.statusLine}</p>
 
         <div className="flex flex-col gap-1.5 pt-0.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">

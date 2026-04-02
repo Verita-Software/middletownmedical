@@ -8,6 +8,7 @@ import {
 } from "@/lib/urgent-care-locations";
 import { UrgentCareHero } from "@/components/urgent-care/urgent-care-hero";
 import { UrgentCareDetailSections } from "@/components/urgent-care/urgent-care-detail-sections";
+import { UrgentCareEstimatedWaitLive } from "@/components/urgent-care/urgent-care-estimated-wait-live";
 
 type Props = Readonly<{ params: Promise<{ slug: string }> }>;
 
@@ -114,9 +115,11 @@ export default async function UrgentCareLocationPage({ params }: Props) {
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                   Estimated wait
                 </p>
-                <p className="mt-1 text-lg font-semibold text-[#b5097b]">
-                  ~{location.estimatedWaitMinutes} min
-                </p>
+                <UrgentCareEstimatedWaitLive
+                  slug={location.slug}
+                  initialMinutes={location.estimatedWaitMinutes}
+                  variant="detail"
+                />
                 <p className="mt-1 text-sm text-slate-600">{location.statusLine}</p>
               </div>
 

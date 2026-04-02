@@ -3,6 +3,8 @@
  * https://middletownmedical.com/urgent-care/ (slugs aligned with legacy URLs).
  */
 
+import { stableEstimatedWaitMinutes } from "@/lib/estimated-wait";
+
 export type UrgentCareHoursRow = { day: string; hours: string };
 
 export interface UrgentCareLocation {
@@ -15,7 +17,7 @@ export interface UrgentCareLocation {
   addressSingleLine: string;
   phone: string;
   phoneTel: string;
-  /** Shown as “X min estimated wait” — illustrative; replace with live data later */
+  /** Illustrative minutes (10–30), stable per `slug` via `stableEstimatedWaitMinutes` */
   estimatedWaitMinutes: number;
   /** Opening status line (e.g. walk-in hours summary) */
   statusLine: string;
@@ -28,7 +30,7 @@ export interface UrgentCareLocation {
   introHtml?: string;
 }
 
-export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = [
+const URGENT_CARE_BASE: Omit<UrgentCareLocation, "estimatedWaitMinutes">[] = [
   {
     slug: "middletown-ny",
     name: "Middletown",
@@ -36,7 +38,6 @@ export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = [
     addressSingleLine: "111 Maltese Dr, Middletown, NY 10940",
     phone: "(845) 342-4774",
     phoneTel: "+18453424774",
-    estimatedWaitMinutes: 7,
     statusLine: "Walk-in & same-day visits",
     directionsQuery: "111 Maltese Dr Middletown NY 10940",
     hours: [
@@ -61,7 +62,6 @@ export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = [
     /** Per https://middletownmedical.com/urgent-care/port-jervis/ */
     phone: "(845) 856-7781",
     phoneTel: "+18458567781",
-    estimatedWaitMinutes: 8,
     statusLine: "Sun & Sat 8AM–1PM · Mon–Fri 8AM–8PM",
     directionsQuery: "100 Pike St Port Jervis NY 12771",
     cardImageUrl:
@@ -90,7 +90,6 @@ export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = [
     /** Per https://middletownmedical.com/urgent-care/newburgh-ny/ */
     phone: "(845) 561-2038",
     phoneTel: "+18455612038",
-    estimatedWaitMinutes: 6,
     statusLine: "Mon–Fri 8AM–6PM · Sat 8AM–1PM · Sun closed",
     directionsQuery: "47 N Plank Rd Suite 19 Newburgh NY 12550",
     cardImageUrl:
@@ -119,7 +118,6 @@ export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = [
     /** Per https://middletownmedical.com/urgent-care/monticello-ny/ */
     phone: "(845) 794-1600",
     phoneTel: "+18457941600",
-    estimatedWaitMinutes: 9,
     statusLine: "Mon–Fri 8AM–6PM · Sat 9AM–1PM · Sun closed",
     directionsQuery: "4058 NY-42 #5 Monticello NY 12701",
     cardImageUrl:
@@ -143,7 +141,6 @@ export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = [
     addressSingleLine: "112 Shoprite Blvd, Ellenville, NY 12428",
     phone: "(845) 342-4774",
     phoneTel: "+18453424774",
-    estimatedWaitMinutes: 5,
     statusLine: "Walk-in & same-day visits",
     directionsQuery: "112 Shoprite Blvd Ellenville NY 12428",
     cardImageUrl:
@@ -165,7 +162,6 @@ export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = [
     addressSingleLine: "78 Brookside Ave #143, Chester, NY 10918",
     phone: "(845) 469-2692", // updated
     phoneTel: "+18454692692", // updated
-    estimatedWaitMinutes: 8, // your illustrative value; fine to keep
     statusLine: "Mon–Fri 8AM–8PM · Sat 9AM–1PM · Sun closed", // better match to real hours
     directionsQuery: "78 Brookside Ave #143 Chester NY 10918", // optional tweak to include suite
     cardImageUrl:
@@ -181,6 +177,13 @@ export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = [
     ],
   },
 ];
+
+export const URGENT_CARE_LOCATIONS: UrgentCareLocation[] = URGENT_CARE_BASE.map(
+  (loc) => ({
+    ...loc,
+    estimatedWaitMinutes: stableEstimatedWaitMinutes(loc.slug),
+  }),
+);
 
 export function getUrgentCareSlugs(): string[] {
   return URGENT_CARE_LOCATIONS.map((l) => l.slug);

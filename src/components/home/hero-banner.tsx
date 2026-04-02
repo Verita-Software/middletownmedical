@@ -1,5 +1,13 @@
+import Link from "next/link";
 import { Stethoscope, Hospital } from "lucide-react";
 import { BookingSearchForm } from "@/components/home/booking-search-form";
+import { SameDayCareAvailabilityLine } from "@/components/home/hero-care-availability-lines";
+import { formatImmediateCareHeroLine } from "@/lib/hero-care-availability";
+
+/** Same-day / acute care: providers filtered to Emergency Medicine (see `use-providers-filter` URL `specialty`). */
+const SAME_DAY_CARE_PROVIDERS_HREF =
+  "/providers?specialty=Emergency%20Medicine";
+const IMMEDIATE_CARE_CENTERS_HREF = "/urgent-care";
 
 export function HeroBanner() {
   return (
@@ -35,17 +43,18 @@ export function HeroBanner() {
             </p>
 
             <div className="flex flex-col gap-4">
-              <button className="flex items-center bg-white rounded-xl p-5 sm:p-6 transition-transform hover:-translate-y-1 hover:shadow-xl group text-left w-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#470A68]">
+              <Link
+                href={SAME_DAY_CARE_PROVIDERS_HREF}
+                className="flex items-center bg-white rounded-xl p-5 sm:p-6 transition-transform hover:-translate-y-1 hover:shadow-xl group text-left w-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#470A68]"
+              >
                 <div className="shrink-0 mr-4 text-[#b5097b]">
-                  <Stethoscope className="w-8 h-8 sm:w-10 sm:h-10" />
+                  <Stethoscope className="w-8 h-8 sm:w-10 sm:h-10" aria-hidden />
                 </div>
                 <div className="grow">
                   <h3 className="text-xl sm:text-2xl font-bold text-[#002147] group-hover:text-[#b5097b] transition-colors mb-1">
                     Same Day Care
                   </h3>
-                  <p className="text-sm font-medium text-slate-500">
-                    Next: Tomorrow, 11:15 PM
-                  </p>
+                  <SameDayCareAvailabilityLine />
                 </div>
                 <svg
                   width="10"
@@ -54,6 +63,7 @@ export function HeroBanner() {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   className="shrink-0 ml-2 text-slate-400 group-hover:text-[#002147] transition-colors"
+                  aria-hidden
                 >
                   <path
                     d="M2 2L8 8L2 14"
@@ -63,18 +73,21 @@ export function HeroBanner() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </button>
+              </Link>
 
-              <button className="flex items-center bg-white rounded-xl p-5 sm:p-6 transition-transform hover:-translate-y-1 hover:shadow-xl group text-left w-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#470A68]">
+              <Link
+                href={IMMEDIATE_CARE_CENTERS_HREF}
+                className="flex items-center bg-white rounded-xl p-5 sm:p-6 transition-transform hover:-translate-y-1 hover:shadow-xl group text-left w-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#470A68]"
+              >
                 <div className="shrink-0 mr-4 text-[#b5097b]">
-                  <Hospital className="w-8 h-8 sm:w-10 sm:h-10" />
+                  <Hospital className="w-8 h-8 sm:w-10 sm:h-10" aria-hidden />
                 </div>
                 <div className="grow">
                   <h3 className="text-xl sm:text-2xl font-bold text-[#002147] group-hover:text-[#b5097b] transition-colors mb-1">
                     Immediate Care Centers
                   </h3>
                   <p className="text-sm font-medium text-slate-500">
-                    Next: Tomorrow, 7:30 PM
+                    {formatImmediateCareHeroLine()}
                   </p>
                 </div>
                 <svg
@@ -84,6 +97,7 @@ export function HeroBanner() {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   className="shrink-0 ml-2 text-slate-400 group-hover:text-[#002147] transition-colors"
+                  aria-hidden
                 >
                   <path
                     d="M2 2L8 8L2 14"
@@ -93,7 +107,7 @@ export function HeroBanner() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

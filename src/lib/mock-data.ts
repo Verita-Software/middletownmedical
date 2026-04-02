@@ -59,9 +59,20 @@ const allSpecialties = new Set<string>();
 const allLocations = new Set<string>();
 const allLanguages = new Set<string>();
 
+/** Drop junk location strings from imports (e.g. a lone ":" placeholder). */
+function isValidLocationLabel(raw: string): boolean {
+  const t = raw.trim();
+  if (t.length < 2) return false;
+  return /[a-zA-Z0-9]/.test(t);
+}
+
 MOCK_PROVIDERS.forEach((p) => {
   if (p.Specialties) p.Specialties.forEach((s) => allSpecialties.add(s));
-  if (p.Locations) p.Locations.forEach((l) => allLocations.add(l));
+  if (p.Locations) {
+    p.Locations.forEach((l) => {
+      if (isValidLocationLabel(l)) allLocations.add(l.trim());
+    });
+  }
   if (p.LanguagesSpoken) p.LanguagesSpoken.forEach((l) => allLanguages.add(l));
 });
 
