@@ -9,7 +9,7 @@ import {
 import { UrgentCareHero } from "@/components/urgent-care/urgent-care-hero";
 import { UrgentCareDetailSections } from "@/components/urgent-care/urgent-care-detail-sections";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = Readonly<{ params: Promise<{ slug: string }> }>;
 
 export async function generateStaticParams() {
   return getUrgentCareSlugs().map((slug) => ({ slug }));

@@ -20,7 +20,7 @@ export function UrgentCareHero({
   title,
   eyebrow = "Urgent care",
   description = DEFAULT_DESC,
-}: UrgentCareHeroProps) {
+}: Readonly<UrgentCareHeroProps>) {
   return (
     <div className="relative min-h-[260px] w-full overflow-hidden md:min-h-[300px]">
       <Image

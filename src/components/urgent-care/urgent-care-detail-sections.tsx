@@ -74,7 +74,7 @@ interface UrgentCareDetailSectionsProps {
 export function UrgentCareDetailSections({
   location,
   slug,
-}: UrgentCareDetailSectionsProps) {
+}: Readonly<UrgentCareDetailSectionsProps>) {
   const isMiddletownFacility = slug === "middletown-ny";
   const showLocationIntroWithImage =
     Boolean(location.introHtml) && !isMiddletownFacility;
@@ -88,8 +88,8 @@ export function UrgentCareDetailSections({
             {WHY_IMMEDIATE_CARE.title}
           </h2>
           <div className="mt-6 space-y-4 text-slate-600 leading-relaxed">
-            {WHY_IMMEDIATE_CARE.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+            {WHY_IMMEDIATE_CARE.paragraphs.map((p) => (
+              <p key={p}>{p}</p>
             ))}
           </div>
         </div>
@@ -107,7 +107,7 @@ export function UrgentCareDetailSections({
             rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#49A3DA] hover:underline"
           >
-            Insurances we accept
+            Insurances we accept{" "}
             <span aria-hidden>→</span>
           </a>
           <ul className="mt-6 space-y-2 border-t border-slate-100 pt-6 text-sm text-slate-600">

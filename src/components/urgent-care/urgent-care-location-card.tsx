@@ -22,7 +22,7 @@ interface UrgentCareLocationCardProps {
 export function UrgentCareLocationCard({
   location,
   imagePriority = false,
-}: UrgentCareLocationCardProps) {
+}: Readonly<UrgentCareLocationCardProps>) {
   const href = `/urgent-care/${location.slug}`;
 
   return (

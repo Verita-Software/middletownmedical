@@ -110,7 +110,7 @@ export default function UrgentCarePage() {
               chest pain, stroke symptoms, severe bleeding, or difficulty
               breathing
             </strong>
-            , call 911 or visit an emergency department.
+            {", call 911 or visit an emergency department."}
           </p>
           <p className="mt-6">
             <Link

@@ -19,7 +19,7 @@ export type ContactFieldErrors = Partial<Record<ContactFieldKey, string>>;
 
 /** Digits only for phone checks. */
 export function normalizePhoneDigits(value: string): string {
-  return value.replace(/\D/g, "");
+  return value.replaceAll(/\D/g, "");
 }
 
 /**
