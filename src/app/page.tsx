@@ -103,7 +103,7 @@ export default function Home() {
         heading="MyChart Resources"
         body="From viewing test results and refilling prescriptions to receiving care virtually, MyChart offers existing patients easy access to your care team whenever and wherever you are."
         buttonLabel="Access MyChart"
-        buttonHref="#"
+        buttonHref="https://health.healow.com/middletownmedical"
       />
     </main>
   );

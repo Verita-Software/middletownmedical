@@ -6,7 +6,7 @@ import { notFound, redirect } from "next/navigation";
 import { getResourceBySlug, getResourceSlugs } from "@/lib/api/resources";
 import { ResourceSectionContent } from "@/components/resources/ResourceSectionContent";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { SITE_URL, SITE_NAME, MAIN_PHONE } from "@/lib/seo-constants";
+import { SITE_URL, SITE_NAME, MAIN_PHONE, MAIN_PHONE_DISPLAY } from "@/lib/seo-constants";
 
 export async function generateStaticParams() {
   return getResourceSlugs().map((id) => ({ id }));
@@ -148,20 +148,20 @@ export default async function ResourcePage({
                 your care.
               </p>
               <a
-                href="tel:+18453424774"
+                href={`tel:${MAIN_PHONE}`}
                 className="block text-3xl font-black text-white hover:text-slate-200 transition-colors mb-2"
               >
-                (845) 342-4774
+                {MAIN_PHONE_DISPLAY}
               </a>
               <p className="text-sm text-white/60 mb-8">
                 Available Mon–Fri, 8am–6pm
               </p>
-              <Link
-                href="#"
+              <a
+                href={`tel:${MAIN_PHONE}`}
                 className="block w-full bg-white text-[#002147] font-bold py-4 rounded-xl hover:bg-slate-100 transition-colors text-center"
               >
                 Request a Callback
-              </Link>
+              </a>
             </div>
           </div>
         </div>

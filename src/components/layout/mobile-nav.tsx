@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { ResourceListingComponent } from "@/components/resources/resource-listing-component";
+import { MYCHART_URL, PAY_MY_BILL_URL } from "@/lib/site-links";
 
 const navLinks = [
   { name: "Find a Provider", href: "/providers", icon: Stethoscope },
@@ -24,8 +25,8 @@ const navLinks = [
 ];
 
 const utilityLinks = [
-  { name: "MyChart", href: "https://health.healow.com/middletownmedical" },
-  { name: "Pay My Bill", href: "https://quickclick.com/r/ijz0s" },
+  { name: "MyChart", href: MYCHART_URL },
+  { name: "Pay My Bill", href: PAY_MY_BILL_URL },
 ];
 
 function MobileDrawer({
@@ -136,9 +137,13 @@ function MobileDrawer({
 
         {/* CTA footer */}
         <div className="p-5 border-t border-slate-200 bg-slate-50">
-          <button className="w-full bg-[#002147] text-white font-bold py-3 rounded-md hover:bg-[#002147]/90 transition-colors">
+          <Link
+            href="/providers"
+            onClick={onClose}
+            className="block w-full text-center bg-[#002147] text-white font-bold py-3 rounded-md hover:bg-[#002147]/90 transition-colors"
+          >
             Book Appointment
-          </button>
+          </Link>
         </div>
       </div>
     </div>,

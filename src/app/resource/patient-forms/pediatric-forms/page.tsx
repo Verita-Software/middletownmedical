@@ -38,8 +38,12 @@ const FORM_SECTIONS: FormSection[] = [
         href: "https://middletownmedical.com/wp-content/uploads/2023/02/ASQ-3-6-Month.pdf",
       },
       {
-        title: "ASQ-3 | 9 Month",
+        title: "ASQ-3 | 8 Month",
         href: "https://middletownmedical.com/wp-content/uploads/2023/02/ASQ-3-9-Month.pdf",
+      },
+      {
+        title: "ASQ-3 | 9 Month",
+        href: "https://middletownmedical.com/wp-content/uploads/2023/02/ASQ-3-8-Month.pdf",
       },
       {
         title: "ASQ-3 | 12 Month",
@@ -131,7 +135,7 @@ export default function PediatricFormsPage() {
           </Link>
           <span>/</span>
           <Link
-            href="/resource/patient-forms/forms"
+            href="/resource/patient-forms"
             className="hover:text-[#002147] transition-colors"
           >
             Patient Forms

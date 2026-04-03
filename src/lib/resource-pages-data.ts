@@ -266,6 +266,20 @@ const RESOURCE_PAGES: Record<string, ResourcePageData> = {
       ),
     ],
   },
+  "media-center": {
+    title: "Media Center",
+    intro:
+      "News and updates from Middletown Medical. For press inquiries, call (845) 342-4774.",
+    sections: [
+      section(
+        "Resources",
+        2,
+        p(
+          "For patient-facing updates and downloadable materials, see Patient Resources."
+        )
+      ),
+    ],
+  },
 };
 
 /** Optional fallback: use from API layer if needed. Not used by /resource/[id] page. */

@@ -188,6 +188,21 @@ export function BookDetailsStep({ provider }: Readonly<BookDetailsStepProps>) {
     e.preventDefault();
     setError(null);
 
+    const fn = form.firstName.trim();
+    const ln = form.lastName.trim();
+    if (!fn || !ln) {
+      setError("Please enter the patient’s first and last name.");
+      return;
+    }
+    if (!form.legalSex) {
+      setError("Please select legal sex.");
+      return;
+    }
+    if (!form.birthDate.trim()) {
+      setError("Please enter date of birth.");
+      return;
+    }
+
     const stateNorm =
       form.state.trim().length === 2
         ? form.state.trim().toUpperCase()

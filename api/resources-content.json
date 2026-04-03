@@ -120,6 +120,16 @@
         }
       },
       {
+        "heading": "",
+        "level": 2,
+        "content": {
+          "type": "ctaButton",
+          "label": "Schedule vaccine appointment",
+          "href": "https://middletown.bridgelive.net/covidvaccineregistration/",
+          "note": "Opens registration in a new tab"
+        }
+      },
+      {
         "heading": "Vaccine Clinic Schedule",
         "level": 3,
         "content": {
@@ -165,7 +175,7 @@
           "paragraphs": [
             "We are now offering the Moderna and Pfizer Booster for certain immunocompromised patients.",
             "Call our main line at (845) 342-4774 or use the CHAT feature to get more info.",
-            "You can also get more info from the FDA website regarding these booster shots: https://www.fda.gov/news-events/press-announcements/coronavirus-covid-19-update-fda-authorizes-additional-vaccine-dose-certain-immunocompromised"
+            "You can also get more info from the FDA website regarding COVID-19 vaccines: https://www.fda.gov/emergency-preparedness-and-response/coronavirus-disease-2019-covid-19/covid-19-vaccines"
           ]
         }
       },
@@ -1093,15 +1103,71 @@
   },
   "patient-bill-of-rights": {
     "title": "Patient Bill of Rights",
-    "intro": "",
-    "redirectUrl": "https://middletownmedical.com/wp-content/uploads/2017/12/Patient-bill-of-rights.pdf",
-    "sections": []
+    "intro": "Your rights as a patient at Middletown Medical are important to us. The full document is available as a PDF — it opens in a new tab so you can read or print it without leaving this site.",
+    "sections": [
+      {
+        "heading": "View the document",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "You have the right to receive considerate and respectful care, to be informed about your treatment, to privacy and confidentiality, and to voice concerns without affecting your care."
+          ]
+        }
+      },
+      {
+        "heading": "",
+        "level": 2,
+        "content": {
+          "type": "ctaButton",
+          "label": "Open Patient Bill of Rights (PDF)",
+          "href": "https://middletownmedical.com/wp-content/uploads/2017/12/Patient-bill-of-rights.pdf",
+          "note": "Opens in a new browser tab"
+        }
+      }
+    ]
   },
   "findhelp": {
     "title": "FindHelp.org",
-    "intro": "",
-    "redirectUrl": "https://www.findhelp.org/search_results/10940",
-    "sections": []
+    "intro": "Community resources for food, housing, transportation, and other social needs. Use the button below to open FindHelp.org in a new tab — you stay on our site until you choose to continue.",
+    "sections": [
+      {
+        "heading": "Search local resources",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "Middletown Medical may refer patients to FindHelp.org to connect with local programs that support health and well-being outside the clinic."
+          ]
+        }
+      }
+    ]
+  },
+  "media-center": {
+    "title": "Media Center",
+    "subtitle": "News & updates",
+    "intro": "Stay informed about Middletown Medical services, community initiatives, and health information. For press or media inquiries, contact our main line at (845) 342-4774.",
+    "sections": [
+      {
+        "heading": "Patient resources",
+        "level": 2,
+        "content": {
+          "type": "paragraphs",
+          "paragraphs": [
+            "For downloadable guides, forms, and clinical updates, visit our Patient Resources section."
+          ]
+        }
+      },
+      {
+        "heading": "",
+        "level": 2,
+        "content": {
+          "type": "ctaButton",
+          "label": "Patient Resources",
+          "href": "/resource/patient-resources"
+        }
+      }
+    ]
   },
   "pediatric-forms": {
     "title": "Pediatric Forms",
