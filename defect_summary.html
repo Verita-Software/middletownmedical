@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>UAT Defect Summary – Middletown Medical</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f4f6f9; color: #222; font-size: 14px; }
+  header { background: #1a3c6b; color: white; padding: 20px 30px; }
+  header h1 { font-size: 20px; font-weight: 700; }
+  header p { font-size: 12px; opacity: .8; margin-top: 4px; }
+  .summary-bar { display: flex; gap: 16px; padding: 16px 30px; background: #fff; border-bottom: 1px solid #dde; flex-wrap: wrap; }
+  .stat { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; }
+  .stat.total  { background: #e8edf5; color: #1a3c6b; }
+  .stat.pass   { background: #e6f4ea; color: #2d7a3f; }
+  .stat.attn   { background: #fff4e5; color: #b35a00; }
+  .stat.bug    { background: #fdecea; color: #c0392b; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.pass { background: #2d7a3f; }
+  .dot.attn { background: #e67e22; }
+  .dot.bug  { background: #c0392b; }
+
+  .controls { display: flex; gap: 10px; padding: 14px 30px; background: #fff; border-bottom: 1px solid #dde; flex-wrap: wrap; align-items: center; }
+  .filter-btn { padding: 6px 14px; border: 1px solid #ccc; border-radius: 20px; background: #f9f9f9; cursor: pointer; font-size: 12px; font-weight: 500; transition: all .15s; }
+  .filter-btn:hover, .filter-btn.active { background: #1a3c6b; color: white; border-color: #1a3c6b; }
+  .search-box { margin-left: auto; padding: 6px 12px; border: 1px solid #ccc; border-radius: 20px; font-size: 12px; width: 200px; outline: none; }
+
+  .content { padding: 20px 30px; }
+  .module-section { margin-bottom: 24px; }
+  .module-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #1a3c6b; padding: 8px 0 6px; border-bottom: 2px solid #1a3c6b; margin-bottom: 10px; }
+
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  th { background: #1a3c6b; color: white; padding: 9px 12px; text-align: left; font-size: 12px; font-weight: 600; }
+  td { padding: 9px 12px; border-bottom: 1px solid #eee; font-size: 13px; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f7f9fc; }
+
+  .badge { display: inline-block; padding: 2px 9px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .badge.pass   { background: #e6f4ea; color: #2d7a3f; }
+  .badge.attn   { background: #fff4e5; color: #b35a00; }
+  .badge.bug    { background: #fdecea; color: #c0392b; }
+
+  .sev { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .sev.high   { background: #fdecea; color: #c0392b; }
+  .sev.med    { background: #fff4e5; color: #b35a00; }
+  .sev.low    { background: #e6f4ea; color: #2d7a3f; }
+  .sev.na     { background: #eee; color: #888; }
+
+  .defect-desc { color: #444; }
+  .defect-desc span { display: block; margin-top: 3px; color: #c0392b; font-size: 12px; }
+
+  .hidden { display: none; }
+
+  .export-btn { float: right; margin-top: -2px; padding: 6px 14px; background: #1a3c6b; color: white; border: none; border-radius: 5px; font-size: 12px; cursor: pointer; }
+  .export-btn:hover { background: #255a9e; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>UAT Defect Summary – Middletown Medical Website</h1>
+  <p>URL: https://middletownmedical.vercel.app/ &nbsp;|&nbsp; Test Date: April 2026 &nbsp;|&nbsp; Total Test Cases: 81</p>
+</header>
+
+<div class="summary-bar">
+  <div class="stat total"><div class="dot" style="background:#1a3c6b"></div> Total: 81</div>
+  <div class="stat pass"><div class="dot pass"></div> Pass: 55</div>
+  <div class="stat attn"><div class="dot attn"></div> Need Attention: 22</div>
+  <div class="stat bug"><div class="dot bug"></div> Confirmed Bugs: 4</div>
+</div>
+
+<div class="controls">
+  <button class="filter-btn active" onclick="filterAll(this)">All</button>
+  <button class="filter-btn" onclick="filterStatus('pass', this)">✅ Pass</button>
+  <button class="filter-btn" onclick="filterStatus('attn', this)">⚠️ Need Attention</button>
+  <button class="filter-btn" onclick="filterStatus('bug', this)">🐛 Confirmed Bug</button>
+  <input class="search-box" type="text" placeholder="Search TC or keyword…" oninput="searchRows(this.value)"/>
+  <button class="export-btn" onclick="exportCSV()">⬇ Export CSV</button>
+</div>
+
+<div class="content" id="mainContent">
+
+<!-- MODULE 1 -->
+<div class="module-section">
+  <div class="module-title">Module 1 – Homepage</div>
+  <table id="defectTable">
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-bug"><td>TC-000</td><td>Appointment Booking – Empty Form Submission Validation</td><td><span class="badge bug">🐛 Bug</span></td><td class="defect-desc">Submitting the appointment booking form with no fields filled displays "Healow API error: 500 Internal Server Error" instead of highlighting the mandatory fields.<span>Raw API error exposed to end user – form should validate required fields client-side before calling the API and display inline field-level validation messages.</span></td><td><span class="sev high">High</span></td></tr>
+      <tr class="row-pass"><td>TC-001</td><td>Page Load &amp; Branding</td><td><span class="badge pass">Pass</span></td><td class="defect-desc">–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-attn"><td>TC-002</td><td>BCBSIL Alert Banner</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">"View More" link is not working.<span>Broken link on alert banner – no navigation or content on click.</span></td><td><span class="sev med">Medium</span></td></tr>
+      <tr class="row-attn"><td>TC-003</td><td>Hero – Appointment Booking Widget</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">First provider data is blank when sorted by Name A–Z on Provider list page.<span>Affects all booking appointment search types. Same issue on "Our Provider" page.</span></td><td><span class="sev high">High</span></td></tr>
+      <tr class="row-attn"><td>TC-004</td><td>Same Day Care Card</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">Clicking "Same Day Care" does not redirect to related page.<span>No navigation on click – dead link.</span></td><td><span class="sev med">Medium</span></td></tr>
+      <tr class="row-attn"><td>TC-005</td><td>Immediate Care Centers Card</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">Clicking "Immediate Care Centers" does not redirect to related page.<span>No navigation on click – dead link.</span></td><td><span class="sev med">Medium</span></td></tr>
+      <tr class="row-attn"><td>TC-006</td><td>Homepage CTA Buttons</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">"Find Care Now", "Find Location" (Lab &amp; Imaging), and "Access MyChart" all navigate back to top of page instead of intended destinations.<span>3 CTA buttons non-functional – clarification needed on redirect targets.</span></td><td><span class="sev med">Medium</span></td></tr>
+      <tr class="row-pass"><td>TC-007</td><td>Homepage Images</td><td><span class="badge pass">Pass</span></td><td class="defect-desc">–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-attn"><td>TC-008</td><td>MyChart Resources Section</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">"Access MyChart" navigates to top of page instead of MyChart portal.<span>Clarification needed – should open external portal or new tab.</span></td><td><span class="sev med">Medium</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 2 -->
+<div class="module-section">
+  <div class="module-title">Module 2 – Navigation Header</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-009</td><td>Logo Click</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-010</td><td>Find a Provider Nav Link</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-011</td><td>Resources – Patient Resources</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-012</td><td>Resources – COVID-19 Items</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-013</td><td>Resources – Telemedicine</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-014</td><td>Resources – Patient Centered Medical Home</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-attn"><td>TC-015</td><td>Resources – Patient Forms (3 sub-items)</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">ASQ-3 | 9 Month loads 10th month form; ASQ-3 | 15 Month loads 16th month form.<span>Incorrect pediatric form PDFs mapped to wrong age milestones.</span></td><td><span class="sev high">High</span></td></tr>
+      <tr class="row-attn"><td>TC-016</td><td>Resources – FindHelp.org</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">Page is blocked when navigating to /resource/findhelp.<span>Possible iframe/embed restriction or content security policy issue.</span></td><td><span class="sev high">High</span></td></tr>
+      <tr class="row-pass"><td>TC-017</td><td>Resources – Billing &amp; Insurance</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-attn"><td>TC-018</td><td>Resources – Patient Bill of Rights</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">PDF opens in the same tab, overriding current page content.<span>Should open in a new/separate browser tab.</span></td><td><span class="sev low">Low</span></td></tr>
+      <tr class="row-pass"><td>TC-019</td><td>Resources – Careers</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-020</td><td>Services Nav Link</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-021</td><td>Locations Nav Link</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-022</td><td>Urgent Care Nav Link</td><td><span class="badge pass">Pass</span></td><td class="defect-desc">"View All Hours" behaviour needs to be verified.</td><td><span class="sev low">Low</span></td></tr>
+      <tr class="row-pass"><td>TC-023</td><td>MyChart Nav Link</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-024</td><td>Pay My Bill Nav Link</td><td><span class="badge pass">Pass</span></td><td class="defect-desc">Points to # – log as bug if no action occurs.</td><td><span class="sev low">Low</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 3 -->
+<div class="module-section">
+  <div class="module-title">Module 3 – Find a Provider (/providers)</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-025</td><td>Providers Page Load</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-026</td><td>Search – By Name</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-027</td><td>Search – By Specialty</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-028</td><td>Search – By Location</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-029</td><td>Provider Card Detail</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 4 -->
+<div class="module-section">
+  <div class="module-title">Module 4 – Services (/services)</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-030</td><td>Services Page Load</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-031</td><td>Featured Services Links</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-032</td><td>Specialty Services Links</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-033</td><td>Specialties A-Z Links</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-034</td><td>Special Character URL Encoding</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 5 -->
+<div class="module-section">
+  <div class="module-title">Module 5 – Locations (/locations)</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-035</td><td>Locations Page Load</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-036</td><td>County Filter</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-037</td><td>Location Detail Page</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-038</td><td>Phone Number Links</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-039</td><td>Location Detail – Directions Link</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 6 -->
+<div class="module-section">
+  <div class="module-title">Module 6 – Billing &amp; Insurance</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-040</td><td>Billing Page Load</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-041</td><td>"Pay Your Bill" Link</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-042</td><td>"Pay CareCredit" Link</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-043</td><td>Insurance List Completeness</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-044</td><td>Billing FAQs Accordion</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-045</td><td>Helpful Definitions Accordion</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-046</td><td>Billing Page – Directions Link</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-attn"><td>TC-047</td><td>"Request a Callback" Button</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">Button is not working – no form or modal opens.<span>CTA is completely non-functional.</span></td><td><span class="sev high">High</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 7 -->
+<div class="module-section">
+  <div class="module-title">Module 7 – Careers</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-048</td><td>Careers Page Load</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-049</td><td>Job Listings Display</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-050</td><td>"Apply on DocCafe" Button</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-051</td><td>"Apply on Indeed" Button</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-052</td><td>"Apply Online" Button (ADP)</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-053</td><td>Contact Physician Recruiter Email</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-054</td><td>Medical Positions Contact Number</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 8 -->
+<div class="module-section">
+  <div class="module-title">Module 8 – Patient Forms</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-bug"><td>TC-055</td><td>Patient Forms Page (/resource/patient-forms/forms)</td><td><span class="badge bug">🐛 Bug</span></td><td class="defect-desc">Page returns 404 error.<span>Confirmed defect – page does not exist or route is broken.</span></td><td><span class="sev high">High</span></td></tr>
+      <tr class="row-pass"><td>TC-056</td><td>Feedback Form</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-057</td><td>Feedback Form Submission</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-058</td><td>Feedback Form Validation</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-059</td><td>Pediatric Forms Page</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 9 -->
+<div class="module-section">
+  <div class="module-title">Module 9 – Resource Pages</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-060</td><td>Patient Resources Page</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-061</td><td>Telemedicine Page</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-062</td><td>Patient Centered Medical Home Page</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-attn"><td>TC-063</td><td>FindHelp.org Page</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">Page fails to load at /resource/findhelp.<span>Likely embed/CSP restriction – requires investigation.</span></td><td><span class="sev high">High</span></td></tr>
+      <tr class="row-attn"><td>TC-064</td><td>Patient Bill of Rights Page</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">PDF loads on same page, overrides current content.<span>Should open in separate tab.</span></td><td><span class="sev low">Low</span></td></tr>
+      <tr class="row-attn"><td>TC-065</td><td>COVID-19 Pages (3)</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">Cannot book/schedule appointment on any of the 3 COVID pages. FDA website link on /covid-19-vaccine returns page not found.<span>Booking CTA non-functional across all COVID resource pages; external FDA link broken.</span></td><td><span class="sev high">High</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 10 -->
+<div class="module-section">
+  <div class="module-title">Module 10 – Footer</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-066</td><td>Footer – About Us</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-067</td><td>Footer – Locations</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-068</td><td>Footer – Careers</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-bug"><td>TC-069</td><td>Footer – Media Center</td><td><span class="badge bug">🐛 Bug</span></td><td class="defect-desc">Link points to # – no destination page exists.<span>Confirmed dead link – Media Center page missing.</span></td><td><span class="sev med">Medium</span></td></tr>
+      <tr class="row-pass"><td>TC-070</td><td>Footer – Medical Records</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-attn"><td>TC-071</td><td>Footer – Contact Us</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">Contact Us page is not loading.<span>Broken route or missing page.</span></td><td><span class="sev high">High</span></td></tr>
+      <tr class="row-pass"><td>TC-072</td><td>Footer Phone Numbers</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-attn"><td>TC-073</td><td>Newsletter Subscription</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">"Subscribe Now!" redirects to Patient Resources page instead of newsletter form.<span>Incorrect routing – should open subscription form/modal.</span></td><td><span class="sev med">Medium</span></td></tr>
+      <tr class="row-attn"><td>TC-074</td><td>Footer Legal Links</td><td><span class="badge attn">Need Attention</span></td><td class="defect-desc">Terms of Use, Privacy Policy, and Compliance Hotline all redirect to Patient Resources page.<span>All 3 legal links misrouted – incorrect destination URL assigned.</span></td><td><span class="sev high">High</span></td></tr>
+      <tr class="row-pass"><td>TC-075</td><td>Copyright Year</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 11 -->
+<div class="module-section">
+  <div class="module-title">Module 11 – Responsiveness &amp; Cross-Browser</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-076</td><td>Mobile Responsiveness (375px)</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-077</td><td>Tablet Responsiveness (768px)</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-078</td><td>Desktop View (1280px+)</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-pass"><td>TC-079</td><td>Cross-Browser Testing</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODULE 12 -->
+<div class="module-section">
+  <div class="module-title">Module 12 – Accessibility &amp; Performance</div>
+  <table>
+    <thead><tr><th>TC#</th><th>Test Case</th><th>Status</th><th>Defect / Observation</th><th>Severity</th></tr></thead>
+    <tbody>
+      <tr class="row-pass"><td>TC-080</td><td>Page Load Speed</td><td><span class="badge pass">Pass</span></td><td>–</td><td><span class="sev na">N/A</span></td></tr>
+      <tr class="row-bug"><td>TC-081</td><td>Broken Link Scan</td><td><span class="badge bug">🐛 Bug</span></td><td class="defect-desc">Known broken links: /resource/patient-forms/forms (404), multiple # href links in nav and footer.<span>Systematic # placeholders remain unreplaced – sweep required.</span></td><td><span class="sev high">High</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- end content -->
+
+<script>
+const allRows = () => document.querySelectorAll('tr[class^="row-"]');
+
+function filterAll(btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  allRows().forEach(r => r.classList.remove('hidden'));
+}
+
+function filterStatus(status, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  allRows().forEach(r => {
+    if (r.classList.contains('row-' + status)) {
+      r.classList.remove('hidden');
+    } else {
+      r.classList.add('hidden');
+    }
+  });
+}
+
+function searchRows(val) {
+  const q = val.toLowerCase();
+  allRows().forEach(r => {
+    r.classList.toggle('hidden', !r.textContent.toLowerCase().includes(q));
+  });
+}
+
+function exportCSV() {
+  const headers = ['TC#','Module','Test Case','Status','Defect/Observation','Severity'];
+  const moduleMap = {
+    'Module 1': ['TC-001','TC-002','TC-003','TC-004','TC-005','TC-006','TC-007','TC-008'],
+    'Module 2': ['TC-009','TC-010','TC-011','TC-012','TC-013','TC-014','TC-015','TC-016','TC-017','TC-018','TC-019','TC-020','TC-021','TC-022','TC-023','TC-024'],
+    'Module 3': ['TC-025','TC-026','TC-027','TC-028','TC-029'],
+    'Module 4': ['TC-030','TC-031','TC-032','TC-033','TC-034'],
+    'Module 5': ['TC-035','TC-036','TC-037','TC-038','TC-039'],
+    'Module 6': ['TC-040','TC-041','TC-042','TC-043','TC-044','TC-045','TC-046','TC-047'],
+    'Module 7': ['TC-048','TC-049','TC-050','TC-051','TC-052','TC-053','TC-054'],
+    'Module 8': ['TC-055','TC-056','TC-057','TC-058','TC-059'],
+    'Module 9': ['TC-060','TC-061','TC-062','TC-063','TC-064','TC-065'],
+    'Module 10': ['TC-066','TC-067','TC-068','TC-069','TC-070','TC-071','TC-072','TC-073','TC-074','TC-075'],
+    'Module 11': ['TC-076','TC-077','TC-078','TC-079'],
+    'Module 12': ['TC-080','TC-081']
+  };
+  const tcModuleMap = {};
+  for (const [mod, tcs] of Object.entries(moduleMap)) { tcs.forEach(tc => tcModuleMap[tc] = mod); }
+
+  let csv = headers.join(',') + '\n';
+  allRows().forEach(r => {
+    const cells = r.querySelectorAll('td');
+    if (cells.length < 5) return;
+    const tc = cells[0].textContent.trim();
+    const mod = tcModuleMap[tc] || '';
+    const name = cells[1].textContent.trim().replace(/,/g,' ');
+    const status = cells[2].textContent.trim();
+    const defect = cells[3].textContent.trim().replace(/\n/g,' ').replace(/,/g,' ');
+    const sev = cells[4].textContent.trim();
+    csv += [tc, mod, name, status, defect, sev].join(',') + '\n';
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'middletown_medical_defect_summary.csv';
+  a.click();
+}
+</script>
+</body>
+</html>

@@ -69,7 +69,7 @@ export const RESOURCE_CATEGORIES = [
     title: "Patient Forms",
     description: "Download forms and prepare for your visit.",
     slug: "patient-forms",
-    href: "/resource/patient-forms/forms",
+    href: "/resource/patient-forms",
     subItems: PATIENT_FORMS_SUB_ITEMS,
   },
   {

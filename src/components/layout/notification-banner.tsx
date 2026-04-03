@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Bell, X } from "lucide-react";
+import { BCBSIL_NETWORK_NOTICE_URL } from "@/lib/site-links";
 
 export function NotificationBanner() {
   const [isVisible, setIsVisible] = useState(true);
@@ -16,7 +17,12 @@ export function NotificationBanner() {
           <span>
             Some BCBSIL patients received letters from BCBSIL incorrectly
             stating their provider is out of network. This was a BCBSIL error. -
-            <a href="#" className="font-bold hover:underline ml-1">
+            <a
+              href={BCBSIL_NETWORK_NOTICE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:underline ml-1"
+            >
               View More
             </a>
           </span>

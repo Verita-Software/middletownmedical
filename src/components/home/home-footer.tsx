@@ -1,12 +1,18 @@
 import Link from "next/link";
+import {
+  TERMS_OF_USE_PATH,
+  PRIVACY_POLICY_PATH,
+  COMPLIANCE_HOTLINE_PATH,
+} from "@/lib/site-links";
 
 const NAV_LINKS = [
   { label: "About Us", href: "/#about" },
   { label: "Locations", href: "/locations" },
   { label: "Careers", href: "/resource/careers" },
   { label: "Medical Records", href: "/resource/patient-resources" },
+  { label: "Contact Us", href: "/contact" },
   {
-    label: "Contact Help",
+    label: "Community Help (FindHelp)",
     href: "https://www.findhelp.org/search_results/10940",
   },
 ];
@@ -29,6 +35,9 @@ export function HomeFooter() {
                     <Link
                       href={href}
                       className="text-slate-600 hover:text-primary text-[15px] transition-colors"
+                      {...(href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                     >
                       {label}
                     </Link>
@@ -61,12 +70,12 @@ export function HomeFooter() {
               <p className="text-slate-600 text-[15px] mb-4">
                 Sign up for Middletown Medical e-Newsletters
               </p>
-              <Link
-                href="#"
+              {/* <a
+                href="mailto:patientexperience@middletownmedical.com?subject=Newsletter%20subscription"
                 className="inline-flex items-center rounded-lg border-2 border-primary bg-white px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
               >
                 Subscribe Now!
-              </Link>
+              </a> */}
             </div>
           </div>
         </div>
@@ -78,15 +87,24 @@ export function HomeFooter() {
           <div className="flex flex-col items-center gap-2 text-center text-sm text-white/90 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-4">
             <span>© {new Date().getFullYear()} by Middletown Medical</span>
             <span className="hidden sm:inline">|</span>
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link
+              href={TERMS_OF_USE_PATH}
+              className="hover:text-white transition-colors"
+            >
               Terms of Use
             </Link>
             <span className="hidden sm:inline">|</span>
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link
+              href={PRIVACY_POLICY_PATH}
+              className="hover:text-white transition-colors"
+            >
               Privacy Policy
             </Link>
             <span className="hidden sm:inline">|</span>
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link
+              href={COMPLIANCE_HOTLINE_PATH}
+              className="hover:text-white transition-colors"
+            >
               Compliance Hotline
             </Link>
           </div>

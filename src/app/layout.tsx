@@ -33,7 +33,9 @@ export const metadata: Metadata = {
     "Middletown NY doctors",
     "find a provider",
   ],
-  authors: [{ name: "Middletown Medical", url: "https://middletownmedical.com" }],
+  authors: [
+    { name: "Middletown Medical", url: "https://middletownmedical.com" },
+  ],
   creator: "Middletown Medical",
   publisher: "Middletown Medical",
   robots: {
@@ -91,8 +93,8 @@ export default function RootLayout({
             </div>
           </div>
 
-          {/* Notification Banner */}
-          <NotificationBanner />
+          {/*Hidden Notification Banner */}
+          {/* <NotificationBanner /> */}
         </header>
         <main className="flex min-h-0 w-full flex-1 flex-col overflow-x-hidden bg-middletown-light">
           {children}

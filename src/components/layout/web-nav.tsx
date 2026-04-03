@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useRef, useState } from "react";
 import { ResourceListingComponent } from "@/components/resources/resource-listing-component";
+import { MYCHART_URL, PAY_MY_BILL_URL } from "@/lib/site-links";
 
 const navLinks = [
   { name: "Find a Provider", href: "/providers", icon: Stethoscope },
@@ -22,8 +23,8 @@ const navLinks = [
 ];
 
 const utilityLinks = [
-  { name: "MyChart", href: "https://health.healow.com/middletownmedical" },
-  { name: "Pay My Bill", href: "https://quickclick.com/r/ijz0s" },
+  { name: "MyChart", href: MYCHART_URL },
+  { name: "Pay My Bill", href: PAY_MY_BILL_URL },
 ];
 
 /** Duly-style nav item: dark grey text, light grey icon, rectangle hover (white bg, shadow, rounded) */

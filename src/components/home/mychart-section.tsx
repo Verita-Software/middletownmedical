@@ -38,12 +38,23 @@ export function MyChartSection({
             <p className="text-slate-600 leading-relaxed mb-8 max-w-xl">
               {body}
             </p>
-            <Link
-              href={buttonHref}
-              className="inline-flex w-fit items-center rounded-lg border-2 border-primary bg-white px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
-            >
-              {buttonLabel}
-            </Link>
+            {buttonHref.startsWith("http") ? (
+              <a
+                href={buttonHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit items-center rounded-lg border-2 border-primary bg-white px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+              >
+                {buttonLabel}
+              </a>
+            ) : (
+              <Link
+                href={buttonHref}
+                className="inline-flex w-fit items-center rounded-lg border-2 border-primary bg-white px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+              >
+                {buttonLabel}
+              </Link>
+            )}
           </div>
         </div>
       </div>

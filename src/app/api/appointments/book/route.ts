@@ -4,6 +4,9 @@ import { BOOKING_PATIENT_NAME_OVERRIDE } from "@/lib/appConstant";
 
 export const dynamic = "force-dynamic";
 
+const USER_FACING_BOOK_ERROR =
+  "We couldn’t complete your booking. Please check your information and try again, or call (845) 342-4774 for assistance.";
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -66,15 +69,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(appointment);
   } catch (e) {
-    const message =
-      e instanceof Error ? e.message : "Failed to book appointment";
+    console.error("[appointments/book]", e);
     const statusCode =
       e && typeof e === "object" && "statusCode" in e
         ? Number((e as { statusCode: number }).statusCode)
         : 500;
-    return NextResponse.json(
-      { error: message },
-      { status: statusCode >= 400 && statusCode < 600 ? statusCode : 500 },
-    );
+    const safeStatus =
+      statusCode >= 400 && statusCode < 600 ? statusCode : 500;
+    return NextResponse.json({ error: USER_FACING_BOOK_ERROR }, { status: safeStatus });
   }
 }

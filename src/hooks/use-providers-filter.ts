@@ -109,7 +109,7 @@ export function useProvidersFilter(
 
   // ── filtering ──────────────────────────────────────────────────────────────
   const filteredProviders = useMemo(() => {
-    let result = [...providers];
+    let result = providers.filter((p) => (p.Name || "").trim().length > 0);
 
     if (debouncedSearch) {
       const q = debouncedSearch.toLowerCase().replace(/\s+/g, " ");
@@ -173,10 +173,24 @@ export function useProvidersFilter(
 
     switch (sortBy) {
       case "name-asc":
-        result.sort((a, b) => (a.Name || "").localeCompare(b.Name || ""));
+        result.sort((a, b) => {
+          const an = (a.Name || "").trim();
+          const bn = (b.Name || "").trim();
+          if (!an && !bn) return 0;
+          if (!an) return 1;
+          if (!bn) return -1;
+          return an.localeCompare(bn);
+        });
         break;
       case "name-desc":
-        result.sort((a, b) => (b.Name || "").localeCompare(a.Name || ""));
+        result.sort((a, b) => {
+          const an = (a.Name || "").trim();
+          const bn = (b.Name || "").trim();
+          if (!an && !bn) return 0;
+          if (!an) return 1;
+          if (!bn) return -1;
+          return bn.localeCompare(an);
+        });
         break;
     }
 

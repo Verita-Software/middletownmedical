@@ -6,10 +6,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/resource/patient-bill-of-rights",
-        destination:
-          "https://middletownmedical.com/wp-content/uploads/2017/12/Patient-bill-of-rights.pdf",
-        permanent: false,
+        source: "/resource/patient-forms/forms",
+        destination: "/resource/patient-forms",
+        permanent: true,
       },
     ];
   },
