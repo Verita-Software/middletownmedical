@@ -90,6 +90,7 @@ export function ProvidersFilterSection({
             toggleCounty={filter.toggleCounty}
             selectedLocations={filter.selectedLocations}
             toggleLocation={filter.toggleLocation}
+            locationFilterOptions={filter.locationFilterOptions}
             selectedGender={filter.selectedGender}
             toggleGender={filter.toggleGender}
             selectedLanguages={filter.selectedLanguages}

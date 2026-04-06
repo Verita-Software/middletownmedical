@@ -13,7 +13,6 @@ import {
 import {
   specialties,
   counties,
-  locations,
   languages,
   AGES_SEEN_OPTIONS,
 } from "@/lib/mock-data";
@@ -27,6 +26,8 @@ export interface ProvidersFilterProps {
   toggleCounty: (c: string) => void;
   selectedLocations: string[];
   toggleLocation: (l: string) => void;
+  /** Location checkboxes (all sites, or restricted by selected counties). */
+  locationFilterOptions: string[];
   selectedGender: string;
   toggleGender: (g: string) => void;
   selectedLanguages: string[];
@@ -102,6 +103,7 @@ export function ProvidersFilter({
   toggleCounty,
   selectedLocations,
   toggleLocation,
+  locationFilterOptions,
   selectedGender,
   toggleGender,
   selectedLanguages,
@@ -145,7 +147,7 @@ export function ProvidersFilter({
 
       <HoverDropdown
         label="Location"
-        options={locations}
+        options={locationFilterOptions}
         selectedValues={selectedLocations}
         onToggle={toggleLocation}
       />

@@ -1,9 +1,20 @@
 "use client";
 
-import { useState, useMemo, useCallback, useTransition } from "react";
+import {
+  useState,
+  useMemo,
+  useCallback,
+  useTransition,
+  useEffect,
+} from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useDebounce } from "@/hooks/use-debounce";
-import { specialties } from "@/lib/mock-data";
+import {
+  specialties,
+  getLocationNamesForCounties,
+  normalizeCountyKey,
+  providerLocationMatchesTownLabel,
+} from "@/lib/mock-data";
 import { INSURANCE_OPTIONS } from "@/components/home/insurance-select-component";
 import type { Provider } from "@/lib/mock-data";
 
@@ -36,6 +47,8 @@ export interface UseProvidersFilterResult {
   toggleCounty: (c: string) => void;
   selectedLocations: string[];
   toggleLocation: (l: string) => void;
+  /** Location names shown in the Location filter (scoped by selected counties). */
+  locationFilterOptions: string[];
   selectedGender: string;
   toggleGender: (g: string) => void;
   selectedLanguages: string[];
@@ -55,7 +68,7 @@ function insuranceLabel(val: string): string {
 
 export function useProvidersFilter(
   providers: Provider[],
-  options: UseProvidersFilterOptions = {}
+  options: UseProvidersFilterOptions = {},
 ): UseProvidersFilterResult {
   const { onFiltersChange } = options;
   const searchParams = useSearchParams();
@@ -68,16 +81,18 @@ export function useProvidersFilter(
   const specialtyParam = searchParams.get("specialty") ?? "";
   const isExactSpecialty = specialties.includes(specialtyParam);
 
-  const [search, setSearch] = useState(
-    () => (!isExactSpecialty && specialtyParam ? specialtyParam : (searchParams.get("search") ?? ""))
+  const [search, setSearch] = useState(() =>
+    !isExactSpecialty && specialtyParam
+      ? specialtyParam
+      : (searchParams.get("search") ?? ""),
   );
   const [locationSearch, setLocationSearch] = useState("");
   const [selectedSpecialties, setSelectedSpecialties] = useState<string[]>(
-    () => (isExactSpecialty ? [specialtyParam] : [])
+    () => (isExactSpecialty ? [specialtyParam] : []),
   );
   const [selectedAgesSeen, setSelectedAgesSeen] = useState<string[]>([]);
   const [selectedInsurance, setSelectedInsurance] = useState(
-    () => searchParams.get("insurance") ?? ""
+    () => searchParams.get("insurance") ?? "",
   );
 
   // ── other filter state (sidebar) ───────────────────────────────────────────
@@ -92,6 +107,19 @@ export function useProvidersFilter(
   const debouncedSearch = useDebounce(search, 600);
   const debouncedLocationSearch = useDebounce(locationSearch, 600);
 
+  const locationFilterOptions = useMemo(
+    () => getLocationNamesForCounties(selectedCounties),
+    [selectedCounties],
+  );
+
+  useEffect(() => {
+    const allowed = new Set(locationFilterOptions);
+    setSelectedLocations((prev) => {
+      const next = prev.filter((l) => allowed.has(l));
+      return next.length === prev.length ? prev : next;
+    });
+  }, [locationFilterOptions]);
+
   // ── URL helper ─────────────────────────────────────────────────────────────
   const removeURLParam = useCallback(
     (...keys: string[]) => {
@@ -100,7 +128,7 @@ export function useProvidersFilter(
       const qs = params.toString();
       router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
     },
-    [searchParams, pathname, router]
+    [searchParams, pathname, router],
   );
 
   const notifyFilterChange = useCallback(() => {
@@ -114,9 +142,11 @@ export function useProvidersFilter(
     if (debouncedSearch) {
       const q = debouncedSearch.toLowerCase().replace(/\s+/g, " ");
       result = result.filter((p) => {
-        const nameMatch = p.Name?.toLowerCase().replace(/\s+/g, " ").includes(q);
+        const nameMatch = p.Name?.toLowerCase()
+          .replace(/\s+/g, " ")
+          .includes(q);
         const specialtyMatch = p.Specialties?.some((s) =>
-          s.toLowerCase().replace(/\s+/g, " ").includes(q)
+          s.toLowerCase().replace(/\s+/g, " ").includes(q),
         );
         const bioMatch = p.Bio?.toLowerCase().replace(/\s+/g, " ").includes(q);
         return nameMatch || specialtyMatch || bioMatch;
@@ -128,27 +158,32 @@ export function useProvidersFilter(
       result = result.filter(
         (p) =>
           p.Locations?.some((loc) =>
-            loc.toLowerCase().replace(/\s+/g, " ").includes(qLoc)
-          ) ||
-          p.country?.toLowerCase().replace(/\s+/g, " ").includes(qLoc)
+            loc.toLowerCase().replace(/\s+/g, " ").includes(qLoc),
+          ) || p.country?.toLowerCase().replace(/\s+/g, " ").includes(qLoc),
       );
     }
 
     if (selectedSpecialties.length > 0) {
       result = result.filter((p) =>
-        p.Specialties?.some((s) => selectedSpecialties.includes(s))
+        p.Specialties?.some((s) => selectedSpecialties.includes(s)),
       );
     }
 
     if (selectedCounties.length > 0) {
       result = result.filter(
-        (p) => p.country && selectedCounties.includes(p.country)
+        (p) =>
+          p.country &&
+          selectedCounties.some((c) => normalizeCountyKey(c) === p.country),
       );
     }
 
     if (selectedLocations.length > 0) {
       result = result.filter((p) =>
-        p.Locations?.some((l) => selectedLocations.includes(l))
+        p.Locations?.some((loc) =>
+          selectedLocations.some(
+            (sel) => loc === sel || providerLocationMatchesTownLabel(loc, sel),
+          ),
+        ),
       );
     }
 
@@ -158,13 +193,13 @@ export function useProvidersFilter(
 
     if (selectedLanguages.length > 0) {
       result = result.filter((p) =>
-        p.LanguagesSpoken?.some((lang) => selectedLanguages.includes(lang))
+        p.LanguagesSpoken?.some((lang) => selectedLanguages.includes(lang)),
       );
     }
 
     if (selectedAgesSeen.length > 0) {
       result = result.filter((p) =>
-        p.AgesSeen?.some((age) => selectedAgesSeen.includes(age))
+        p.AgesSeen?.some((age) => selectedAgesSeen.includes(age)),
       );
     }
 
@@ -371,68 +406,70 @@ export function useProvidersFilter(
         notifyFilterChange();
       });
     },
-    [notifyFilterChange]
+    [notifyFilterChange],
   );
 
   const toggleSpecialty = useCallback(
     (s: string) =>
       wrapTransition(() =>
         setSelectedSpecialties((prev) =>
-          prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
-        )
+          prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s],
+        ),
       ),
-    [wrapTransition]
+    [wrapTransition],
   );
 
   const toggleCounty = useCallback(
     (c: string) =>
       wrapTransition(() =>
         setSelectedCounties((prev) =>
-          prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]
-        )
+          prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c],
+        ),
       ),
-    [wrapTransition]
+    [wrapTransition],
   );
 
   const toggleLocation = useCallback(
     (l: string) =>
       wrapTransition(() =>
         setSelectedLocations((prev) =>
-          prev.includes(l) ? prev.filter((x) => x !== l) : [...prev, l]
-        )
+          prev.includes(l) ? prev.filter((x) => x !== l) : [...prev, l],
+        ),
       ),
-    [wrapTransition]
+    [wrapTransition],
   );
 
   const toggleGender = useCallback(
     (g: string) =>
       wrapTransition(() => setSelectedGender((prev) => (prev === g ? "" : g))),
-    [wrapTransition]
+    [wrapTransition],
   );
 
   const toggleLanguage = useCallback(
     (lang: string) =>
       wrapTransition(() =>
         setSelectedLanguages((prev) =>
-          prev.includes(lang) ? prev.filter((x) => x !== lang) : [...prev, lang]
-        )
+          prev.includes(lang)
+            ? prev.filter((x) => x !== lang)
+            : [...prev, lang],
+        ),
       ),
-    [wrapTransition]
+    [wrapTransition],
   );
 
   const toggleAgesSeen = useCallback(
     (age: string) =>
       wrapTransition(() =>
         setSelectedAgesSeen((prev) =>
-          prev.includes(age) ? prev.filter((x) => x !== age) : [...prev, age]
-        )
+          prev.includes(age) ? prev.filter((x) => x !== age) : [...prev, age],
+        ),
       ),
-    [wrapTransition]
+    [wrapTransition],
   );
 
   const handleSetSortBy = useCallback(
     (val: string) => wrapTransition(() => setSortBy(val)),
-    [wrapTransition]
+    [wrapTransition],
   );
 
   // suppress unused-variable warnings for flags used only in clearAllFilters
@@ -456,6 +493,7 @@ export function useProvidersFilter(
     toggleCounty,
     selectedLocations,
     toggleLocation,
+    locationFilterOptions,
     selectedGender,
     toggleGender,
     selectedLanguages,
