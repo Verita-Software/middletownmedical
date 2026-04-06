@@ -69,7 +69,7 @@ function HoverDropdown({
       </Button>
 
       {/* Popover container */}
-      <div className="absolute left-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-100">
+      <div className="absolute left-0 top-full z-50 pt-1 opacity-0 invisible transition-all duration-200 group-hover:visible group-hover:opacity-100">
         <div className="bg-white border border-slate-200 rounded-md shadow-xl w-64 max-h-80 overflow-y-auto p-2">
           {options.map((opt) => {
             const val = typeof opt === "string" ? opt : opt.name;
@@ -114,7 +114,7 @@ export function ProvidersFilter({
   clearAllFilters,
 }: ProvidersFilterProps) {
   return (
-    <div className="flex flex-wrap items-center gap-4 relative z-100">
+    <div className="relative flex flex-wrap items-center gap-4">
       <HoverDropdown
         label="County"
         options={counties}
@@ -161,7 +161,7 @@ export function ProvidersFilter({
         <SelectTrigger className="cursor-pointer h-10 w-auto min-w-[120px] rounded-sm border-slate-300 text-slate-900 font-bold text-[13px] bg-slate-100 hover:bg-slate-200 px-4">
           <SelectValue placeholder="Sort By" />
         </SelectTrigger>
-        <SelectContent className="z-100">
+        <SelectContent className="z-1200">
           <SelectItem value="relevance" className="font-medium text-slate-700">
             Sort By
           </SelectItem>
