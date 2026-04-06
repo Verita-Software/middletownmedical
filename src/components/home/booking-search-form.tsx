@@ -8,6 +8,8 @@ import { SpecialtyProviderSearch } from "@/components/home/specialty-provider-se
 import { InsuranceSelect } from "@/components/home/insurance-select-component";
 import { useSearchFiltersStore } from "@/store/search-filters-store";
 
+const US_ZIP_RE = /^\d{5}(-\d{4})?$/;
+
 export function BookingSearchForm() {
   const [specialtyOrProvider, setSpecialtyOrProvider] = useState("");
   const [zipCode, setZipCode] = useState("");
@@ -19,22 +21,51 @@ export function BookingSearchForm() {
   const router = useRouter();
 
   function handleSearch() {
-    const hasValue = specialtyOrProvider || zipCode || patientAge || insurance;
-    if (!hasValue) {
-      setError("Please enter at least one search criteria to find providers.");
+    const spec = specialtyOrProvider.trim();
+    const zip = zipCode.trim();
+    const age = patientAge.trim();
+
+    if (!spec) {
+      setError("Please enter a specialty, provider, or symptom.");
       return;
     }
+    if (!zip) {
+      setError("Please enter a ZIP code.");
+      return;
+    }
+    if (!US_ZIP_RE.test(zip)) {
+      setError("Please enter a valid ZIP code (e.g. 10940 or 10940-1234).");
+      return;
+    }
+    if (!age) {
+      setError("Please enter patient age.");
+      return;
+    }
+    const ageNum = parseInt(age, 10);
+    if (Number.isNaN(ageNum) || ageNum < 0 || ageNum > 120) {
+      setError("Please enter a valid patient age (0–120).");
+      return;
+    }
+    if (!insurance) {
+      setError("Please select an insurance option.");
+      return;
+    }
+
     setError("");
 
     // Persist to Zustand so booking/detail pages can read context
-    setSearchFilters({ specialtyOrProvider, zipCode, patientAge, insurance });
+    setSearchFilters({
+      specialtyOrProvider: spec,
+      zipCode: zip,
+      patientAge: age,
+      insurance,
+    });
 
-    // Build URL query string and navigate
     const params = new URLSearchParams();
-    if (specialtyOrProvider) params.set("specialty", specialtyOrProvider);
-    if (zipCode) params.set("zip", zipCode);
-    if (patientAge) params.set("age", patientAge);
-    if (insurance) params.set("insurance", insurance);
+    params.set("specialty", spec);
+    params.set("zip", zip);
+    params.set("age", age);
+    params.set("insurance", insurance);
 
     router.push(`/providers?${params.toString()}`);
   }
@@ -44,6 +75,8 @@ export function BookingSearchForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mb-4">
         {/* Specialty / Provider combobox */}
         <SpecialtyProviderSearch
+          placeholder="Specialty, Provider, or Symptom *"
+          ariaRequired
           value={specialtyOrProvider}
           onValueChange={setSpecialtyOrProvider}
         />
@@ -56,9 +89,13 @@ export function BookingSearchForm() {
           />
           <input
             type="text"
-            placeholder="Zip Code"
+            inputMode="numeric"
+            autoComplete="postal-code"
+            required
+            placeholder="Zip Code *"
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value)}
+            maxLength={10}
             className="w-full pl-12 pr-4 py-4 bg-slate-100 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none"
           />
         </div>
@@ -73,7 +110,9 @@ export function BookingSearchForm() {
             type="number"
             min={0}
             max={120}
-            placeholder="Patient Age"
+            required
+            autoComplete="off"
+            placeholder="Patient Age *"
             value={patientAge}
             onChange={(e) => setPatientAge(e.target.value)}
             className="w-full pl-12 pr-4 py-4 bg-slate-100 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
@@ -82,6 +121,7 @@ export function BookingSearchForm() {
 
         {/* Insurance */}
         <InsuranceSelect
+          ariaRequired
           value={insurance}
           onValueChange={(val) => setInsurance(val)}
         />

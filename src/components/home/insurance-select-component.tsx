@@ -23,6 +23,8 @@ interface InsuranceSelectProps {
   variant?: "hero" | "form";
   /** Shown when no value is selected. */
   placeholder?: string;
+  /** For assistive tech when selection is required (e.g. home search). */
+  ariaRequired?: boolean;
   /** Controlled value (option.value e.g. "medicare"). Omit for uncontrolled. */
   value?: string;
   /** Fires on selection in both controlled and uncontrolled mode. */
@@ -37,6 +39,7 @@ export function InsuranceSelect({
   options = INSURANCE_OPTIONS,
   variant = "hero",
   placeholder = "Insurance *",
+  ariaRequired = false,
   value,
   onValueChange,
   onChange,
@@ -46,9 +49,8 @@ export function InsuranceSelect({
 
   const findOption = (v: string) => options.find((o) => o.value === v) ?? null;
 
-  const [internalSelected, setInternalSelected] = useState<InsuranceOption | null>(
-    () => (value ? findOption(value) : null),
-  );
+  const [internalSelected, setInternalSelected] =
+    useState<InsuranceOption | null>(() => (value ? findOption(value) : null));
 
   const selected = isControlled
     ? value
@@ -167,6 +169,7 @@ export function InsuranceSelect({
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-controls={listboxId}
+          aria-required={ariaRequired}
           className={cn(
             "relative flex w-full cursor-pointer items-center bg-slate-100 text-left text-[15px] focus:outline-none",
             isForm ? "rounded-lg py-2.5 pl-12 pr-4" : "py-4 pl-12 pr-4",
@@ -207,18 +210,15 @@ export function InsuranceSelect({
         <div
           className={cn(
             "absolute top-full right-0 left-0 z-50 mt-1.5 overflow-hidden border bg-white px-2 shadow-[0_8px_30px_rgba(0,0,0,0.14)]",
-            isForm ? "rounded-md border-slate-300" : "rounded-sm border-primary",
+            isForm
+              ? "rounded-md border-slate-300"
+              : "rounded-sm border-primary",
           )}
         >
           <div className="px-4 pt-3 pb-1.5 text-[11px] font-bold tracking-widest text-slate-400 uppercase select-none">
             Insurance
           </div>
-          <ul
-            ref={listRef}
-            id={listboxId}
-            role="listbox"
-            className="py-1"
-          >
+          <ul ref={listRef} id={listboxId} role="listbox" className="py-1">
             {options.map((opt, index) => (
               <li
                 key={opt.value}

@@ -24,6 +24,10 @@ interface DropdownSection {
 
 interface SpecialtyProviderSearchProps {
   className?: string;
+  /** Input placeholder (e.g. include * when the field is required). */
+  placeholder?: string;
+  /** For assistive tech when the field is required (home search). */
+  ariaRequired?: boolean;
   /** Controlled value. When provided the component delegates state upward. */
   value?: string;
   /** Fires on every keystroke AND on dropdown selection when in controlled mode. */
@@ -34,6 +38,8 @@ interface SpecialtyProviderSearchProps {
 
 export function SpecialtyProviderSearch({
   className,
+  placeholder = "Specialty, Provider, or Symptom",
+  ariaRequired = false,
   value,
   onValueChange,
   onSelect,
@@ -199,8 +205,10 @@ export function SpecialtyProviderSearch({
           }
           autoComplete="off"
           spellCheck={false}
+          required={ariaRequired}
+          aria-required={ariaRequired}
           value={inputValue}
-          placeholder="Specialty, Provider, or Symptom"
+          placeholder={placeholder}
           className="w-full pl-12 pr-4 py-4 bg-slate-100 text-[15px] font-semibold text-slate-900 placeholder:text-slate-500 placeholder:font-normal focus:outline-none"
           onFocus={() => setDropdownOpen(true)}
           onChange={(e) => {
