@@ -50,7 +50,7 @@ const URGENT_CARE_BASE: Omit<UrgentCareLocation, "estimatedWaitMinutes">[] = [
       { day: "Saturday", hours: "9AM–9PM" },
     ],
     cardImageUrl:
-      "https://middletownmedical.com/wp-content/uploads/2022/04/Middletown-Medical-111-Maltese-Dr-510x382.png",
+      "https://middletownmedical.com/wp-content/uploads/2022/03/Photo30.jpg",
     introHtml:
       "Our Middletown Urgent Care at 111 Maltese Drive offers a wide range of medical services for non-emergency needs. Walk-ins welcome.",
   },
@@ -165,7 +165,7 @@ const URGENT_CARE_BASE: Omit<UrgentCareLocation, "estimatedWaitMinutes">[] = [
     statusLine: "Mon–Fri 8AM–8PM · Sat 9AM–1PM · Sun closed", // better match to real hours
     directionsQuery: "78 Brookside Ave #143 Chester NY 10918", // optional tweak to include suite
     cardImageUrl:
-      "https://middletownmedical.com/wp-content/uploads/2022/04/Chester-Urgent-Care-510x382.png",
+      "https://middletownmedical.com/wp-content/uploads/2018/09/Chester-inside.jpg",
     hours: [
       { day: "Sunday", hours: "Closed" },
       { day: "Monday", hours: "8AM–8PM" },

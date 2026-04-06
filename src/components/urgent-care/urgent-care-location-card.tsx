@@ -35,14 +35,14 @@ export function UrgentCareLocationCard({
         className="block outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#0d5c5f]/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
       >
         <div className="pt-1">
-          <div className="relative mx-auto h-[220px] w-[220px] overflow-hidden rounded-xl bg-slate-100">
+          <div className="relative h-[220px] w-full overflow-hidden rounded-xl bg-slate-100">
             <Image
               src={location.cardImageUrl}
               alt={`${location.name} urgent care — exterior`}
               fill
               priority={imagePriority}
-              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-              sizes="240px"
+              className="rounded-xl object-cover object-center transition-transform duration-300 group-hover:scale-[1.02]"
+              sizes="(max-width: 768px) 100vw, 320px"
             />
           </div>
           <div className="mt-2 text-center">
