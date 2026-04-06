@@ -107,8 +107,7 @@ export function UrgentCareDetailSections({
             rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#49A3DA] hover:underline"
           >
-            Insurances we accept{" "}
-            <span aria-hidden>→</span>
+            Insurances we accept <span aria-hidden>→</span>
           </a>
           <ul className="mt-6 space-y-2 border-t border-slate-100 pt-6 text-sm text-slate-600">
             {WHAT_TO_BRING.map((item) => (
@@ -278,7 +277,7 @@ export function UrgentCareDetailSections({
         </div>
       </section>
 
-      {/* Service categories — icon grid; items-start avoids stretched card heights */}
+      {/* Service categories — uniform card height; long lists scroll */}
       <section
         id="urgent-care-services"
         className="scroll-mt-28 w-full rounded-2xl border border-teal-200/70 bg-linear-to-br from-teal-50/50 via-white to-emerald-50/40 p-6 shadow-sm md:p-8"
@@ -316,13 +315,13 @@ export function UrgentCareDetailSections({
           )}
         </div>
 
-        <div className="mt-8 grid w-full grid-cols-1 items-start gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <div className="mt-8 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {SERVICE_CATEGORIES.map((cat) => (
             <div
               key={cat.title}
-              className="flex min-w-0 w-full flex-col overflow-hidden rounded-xl border border-slate-200 border-t-[3px] border-t-teal-500 bg-white p-4 shadow-sm"
+              className="flex h-52 min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200 border-t-[3px] border-t-teal-500 bg-white p-4 shadow-sm sm:h-56"
             >
-              <div className="flex min-w-0 items-start gap-2.5 border-b border-teal-50 pb-3 sm:gap-3">
+              <div className="flex shrink-0 min-w-0 items-start gap-2.5 border-b border-teal-50 pb-3 sm:gap-3">
                 <div className="relative h-11 w-11 shrink-0 rounded-lg bg-teal-50/80 p-1.5 ring-1 ring-teal-100">
                   <Image
                     src={cat.icon}
@@ -336,7 +335,7 @@ export function UrgentCareDetailSections({
                   {cat.title}
                 </h3>
               </div>
-              <ul className="mt-3 min-w-0 space-y-1 text-sm leading-snug wrap-break-word text-slate-600">
+              <ul className="mt-3 min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-y-contain pr-1 text-sm leading-snug wrap-break-word text-slate-600 [scrollbar-gutter:stable]">
                 {cat.items.map((item) => (
                   <li key={item} className="pl-0.5">
                     {item}
