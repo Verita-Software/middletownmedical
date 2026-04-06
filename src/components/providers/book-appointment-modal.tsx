@@ -153,8 +153,8 @@ export function BookAppointmentModal({
           const s = e.resource as FhirSlot | undefined;
           if (!s?.start || !s?.end) continue;
           // Use Slot/{id} for booking; fullUrl from Healow can contain "null" and breaks the Appointment API
-          const slotId = s.id ?? (e.fullUrl?.split("/").pop() ?? "");
-          const ref = slotId ? `Slot/${slotId}` : e.fullUrl ?? "";
+          const slotId = s.id ?? e.fullUrl?.split("/").pop() ?? "";
+          const ref = slotId ? `Slot/${slotId}` : (e.fullUrl ?? "");
           const entry = {
             id: s.id ?? ref,
             start: s.start,
@@ -415,8 +415,8 @@ export function BookAppointmentModal({
           <div className="py-4 text-center">
             <p className="font-semibold text-primary">Appointment requested.</p>
             <p className="mt-2 text-sm text-slate-600">
-              Your appointment with <strong>{provider.Name}</strong> has
-              been submitted. The practice will confirm shortly.
+              Your appointment with <strong>{provider.Name}</strong> has been
+              submitted. The practice will confirm shortly.
             </p>
             <DialogFooter className="mt-4">
               <Button onClick={() => handleOpenChange(false)}>Close</Button>

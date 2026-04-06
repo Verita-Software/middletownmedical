@@ -42,7 +42,7 @@ export function ProvidersFilterSection({
 
   return (
     <>
-      <section className="bg-slate-50/80 border-b border-slate-200 py-6 sm:py-8 w-full z-20 relative">
+      <section className="relative z-20 w-full border-b border-slate-200 bg-slate-50/80 py-6 sm:py-8">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 w-full">
           {/* Search bar row */}
           <div className="flex flex-col md:flex-row gap-4 mb-6 w-full">
@@ -90,6 +90,7 @@ export function ProvidersFilterSection({
             toggleCounty={filter.toggleCounty}
             selectedLocations={filter.selectedLocations}
             toggleLocation={filter.toggleLocation}
+            locationFilterOptions={filter.locationFilterOptions}
             selectedGender={filter.selectedGender}
             toggleGender={filter.toggleGender}
             selectedLanguages={filter.selectedLanguages}

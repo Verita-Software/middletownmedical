@@ -73,14 +73,17 @@ export default async function UrgentCareLocationPage({ params }: Props) {
             <UrgentCareDetailSections location={location} slug={slug} />
           </div>
 
-          <aside className="lg:sticky lg:top-24">
+          <aside className="lg:sticky lg:top-24 lg:pt-14">
             <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-md">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                   Address
                 </p>
                 <div className="mt-2 flex gap-2">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#49A3DA]" aria-hidden />
+                  <MapPin
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#49A3DA]"
+                    aria-hidden
+                  />
                   <div className="space-y-0.5 text-sm text-slate-700">
                     {location.addressLines.map((line) => (
                       <p key={line}>{line}</p>
@@ -120,7 +123,9 @@ export default async function UrgentCareLocationPage({ params }: Props) {
                   initialMinutes={location.estimatedWaitMinutes}
                   variant="detail"
                 />
-                <p className="mt-1 text-sm text-slate-600">{location.statusLine}</p>
+                <p className="mt-1 text-sm text-slate-600">
+                  {location.statusLine}
+                </p>
               </div>
 
               <div className="border-t border-slate-200 pt-4">

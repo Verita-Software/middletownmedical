@@ -109,7 +109,7 @@ export function LocationsMap({
   return (
     <div
       ref={containerRef}
-      className={`h-full min-h-[420px] w-full rounded-lg bg-slate-100 ${className}`}
+      className={`relative z-0 isolate h-full min-h-[420px] w-full rounded-lg bg-slate-100 ${className}`}
     />
   );
 }

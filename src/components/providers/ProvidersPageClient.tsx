@@ -78,8 +78,8 @@ function ProvidersPageContent() {
         (ploc) =>
           ploc.trim() === locName ||
           ploc.includes(locName) ||
-          locName.includes(ploc.split(" - ")[0]?.trim() ?? "")
-      )
+          locName.includes(ploc.split(" - ")[0]?.trim() ?? ""),
+      ),
     );
   }, [selectedLocation]);
 
@@ -122,8 +122,8 @@ function ProvidersPageContent() {
               </div>
 
               {showMap && (
-                <div className="mb-8 flex w-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm lg:flex-row">
-                  <div className="h-[320px] w-full shrink-0 bg-slate-100 lg:h-[520px] lg:min-h-[420px]">
+                <div className="relative z-0 isolate mb-8 flex w-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm lg:flex-row">
+                  <div className="relative z-0 isolate h-[320px] w-full shrink-0 bg-slate-100 lg:h-[520px] lg:min-h-[420px]">
                     {mapLocations && mapLocations.length > 0 ? (
                       <LocationsMap
                         locations={mapLocations}
