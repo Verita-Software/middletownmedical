@@ -11,10 +11,6 @@ const NAV_LINKS = [
   { label: "Careers", href: "/resource/careers" },
   { label: "Medical Records", href: "/resource/patient-resources" },
   { label: "Contact Us", href: "/contact" },
-  {
-    label: "Community Help (FindHelp)",
-    href: "https://www.findhelp.org/search_results/10940",
-  },
 ];
 
 export function HomeFooter() {
