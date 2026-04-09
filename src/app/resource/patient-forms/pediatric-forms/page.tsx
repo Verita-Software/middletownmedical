@@ -6,7 +6,10 @@ export const metadata: Metadata = {
   title: "Pediatric Patient Forms",
   description:
     "Download and print pediatric patient forms for Middletown Medical. Prepare for your child's visit with our intake and medical history forms.",
-  alternates: { canonical: "https://middletownmedical.com/resource/patient-forms/pediatric-forms" },
+  alternates: {
+    canonical:
+      "https://middletownmedical.com/resource/patient-forms/pediatric-forms",
+  },
 };
 
 // ── Data ─────────────────────────────────────────────────────────────────────
@@ -38,12 +41,8 @@ const FORM_SECTIONS: FormSection[] = [
         href: "https://middletownmedical.com/wp-content/uploads/2023/02/ASQ-3-6-Month.pdf",
       },
       {
-        title: "ASQ-3 | 8 Month",
-        href: "https://middletownmedical.com/wp-content/uploads/2023/02/ASQ-3-9-Month.pdf",
-      },
-      {
         title: "ASQ-3 | 9 Month",
-        href: "https://middletownmedical.com/wp-content/uploads/2023/02/ASQ-3-8-Month.pdf",
+        href: "https://middletownmedical.com/wp-content/uploads/2023/02/ASQ-3-9-Month.pdf",
       },
       {
         title: "ASQ-3 | 12 Month",
